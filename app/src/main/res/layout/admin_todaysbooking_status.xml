@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/deep_white"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginBottom="@dimen/dp10"
+        android:orientation="horizontal">
+
+        <com.app.newuidashboardadmin.CircularImageView
+            android:id="@+id/iv_profile_dummy"
+            android:layout_width="@dimen/dp61"
+            android:layout_height="@dimen/dp61"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/dp10"
+            android:scaleType="fitXY"
+            android:src="@drawable/profile" />
+
+        <!--                <com.mevodevice.bledemo.mevodevice.CircularImageView
+                            android:id="@+id/iv_profile"
+                            android:layout_width="@dimen/dp70"
+                            android:layout_height="@dimen/dp70"
+                            android:layout_marginLeft="@dimen/dp30"
+                            android:src="@drawable/profile"
+                            app:mebase_civ_border="true"
+                            app:mebase_civ_border_color="@color/white"
+                            app:mebase_civ_border_width="1dp" />-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:orientation="vertical">
+
+            <com.app.newuidashboardadmin.font.LatoBoldTextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:text="User Name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp17" />
+
+            <com.app.newuidashboardadmin.font.LatoMediumTextView
+                android:id="@+id/tv_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:text="male"
+                android:textColor="#949494"
+                android:textSize="@dimen/sp10" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.app.newuidashboardadmin.font.LatoMediumTextView
+                android:id="@+id/start_endtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8:30-9:00 AM"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="@dimen/dp15"
+                android:layout_marginTop="@dimen/dp5"
+                android:textSize="@dimen/sp17" />
+
+            <com.app.newuidashboardadmin.font.LatoMediumTextView
+                android:id="@+id/btn_starte"
+                android:layout_width="@dimen/dp80"
+                android:layout_height="@dimen/dp20"
+                android:text="Start"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textAllCaps="true"
+                android:layout_marginBottom="@dimen/dp5"
+                android:background="@drawable/newui_btn_blue_outline"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="@dimen/dp15"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/sp14" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/id_border"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:background="@color/grey_light"/>
+</LinearLayout>

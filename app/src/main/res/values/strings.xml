@@ -1,0 +1,2850 @@
+<resources>
+    <string name="app_name">NewUIDashBoardAdmin</string>
+    <string name="app_name_1">IWBle</string>
+    <string name="view_title">BLE-APP</string>
+    <string name="unknown_device">Unknown device</string>
+    <string name="menu_scan">Scanning</string>
+    <string name="menu_stop">Stop</string>
+    <string name="title_activity_device_info">DeviceInfoActivity</string>
+    <string name="label_device_address">Device address:</string>
+    <string name="label_state">State:</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="menu_connect">Connect</string>
+    <string name="menu_disconnect">Disconnect</string>
+    <string name="label_device_name">Device name:</string>
+    <string name="dailyCal">Daily Calories Allowance</string>
+    <string name="completeDiary">Mark as Completed</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="prompt_txt_recipe">You can unlock any %1$s Recipes of your choice for FREE.</string>
+    <string name="reminder_workout_time">Remind me to do\nthis workout at</string>
+    <string name="workout_reminder">Set Reminder for This Workout</string>
+    <string name="sameoption1">500+ Recipes</string>
+    <string name="sameoption4">20+ Live Yoga Sessions</string>
+    <string name="sameoption5">1000+ Healthy Dine Out Recommendations</string>
+    <string name="sameoption7">Unlimited Meal Plans</string>
+    <string name="sameoption8">Ads Free</string>
+    <string name="sameoption9">50+ Workout Plans</string>
+    <string name="winner_of_month">Heartiest congratulation to %1$s for being the performer of the month %2$s.We are delighted to have you as a part of our MevoFit family.</string>
+    <!--    <string name="winner_of_month">We congratulate you %1$s for becoming\nthe performer of the %2$s with maximum\ncredit in the Mevofit app</string>-->
+    <string name="food_tips">Food Tips</string>
+    <string name="workout_tips">Workout Tips</string>
+    <string name="menu_device_type_bracelet">Bracelet</string>
+    <string name="menu_device_type_watch">Watch</string>
+    <string name="menu_device_type_color_screen"></string>
+    <string name="menu_suggest">Feedback</string>
+    <string name="menu_about_us">Abount</string>
+    <string name="menu_ble_device_list">Function list</string>
+    <string name="logfood">Do you want to log this food?</string>
+
+    <string name="water_congrats_dialog">Good job! Your body is well hydrated now. Keep up the good work.</string>
+
+    <string name="pls_select_sdk_type">Please click the left menu to select the type of the link.</string>
+    <string name="pls_unbind_bracelet">Please click the left menu to unbind the bracelet</string>
+
+    <string name="pull_to_refresh">Pull to Refresh</string>
+    <string name="pull_to_refresh_scan">Scanning...</string>
+    <string name="pull_to_refresh_load">Loading...</string>
+    <string name="pull_to_refresh_push">Release refresh</string>
+    <string name="pull_to_refresh_success">refresh success</string>
+    <string name="pull_to_refresh_fail">refresh fail</string>
+    <string name="pull_to_refresh_time">last update M-d HH:mm</string>
+
+    <string name="title_device_list">Device</string>
+    <string name="title_device_setting">Bracelet Setting</string>
+    <string name="title_device_data">Sport Data</string>
+
+    <string name="index_device_name">Device Name:%s</string>
+    <string name="index_device_mac">Device Address:%s</string>
+    <string name="index_device_status_connect">Connect</string>
+    <string name="index_device_status_disconnect">Disconnect</string>
+    <string name="index_device_status">Connect Statue:%s</string>
+    <string name="index_device_battery">Battery:%s</string>
+    <string name="index_sport_step">Steps:%s</string>
+    <string name="index_sport_count">Count:%s</string>
+    <string name="index_sport_distance">Distance:%.1f m</string>
+    <string name="index_sport_calorie">Calorie:%.1f KCal</string>
+    <string name="index_device_unbind">Unbind</string>
+    <string name="index_device_connect">Connect</string>
+    <string name="index_device_disconnect">Disconnect</string>
+    <string name="index_device_notification">Notification</string>
+    <string name="index_device_ble_log">BLE log</string>
+    <string name="title_activity_setting">SettingActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="scan_connect_device">Connecting:%s</string>
+
+    <string name="setting_shake">Vibration remind</string>
+    <string name="setting_time">Time format</string>
+    <string name="setting_date">Date format</string>
+    <string name="setting_unit">Unit of measurement</string>
+    <string name="setting_weather">Unit of Weather</string>
+    <string name="setting_roll">Palming gestures</string>
+    <string name="setting_roll_time">Palming gestures hours</string>
+    <string name="setting_hand">Wearing Manner</string>
+    <string name="setting_language">Language</string>
+    <string name="setting_firmware_update">Firmware Upgrade</string>
+
+    <string name="setting_dialog_confirm">Confirm</string>
+    <string name="setting_dialog_cancel">Cancel</string>
+
+    <string name="setting_dialog_time_24">24 hour</string>
+    <string name="setting_dialog_time_12">12 hour</string>
+
+    <string name="setting_dialog_date_1">Month/Day</string>
+    <string name="setting_dialog_date_2">Day/Month</string>
+
+    <string name="setting_dialog_unit_1">Metric</string>
+    <string name="setting_dialog_unit_2">Imperial</string>
+
+    <string name="setting_dialog_weather_1">Centigrade</string>
+    <string name="setting_dialog_weather_2">Fahrenheit</string>
+
+    <string name="setting_dialog_hand_1">Left</string>
+    <string name="setting_dialog_hand_2">Right</string>
+
+    <string name="setting_dialog_language_1">English</string>
+    <string name="setting_dialog_language_2">Chinese</string>
+
+
+    <string name="shake_1">Staccato</string>
+    <string name="shake_2">Wave</string>
+    <string name="shake_3">Heartbeat</string>
+    <string name="shake_4">Radiation</string>
+    <string name="shake_5">Lighthouse</string>
+    <string name="shake_6">Symphony</string>
+    <string name="shake_7">Fast</string>
+
+    <string name="heart_title">HeartRate</string>
+    <string name="heart_curr_value">HeartRate:%s</string>
+    <string name="heart_detail_data_title">HeartRateDetail</string>
+
+    <string name="sport_title">SportDetail</string>
+
+    <!--AddSportActivity-->
+    <string name="sport_plan_football">Soccer</string>
+    <string name="sport_plan_basketball">Basketball</string>
+    <string name="sport_plan_badminton">Badminton</string>
+    <string name="sport_plan_pingpong">Table Tennis</string>
+    <string name="sport_plan_bowling">Bowling</string>
+    <string name="sport_plan_tennis">Tennis</string>
+    <string name="sport_plan_volleyball">Volleyball</string>
+    <string name="sport_plan_shuttlecock">Shuttlecock</string>
+    <string name="sport_plan_swimming">Swimming</string>
+    <string name="sport_plan_mountaineering">Mountain</string>
+    <string name="sport_plan_walking">Walking</string>
+    <string name="sport_plan_running">Running</string>
+    <string name="sport_plan_cycling">Cycling</string>
+    <string name="sport_plan_climbing">Climbing</string>
+    <string name="sport_plan_skate">Skate</string>
+    <string name="sport_plan_skee">Skee</string>
+    <string name="sport_plan_dance">Dance</string>
+    <string name="sport_plan_bodymechanics">Aerobics</string>
+    <string name="sport_plan_pullup">Pull-up</string>
+    <string name="sport_plan_gymnasium">Gymnasium</string>
+    <string name="sport_plan_situp">Sit-up</string>
+    <string name="sport_plan_pushup">Push-up</string>
+    <string name="sport_plan_slap">Plank</string>
+    <string name="sport_plan_yoga">Yoga</string>
+    <string name="sport_plan_jump">Rope-jump</string>
+
+    <string name="sport_detail_start_time">STime:%s</string>
+    <string name="sport_detail_end_time">ETime:%s</string>
+
+    <string name="sleep_title">Sleep</string>
+    <string name="sleep_title_detail">Sleep Detail</string>
+    <string name="sleep_detail_total">SleepTotalTime:%s </string>
+    <string name="sleep_detail_light">LightSleepTime:%s </string>
+    <string name="sleep_detail_deep">DeepSleepTime:%s </string>
+    <string name="sleep_detail_start">Start</string>
+    <string name="sleep_detail_end">End</string>
+    <string name="sleep_detail_deep_1">Deep Sleep</string>
+    <string name="sleep_detail_light_1">Light Sleep</string>
+    <string name="sleep_detail_placement">Placement</string>
+
+    <string name="sync_progress_text">sync data:%s</string>
+    <string name="sync_progress_text_over">sync over</string>
+
+    <string name="sync_progress_text_update">Firmware</string>
+    <string name="sync_progress_text_select_file">Select firmware upgrade file</string>
+    <string name="sync_progress_text_start_upgrade">Start Update</string>
+    <string name="sync_progress_text_path">file path:%s</string>
+
+
+    <string name="dfu_action_abort">stop</string>
+    <string name="dfu_confirmation_dialog_title">app upgrade</string>
+    <string name="dfu_status_switching_to_dfu">dfu&#8230;</string>
+    <string name="dfu_status_connecting">connecting&#8230;</string>
+    <string name="dfu_status_starting">Starting DFU&#8230;</string>
+    <string name="dfu_status_uploading">Uploading&#8230;</string>
+    <string name="dfu_status_uploading_part" formatted="false">progress %d/%d&#8230;</string>
+    <string name="dfu_status_validating">Validating&#8230;</string>
+    <string name="dfu_status_disconnecting">disconnect&#8230;</string>
+    <string name="dfu_status_completed">completed</string>
+    <string name="dfu_status_aborted">Aborted</string>
+    <string name="dfu_status_error">Upload failed</string>
+    <string name="dfu_status_starting_msg">Initial progress bar&#8230;</string>
+    <string name="dfu_status_uploading_components_msg">Transmission %s&#8230;</string>
+    <string name="dfu_status_validating_msg">Confirmation in&#8230;</string>
+    <string name="dfu_status_connecting_msg">connect %s&#8230;</string>
+    <string name="dfu_status_uploading_msg">Transmitting application to %s&#8230;</string>
+    <string name="dfu_status_completed_msg">Application has been send successfully.</string>
+    <string name="dfu_status_aborted_msg">Application upload has been canceled.</string>
+    <string name="dfu_status_disconnecting_msg">disconnect %s&#8230;</string>
+    <string name="dfu_status_error_msg">DFU fail</string>
+    <string name="dfu_version_check">checking version &#8230;</string>
+    <string name="dfu_confirmation_dialog_exit_message">Are you sure to exit?</string>
+    <string name="dfu_upload_dialog_cancel_message">Are you sure to cancel upload?</string>
+    <string name="dfu_status_switching_to_dfu_msg">Waiting for bootloader&#8230;</string>
+    <string name="dfu_version_file_create_success"></string>
+    <string name="wait_data_update"></string>
+
+    <string name="dfu_channel_name">DFU</string>
+    <string name="dfu_channel_description">Shows DFU progress.</string>
+
+    <string name="dfu_status_initializing">Initializing&#8230;</string>
+    <string name="dfu_unknown_name">unnamed device</string>
+    <string name="dfu_command_write_fail">DFU command write failure</string>
+    <string name="update_step_connect_device">connecting...</string>
+    <string name="activity_update_over">upgrade over</string>
+    <string name="update_step_write_device">Writing...</string>
+    <string name="update_step_write_device_1">Firmware upgrade</string>
+    <string name="update_step_write_retry">retry</string>
+
+    <string name="ble_log_write">Write Log</string>
+    <string name="ble_log_notify">Notify Log</string>
+    <string name="ble_log_test_command">Test command </string>
+    <string name="ble_log_title">Log</string>
+    <string name="ble_log_send">send</string>
+
+
+    <string name="setting_shake_bracelet">Vibration setting mode</string>
+    <string name="setting_shake_alarm">Alarm</string>
+    <string name="setting_shake_schedule">Schedule</string>
+    <string name="week_mon">Monday</string>
+    <string name="week_tue">Tuesday</string>
+    <string name="week_wed">Wednesday</string>
+    <string name="week_thu">Thursday</string>
+    <string name="week_fir">Friday</string>
+    <string name="week_sat">Saturday</string>
+    <string name="week_sun">Sunday</string>
+
+    <string name="schedule_mon">Mon</string>
+    <string name="schedule_tue">Tue</string>
+    <string name="schedule_wes">Wed</string>
+    <string name="schedule_thur">Thu</string>
+    <string name="schedule_fir">Fri</string>
+    <string name="schedule_sat">Sat</string>
+    <string name="schedule_sun">Sun</string>
+    <string name="faq_heading6">Q.1 How to connect the band with the app?</string>
+    <string name="faq_desc6">A.1 In order to connect the band with the app, please switch on the Bluetooth of your phone. Just in case there is some problem in connecting the band with the Bluetooth, please enable location services too for seamless app and band connection.</string>
+    <string name="common_save">Save</string>
+    <string name="common_cacel">cancel</string>
+    <string name="select_least_one">Please select at least one</string>
+    <string name="sedentary_reminder">Sedentary Reminder</string>
+    <string name="add_clock">Add Clock</string>
+    <string name="add_schedule">Add Schedule</string>
+    <string name="hello_world">hello world</string>
+    <string name="start_time">start time</string>
+    <string name="repeat">repeat</string>
+    <string name="every_day">Every day</string>
+    <string name="schedule_message">Please enter the schedule</string>
+    <string name="alarm_message">Please enter the alarm content</string>
+    <string name="alert_title">Push the message</string>
+    <string name="alert_title_">Floating Widget</string>
+    <string name="alert_content">Please jump to the system check IWble application</string>
+    <!--    <string name="alert_content_notification">Please allow notification access to MevoFit  to get the notifications on your device</string>-->
+    <string name="alert_content_notification">Please allow notification access permission to app to show notifications on your device!</string>
+    <string name="alert_content_comfirm">Confirm</string>
+    <string name="message_push_title">Push the message</string>
+
+    <string name="message_push_call">Call Notifications</string>
+    <string name="message_push_sms">SMS Notifications</string>
+    <string name="message_push_qq">QQ</string>
+    <string name="message_push_wechat">Wechat</string>
+    <string name="message_push_skype">Skype</string>
+    <string name="message_push_wahtsapp">Whatsapp</string>
+    <string name="message_push_facebook">Facebook</string>
+    <string name="message_push_social">Social Notifications(Whatsapp, Gmail, ++)</string>
+    <string name="message_push_twitter">Twitter</string>
+    <string name="message_push_gmail">Gmail</string>
+    <string name="message_push_yahoo">Yahoo</string>
+    <string name="message_push_Skype">Skype</string>
+    <string name="message_push_Instagram">Instagram</string>
+    <string name="message_push_Telegram">Telegram</string>
+    <string name="message_push_Others">Others</string>
+
+    <!--(com.instagram.android)-->
+    <!--(org.telegram.messenger)-->
+
+
+    <string name="message_push_mevofit">MevoFit</string>
+
+    <string name="GOOGLE_ID">UA-85190939-6</string>
+    <string name="calendar">Calendar</string>
+
+    <string name="openwheaterapi_key">170f02f6701c9472d25932b9ae075a01</string>
+    <string name="google_license_key">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu0roSexgV/nJniylooKUQi3pvkqPWBhZ4sFGXoFRHqDeRkhgjPfScMuAsODrGx4vaappsc0B50fETPf0o+8vEx668nkOdJVql1dY6BQvb26jTJ9n9uvIqVoikR94vguJhuI8DRZDgTIncocNDtA+CdIlFmd8P7sbwamtj9AiECGonL7+X1anvnBpYOQwzbnhglCSM8noX8C/Ip/xkPuThXNcShFtcL+92xPj83UPjvtJ3LABiHznevIH9cnceoNwoU1sqqSMycVAmum1Vjv6ujYia1J47A4DCJ1lDFl4tL1TVtANSMC79VZ0HNt+UMyU30ZHGBmXnsuX11VMx7ZsZQIDAQAB</string>
+
+
+    <!-- original appsee id -->
+    <!--<string name="APPSEE_API">95e45cb4178a46858bff9c47ef8796de</string>-->
+    <!-- MeUser Credentials -->
+    <!--mevolife main-->
+    <!--<string name="fb_id">741212336086734</string>-->
+    <string name="fb_id">2090935784250611</string>
+    <!--text for publish action-->
+    <!--<string name="appId">T9L6IRQCO</string>
+    <string name="appSecret">413FHSB0W</string>
+    <string name="devId">29681ed8-67a4-4751-8e42-1826f3e79dfd</string>-->
+    <string name="appId">V22ggPpsJ</string>
+    <string name="appSecret">e8uHPQNNl</string>
+    <string name="devId">b7a4f4ca-dfb3-4b2a-a107-21641b025f4f</string>
+    <string name="store">1</string>
+    <!--<string name="senderID">468862809326</string>-->
+    <string name="senderID">461898536120</string><!--for mevolife-->
+    <!-- MeUser Credentials -->
+    <!-- <string name="applicationId">592019947514391</string> -->
+    <string name="hello">Hello World, MainActivity.</string>
+    <!-- Content Description -->
+    <string-array name="navigationListArray">
+        <item>Upgrade to Premium</item>
+        <item>Diary</item>
+        <item>Tips</item>
+        <!--<item>Quiz</item>-->
+        <item>Blog</item>
+        <item>Yoga</item>
+        <!--<item>Mevo-Get Inspired</item>-->
+        <item>Weight Tracker</item>
+        <item>Health +</item>
+        <item>Shopping List</item>
+        <item>Reminders</item>
+        <item>Earn &amp; Buy Credits</item>
+        <item>Refer</item>
+        <item>Shop</item>
+        <item>Suggestions</item>
+        <item>Rate us</item>
+        <item>Help</item>
+        <item>Logout</item>
+
+    </string-array>
+
+    <string-array name="moreListArray">
+        <item>Shopping List</item>
+        <item>Suggest a feature</item>
+        <item>Water</item>
+        <item>Blog</item>
+    </string-array>
+    <string-array name="othersListArray">
+        <item>Help</item>
+        <item>Rate us</item>
+        <item>About company</item>
+        <item>About product</item>
+        <item>Feeback</item>
+    </string-array>
+
+    <string name="Food">Food Diary</string>
+    <string name="Exercise">Exercise</string>
+    <string name="congratulation">Congratulations.</string>
+    <string name="Recipes">Recipes</string>
+
+    <!-- Nav Drawer List Item -->
+
+    <!-- Menu Items -->
+
+
+    <!-- Frofile Set Up Item Text -->
+    <string name="prof_Frag3_Header">Weight Information</string>
+    <string name="breakfast_key">BreakFast</string>
+    <string name="lunch_key">Lunch</string>
+    <string name="dinner_key">Dinner</string>
+    <string name="snack_key">Snacks</string>
+    <!-- Frofile Set Up Item Text -->
+
+    <string name="basic_info_nameinvalid">Please Enter Valid Name</string>
+    <string name="basic_info_ageinvalid">Please Enter Valid Age</string>
+    <string name="basic_info_gender">Please Enter Your Gender</string>
+    <string name="basic_info_weight">Please Enter Valid Weight</string>
+    <string name="basic_info_height">Please Enter Valid Height</string>
+    <string name="weight_info_heightinvalid">Please Enter Valid Height</string>
+    <string name="weight_info_currentweightinvalid">Please Enter Valid Current weight</string>
+    <string name="weight_info_targetweightinvalid">Please Enter Valid Target weight</string>
+    <string name="weight_info_targetperweekinvalid">Please Enter Valid Target Per Week</string>
+    <string name="username_missing">Please Enter Email</string>
+    <string name="username_valid">Enter valid username</string>
+    <string name="password_missing">Please Enter Password</string>
+    <string name="short_password">Password should be atleast 4 character.</string>
+    <string name="cnfrmpassword_missing">Please Enter Confirm Password</string>
+    <string name="emailinvalid">Please Enter Valid email adress</string>
+    <string name="unmachedpassword">Password and confirm pasword should be same</string>
+    <string name="username">Username</string>
+
+    <!-- My  summary Text -->
+    <!-- My Summary Text -->
+
+
+    <!-- Weight Text -->
+    <string name="enter_weight1">Enter Weight</string>
+    <!-- Weight diary Text -->
+
+
+    <!-- Food Text -->
+    <string name="name_missing">Please Enter Food Name</string>
+    <string name="servingsize_missing">Please Enter Serving Size</string>
+    <string name="calorie_missing">Please Enter Calorie</string>
+    <string name="serving_unit_missing">Please Enter Serving Unit</string>
+    <string name="calories_value_not_zero">Calories Entered should be greater than 0</string>
+    <string name="serving_value_not_zero">Serving Size Entered should be greater than 0</string>
+    <string name="food_exist">Food with same name already exists</string>
+    <!-- Food diary Text -->
+
+
+    <!-- Exercise Text -->
+    <string name="exer_missing">Please Enter Exercise Name</string>
+    <string name="exer_descrip_missing">Please Enter Description</string>
+    <string name="duration_missing">Please Enter Duration</string>
+    <string name="duration_grtr_zero">Duration must be greater than 0</string>
+    <string name="exer_calori_missing">Please Enter Calorie</string>
+    <!-- Exercise diary Text -->
+
+
+    <!-- Food Diary List item -->
+    <!-- Food Diary List Item -->
+
+    <string name="registration_failed">Registration Failed</string>
+    <string name="strSignIn">Sign In</string>
+    <string name="strSignUp">Sign Up</string>
+    <string name="strSocial">Are You Social?</string>
+    <string name="strNotMember">Not a Member?</string>
+    <string name="strMealAPlan">Plan a meal</string>
+    <string name="Coach">Coach</string>
+    <string name="loading">Loading</string>
+    <string name="policy_line1">By signing up you are agreeing to our</string>
+    <string name="google_plus">Google+</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+
+    <string name="to_our">to our</string>
+    <string name="term_of_service">Terms of Service</string>
+    <string name="and">&amp;</string>
+    <string name="privacy">Privacy Policy</string>
+    <string name="next">Next</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="myself1">You</string>
+    <string name="age">Age</string>
+    <string name="pounds">Pounds</string>
+    <string name="change_units">(Click to Change)</string>
+    <string name="kg">Kgs</string>
+    <string name="weigh">Weight</string>
+    <string name="gender">Gender</string>
+    <string name="height">Height</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="ft">Ft/In</string>
+    <string name="fts">Ft</string>
+    <string name="inch">In</string>
+    <string name="inches">Inches</string>
+    <string name="cm">Cms</string>
+    <string name="remaining"> To Go</string>
+    <string name="diary">Diary</string>
+    <string name="challenge">Challenges</string>
+    <string name="challenge_s">Challenges</string>
+    <string name="goal">Goal</string>
+    <string name="steps_tracker_new">Track your Run</string>
+    <string name="steps_tracker_new_c">TRACK YOUR RUN</string>
+
+    <string name="miles">miles</string>
+    <string name="food">Food</string>
+    <string name="login">Login</string>
+    <string name="signup_with">SIGN UP WITH</string>
+    <string name="by_signing">BY SIGNING UP YOU ARE AGREEING TO OUR <u>TERMS OF SERVICE</u></string>
+    <string name="create_acnt">CREATE ACCOUNT</string>
+    <string name="or_signin">OR SIGN IN</string>
+    <string name="evaluate">Evaluate My Day</string>
+
+    <!-- Menu Items -->
+    <string name="menu_dashboard">Dashboard</string>
+    <string name="menu_challenges">Challenges</string>
+    <string name="menu_settings">Settings</string>
+    <!-- END MENU ITEMS -->
+    <string name="epo_upgrading">Epo Upgrading...</string>
+    <string name="epo_progress">Epo progress: %d%%</string>
+    <string name="epo_sucess">Epo Success</string>
+    <string name="down_load_epo_file_fail">Download epo file fail</string>
+    <!-- NEW ENTRY ITEMS -->
+
+
+    <string name="bf">Breakfast</string>
+    <string name="l">Lunch</string>
+    <string name="s">Snacks</string>
+    <string name="d">Dinner</string>
+    <string name="e">Exercise</string>
+    <!-- END NEW ENTRY ITEMS -->
+    <string name="bmi">BMI</string>
+    <string name="ok">Ok</string>
+    <string name="target_weight">Target Weight \n<b>12 Kg</b></string>
+    <string name="targetweight">Target Weight</string>
+    <!--<string name="targetweight">How much do you want to lose?</string>-->
+    <string name="done">Done</string>
+    <string name="weightkg">kg</string>
+    <string name="weightlbs">lbs</string>
+    <string name="activity_level">Activity Level</string>
+    <string name="kcal_unit">kcal</string>
+    <string name="create_food">Create a food</string>
+    <string name="save">Save</string>
+    <string name="save_entry">Save Entry</string>
+    <string name="total">Total</string>
+    <string name="cancel">Cancel</string>
+    <string name="foodname">Food Name</string>
+    <string name="brand">Brand</string>
+    <string name="serving_quan">Serving Qty</string>
+    <string name="serving_size">Serving Size </string>
+    <string name="total_cal">Total Calories</string>
+    <string name="undo">Undo</string>
+    <string name="undoall">Undo All</string>
+    <string name="delete_success">Item deleted successfully.</string>
+    <string name="move_success">Item moved successfully.</string>
+    <string name="serving_unit">Serving Unit</string>
+    <string name="week1">Week1</string>
+    <string name="week2">Week2</string>
+    <string name="week3">Week3</string>
+    <string name="week4">Week4</string>
+    <string name="duration">Duration</string>
+    <string name="calories_burned">Calories</string>
+    <string name="calories_consumed">Calories Consumed</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="nutrition">Nutrition</string>
+
+    <string name="compare_rounds">Rounds</string>
+    <string name="calories_breakdown">Calories Breakdown</string>
+    <string name="nutri_breakdown">Nutrients Breakdown</string>
+    <string name="fitness_breakdown">Fitness Analysis</string>
+    <string name="calories_s">calories</string>
+    <string name="procedure">Method</string>
+    <string name="quiz">Quiz</string>
+    <string name="belly_fat">Belly Fat</string>
+    <string name="you_have_earned">You earned</string>
+    <string name="you_have_loose">You lose</string>
+    <string name="your_quiz_status">Status</string>
+    <string name="sno">S.No.</string>
+    <string name="question">Question</string>
+    <string name="status">Status</string>
+    <string name="credits">Credits</string>
+    <string name="cash">Cash</string>
+    <string name="onemonth">1 Month</string>
+    <string name="threemonth">3 Months</string>
+    <string name="yearly">1 Year</string>
+    <string name="method">Method</string>
+    <string name="start_now">Start</string>
+    <string name="no_searchlist">Enter the food item to be searched</string>
+    <string name="shopList_back">No items added</string>
+    <string name="shopList_back1">Tip: Add items to list from Recipe section.</string>
+
+    <!-- ==========MENU GRID STRINGS====== -->
+    <!--<string name="hello_world">Hello world.</string>-->
+    <string name="recipes">Recipes</string>
+    <string name="yoga">Yoga</string>
+    <string name="restourent">Restaurant Eating</string>
+    <string name="healthCare">Blog</string>
+    <!-- ==========MENU GRID STRINGS====== -->
+    <string name="sedentary">Sedentary</string>
+    <string name="moderate">Low Active</string>
+    <string name="moderate_real">Moderate</string>
+    <string name="active">Active</string>
+    <string name="intense_active">Intense</string>
+
+    <!-- ==========Profile Info STRINGS====== -->
+
+    <string name="edit_profile">Edit Profile</string>
+    <string name="txtheight">Height</string>
+    <string name="txtheightinches">Height (In)</string>
+    <string name="dob">DOB</string>
+    <string name="activityLevel">Activity Level</string>
+    <string name="weightLoss">Weight Loss/ \nWeek</string>
+    <string name="calories_day">Calories/ Day</string>
+    <string name="reminders">Reminders</string>
+    <string name="getNotifications">Get Notifications &amp; Reminders to \n \t \t \t\tTrack your Activities. </string>
+    <string name="remindMe">Remind Me</string>
+    <string name="everyMeal">Every meal</string>
+    <string name="once_a_day">Once a day</string>
+    <string name="challenges">Challenges</string>
+    <string name="tips">Device</string>
+    <string name="mealPlans">My Meals</string>
+    <string name="exercise">Log Exercise</string>
+    <!--<string name="appseekey">ee0c9bcb60eb414f988fc078b47411a2</string>-->
+    <string name="appseekey">018a16e0f51f4e6e82e56007907e34c6</string>
+    <string name="pedometer">My Steps</string>
+    <string name="pedometer_history">History</string>
+
+    <!-- ==========DIET CALCULATOR STRINGS====== -->
+    <string name="community">Community</string>
+    <string name="txtWeight">Weight</string>
+    <string name="txtGoalWeight">Goal Weight</string>
+    <string name="txtAge">Age</string>
+    <string name="txtGender">Gender</string>
+    <string name="txtActivityLevel">Activity Level</string>
+    <string name="txtBMI">BMI</string>
+    <string name="txtBMR">BMR</string>
+    <string name="txtDailyCalorie">Daily Calorie</string>
+    <string name="txtWaistHipRatio">Waist Hip Ratio</string>
+    <string name="txtBodyFat">Body Fat</string>
+    <string name="txtDailyWater">Daily Water Intake </string>
+    <string name="txtRestingMetabolicRate">Resting Metabolic Rate"</string>
+    <string name="txtHeartRate">Maximum Heart Rate</string>
+    <string name="txtOptimumHeartRate">Optimum Heart Rate</string>
+    <string name="txtBodySurfaceArea">Body Surface Area</string>
+
+    <!-- =========WATER MODULE======== -->
+    <string name="cup1">1 glass, </string>
+    <string name="ml100"> 100 ml</string>
+    <string name="ml200"> 200 ml</string>
+    <string name="ml250"> 250 ml</string>
+    <string name="ml300"> 300 ml</string>
+    <string name="ml350"> 350 ml</string>
+    <string name="ml400"> 400 ml</string>
+    <string name="logs">Logs</string>
+    <string name="total_steps">Total Steps</string>
+    <string name="start_workout">Start Workout</string>
+    <string name="stop_workout">Stop Workout</string>
+    <string name="distance">Distance</string>
+    <string name="step_frequency">Step Frequency</string>
+    <string name="st_min">ST/min</string>
+    <string name="steps_small">Steps</string>
+    <string name="distance_small">Distance</string>
+    <string name="glass">Glass</string>
+    <string name="glasses_p">Glasses</string>
+    <string name="glasses">\t \t \t \t \t Glasses</string>
+
+    <!-- ==========YOGA STRINGS====== -->
+
+    <string-array name="restaurant_list">
+        <item>pizza hut</item>
+        <item>macd</item>
+        <item>ccd</item>
+        <item>domino</item>
+        <item>haldiram</item>
+    </string-array>
+
+    <string name="share">Share</string>
+    <string name="exit">Exit</string>
+    <string name="txtHour">Hour</string>
+
+    <!-- ==========WEIGHT TRACKER STRINGS====== -->
+
+    <string name="header_weightTracker">Weight Tracker</string>
+    <string name="txtWeightDiary">Diary</string>
+    <string name="txtComparePhotos">Before &amp; After</string>
+    <string name="txtCurrentWeight">Current Weight</string>
+    <string name="txtUpdate">Update</string>
+    <string name="txtUpdateyourweight">Update your weight</string>
+    <string name="txtUpdateyourfat">Update your body fat</string>
+    <string name="txtUpgrade">Upgrade</string>
+    <string name="measurementUnits">Measurement Units:</string>
+    <string name="neck">Neck</string>
+    <string name="shoulder">Shoulder</string>
+    <string name="waist">Waist</string>
+    <string name="hip">Hip</string>
+    <string name="arm">Arm</string>
+    <string name="thighs">Thighs</string>
+    <string name="calf">Calf</string>
+    <string name="btn_done">Done</string>
+    <string name="currentWeight">Log Weight</string>
+    <string name="currentWeight1">Current Weight</string>
+    <string name="txt_done">Done</string>
+
+    <string name="wt_cancel">Cancel</string>
+    <string name="wt_add">Add</string>
+
+    <!-- ==========HEALTH CARE STRINGS====== -->
+
+    <string name="header_healthcare">Blog</string>
+    <string name="header_quiz">Quiz</string>
+    <string name="recipe_add_mesz">Recipes has been added successfully.</string>
+    <string name="all_c">All</string>
+    <string name="ongoing">On Going</string>
+    <string name="own">Own</string>
+    <string name="like">Like</string>
+    <string name="likes">Likes</string>
+    <string name="comment">Comment</string>
+
+    <!-- ==========EDIT PROFILE STRINGS====== -->
+
+    <string name="fromCamera">From Camera</string>
+    <string name="fromGallery">From Gallery</string>
+    <string name="healthy_tips">Tips</string>
+
+    <!-- ==========CHALLENGES GAME FILTER STRINGS====== -->
+
+    <string name="header_game_filter">Game Filter</string>
+    <string name="txtDone">Done</string>
+    <string name="start_date">Date</string>
+    <string name="txtAny">Any</string>
+    <string name="bet_amount">Bet Amount</string>
+    <string name="txt">0</string>
+    <string name="txt1">1000</string>
+    <string name="preference">Preference</string>
+    <string name="txtGroup">Group</string>
+    <string name="game_type">Game Type</string>
+    <string name="txtDiet">Diet</string>
+    <string name="txtExercise">Exercise</string>
+    <string name="txtDietExercise">Diet+Exercise</string>
+    <string name="reset_filter">Reset Filter</string>
+    <string name="one_week">+1 Week</string>
+    <string name="two_week">+2 Weeks</string>
+    <string name="three_week">+3 Weeks</string>
+    <string name="one_month">+1 Month</string>
+    <string name="three_months">+3 Months</string>
+    <string name="txtgroup">Group</string>
+    <string name="txtindividual">Individual</string>
+    <string name="search_awesome">Search Awesome</string>
+    <string name="challenger">Challengers</string>
+    <string name="player">Players</string>
+    <string name="moneybag">Money Bag</string>
+    <string name="btnok">Ok</string>
+    <string name="btncancel">Cancel</string>
+    <string name="invite">Invite</string>
+    <string name="challenge_c">Challenge</string>
+    <string name="activities">Activities</string>
+    <string name="profile">Profile</string>
+    <string name="join_challenge">Join Now</string>
+    <string name="invite_fren">Invite</string>
+    <string name="prompt_challenge_title">Play Challenge</string>
+    <string name="prompt_challenge_message">Lost weight faster by joining this challenge worth %1$d credits</string>
+    <string name="join_challenge_success">Challenge joined successfully.</string>
+    <string name="support_challenge_success">Challenge supported successfully.</string>
+    <string name="prompt_alert">Alert</string>
+    <string name="prompt_alert_alreadyjoin">You have already joined the challenge</string>
+    <string name="prompt_alert_alreadysupported">You have already supported the challenger</string>
+    <string name="prompt_alert_challengetAlreadystarted">Its too late for this challenge. Please check another challenge</string>
+    <string name="prompt_suport_yourself">You can\'t support yourself</string>
+    <string name="prompt_challenger_disqualified">You are disqualified for challenge because of skipping of token.</string>
+    <string name="prompt_support_message">Support your favourite challenger by spending %1$d credits.</string>
+    <string name="prompt_support_title">Show Support</string>
+    <string name="prompt_challenge_notstart">The Challenge is not started yet. Visit only before 24 hrs of start time.</string>
+    <string name="prompt_challenge_unsubmittable">Please submit document on correct date</string>
+    <string name="prompt_challenge_submissioncompleted">Document for all tokens have already been submitted.</string>
+    <string name="send">Send</string>
+    <string name="commentpost">Post Comment</string>
+    <string name="add_comment">Add your description here...</string>
+    <string name="comment_heading">Comments</string>
+    <string name="addpost">Add Post</string>
+    <!-- ==========NEW MENU STRINGS====== -->
+    <string name="howdy">Hi </string>
+    <string name="menu_today">Today</string>
+
+    <string name="txtGraph">Graph</string>
+    <string name="pic_format">"Image must be in JPG or PNG "</string>
+    <string name="pic_size">Max file size: 5MB</string>
+    <string name="enter_height">Enter Your Height</string>
+    <string name="enter_height_valid">Enter valid height</string>
+    <string name="enter_weight_valid">Enter valid weight</string>
+    <string name="enter_weight">Enter Your Weight</string>
+    <string name="photo_first_title">Photo 1: Full Body Pic</string>
+    <string name="photo_first_subtitle">Use a mirror(or a friend) to snap a full-body( Head to toe) photo showing you on the scale.</string>
+    <string name="photo_second_title">Photo 2: Weight-In</string>
+    <string name="photo_second_subtitle">Immediately snap another photo of the scale\'s readout along-side the word <font fgcolor="#d93742"><b> %1$s</b></font> written on the index card.</string>
+    <string name="profile_accept">I accept that I may be audited and required to submit extra proof of my weight loss.</string>
+    <string name="weight_entered">Weight Entered</string>
+    <string name="submit_weightin">Submit your weight-in for approval. You should get a notification within 12 hr.</string>
+    <string name="submit">Submit</string>
+    <string name="document_submitted">Document submitted successfully</string>
+    <string name="accept_policy">You need to accept the policy before further proceeding</string>
+    <string name="next_required">Next required Weight-In</string>
+    <string name="submit_token">Submit Token Weight-In</string>
+    <string name="submit_token_unofficial">Unofficial Weight-In</string>
+    <string name="report_goal_weight">%1$s Goal Weight</string>
+    <string name="report_thisround">This Round Goal(%1$d)</string>
+    <string name="currentweight">Current Weight</string>
+    <string name="weight_loss">Lose Weight</string>
+    <string name="weightin_token">Weight-In Tokens</string>
+    <string name="leaderboard">LeaderBoard</string>
+
+    <!-- ==========CALORIES STRINGS====== -->
+
+    <string name="yesterday">Yesterday</string>
+    <string name="tommorrow">Tomorrow</string>
+    <string name="txtbreakfast">Breakfast</string>
+    <string name="txtlunch">Lunch</string>
+    <string name="txtexercise">EXERCISE</string>
+    <string name="txtpedometer">Pedometer</string>
+    <string name="profile_incomplete">Profile setup incomplete</string>
+
+    <string name="forums">Forums</string>
+    <string name="following">Following</string>
+    <string name="post">Post</string>
+    <string name="followers">Followers</string>
+    <string name="followings">Following</string>
+    <string name="follow">Follow</string>
+    <string name="unfollow">Unfollow</string>
+    <string name="following_not">You are not following anyone</string>
+    <string name="forum_posted">Posted successfully</string>
+    <string name="add_food">Add Food</string>
+    <string name="nutrition_info">Nutrition Information</string>
+    <string name="carbs">Carbs</string>
+    <string name="protein">Proteins</string>
+    <string name="myprotein">My Proteins</string>
+    <string name="mycarbs">My Carbs</string>
+    <string name="myfat">My Fat</string>
+    <string name="fat">Fat</string>
+
+    <string name="body_stats">Body Stats</string>
+    <string name="nut_info">Nutritional Info</string>
+    <string name="nut_facts">Nutritional Facts</string>
+
+    <!-- ==========Weather STRINGS====== -->
+    <string name="txt_weather_morning">Morning</string>
+    <string name="txt_weather_evening">Evening</string>
+    <!-- ==========ANGEL'S DIET STRINGS====== -->
+
+    <string name="plans">Plans</string>
+    <string name="txt_breakfast">Breakfast</string>
+    <string name="txt_beverages">Beverages</string>
+    <string name="txt_snacks">Snacks</string>
+    <string name="txt_sides">Sides</string>
+    <string name="txt_lunch">Lunch</string>
+    <string name="txt_dinner">Dinner</string>
+    <string name="mymeal">Plan a Meal</string>
+    <string name="name">Name</string>
+    <string name="date_greater">Date enter shouldn\'t be smaller than current date</string>
+
+    <!-- ==========SLEEP EASY STRINGS====== -->
+
+    <string name="txt_history">History</string>
+
+    <!-- ==========DASHBOARD STRINGS====== -->
+
+    <!-- ==========EXEERCISE STRINGS====== -->
+
+    <!-- ==========RECIPES STRINGS====== -->
+    <string name="prefernces">Preferences</string>
+    <string name="txtVegetarian">Vegetarian</string>
+    <string name="txtNonVegetarian">Non-vegetarian</string>
+    <string name="txtVegan">Vegan</string>
+    <string name="recipedone">Done</string>
+    <string name="recipe_calories"><![CDATA[<p>You have added <font color=\'#f6872d\'>%1$s</font> to your %2$s</p>]]></string>
+    <string name="your_fren">Your Friends</string>
+    <string name="carbs_c">Carbs (g)</string>
+    <string name="protein_c">Protein (g)</string>
+    <string name="fats">Fats (g)</string>
+    <string name="carbsc">Carbs</string>
+    <string name="proteinc">Protein</string>
+    <string name="fatsc">Fats</string>
+    <string name="aroundme">Near Me</string>
+    <string name="add_location">Add Location</string>
+    <string name="music">Music</string>
+    <string name="compass">Compass</string>
+    <string name="history_menu">History</string>
+    <string name="quickworkout">Workouts</string>
+    <string name="noRecords">No Records Found</string>
+
+    <string name="recipe_title">Title</string>
+    <string name="recipe_ingredient">Ingredients</string>
+    <string name="recipe_direction">Direction</string>
+    <string name="recipe_nutrition">Nutrition</string>
+    <string name="recipe_optional">(Optional)</string>
+    <string name="recipe_add_ingredient">Add</string>
+    <string name="recipe_add_direction">Add</string>
+    <string name="recipe_add_nutrition">Add</string>
+    <string name="btnadd">Add</string>
+    <string name="prompt_ingredient">Ingredient</string>
+    <string name="prompt_nutrition">Nutrition</string>
+    <string name="prompt_nutrition_Information">Nutrition Information</string>
+    <string name="nutrition_value">Nutrition Value</string>
+    <string name="serves">Serves</string>
+    <string name="nutrition_calories">Calories</string>
+    <string name="nutrition_fat">Fat</string>
+    <string name="nutrition_cholesterol">Cholesterol</string>
+    <string name="nutrition_carbs">Carbs</string>
+    <string name="nutrition_fiber">Dietary Fiber</string>
+    <string name="nutrition_protein">Protein</string>
+    <string name="ingredient_value">Ingredient1</string>
+    <string name="meal_added">Meal added successfully.</string>
+    <string name="nonveg">Non-Veg</string>
+    <string name="restrictions">Types</string>
+    <string name="gluten">Gluten Free</string>
+    <string name="diabetes">Diabetes</string>
+    <string name="nuts">Nut Free</string>
+    <string name="preworkout">Pre-workout</string>
+    <string name="postworkout">Post-workout</string>
+    <string name="proceed">PROCEED</string>
+    <string name="filter_cancel">CANCEL</string>
+
+    <!-- ==========SUGGEST FEATURES STRINGS====== -->
+
+    <string name="suggest_email">Email</string>
+    <string name="suggest_suggestion">Suggestions</string>
+    <string name="add_screenshots">Add Screenshots</string>
+    <string name="tap_screenshots">Tap to Add Screenshots</string>
+    <string name="forum_add_mesz">Forum has been added successfully.</string>
+    <string name="forum_add">Forum added successfully</string>
+    <string name="check_it"><u><a href="">Check it out</a></u></string>
+    <string name="enter_filename">Enter File Name</string>
+    <string name="xls_name">XLS Name</string>
+    <string name="done_c">Done</string>
+    <string name="upload_post">Please upload post</string>
+    <string name="enter_height_toast">Please enter height</string>
+    <string name="enter_dob_toast">Please enter D.O.B</string>
+    <string name="enter_age_toast">Please enter your age</string>
+    <string name="enter_weightloss_toast">Please enter weight loss</string>
+    <string name="enter_calories_toast">Please enter calories</string>
+    <string name="enter_gender_toast">Please enter your gender</string>
+    <string name="enter_activitylevel_toast">Please enter your activity level</string>
+    <string name="enter_goal_toast">Please enter your goal</string>
+    <string name="data_saved">Data saved successfully</string>
+    <string name="enter_email">Please enter email</string>
+    <string name="enter_suggestion">Please enter suggestion</string>
+    <string name="enter_date_toast">Please enter date</string>
+    <string name="sports_data_here">The data of the selected sports will be shown here.</string>
+    <string name="no_data_toast">No data found</string>
+
+    <string name="no_result">Opps. No Results</string>
+
+    <string name="enter_ingredient_toast">Please enter ingredient name</string>
+    <string name="enter_quantity_toast">Please enter quantity</string>
+    <string name="enter_unit_toast">Please enter unit</string>
+    <!--<string name="recipe_dwnld_success_toast">Recipes downloaded successfully</string>-->
+    <string name="enter_ingredientt_toast">Please enter ingredient</string>
+    <string name="select_answer_toast">Select your answer</string>
+    <string name="enter_direction_toast">Please enter direction</string>
+    <string name="enter_recipe_title_toast">Please enter recipes title</string>
+
+    <!-- ==========COMMUNITY STRINGS====== -->
+
+    <string name="new_discussion">New Discussion</string>
+    <string name="forum_title">Title</string>
+    <string name="forum_description">Description</string>
+    <string name="enter_title">Please enter title</string>
+    <string name="enter_description">Please enter description</string>
+    <string name="plan">Plan</string>
+    <string name="diary_c">Diary</string>
+    <string name="total_calories">Total</string>
+    <string name="copy_meal">Copy Meal</string>
+    <string name="save_meal">Save Meal</string>
+    <string name="copy_date">Copy to which date?</string>
+    <string name="calories_savemeal">Save Meal</string>
+    <string name="calories_meal_name">Enter Meal Name</string>
+    <string name="calories_meal_list">Meal List</string>
+    <string name="amount_per_serving">Amount Per Serving</string>
+    <string name="calories_from_fat">Calories From Fat</string>
+    <string name="daily_value">% Daily Value*</string>
+    <string name="total_fat">Total Fat</string>
+    <string name="saturated_fat">Saturated Fat</string>
+    <string name="polyunsaturated">Polyunsaturated Fat</string>
+    <string name="monounsaturated">Monounsaturated Fat</string>
+    <string name="trans_fat">Trans Fat</string>
+    <string name="cholesterol_c">Cholesterol</string>
+    <string name="total_carbo">Total Carbohydrates</string>
+    <string name="dietry_fiber">Dietary Fiber</string>
+    <string name="sugar_s">Sugars</string>
+    <string name="sodium_c">Sodium</string>
+    <string name="vitamin_a">Vitamin A</string>
+    <string name="vitamin_c">Vitamin C</string>
+    <string name="calcium">Calcium</string>
+    <string name="iron">Iron</string>
+    <string name="based_on"> *Based on 2,000 calorie diet.</string>
+
+    <!-- ==========NUTRIENT CALC STRINGS====== -->
+
+    <string name="nutrient_calc">Nutrient Calculator</string>
+    <string name="daily">Daily</string>
+    <string name="nutrient_carbs">Carbs</string>
+    <string name="nutrient_protein">Proteins</string>
+    <string name="nutrient_fat">Fats</string>
+    <string name="nutrient_goal">Goal</string>
+    <string name="nutrient_total">Total</string>
+    <string name="full_details">More</string>
+    <string name="less_details">Less</string>
+    <string name="everything">Everything</string>
+
+    <!-- ==========SCREEN LOCK STRINGS====== -->
+
+    <string name="button_ok">Ok</string>
+
+    <string-array name="CountryCodes">
+        <item>AF;Afghanistan;93</item>
+        <item>AL;Albania;355</item>
+        <item>DZ;Algeria;213</item>
+        <item>AS;American Samoa;1684</item>
+        <item>AD;Andorra;376</item>
+        <item>AO;Angola;244</item>
+        <item>AI;Anguilla;1264</item>
+        <item>AQ;Antarctica;672</item>
+        <item>AG;Antigua and Barbuda;1268</item>
+        <item>AR;Argentina;54</item>
+        <item>AM;Armenia;374</item>
+        <item>AW;Aruba;297</item>
+        <item>AU;Australia;61</item>
+        <item>AT;Austria;43</item>
+        <item>AZ;Azerbaijan;994</item>
+        <item>BS;Bahamas;1242</item>
+        <item>BH;Bahrain;973</item>
+        <item>BD;Bangladesh;880</item>
+        <item>BB;Barbados;1246</item>
+        <item>BY;Belarus;375</item>
+        <item>BE;Belgium;32</item>
+        <item>BZ;Belize;501</item>
+        <item>BJ;Benin;229</item>
+        <item>BM;Bermuda;1441</item>
+        <item>BT;Bhutan;975</item>
+        <item>BO;Bolivia;591</item>
+        <item>BA;Bosnia and Herzegovina;387</item>
+        <item>BW;Botswana;267</item>
+        <item>BR;Brazil;55</item>
+        <item>VG;British Virgin Islands;1284</item>
+        <item>BN;Brunei;673</item>
+        <item>BG;Bulgaria;359</item>
+        <item>BF;Burkina Faso;226</item>
+        <item>MM;Burma (Myanmar);95</item>
+        <item>BI;Burundi;257</item>
+        <item>KH;Cambodia;855</item>
+        <item>CM;Cameroon;237</item>
+        <item>CA;Canada;1</item>
+        <item>CV;Cape Verde;238</item>
+        <item>KY;Cayman Islands;1345</item>
+        <item>CF;Central African Republic;236</item>
+        <item>TD;Chad;235</item>
+        <item>CL;Chile;56</item>
+        <item>CN;China;86</item>
+        <item>CX;Christmas Island;61</item>
+        <item>CC;Cocos (Keeling) Islands;61</item>
+        <item>CO;Colombia;57</item>
+        <item>KM;Comoros;269</item>
+        <item>CG;Republic of the Congo;242</item>
+        <item>CD;Democratic Republic of the Congo;243</item>
+        <item>CK;Cook Islands;682</item>
+        <item>CR;Costa Rica;506</item>
+        <item>HR;Croatia;385</item>
+        <item>CU;Cuba;53</item>
+        <item>CY;Cyprus;357</item>
+        <item>CZ;Czech Republic;420</item>
+        <item>DK;Denmark;45</item>
+        <item>DJ;Djibouti;253</item>
+        <item>DM;Dominica;1767</item>
+        <item>DO;Dominican Republic;1809</item>
+        <item>DO;Dominican Republic;1849</item>
+        <item>DO;Dominican Republic;1829</item>
+        <item>TL;Timor-Leste;670</item>
+        <item>EC;Ecuador;593</item>
+        <item>EG;Egypt;20</item>
+        <item>SV;El Salvador;503</item>
+        <item>GQ;Equatorial Guinea;240</item>
+        <item>ER;Eritrea;291</item>
+        <item>EE;Estonia;372</item>
+        <item>ET;Ethiopia;251</item>
+        <item>FK;Falkland Islands;500</item>
+        <item>FO;Faroe Islands;298</item>
+        <item>FJ;Fiji;679</item>
+        <item>FI;Finland;358</item>
+        <item>FR;France;33</item>
+        <item>PF;French Polynesia;689</item>
+        <item>GA;Gabon;241</item>
+        <item>GM;Gambia;220</item>
+        <item>GZ;Gaza Strip;970</item>
+        <item>GE;Georgia;995</item>
+        <item>DE;Germany;49</item>
+        <item>GH;Ghana;233</item>
+        <item>GI;Gibraltar;350</item>
+        <item>GR;Greece;30</item>
+        <item>GL;Greenland;299</item>
+        <item>GD;Grenada;1473</item>
+        <item>GU;Guam;1671</item>
+        <item>GT;Guatemala;502</item>
+        <item>GN;Guinea;224</item>
+        <item>GW;Guinea-Bissau;245</item>
+        <item>GY;Guyana;592</item>
+        <item>HT;Haiti;509</item>
+        <item>HN;Honduras;504</item>
+        <item>HK;Hong Kong;852</item>
+        <item>HU;Hungary;36</item>
+        <item>IS;Iceland;354</item>
+        <item>IN;India;91</item>
+        <item>ID;Indonesia;62</item>
+        <item>IR;Iran;98</item>
+        <item>IQ;Iraq;964</item>
+        <item>IE;Ireland;353</item>
+        <item>IM;Isle of Man;44</item>
+        <item>IL;Israel;972</item>
+        <item>IT;Italy;39</item>
+        <item>CI;Ivory Coast;225</item>
+        <item>JM;Jamaica;1876</item>
+        <item>JP;Japan;81</item>
+        <item>JO;Jordan;962</item>
+        <item>KZ;Kazakhstan;7</item>
+        <item>KE;Kenya;254</item>
+        <item>KI;Kiribati;686</item>
+        <item>KO;Kosovo;381</item>
+        <item>KW;Kuwait;965</item>
+        <item>KG;Kyrgyzstan;996</item>
+        <item>LA;Laos;856</item>
+        <item>LV;Latvia;371</item>
+        <item>LB;Lebanon;961</item>
+        <item>LS;Lesotho;266</item>
+        <item>LR;Liberia;231</item>
+        <item>LY;Libya;218</item>
+        <item>LI;Liechtenstein;423</item>
+        <item>LT;Lithuania;370</item>
+        <item>LU;Luxembourg;352</item>
+        <item>MO;Macau;853</item>
+        <item>MK;Macedonia;389</item>
+        <item>MG;Madagascar;261</item>
+        <item>MW;Malawi;265</item>
+        <item>MY;Malaysia;60</item>
+        <item>MV;Maldives;960</item>
+        <item>ML;Mali;223</item>
+        <item>MT;Malta;356</item>
+        <item>MH;Marshall Islands;692</item>
+        <item>MR;Mauritania;222</item>
+        <item>MU;Mauritius;230</item>
+        <item>YT;Mayotte;262</item>
+        <item>MX;Mexico;52</item>
+        <item>FM;Micronesia;691</item>
+        <item>MD;Moldova;373</item>
+        <item>MC;Monaco;377</item>
+        <item>MN;Mongolia;976</item>
+        <item>ME;Montenegro;382</item>
+        <item>MS;Montserrat;1664</item>
+        <item>MA;Morocco;212</item>
+        <item>MZ;Mozambique;258</item>
+        <item>NA;Namibia;264</item>
+        <item>NR;Nauru;674</item>
+        <item>NP;Nepal;977</item>
+        <item>NL;Netherlands;31</item>
+        <item>AN;Netherlands Antilles;599</item>
+        <item>NC;New Caledonia;687</item>
+        <item>NZ;New Zealand;64</item>
+        <item>NI;Nicaragua;505</item>
+        <item>NE;Niger;227</item>
+        <item>NG;Nigeria;234</item>
+        <item>NU;Niue;683</item>
+        <item>NFK;Norfolk Island;672</item>
+        <item>MP;Northern Mariana Islands;1670</item>
+        <item>KP;North Korea;850</item>
+        <item>NO;Norway;47</item>
+        <item>OM;Oman;968</item>
+        <item>PK;Pakistan;92</item>
+        <item>PW;Palau;680</item>
+        <item>PA;Panama;507</item>
+        <item>PG;Papua New Guinea;675</item>
+        <item>PY;Paraguay;595</item>
+        <item>PE;Peru;51</item>
+        <item>PH;Philippines;63</item>
+        <item>PN;Pitcairn Islands;870</item>
+        <item>PL;Poland;48</item>
+        <item>PT;Portugal;351</item>
+        <item>PR;Puerto Rico;1</item>
+        <item>QA;Qatar;974</item>
+        <item>RO;Romania;40</item>
+        <item>RU;Russia;7</item>
+        <item>RW;Rwanda;250</item>
+        <item>BL;Saint Barthelemy;590</item>
+        <item>WS;Samoa;685</item>
+        <item>SM;San Marino;378</item>
+        <item>ST;Sao Tome and Principe;239</item>
+        <item>SA;Saudi Arabia;966</item>
+        <item>SN;Senegal;221</item>
+        <item>RS;Serbia;381</item>
+        <item>SC;Seychelles;248</item>
+        <item>SL;Sierra Leone;232</item>
+        <item>SG;Singapore;65</item>
+        <item>SK;Slovakia;421</item>
+        <item>SI;Slovenia;386</item>
+        <item>SB;Solomon Islands;677</item>
+        <item>SO;Somalia;252</item>
+        <item>ZA;South Africa;27</item>
+        <item>KR;South Korea;82</item>
+        <item>ES;Spain;34</item>
+        <item>LK;Sri Lanka;94</item>
+        <item>SH;Saint Helena;290</item>
+        <item>KN;Saint Kitts and Nevis;1869</item>
+        <item>LC;Saint Lucia;1758</item>
+        <item>MF;Saint Martin;1599</item>
+        <item>PM;Saint Pierre and Miquelon;508</item>
+        <item>VC;Saint Vincent and the Grenadines;1784</item>
+        <item>SD;Sudan;249</item>
+        <item>SR;Suriname;597</item>
+        <item>SZ;Swaziland;268</item>
+        <item>SE;Sweden;46</item>
+        <item>CH;Switzerland;41</item>
+        <item>SY;Syria;963</item>
+        <item>TW;Taiwan;886</item>
+        <item>TJ;Tajikistan;992</item>
+        <item>TZ;Tanzania;255</item>
+        <item>TH;Thailand;66</item>
+        <item>TG;Togo;228</item>
+        <item>TK;Tokelau;690</item>
+        <item>TO;Tonga;676</item>
+        <item>TT;Trinidad and Tobago;1868</item>
+        <item>TN;Tunisia;216</item>
+        <item>TR;Turkey;90</item>
+        <item>TM;Turkmenistan;993</item>
+        <item>TC;Turks and Caicos Islands;1649</item>
+        <item>TV;Tuvalu;688</item>
+        <item>AE;United Arab Emirates;971</item>
+        <item>UG;Uganda;256</item>
+        <item>GB;United Kingdom;44</item>
+        <item>UA;Ukraine;380</item>
+        <item>UY;Uruguay;598</item>
+        <item>US;United States;1</item>
+        <item>UZ;Uzbekistan;998</item>
+        <item>VU;Vanuatu;678</item>
+        <item>VA;Holy See (Vatican City);39</item>
+        <item>VE;Venezuela;58</item>
+        <item>VN;Vietnam;84</item>
+        <item>VI;US Virgin Islands;1340</item>
+        <item>WF;Wallis and Futuna;681</item>
+        <item>WB;West Bank;970</item>
+        <item>YE;Yemen;967</item>
+        <item>ZM;Zambia;260</item>
+        <item>ZW;Zimbabwe;263</item>
+    </string-array>
+
+    <string name="description">Description</string>
+    <string name="select_location">Select Location</string>
+    <string name="select_gender">Select Gender</string>
+    <string name="get_direction">Get Direction</string>
+    <string name="resturant">Restaurant</string>
+    <string name="no_location_found">Unable to fetch location.Please try again</string>
+
+    <!-- ==========WIDGETS STRINGS====== -->
+
+    <string name="widget_consumed">"Consumed"</string>
+    <string name="widget_left">"Left"</string>
+    <string name="calories_tracker_widg">Calories \n Tracker</string>
+    <string name="widget_calories">"Calories"</string>
+    <string name="widget_total_steps">"Total Steps"</string>
+
+    <!-- ==========MY STUFF STRINGS====== -->
+
+    <string name="my_stuff">"My Stuff"</string>
+    <string name="tip_downloaded_toast">Tip already saved</string>
+    <!--<string name="tip_saved_successfull_toast">Tip saved successfully</string>-->
+    <string name="left_c">Left</string>
+    <string name="breakfast_s">Breakfast</string>
+    <string name="daily_s">Daily</string>
+    <string name="weekly_s">Weekly</string>
+    <string name="monthly_s">Monthly</string>
+    <string name="calorie_c">Calories</string>
+    <string name="my_no_data_recipe">Save your recipes here</string>
+    <string name="my_no_data_recipe1">Tip: Tap the heart in the recipe detail section to save.</string>
+    <string name="my_no_data_tips">Save tips here</string>
+    <string name="my_no_data_challenges">No Records Found</string>
+    <string name="my_no_data_challenges1">Tip: Join any Challenge</string>
+    <string name="my_no_data_followdietplan">Tip: Follow any Diet Plan</string>
+    <string name="my_no_data_tips1">Long press on the tip to add it to My Favourites</string>
+    <string name="health_tracker">Health +</string>
+    <string name="today_c">Today</string>
+
+    <string name="overweight">OverWeight</string>
+    <string name="calculatec">Calculate</string>
+    <string name="your_daily_calorie">Calories Limit</string>
+    <string name="detail_calorie">Breakdown</string>
+    <string name="nutrients">Nutrients</string>
+    <string name="ideal_bmi">Ideal BMI</string>
+    <string name="calories_u">Calories(kcal)</string>
+    <string name="carbs_u">CARBS(g)</string>
+    <string name="protein_u">PROTEIN(g)</string>
+    <string name="fats_u">FATS(g)</string>
+    <string name="sugars_u">Sugars(g)</string>
+    <string name="cholesterol_u">Cholesterol(mg)</string>
+    <string name="sodium_u">Sodium(mg)</string>
+    <string name="fiber_u">Fiber(g)</string>
+    <string name="fiber">Fiber</string>
+    <string name="serving">Serving</string>
+    <string name="size">Size</string>
+    <string name="calories_calender">Calender</string>
+    <string name="calories_history">History</string>
+    <string name="recipe_addto">Add To</string>
+
+    <string name="gym">Gym</string>
+    <string name="performance_calc">Performance Calc</string>
+    <string name="workout">Workouts</string>
+    <string name="eat_more">Eat a little more</string>
+    <!-- <string name="good_choice">Good Choice</string>-->
+    <string name="good_choice">Good Job</string>
+    <string name="be_careful">Be Careful</string>
+    <string name="no_food_added">No Food Added</string>
+    <!--  <string name="performance_Best">This is the way to go. Keep up the good choice:)</string>
+      <string name="performance_Good">Once a while is ok but don\'t follow this routine daily</string>
+      <string name="performance_Avg">If you want to lose weight this is not what you should follow</string>
+      <string name="performance_Bad">To lose weight eat the alloted calories</string>-->
+
+    <string name="performance_Good">Eat a little more</string>
+    <string name="performance_Avg">Be Careful</string>
+    <string name="performance_Default">---Entries awaited---</string>
+
+    <string name="workout_plan">Workout Plans</string>
+    <string name="cuisines">Cuisines</string>
+
+    <string name="indian">Indian</string>
+    <string name="chinese">Chinese</string>
+    <string name="south_america">South American</string>
+    <string name="european">European</string>
+    <string name="french">French</string>
+    <string name="italian">Italian</string>
+    <string name="greek">Greek</string>
+    <string name="mexican">Mexican</string>
+    <string name="japanese">Japanese</string>
+    <string name="thai">Thai</string>
+    <string name="mediterranean">Mediterranean</string>
+    <string name="multi_cuisines">Multi cuisines</string>
+
+    <string name="recipe_veg">Veg</string>
+    <string name="recipe_nonveg">NonVeg</string>
+    <string name="recipe_nutrition_toast">Please enter atleast 1 value</string>
+
+
+    <string name="wrktout_exercise">Exercise:</string>
+    <string name="wrktout_last">Last:</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="rest">Rest: </string>
+    <string name="reps">Reps: </string>
+    <string name="sets">Sets: </string>
+    <string name="set1">Set1</string>
+    <string name="set">Set</string>
+    <string name="weight_workout">Weight</string>
+    <string name="reps_nocolon">Reps</string>
+    <string name="cal_unit">Cal</string>
+    <string name="speed">Speed</string>
+    <string name="mph">mph</string>
+    <string name="lep">Lep/Rep</string>
+    <string name="how_to_perform_exercise">How to do:</string>
+    <string name="targeted_muscle">Target Muscles</string>
+    <string name="addtodiary">Add to Diary</string>
+    <string name="sets_workout">Sets</string>
+
+    <string name="diary_add_success"> Added to diary successfully</string>
+    <string name="file_save">Image saved successfully</string>
+    <string name="paleo">Paleo</string>
+    <string name="ketogenic">Ketogenic</string>
+    <string name="recipes_help">Help</string>
+    <string name="plan_name">Plan Name</string>
+    <string name="days">Days</string>
+    <string name="days_c">DAYS</string>
+    <string name="add_plan">Add Plan</string>
+    <string name="workout_plan_successfully">Workout Plan Saved Successfully</string>
+    <string name="workout_plan_updated">Workout Plan updated Successfully</string>
+    <string name="no_plan">No workout plan found</string>
+
+    <string-array name="workout_plan_duration">
+        <item>1 </item>
+        <item>2 </item>
+        <item>3 </item>
+        <item>4 </item>
+        <item>5 </item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <string-array name="workout_day">
+        <item>Sunday </item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday </item>
+        <item>Thursday </item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </string-array>
+
+    <string name="meal_time">Time</string>
+    <string name="meal_nonVeg">NonVeg</string>
+
+
+    <string name="recipes_glutenfree">Gluten Free</string>
+    <string name="workout_name">Workout Name</string>
+    <string name="write_exercise">Write exercise name here</string>
+    <string name="workoutday">Workout Day</string>
+    <string name="create_workout">Create Workout</string>
+    <string name="workout_category">Workout Category</string>
+    <string name="no_custom_plan">No custom plan added</string>
+    <string name="add_forum">Tap to add forum.</string>
+    <string name="shopping_list">Shopping Bag</string>
+    <string name="add_shopping">Add All to Shopping List</string>
+    <string name="quantity">Quantity</string>
+    <string name="feeling">Feeling</string>
+    <string name="surface">Surface</string>
+    <string name="temperature">Temperature</string>
+    <string name="summary">Summary</string>
+    <string name="info">Info</string>
+    <string name="avg_step_freq">Avg. Step Frequency</string>
+    <string name="add_note">Add a note</string>
+
+    <string name="no_internet">No internet connection</string>
+    <string name="step_saved">Steps saved successfully</string>
+    <string name="avg_pace">Avg. Pace</string>
+    <string name="avg_speed">Avg. Speed</string>
+    <string name="note">Note</string>
+    <string name="step_no_fren">No friend around you</string>
+    <string name="notification">Notification</string>
+    <string name="gps_notification">Swithing to GPS gives accurate result but cost more battery.    Continue? </string>
+
+    <string name="low_carb">Low Carb</string>
+    <string name="degree_celcius">&#x2103;</string>
+
+    <string name="asana">Asana</string>
+    <string name="recipe_deleted">Items deleted from shopping bag</string>
+    <string name="ingredient_added">All ingredients added to shopping list</string>
+    <string name="social">Social</string>
+
+    <string name="social_challenge_profile_new">Repository of all your saved recipes</string>
+    <string name="tips_profile_new">Repository of all your saved tips</string>
+
+    <string name="type">Type</string>
+    <string name="equipment">Equipment</string>
+    <string name="tip">Tips:</string>
+    <string name="target_week">Target Weight Per Week</string>
+    <string name="barcode_scanner">Barcode Scanner</string>
+    <string name="snap_search">Snap Search</string>
+    <string name="move">Move</string>
+    <string name="beverage">Beverages</string>
+    <string name="no_caloire_history">No data selected to export</string>
+    <string name="glasssize_c">Glass Size</string>
+    <string name="cupsize_c">Cup Size</string>
+    <string name="recipe_deleted_mystuf">Recipe removed from MyStuff</string>
+    <string name="quick_calorie">Quick Calorie</string>
+    <string name="walking">Walking</string>
+    <string name="running">Running</string>
+    <string name="cycling">Cycling</string>
+    <string name="activity">Activity</string>
+    <string name="selected_mode">Selected Mode</string>
+
+
+    <string name="db">DB</string>
+    <string name="the_best">The Best Pre- &amp; Post-Workout Snacks.</string>
+    <string name="select_time"> Please select time</string>
+    <string name="elevation_gain">Elevation Gain</string>
+    <string name="altitude">Alttitude</string>
+    <string name="meter_unit">m</string>
+    <string name="gps_only">(GPS Only)</string>
+    <string name="progress1">Progress</string>
+    <string name="water_mesz">Don\'t forget to have and log your daily water intake.</string>
+    <string name="quiz_dashboard_mesz">Play a quiz to know health insights</string>
+    <string name="enter_exercise_diary">Enter all the fields</string>
+    <string name="express_header">Express</string>
+    <string name="express_workout">Workout Plan</string>
+    <string name="get_a_recipe">GET A RECIPE OF YOUR CHOICE</string>
+    <string name="work_or_fitness">Workout/Fitness Advice</string>
+    <string name="your_recipes">YOUR RECIPES</string>
+    <string name="get_a_workout">GET A WORKOUT/FITNESS ADVICE OF YOUR CHOICE</string>
+    <string name="high_carbs">Carbs</string>
+    <string name="high_protein">Proteins</string>
+    <string name="high_fat">Fats</string>
+    <string name="add_my_stuff">Add to Favourites</string>
+    <string name="tip_s">Tip</string>
+    <string name="recipe_name_toast">Enter recipe name</string>
+    <string name="recipe_comments_toast">Enter comments</string>
+    <string name="calori_tracker">Calories Tracker</string>
+    <string name="purchase_mesz_shirt">You will be charged %1$s credits for this T-shirt. Check your registered email for other purchase related details.</string>
+    <string name="purchase_mesz_sipper">You will be charged %1$s credits for this Sipper. Check your registered email for other purchase related details.</string>
+    <string name="purchase_mesz">You will be charged  %1$s for this coupon. This coupon will be activated in next 24 hours and you will get activation code on your Email.</string>
+    <string name="purchase_mesz1">You will be charged %1$s credits. 3 lucky winners will get an opportunity to workout with Lauren.\nCheck registered email for other details.</string>
+    <string name="basic">Basic</string>
+    <string name="elite">Elite</string>
+    <string name="purchase_success">Purchased successfully</string>
+    <string name="purchase_title">Go Premium</string>
+
+
+    <string name="workout_exercise_des">Wide range of exercises for each body part</string>
+    <string name="workout_plan_des">Plans for targeting each muscle in the body</string>
+    <string name="workout_diary_des">Log all your workouts</string>
+    <string name="weight_per_week">Weight/week</string>
+    <string name="calorie_per_day">Calorie/day</string>
+    <string name="no_entry"> No Entries Saved Yet</string>
+    <string name="colage_text_one"> Create your after &amp; before collage</string>
+    <string name="colage_text_two"> Tip: Use the edit icon to create your first collage</string>
+    <string name="connect_appdevice">Connect</string>
+    <string name="connect_device">Connect</string>
+    <string name="recipes_bingo">Bingo</string>
+    <string name="create_exercise">Create an Exercise</string>
+    <string name="card_water">Water</string>
+    <string name="card_water1">Did you have water?</string>
+    <!--<string name="no_network">No network available</string>-->
+    <string name="no_network">Can\'t connect to server, please try again later!</string>
+    <string name="profile_personal">Personal</string>
+    <string name="profile_mystuff">MY STUFF</string>
+    <string name="Premium">Remove Ads</string>
+
+    <string name="recent_new_s">Recent</string>
+    <string name="categories_new_s">Categories</string>
+    <string name="restaurants_s">Restaurants</string>
+    <string name="super_marts_s">Super Marts</string>
+    <string name="my_food_new_s">My Food</string>
+
+    <string name="featured">Featured</string>
+    <string name="my_plans">My Plan</string>
+    <string name="difficulty_level">Difficulty Level</string>
+    <string name="beginner"> Beginner</string>
+    <string name="intermediate"> Intermediate</string>
+    <string name="advanced"> Advanced</string>
+
+
+    <string name="txtweaklygoal">Weekly Goal</string>
+    <string name="calorieperday">Calories per day</string>
+    <string name="approxtimestring">You can reach your ideal weight in </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="meal_size">Size : </string>
+    <string name="rules_regulation"><![CDATA[Rules&Regulation]]></string>
+    <string name="connect_google">Connect to Google Fit to sync data between MevoFit and the app.</string>
+    <string name="connect_fitbit">Connect to Fitbit to sync data between MevoFit and the app.</string>
+    <string name="quiz_already_opted">Oops. You have already played this quiz.</string>
+    <string name="workout_green">Good Job</string>
+    <!-- <string name="good_job">Good Job</string>
+    <string name="no_workout">Oops. No Workout</string>-->
+    <string name="workout_red">Oops. No Workout</string>
+    <string name="workout_red_toast">No Workout Added Yet.</string>
+    <string name="total_credit">Total Credits</string>
+    <string name="analysis">Analysis.</string>
+    <string name="analysis_checkout_feature">Checkout some more cool features in the app like Recipes,Water Tracker, Workout,Yoga and more...</string>
+    <string name="analysis_idealweight"> <![CDATA[An Ideal weight for your height is around <font color=\'#f6872d\'>%1$s </font> ]]></string>
+    <string name="analysis_weightbelow"><![CDATA[Weight below  <font color=\'#f9262d\'>%1$s </font> is classified as underweight]]></string>
+
+    <string name="share_steps">Share your steps progress</string>
+    <string name="share_tips">Share Your Healthy Tips</string>
+    <string name="share_calories">  Share Your Tracked Calories</string>
+    <string name="share_recipe">  Share Recipe</string>
+    <string name="share_challenge">Invite Friend </string>
+    <string name="share_feeds">Share the post </string>
+
+    <string name="title_activity_mevo_help">MevoHelpActivity</string>
+    <string name="comment_post">Write a comment...</string>
+    <string name="profile_updated">Profile updated successfully</string>
+    <string name="text_synch_prompt">Syncing Data...</string>
+    <string name="detailsnew">DETAILS ></string>
+    <string name="not_registered">Sorry . you are not registered</string>
+    <string name="invalid_password">Invalid password</string>
+    <string name="weightprompt_text">Enter Current Weight</string>
+    <string name="weightfatprompt_text">Enter Current Fat</string>
+    <string name="collage">Collage</string>
+
+
+    <!--<string-array name="prefrence_array">-->
+    <!--<item>Vegetarian</item>-->
+    <!--<item>Non Vegetarian</item>-->
+    <!--</string-array>-->
+    <string name="daily_goal">Daily Goal</string>
+    <string name="glass_size_condition">*Glass Size 250 ml</string>
+    <string name="played">Played</string>
+    <string name="caloies_Pedo">Calories:</string>
+    <string name="mevolife_dot_com">MevoFit.com</string>
+    <string name="view_profilepic">View Profile Pic</string>
+    <string name="remove_profilepic">Remove Profile Pic</string>
+    <string name="no_profilepic">No Profile Pic</string>
+    <string name="profilepic_remove_success">Removed successfully</string>
+    <string name="profilepic_remove_failed">Failed., Try Again</string>
+    <string name="tips_readthis"><u>I\'ve read this</u></string>
+    <!--<string name="title_activity_health_care">HealthCareActivity</string>-->
+    <string name="delete_post">Deleting Post...</string>
+    <string name="credit_bet">Credits Bet</string>
+    <string name="credits_pot">Credits Pot</string>
+    <!--<string name="you">You</string>-->
+    <string name="challengers">Challengers</string>
+    <string name="challenge_rule">Challenge Rule</string>
+    <!--<string name="title_activity_challenge_individual_detail">ChallengeIndividualDetail</string>-->
+    <!--<string name="title_activity_collage_date_dialog">CollageDateDialog</string>-->
+    <string name="choose_date">Choose Date</string>
+    <string name="challenge_status_won">Congratulation. You Won</string>
+    <string name="challenge_status_disqualified">You are disqualifed</string>
+    <string name="challenge_info">Info</string>
+    <string name="challenge_insuficient">Insufficient Coins </string>
+    <string name="win">Win</string>
+    <string name="got_it">GOT IT</string>
+    <string name="no_challenge_info">No Info Found</string>
+    <string name="meet_lauren1">Get a chance to workout</string>
+    <string name="meet_lauren5">Get a chance to workout with</string>
+    <string name="meet_lauren4">with </string>
+    <string name="meet_lauren2">Lauren Gottlieb</string>
+    <string name="meet_lauren6"><u><b>LAUREN GOTTLIEB</b></u></string>
+    <string name="meet_lauren3">1,00,000 credits</string>
+    <string name="profile_total_calorie">Total Calories Allowed</string>
+    <string name="dahsboard_video_title">MevoFit - Get Inspired</string>
+
+    <string name="celibrity">Celebrity</string>
+    <string name="how_to">How to</string>
+    <string name="motivational">Motivational</string>
+    <string name="already_member">Already a MevoFit member?</string>
+    <string name="loginnew">Log in</string>
+    <string name="why">Why?</string>
+    <string name="tracker">Tracker</string>
+    <string name="dash_tracker">Quick Adds</string>
+    <string name="size_glass">Size 250 ml</string>
+
+    <!--<string name="sameoption1">500+ Recipes</string>
+    <string name="sameoption4">20+ Live Yoga Sessions</string>
+    <string name="sameoption5">1000+ Healthy Dine Out Recommendations</string>
+    <string name="sameoption7">Unlimited Meal Plans</string>
+    <string name="sameoption8">Ads Free</string>
+    <string name="sameoption9">50+ Workout Plans</string>-->
+    <string name="all_workouts">All Workouts</string>
+
+    <string name="quiz_share_mesz">I played a \" %1$s \" quiz and %2$s credits. How about you try it? </string>
+    <string name="google_fit">Google Fit</string>
+    <string name="connect_using">Connect Using</string>
+    <string name="fitbit">Fitbit</string>
+    <string name="go_premium_workout_main">50+ WORKOUT PLANS</string>
+    <string name="go_premium_workout_sub">Unlock workout plans like 7 minute,HIIT  for faster &amp; quicker result</string>
+    <string name="selectLevel">Select Level</string>
+    <string name="enterFood">Enter Food Name</string>
+    <string name="my_no_data_exercise">Tip: You haven\'t saved any exercise yet!</string>
+
+    <!--<string name="view_food_diary">View Food Diary</string>-->
+    <string name="american">American</string>
+    <!--<string name="quiz_current">Quiz</string>-->
+    <string name="exercise_workout">Exercise details for all body parts</string>
+    <string name="plans_workout">Comprehensive workout plans</string>
+    <string name="diary_workout">Complete log of all your workouts</string>
+
+    <!-- <string name="Receipe_eat">EATING OUT</string>
+     <string name="Receipe_health">RECIPES</string>
+     <string name="Receipe_nutrients">NUTRIENTS</string>
+     <string name="Receipe_exercise">EXERCISE</string>
+     <string name="Receipe_mealse">MEALS</string>
+     <string name="Receipe_tips">TIPS</string>
+     <string name="Receipe_workouts">WORKOUTS</string>
+     <string name="Receipe_yoga">YOGA</string>
+     <string name="Receipe_ads">ADS</string>
+     <string name="Receipe_completeapp">COMPLETE APP</string>-->
+
+    <string name="prompt_txt_yoga">You can unlock any %1$s Yoga Exercise of your choice for FREE.</string>
+    <string name="heading_workout_dash">Workout</string>
+
+    <string name="title_activity_runtime_view">RuntimeViewActivity</string>
+    <!--<string name="title_activity_custom_dialog_meal_plan">CustomDialogMealPlan</string>-->
+    <string name="sunday">Sunday</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="set2">Set2</string>
+    <string name="set3">Set3</string>
+    <string name="fill_set_first">Fill existing sets</string>
+
+
+    <string name="remider_change"><u>Edit</u></string>
+    <string name="title_activity_copy_full_meal">CopyFullMeal</string>
+    <string name="title_activity_eating_main">EatingMain</string>
+    <!--<string name="state_name">State</string>-->
+    <string name="title_activity_location_list_prompt">LocationListPrompt</string>
+    <string name="title_activity_hotel_detail">HotelDetailActivity</string>
+
+    <!-- Reminder Module-->
+    <string name="txt_calorieheader">CALORIE</string>
+    <string name="txt_caloriebottom">You\'ll be sent a reminder incase you don\'t log the desired meals by time set here.</string>
+    <string name="txt_mealheader">MEAL PLAN</string>
+    <string name="food_options_n">Meal Recommendations</string>
+    <string name="txt_mealbottom">You\'ll be sent a reminder incase you don\'t log the desired meals by time set here.</string>
+    <string name="txt_waterheader">WATER</string>
+    <string name="txt_workoutheader">WEIGHT PLANS</string>
+    <string name="txt_weather_notifcation">WEATHER NOTIFICATION</string>
+    <string name="txt_workoutbottom">You\'ll be sent a workout reminder at the time set here.</string>
+
+    <string name="txt_stepheader">STEPS</string>
+    <string name="txt_stepsbottom">You\'ll be sent a reminder when you complete %1$s steps.</string>
+
+
+    <!--weather-->
+    <string name="reminder_weather_morningt">Hey! How about you check the weather outside before you go for the run?</string>
+    <string name="reminder_weather_evening">Hey! How about you check the weather outside before you go for the run?</string>
+
+
+    <string name="reminder_calorie_breakfast">Breakfast is a must-have to lose weight faster. Don\'t forget to log it.</string>
+    <string name="reminder_calorie_lunch">Had your lunch? How about logging it.</string>
+    <string name="reminder_calorie_snacks">It\'s time to log your snacks.</string>
+    <string name="reminder_calorie_beverages">It\'s time to log today\'s beverages</string>
+    <string name="reminder_calorie_dinner">Don\'t forget to log your dinner before you sleep.</string>
+
+    <string name="reminder_water">Time to drink water!</string>
+    <string name="reminder_greentea">Time to drink green tea!</string>
+    <string name="reminder_coffee">Time to drink Coffee!</string>
+
+
+    <string name="reminder_stepsnotcompleted">You have completed %1$s steps and short of just %2$s steps to complete your daily goal.</string>
+    <string name="reminder_stepscompleted">Yoohoo. You have completed %1$s steps.</string>
+
+    <string name="reminder_workout">Working out keeps you fit. How about a session now?</string>
+    <string name="time_duration">Time Duration</string>
+    <string name="txt_popupremind">POPUP REMINDER</string>
+    <string name="txt_popupremind_desc">Get reminder prompts on the screen.</string>
+
+    <!-- Reminder Module Ends-->
+
+    <string name="recipe_checkout_title">Checkout the recipes</string>
+    <string name="recipe_checkout_message">We have found some recipes with this item.</string>
+    <string name="eating_out">Healthy Dine Out</string>
+    <string name="steps_sub">Track your run with GPS</string>
+    <string name="blog_sub">The absolute fitness</string>
+    <string name="tips_sub">Quick weight loss tips &amp; tricks</string>
+
+    <string name="yoga_sub">Live yoga sessions with an instructor</string>
+    <string name="weight_sub">Log all your weight updates in a diary</string>
+    <string name="healthplus_sub">Calories, Nutrition &amp; Fitness Calculator</string>
+    <string name="reminder_sub">Set reminders to get alert</string>
+
+    <!--<string name="eatingout_info">Mevo recommends healthy eating options at your favourite food joints</string>-->
+    <!--<string name="quickcalorie_info">Simplest way to know how many calories are there in what you are eating</string>-->
+    <!--<string name="skipfornow">Skip for now</string>-->
+
+
+    <string name="splash_desc1">login or signup to get started</string>
+    <string name="splash_desc2">stay fit with 50+ workout plans</string>
+    <string name="splash_desc3">1000+ recipes &amp; 500+ meal plan options</string>
+    <string name="splash_desc4">Simplest way to track steps</string>
+    <string name="splash_desc5">get connected with like minded people</string>
+    <!--<string name="title_activity_me_shop_activity_scattered">MeShopActivityScattered</string>-->
+    <string name="wining_amount">Winning Amount</string>
+    <string name="thanks_for_feedback">Thanks for your valuable feedback.</string>
+    <string name="we_will">We will definitely try to work on your suggestion. :)</string>
+    <string name="recipe">Recipe</string>
+
+    <string name="merchandise_txt1">Note : </string>
+    <string name="merchandise_txt2">You can change your communicational email for next process</string>
+    <string name="title_activity_meal_plan_tutorial">MealPlanTutorial</string>
+
+    <string name="meal_heading1">Meal Plan Filters</string>
+    <string name="meal_heading2">Recommendations</string>
+    <string name="meal_heading3">Search Results</string>
+
+    <string name="meal_desc1">Choose your filters to start creating your meal plan</string>
+    <string name="meal_desc2">Get meal recommendations as per your preferences</string>
+    <string name="meal_desc3">Search from 500+ food options to self design your meal plan</string>
+    <string name="standard">Standard</string>
+    <string name="veg">Veg</string>
+    <string name="shop">Shop</string>
+
+    <!-- <string name="Receipe_eat_disc">Don\'t get confused when eating out as we have got the best recommendations for you.</string>
+     <string name="Receipe_health_disc">500 + quick delicious recipes for helping you lose weight happily.</string>
+     <string name="Receipe_nutrients_disc">Get all the micro nutrient details including fiber, sugars, etc. for whatever you eat and log.</string>
+     <string name="Receipe_exercise_disc">A wide range of exercises classified on the basis of body parts to help you lose weight faster.</string>
+     <string name="Receipe_mealse_disc">500 + recommendations on the basis of filters to self design you own meal plans. </string>
+     <string name="Receipe_tips_disc">500 + tips and tricks to fasten the weight loss process.</string>
+     <string name="Receipe_workouts_disc">Workout plans devised by a professional instructor for each body part categorized on the basis of fitness level - beginner, intermediate or advanced.</string>
+     <string name="Receipe_yoga_disc">Live yoga training sessions with a professional instructor for better mental and physical health.</string>
+     <string name="Receipe_ads_disc">Use the app without any ads intervention by simply removing all of them from the app.</string>
+     <string name="Receipe_completeapp_desc">Unlock all the premium features of the entire app including - recipes, micro nutrients, workout plans, exercises, tips, yoga, eating out and use them without any ads interference.</string>
+     <string name="exercises">Exercises</string>
+     <string name="exercises_tracker">Exercise \nTracker</string>
+
+     <string name="connect_using">Connect Using</string>
+     <string name="fitbit">Fitbit</string>
+     <string name="google_fit">Google Fit</string>
+ -->
+    <string name="we_are_working">We are working</string>
+    <string name="earn_calories_desc">Log your daily food to get rewards</string>
+    <string name="earn_calories_desc1">Log your meals continuously for a week and earn credits</string>
+    <string name="earn_water_desc">Log water to earn credits</string>
+    <string name="earn_recipe_desc">Add your recipes to help our community grow and also earn credits</string>
+    <string name="earn_community_desc">Share your thoughts in the community and get get rewards for your efforts</string>
+    <!--<string name="noEntry">No entries for the specific date</string>-->
+    <string name="prompt_txt_workout">You can unlock any %1$s Workout Plan of your choice for FREE.</string>
+
+    <!--prompt text-->
+    <!--<string name="prompt_txt_recipe">You can unlock any %1$s Recipes of your choice for FREE.</string>
+    <string name="prompt_txt_yoga">You can unlock any %1$s Yoga Exercise of your choice for FREE.</string>
+    <string name="prompt_txt_eating">You can unlock any %1$s Restaurant of your choice for FREE.</string>
+    <string name="prompt_txt_workout">You can unlock any %1$s Workout Plan of your choice for FREE.</string>
+    <string name="Earn_title">Earn 500 Credits</string>
+    <string name="Earn_disc">Tell your friends and spread the love and just earn as much</string>
+    <string name="notreally"><u>NOT REALLY</u></string>-->
+    <string name="earnnbuy">Earn &amp; Buy Credits</string>
+
+    <!-- Strings related to login -->
+
+    <string name="weight_maintain">Maintain Weight</string>
+    <string name="weight_build">Build Muscle</string>
+    <string name="loss_desc">Lose weight with proper diet and exercise</string>
+    <string name="maintain_desc">Eat, Workout and Train to Maintain Current Weight</string>
+    <string name="building_desc">Build muscles with the right nutrition &amp; workouts</string>
+    <string name="protein_shake">Protein Shake</string>
+    <string name="waterglass_size">WATER GLASS SIZE</string>
+    <string name="default_lbl">Default</string>
+    <string name="greentea_glasssize">GREEN TEA GLASS SIZE</string>
+    <string name="proteinshake_size">PROTEIN SHAKE SIZE</string>
+    <string name="subscribe">SUBSCRIBE</string>
+    <string name="nutirent_info">NUTRIENT INFO</string>
+    <string name="i_have_read">I HAVE READ THIS</string>
+
+    <!--TOOLTIPS-->
+    <string name="title_activity_custom_dashboard">CustomDashboard</string>
+    <string name="check_now">Check Now</string>
+
+    <string name="updateStats">Update Stats</string>
+    <string name="updateCollage">Update collage</string>
+
+    <!-- Workout plan -->
+
+    <string name="steps_tracker">Steps Tracker</string>
+    <string name="strenght_training">Strength Training Exercises</string>
+    <string name="strenth_training_plan">Strength Training Plans</string>
+    <string name="food_recipe">Quick, healthy and tasty recipes</string>
+    <string name="food_mealplan">Self design your own diet plan</string>
+    <string name="food_healthychoices">At your favourite restaurants &amp; cafes</string>
+
+    <string name="trial_all_title">Welcome to Mevo.</string>
+    <string name="trial_all_mesz">You have unlimited access to all the premium features of the app for  %1$s days.</string>
+    <string name="trial_half_title"> Remaining Days</string>
+    <string name="trial_half_mesz">You have unlimited access to all the premium features of the app for  %1$s days.</string>
+    <string name="update">Update</string>
+
+    <string name="nothanks">No thanks Later</string>
+
+    <string name="first_recipes">Hundreds of quick delicous recipes making eating healthy easy</string>
+    <string name="first_plans">50+ Workout Plans based on your fitness plans</string>
+    <string name="first_dining">Get healthy recommendations when eating at your favorite &amp; cafes</string>
+    <string name="first_yoga">20+ live yoga training sessions with professional instruction</string>
+    <string name="first_meal_plans">Self design meal plan with 500+ healthy recommendations</string>
+    <string name="upgrade_to_premium">Upgrade to Premium</string>
+    <string name="first_desc">Upgrade to the premium version of the app to have unlimited access to all the features of the app</string>
+    <string name="unable_to_perform">Unable to perform. Try later</string>
+    <string name="follow_diet">Follow Diet Plan</string>
+    <string name="unfollow_diet">Unfollow Diet Plan</string>
+    <string name="recommended_calories">Recommended calories : %1$d</string>
+    <string name="recipe_preference">Recipes Preference</string>
+    <string name="promotions">Promotions</string>
+    <string name="enter_promo">Enter the promo code &amp; press the Redeem button to unlock exciting benefits!</string>
+
+    <string name="promo_code">Promo Code</string>
+    <string name="reedem">Reedem</string>
+    <string name="valid_cupon">Enter valid cupon</string>
+
+    <string name="machine_workout">Machine Workouts</string>
+    <string name="body_workout">Bodyweight/Home Workouts</string>
+    <string name="home_workout">Mixed Workouts</string>
+    <string name="select_coach">Select Coach</string>
+    <string name="michael">Michael</string>
+    <string name="jessica">Jessica</string>
+    <string name="workout_level">Workout Level</string>
+    <string name="eating_desc">Get the recommendations as to what you should eat when dining out at your favorite restaurants/cafes</string>
+
+    <string name="blackcoffee">Black Coffee</string>
+
+
+    <string name="year">Yr</string>
+    <string name="years">Yrs</string>
+
+    <string name="brief">Brief</string>
+    <string name="weight_diary">Weight Diary</string>
+    <string name="weight_tip">Tip : Use the update collage button to create your first collage</string>
+
+
+    <!--  <string name="berries_tip">You are absolutely lowering your risk of diabetes and heart disease. Continue choosing these kinds of food.</string>
+      <string name="banana_tip">Decent amount of fiber in there. That would really help you maintain a healthy weight. Limit it to 1 banana per day.</string>
+      <string name="apple_tip">You just had a superfood which contains a really good amount of fiber that would definitely help you with digestion. It is recommended to have this one before noon.</string>
+      <string name="papaya_tip">Awesome choice. This one is loaded with fibers. Now you will never be at risk of Vitamin C deficiency with that kind of food.</string>
+      <string name="melon_tip">Wow. This one scores very good for potassium, a host of B vitamins (B1, B3, B6, and folate) as well as vitamin K, magnesium, and fiber.</string>
+      <string name="kiwi_tip">You sure know the benefits of Vitamin C in your body. Hence, that choice. Nice one.</string>
+      <string name="orange_tip">Good choice buddy. This fruit is rich in fiber and vitamin C.</string>
+      <string name="mango_tip">You had food which is high in Vitamin C. What is it not to love about that? Nothing. Good choice, pal. It is recommended to have this one before noon to avoid weight gain.</string>
+
+      <string name="premium_feature_popup">This is a premium feature\n of the app. Unlock it now?</string>
+
+      <string name="logfood">Do you want to log this food?</string>-->
+
+    <!--<string name="free_feature">This is a free feature\n of the app. Enjoy</string>-->
+    <string name="last_run">Last Run</string>
+    <string name="time_c">TIME</string>
+    <string name="distance_c">DISTANCE</string>
+    <string name="rounds">ROUNDS</string>
+    <string name="onerounddistance_c">1 ROUND DIS&#40;Km&#41;</string>
+    <string name="daily_avg">DAILY AVG.</string>
+    <string name="calorie">CALORIE</string>
+
+    <string name="current_speed">SPEED</string>
+    <string name="start_run">START RUN</string>
+    <string name="sun">SUN</string>
+    <string name="mon">MON</string>
+    <string name="tue">TUE</string>
+    <string name="wed">WED</string>
+    <string name="thu">THU</string>
+    <string name="fri">FRI</string>
+    <string name="sat">SAT</string>
+    <string name="tap_to_start">Tap to immediately start</string>
+    <string name="add_seconds">ADD 5 SECONDS</string>
+    <string name="time">TIME</string>
+    <string name="slide_to_pause">SLIDE TO PAUSE ACTIVITY</string>
+    <string name="slide_to_unlock">SLIDE TO UNLOCK</string>
+    <string name="finish">FINISH</string>
+    <string name="resume">RESUME</string>
+
+    <string name="start_butn_text">Tracking On</string>
+    <string name="ms">m/s</string>
+    <string name="kh">km/hr</string>
+    <string name="select_your_music">NO MUSIC SELECTED</string>
+    <string name="select_music">SELECT MUSIC</string>
+
+    <string name="suffle_library">Shuffle Library</string>
+    <string name="no_music">No Music</string>
+    <string name="select_song">SELECT A SONG</string>
+    <string name="how_feel">How did this activity feel?</string>
+    <string name="how_surface">How was the surface?</string>
+    <string name="share_twitter">Share on Twitter</string>
+    <string name="notes">Notes</string>
+    <string name="how_did">How did it go?</string>
+    <string name="save_activity">SAVE ACTIVITY</string>
+
+    <string-array name="jazzy_effects">
+        <item>Standard</item>
+        <item>Tablet</item>
+        <item>CubeIn</item>
+        <item>CubeOut</item>
+        <item>FlipVertical</item>
+        <item>FlipHorizontal</item>
+        <item>Stack</item>
+        <item>ZoomIn</item>
+        <item>ZoomOut</item>
+        <item>RotateUp</item>
+        <item>RotateDown</item>
+        <item>Accordion</item>
+    </string-array>
+    <string name="no_route_save">No route to save</string>
+    <string name="share_your_track">Share your activity</string>
+    <string name="auto_play">Auto Play Music</string>
+
+    <string name="mevoshare">Mevoshare</string>
+    <string name="whatsapp">Whatsapp</string>
+    <string name="email">Email</string>
+    <string name="message">Message</string>
+    <string name="write_comment">Write a post...</string>
+    <string name="gps_disabled">GPS is currently disabled. Enable it now?</string>
+    <string name="select_goal">Select your goal</string>
+    <string name="select_age">Select Age</string>
+    <string name="select_weight">Select Weight</string>
+    <string name="select_height">Select Height</string>
+    <string name="weekly_target">Whats your weekly target?</string>
+    <string name="tell_lifestyle">Tell us about your lifestyle</string>
+
+    <string name="my_recipes_new">My Recipes</string>
+    <string name="my_tips_new">My Tips</string>
+    <string name="fun">Fun</string>
+
+    <string name="welcome">Welcome!</string>
+    <string name="signup_continue">Sign up to continue</string>
+    <string name="welcome_back">Welcome back!</string>
+    <string name="signin_continue">Sign in to continue</string>
+    <string name="sign_up_continue">Sign up to continue</string>
+    <string name="dont_have_account">Don\'t have an account?</string>
+    <string name="sign_up_s">Sign Up</string>
+    <string name="already_account">Already have account?</string>
+    <string name="log_in">Log In</string>
+    <string name="step_2">Step 2 of 2</string>
+    <string name="step_1">Step 1 of 2</string>
+
+    <string name="premium_dynamic"><![CDATA[You have unlocked <font color=#f6872d>%1$s</font> for the period of <font color=#f6872d>%2$s</font>. Enjoy]]></string>
+    <string name="welcome_dont_have_more"><![CDATA[Don\'t have more than <b><font color=#42cd8a>%1$s kcal</font></b>]]></string>
+    <string name="welcome_plain">Welcome</string>
+    <string name="all_set">Let me in</string>
+    <string name="edit_weight">Edit Ideal Weight</string>
+    <string name="item_selected">item selected</string>
+    <string name="log_food_diary1">LOG FOOD DIARY</string>
+
+    <string name="today_run">Today Run</string>
+    <string name="best_run">Best Run</string>
+    <string name="run">Run</string>
+    <string name="txteaten">331</string>
+    <string name="txtKcalLeft">1826 \n<b>kcal left</b></string>
+    <string name="txtBurned">0</string>
+    <string name="sugar">Sugar</string>
+    <string name="viewDiary"><u>View Diary</u></string>
+    <string name="hideDiary">Hide Diary</string>
+    <string name="no_of_serving">Number of Serving</string>
+    <string name="logfooddiary">Log Food to Diary</string>
+    <string name="viewmoreinfo"><u>VIEW MORE NUTRITIONAL INFO</u></string>
+    <string name="setCustom">Set Dashboard</string>
+
+    <string name="domore"><u>More >></u> </string>
+    <string name="recipe_sub"><u>EAT HEALTHY</u></string>
+    <string name="blog_info">Get all the health related info you need at one place</string>
+    <string name="recipeofday">Recipe Of The Day</string>
+    <string name="card_planmeal">Plan a Meal</string>
+    <string name="design_mealplan">Design a Meal Plan for yourself</string>
+    <string name="card_performance">Performance</string>
+    <string name="performance_mesz">Evaluate your daily performance</string>
+    <string name="exercise_mesz">Check how many calories have you burnt.</string>
+    <string name="unlockPremium"><u>Unlock all premium features</u></string>
+    <string name="reminderss">Reminders</string>
+    <string name="workout_diary">Workout Diary</string>
+    <string name="performance_analysis">Performance Analysis</string>
+    <string name="analysis_card">View your progress in a graphical way</string>
+    <string name="connect_new">Your Daily Steps</string>
+    <string name="connect_fitbit_lbl">Fitbit</string>
+    <string name="connect1">Track your Steps</string>
+    <string name="connect_google_lbl">Google Fit</string>
+    <string name="progress">PROGRESS</string>
+    <string name="calories_alloted">Total Calories</string>
+    <string name="card_calories">Calories</string>
+
+
+    <string name="txtdinner">Dinner</string>
+
+    <string name="logurmeal">Log your meal</string>
+    <string name="whatdiduhave">What did you have?</string>
+    <string name="caloriesleft">Kcal Left</string>
+    <string name="viewfoodDiary"><u>VIEW FOOD DIARY</u></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="weight_title">Weight : </string>
+    <string name="reps_title">Reps : </string>
+    <string name="time_title">Time : </string>
+    <string name="log_exercise">Log Exercise</string>
+
+    <string name="dummy_question">How about you take a meal challenge</string>
+    <string name="dummy_question1">Did you have breakfast?</string>
+    <string name="doitlater">Do it later</string>
+    <string name="lognow">Log now</string>
+
+
+    <string name="news_f">News Feed</string>
+    <string name="me">Me</string>
+    <string name="changegoal">Change Goal</string>
+    <string name="muscleBuilding">Muscle Building</string>
+    <string name="basic_account">Basic Account</string>
+    <string name="water_setting">Water Settings</string>
+    <string name="tea_setting">Settings</string>
+    <string name="workout_setting">Workout Settings</string>
+    <string name="coffee_setting">Settings</string>
+    <string name="unit_setting">Unit Settings</string>
+    <string name="account_type">Account Type</string>
+    <string name="home">Home</string>
+
+    <string name="getintouch">Get in Touch</string>
+    <string name="about_us">About Us</string>
+    <string name="termsconditiions">Terms &amp; Conditions</string>
+    <string name="pushnotify">Push Notifications</string>
+    <string name="logout">Logout</string>
+    <string name="mealreminder">Meal Reminder</string>
+    <string name="waterreminder">Water Reminder</string>
+    <string name="advancereminder">Advance Reminder</string>
+    <string name="kilograms">Kilograms</string>
+    <string name="feetninch">Feet/Inches</string>
+    <string name="centimeter">Centimeter</string>
+    <string name="waterIntake">Water Intake</string>
+    <string name="teaIntake">Green Tea Intake</string>
+    <string name="coffeeIntake">Coffee Intake</string>
+    <string name="dailyWaterGoal">Daily water goal</string>
+    <string name="dailyTeaGoal">Daily Green Tea goal</string>
+    <string name="dailyCoffeeGoal">Daily Coffee goal</string>
+
+    <string name="dialog_select_prompt">Choose a picture</string>
+    <string name="dialog_select_camera">Camera</string>
+    <string name="dialog_select_gallery">Gallery</string>
+    <string name="card_nodata_title">You seems to be done for now</string>
+    <string name="card_nodata_mesz">See you in a while</string>
+    <string name="view_more_reply">View 9 previous replies</string>
+    <string name="view_more_comment">View more comments</string>
+    <plurals name="view_more_reply">
+        <item quantity="one"> View %d previous reply</item>
+        <item quantity="other">View %d previous replies</item>
+    </plurals>
+    <string name="title_activity_meal">MealActivity</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="calories_unit">Calories(kcal)</string>
+    <string name="carbs_g">Carbs(g)</string>
+    <string name="protein_g">Protein(g)</string>
+    <string name="view_recipe">View Recipe</string>
+    <string name="stats_tab">Stats</string>
+    <string name="show_more">Show more</string>
+    <string name="show_less">Show less</string>
+    <string name="previouse">Previous</string>
+    <string name="walk_preview_heading">Walk %1$d Steps</string>
+    <string name="water_value">You have taken %1$d ml</string>
+    <string name="glass_size">Glass size %1$d ml</string>
+    <string name="remove_from_shoppinglist">Remove all from shopping list</string>
+    <string name="update_weight">Update weight</string>
+    <string name="correct_ans">Correct answer</string>
+    <string name="incorrect_ans">Incorrect answer</string>
+    <string name="guest">Guest</string>
+    <string name="connect_subheading_band">Connect app with MevoFit Drive to sync all your fitness activities data in one place.</string>
+    <string name="connect_subheading_gf">Connect app with Google Fit to sync all your fitness activities data in one place.</string>
+    <string name="connect_subheading_fb">Connect app with Fitbit to sync all your fitness activities data in one place.</string>
+    <string name="connect_to_sync">Connect to sync data</string>
+    <string name="connect_to_band">Connect to MevoFit Band</string>
+    <string name="connect_to_google_fit">Connect to Google Fit</string>
+    <string name="connect_to_fitbit">Connect to Fitbit</string>
+    <string name="connect">Connect</string>
+
+    <string name="apply_filter">Apply Filter</string>
+
+
+    <string name="exercise_cardio">Cardio</string>
+    <string name="exercise_strength">Strength</string>
+    <string name="items">Items</string>
+
+    <string name="bmi_unit"><![CDATA[ kg/m<sup>2</sup>]]></string>
+    <string name="bmr_unit"><![CDATA[ O<sub>2</sub>/min]]></string>
+    <string name="m_unit"><![CDATA[ m<sup>2</sup>]]></string>
+    <string name="fetching_postdetail">Fetching Post...</string>
+
+    <string name="log_recipe">Log To Diary</string>
+    <string name="filter">Filter</string>
+
+    <string name="question_default_mesz"><![CDATA[Checkout some amazing weight loss & fitness tips.]]></string>
+
+
+    <string name="ues_your_credits">Use your credits to buy real goods!</string>
+    <string name="redeem_now">MevoFit Shop</string>
+
+    <string name="howtoearn">How to earn more credits</string>
+    <string name="applaunch">App launch</string>
+    <string name="comebackdaily">Come back daily to claim these rewards</string>
+
+    <string name="credits_wallet">Credit Points</string>
+    <string name="log_calories_tracker">Log all your meals daily to get rewards</string>
+    <string name="log_calories_tracker_new">Log breakfast, lunch, dinner \u0026 snacks to earn 20 credits each.\nLog all meals for a week to earn 50 credits.</string>
+    <string name="quench">Quench your thirst &amp; log your water every 2 hours to earn\n20 credits.</string>
+    <string name="steps_show">Complete your daily steps target to get\nrewards</string>
+    <string name="quiz_shop_text">Take up a health quiz to earn credit for each right answer.</string>
+    <string name="challenge_shop_text">Participate in challenges for dual benefits\n - lose weight &amp; earn rewards</string>
+    <string name="community_text">  Be an active part of the community to get credits.</string>
+    <string name="downloader_name">List Of Downloader</string>
+
+    <string name="founder_heading">Welcome to MevoFit Family</string>
+    <string name="founder_desc">MevoFit is your true all round fitness coach that makes it easy and fun for you to get fit!\n\nMevoFit is a new way to approach fitness. It\'s not just an app but a wholesome integrated fitness approach that will change the way you perceive fitness. It\'s an all-in-one fitness app that brings ease by integrating all your fragmented fitness data at one place. So why use 5 apps just use one - \"MevoFit The Absolute Fitness\". The only app that brings Fitness with Benefits!</string>
+    <string name="director_name">Khyati Mahajan</string>
+    <string name="director_designation">Founder,CEO</string>
+    <string name="welcome_msg_goal"><![CDATA[Here is your customized health plan. Follow this plan to reach your ideal weight of <font color=#42cd8a>%1$s</font> <font color=#42cd8a>%2$s</font>]]></string>
+    <string name="potasium">Potassium</string>
+    <string name="premium_healthy_recipe">Cook now or save for later. Daily healthy recipe updates based on your health goals.</string>
+    <string name="premium_workout_plan">Get customized workout plan which will help you to reach your goal faster</string>
+
+    <string name="total_calorie">Total Calories</string>
+    <string name="premium_diet">Effective diet plan for all life style.find a plan that helps you according to your goal</string>
+    <string name="premium_workout">Effective diet plan for all life style.find a plan that helps you according to your goal</string>
+    <string name="premium_recipe">Effective diet plan for all life style.find a plan that helps you according to your goal</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hide">Hide</string>
+    <string name="show">Show</string>
+    <string name="quick_add_prompt">Quick Add Prompts</string>
+    <string name="quick_add">Quick Adds</string>
+    <string name="search_food">Search food...</string>
+    <string name="search_resturant">Search resturant</string>
+    <string name="add_meal_item">Search food for meal</string>
+    <string name="search_resturant_food">Search resturant food</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="premium_12_text">%1$s %2$s /year</string>
+    <string name="premium_3_text">%1$s %2$s /month</string>
+    <string name="your_promo_code">Your promo code is</string>
+    <string name="create_mymeal">Create Meal</string>
+    <string name="add_to_meal">Add To Meal</string>
+
+
+    <!-- BAnd strings -->
+
+    <string name="history_cal">%s Calories</string>
+    <string name="history_steps">%s Steps</string>
+    <string name="history_option">History</string>
+    <string name="connect_band">Connect Band</string>
+
+    <!--<string name="navigation_drawer_open">Open navigation drawer</string>-->
+    <!--<string name="navigation_drawer_close">Close navigation drawer</string>-->
+    <string name="buy_now">Buy Now</string>
+    <string name="dontfitness_band">Don\'t have fitness band</string>
+    <!--<string name="connected">Connected</string>-->
+
+    <!--<string name="loading">Loading&#8230;</string>-->
+    <string name="connected_to">Connected to: %s</string>
+    <string name="connecting_to">Connecting to: %s</string>
+    <!--<string name="action_settings">Settings</string>-->
+    <string name="active_sync">Sync</string>
+    <string name="schedulealarm">Schedules &amp; Reminder</string>
+    <string name="sleeptxt">Did you sleep well last night?</string>
+    <string name="schdeuletxt">Easily set schedules &amp; reminders</string>
+    <string name="bandsetting">Personalize band settings</string>
+
+
+    <string name="my_device">My Device</string>
+    <string name="general_setting">General Settings</string>
+    <string name="other_setting">Other Device</string>
+    <string name="notification_setting">Notification Setting</string>
+
+    <string name="in_bed_for">In bed for</string>
+    <string name="silence">Silence</string>
+    <string name="deep_sleep">Deep Sleep</string>
+    <string name="light_sleep">Light Sleep</string>
+    <string name="awake_time">Awake Time</string>
+    <string name="fell_asleep">Fell asleep at</string>
+    <string name="woke_up">Woke up at</string>
+    <string name="sleep_analysis">sleep analysis</string>
+
+
+    <string name="choose_goal">Choose Goal</string>
+    <string name="set_sports_goal">Set your favourite goal</string>
+    <!--<string name="duration">Duration</string>-->
+    <string name="sports_reminder">Sports Reminder</string>
+    <string name="reminder_time">Alarm Time</string>
+    <string name="repeat_reminder">Repeat Reminder</string>
+    <string name="calorie_burn">You are likely to burn %1$s kcal</string>
+
+    <string name="sync_time">Sync Time</string>
+    <string name="new_alarm">Schedule new alarm</string>
+    <string name="alarm_time">Alarm time</string>
+
+    <string name="alarm_reminder">Alarm Reminder</string>
+    <string name="delete_activity">Delete Activity</string>
+    <string name="letsstart">Let\'s Start</string>
+    <string name="nocustomplan">I don\'t want any custom plan</string>
+    <!--<string name="disconnected">Disconnected</string>-->
+    <string name="mevo_band_connected">Mevo Fit Band</string>
+    <string name="bind_mesz">As an anonymous user, logging out will delete your data. Do you want to register your account before logging out?</string>
+    <string name="register">Register</string>
+    <string name="band_title">Welcome to mevoFit band app</string>
+    <string name="band_desc">Mevofit drive tracks your steps, calories, distance and sleep patterns. It also allow you to set sedentary alerts reminder and show push notifications from social profiles on the device</string>
+    <string name="scaning_text1">Looking for your device...</string>
+    <string name="referal_code">Referral Code</string>
+    <string name="referal_mesz">Share your referral code with friends and invite them to MevoFit family. Tap on the referral code to copy.</string>
+    <string name="redem_code">Redeem Code</string>
+    <string name="redeem_mesz">Enter the promo code and press the \"Redeem\" button to unlock the premium version of the app for 20 days.</string>
+    <string name="code_copied">Copied to clipboard</string>
+    <string name="not4now">Not for now</string>
+    <string name="caloriesperday">MevoFit Calories</string>
+    <string name="mycalories">My Calories</string>
+    <string name="editcalories">Edit Calories</string>
+    <string name="mynutrients">My Nutrients (Click To Change)</string>
+    <string name="macronutri">Macro Nutrients</string>
+    <string name="suggestednutrients">Suggested Nutrients</string>
+
+    <string name="bandra_title">Run With MevoFit 10k</string>
+    <string name="bandra_disc">Bandra Fort, Mumbai</string>
+    <string name="no_alarms">No alarms found. Tap plus to add</string>
+    <string name="no_reminder">No Reminders Available</string>
+    <string name="no_reminder_subheading">To create reminders click on plus button</string>
+    <string name="bandra_sub_disc">28 Jan 2017, 06.30 a.m</string>
+    <string name="sync_dev">Sync Your Devices</string>
+    <string name="sync">Sync</string>
+    <string name="empty_juice">Can\'t log empty juice</string>
+    <string name="create_empty_juice">Can\'t create empty juice</string>
+    <string name="juice_created">Juice created successfully</string>
+    <string name="create_meal">Create Your Own Meal</string>
+    <string name="enter_meal_name">Enter your meal name</string>
+    <string name="meal_name">Meal Name</string>
+    <string name="juice_name">Name Your Juice</string>
+    <string name="no_meal_found">No Meal Found</string>
+    <string name="band_name">MevoFit Drive</string>
+    <string name="card_band_connected_only">Checkout how you have been doing today?</string>
+    <string name="card_band_connected_data">You have walked %1$s steps today.</string>
+    <string name="skip">Skip</string>
+
+
+    <string name="band_steps_detail">Total number of steps walked in a day</string>
+    <string name="band_calories_detail">Total number of calories you have burnt by being active</string>
+    <string name="band_sports_detail">See the reflection of the goals that you have set in the app. Long press on the icon to see the sports you have set</string>
+    <string name="band_display_detail">Use this to change the display pf the band from vertical to horizontal and vice versa</string>
+    <string name="band_power_detail">Switch off the band using the power button</string>
+    <string name="band_sportsgoal">Sports goal</string>
+    <string name="band_display">Display</string>
+    <string name="band_power">Power</string>
+
+    <string name="band_share">Share</string>
+    <string name="band_features">Band Features</string>
+    <string name="shared_mevolife">Powered by MevoFit</string>
+    <string name="dontshow">Don\'t show again</string>
+    <string name="time_period">Time Period</string>
+    <string name="schedule_alarm">Schedule New Alarm </string>
+    <string name="view">View</string>
+    <string name="how_to_create_meal">How to create a meal</string>
+    <string name="shared_mevolife_band">Powered by Mevofit Drive</string>
+    <string name="number_cup">Number of cup : %1$d</string>
+    <string name="number_cups">Number of cups : %1$d</string>
+
+    <string name="number_glass">Number of glass : %1$d</string>
+    <string name="number_glasses">Number of glasses : %1$d</string>
+
+    <string name="target_per_week">Target Per Week</string>
+    <string name="juice_mixture">Juice Mixture</string>
+    <string name="fruitnvegies">Fruits/Vegetables</string>
+    <string name="log_juice">Log To Diary</string>
+    <string name="save_juice">Name it</string>
+    <string name="mix_juice">Create Your Juice</string>
+    <string name="mixing_juice">Mixing Juice</string>
+    <string name="time_cc">Time</string>
+
+    <string name="lost_title">Anti Lost</string>
+    <string name="lost_desc">Use this setting to find your phone. Click on anti lost icon on the band and an alarm will ring on your phone.</string>
+
+    <string name="light_title">LED Switch</string>
+    <string name="light_desc">Use this switch to activate/deactivate light on notifications.</string>
+
+    <string name="wrist_title">Wrist Switch</string>
+    <string name="wrist_desc">When switched on this will activate the device on each wrist movement.</string>
+
+    <string name="time_title1">Time Format</string>
+    <string name="time_desc">Use this settings to change the time format displayed on the device. </string>
+
+    <string name="sedentry_title">Sedentary Alert</string>
+    <string name="sedentry_desc">Sedentary alert notifies you when you have been in a static position for  ling duration. Set the timing for the alert along with days you want it  to work.</string>
+
+    <string name="notifications_title">Notifications</string>
+    <string name="notifications_desc">Get the notifications for Facebook, Whatsapp on your device. Select and  switch on the notifications for desired social media accounts.</string>
+    <string name="no_juice">No Juice Created</string>
+
+    <string name="settings_noti">Notification</string>
+    <string name="juice_maker">Juice Maker</string>
+    <string name="check_in_enable">Check In</string>
+    <string name="weather_notification">Weather</string>
+
+    <string name="waist_entry">Waist</string>
+    <string name="chest_entry">Chest</string>
+    <string name="arms_entry">Arms</string>
+    <string name="forearm_entry">Forearms</string>
+    <string name="thigh_entry">Thighs</string>
+    <string name="shoulder_entry">Shoulder</string>
+    <string name="calves_entry">Calf Muscle</string>
+
+    <!--<string name="sleep_title">MevoFit Drive</string>-->
+    <string name="camera_title">Camera</string>
+    <string name="reminderalert">Reminders &amp; Alerts</string>
+
+    <string name="walkthrough_steps">The band will count all the steps that you walk in the day.</string>
+    <string name="walkthrough_calories">See how many calories you have burnt by walking/running with the band in a day. </string>
+    <string name="walkthrough_sleep">All-in-one Smart Activity Fitness Tracker </string>
+    <string name="sleeptext">Easiet way to track your sleep patterns.</string>
+    <string name="walkthrough_alert">Get reminders &amp; social media alerts along with call notification on the band.</string>
+    <string name="walkthrough_camera">Use the band as a selfie stick to click your picture</string>
+
+    <string name="band_dashboard">Band</string>
+
+    <string name="faq_heading1">Q.1 How does my tracker count steps?</string>
+    <string name="faq_desc1">A.1 MevoFit Drive uses a 3-axis accelerometer to track your movement. An
+accelerometer is a device that turns movement (acceleration) into
+digital measurements (data) when attached to the body. By analyzing
+acceleration data, the device provides detailed information about
+frequency, duration, intensity, and patterns of movement to determine
+your steps taken, distance traveled, and calories burned.</string>
+
+    <string name="faq_heading2">Q.2 How to switch on the sleep mode?</string>
+    <string name="faq_desc2">A.2 In order to activate the sleep mode, you need to long press on the
+moon icon shown on the device. This will start tracking your sleep. Once
+you get please long press on the sun icon which replaced the moon to
+deactivate the sleep mode.</string>
+
+    <string name="faq_heading3">Q.3 How to set reminders on the band?</string>
+    <string name="faq_desc3">A.3 In order to set reminders on the band got to the reminder section,
+click on + and set the time &amp; days on which you want to get the
+reminders. In order to switch off the reminders disable the same from
+the toggle.</string>
+
+    <string name="faq_heading4">Q.4 Why am I receiving not able to sync my band with the app?</string>
+    <string name="faq_desc4">A.4 In order to sync your app with the band make sure you have only 1
+band paired with your iPhone. In order to unpair other device go to the
+setting section> Click on Bluetooth> Click on the i button and then
+forgot the device. This will enable smoother syncing between device and
+the app.</string>
+
+    <string name="faq_heading5">Q.5 Why am I receiving other people\'s messages/calls on my band?</string>
+    <string name="faq_desc5">A.5 This is happening because of the default feature of iPhone. In order
+to avoid this issue, it is recommended that you only have only 1 MevoFit
+Drive band paired to your device at one time. Check the code of your
+device by turing of the power and then switching it on again. Go to the
+Bluetooth section and see that only that device is paired with your
+iPhone. In order to unpair other device go to the setting section>click
+on Bluetooth>click on the i button and then forgot the device. This will
+enable smoother syncing between device and the app.</string>
+
+    <string name="referal_heading">Looking for free Credits?</string>
+    <string name="referal_desc">Hey, invite your friends and family to MevoFit and get free 100 credits in your wallet.</string>
+    <string name="referal_desc1">Invite Code : </string>
+    <string name="invite_now">Invite Now</string>
+
+
+    <string name="steps_wrist">Steps</string>
+    <string name="distance_wrist">Distance</string>
+    <string name="calories_wrist">Calories Burned</string>
+    <string name="reminder_wrist">Reminders</string>
+    <string name="camera_wrist">Camera</string>
+    <string name="settings_wrist">Settings</string>
+    <string name="sleep_wrist">Sleep</string>
+    <string name="sports_wrist">Sports Goal</string>
+
+    <string name="steps_unit"> steps</string>
+    <string name="band_calories_unit"> kcal</string>
+
+    <string name="band_today"> Today</string>
+    <string name="band_tomorrow"> Tomorrow</string>
+    <string name="band_yesterday"> Yesterday</string>
+
+    <string name="menu_drive">MevoFit Drive - Fitness Band</string>
+    <string name="menu_tracker">Run Tracker</string>
+    <string name="menu_calorie_budget">Calorie Choices</string>
+    <string name="menu_calorie_categories">Calorie Budget Categories</string>
+    <string name="menu_categories_title">SELECT CALORIE BUDGET</string>
+
+    <!--<string name="menu_connect">Connect with Device</string>-->
+    <string name="menu_promotion">Promotions</string>
+    <string name="menu_setting">App Settings</string>
+    <string name="menu_referearn">Refer &amp; Earn</string>
+    <string name="menu_Founder">Founder&#8217;s Note</string>
+    <string name="menu_yoga">Yoga</string>
+    <string name="menu_tips">Tips</string>
+    <string name="menu_blog">Fitness Articles</string>
+    <string name="menu_juice">Juice Maker</string>
+    <string name="menu_quiz">Quiz</string>
+    <string name="menu_health">Health +</string>
+    <string name="menu_stuff">My Stuff</string>
+    <string name="menu_rateus">Rate Us</string>
+    <string name="bottom_home">Home</string>
+    <string name="bottom_community">Social</string>
+    <string name="bottom_me">Me</string>
+    <string name="bottom_more">More</string>
+    <string name="bottom_Run">Run</string>
+    <string name="unlock_features">Unlock Features</string>
+
+    <string name="band_antillost">Anti Lost</string>
+    <string name="band_light">Light on notification</string>
+    <string name="band_gesture">Palming Gesture</string>
+    <string name="band_timeformat">Time Format</string>
+    <string name="band_sedentry">Sedentary Reminder</string>
+    <string name="band_pair">Pair</string>
+    <string name="band_unpair">Unpair</string>
+    <string name="mevoshop">Fit Store</string>
+    <string name="redeem">Redeem</string>
+    <string name="your_reward">Fit Credits</string>
+    <string name="diary_dashboard">My Dashboard</string>
+
+    <string name="calories_burnt">Burned</string>
+    <string name="calories_left">Calories Left</string>
+    <string name="consumed_title">Consumed</string>
+
+    <string name="profile_setup">Profile Setup</string>
+    <string name="measure">Body Stats</string>
+    <!-- <string name="food_tracker">Calories\nCounter</string>-->
+    <string name="food_tracker">Food\nTracker</string>
+    <string name="healthy_recipe">Healthy\nRecipes</string>
+    <string name="healthy_recipe_new">Healthy Recipes</string>
+    <string name="food_options">Diet\nPlans</string>
+    <string name="workout_plans">Workout\nPlans</string>
+    <string name="workout_plans_heading">Workout Plans</string>
+    <string name="yoga_sessions">Yoga\nSessions</string>
+    <string name="fitness_challenge">Fitness\nChallenges</string>
+    <string name="more_options">More Options</string>
+    <string name="weeks">Weeks</string>
+    <string name="others">Others</string>
+
+    <string name="still_to_go_initial"> \n<b>Still to Go</b></string>
+    <string name="still_to_go"> Kgs \n<b>Still to go</b></string>
+    <string name="lbs_still_to_go"> lbs \n<b>Still to Go</b></string>
+    <string name="start_weight1">Start Weight</string>
+    <string name="wt_goal">Goal Weight</string>
+
+    <string name="run_with_mevo">Run With Mevo</string>
+    <string name="calories">Calories</string>
+    <string name="water">Water</string>
+    <string name="green_tea">Green Tea</string>
+    <string name="coffee_a">Coffee</string>
+    <string name="steps">Steps</string>
+    <string name="steps_caps">STEPS</string>
+    <string name="drive_steps">Steps</string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
+    <string name="yealy_tab">Yearly</string>
+    <string name="no_record_toast">No record found</string>
+    <string name="idealweight">Target Weight</string>
+    <string name="activitystart">Activity Start</string>
+    <string name="activitypause">Activity Pause</string>
+    <string name="activityresume">Activity Resume</string>
+    <string name="activityfinish">Activity Finish</string>
+    <string name="activitysaved">Activity Saved</string>
+
+    <string name="lastRun">Last Run</string>
+    <string name="todayRun">Today\'s Run</string>
+
+    <string name="log_meal1">Log your Meals</string>
+    <string name="follow_meal">Follow Meal Plan</string>
+    <string name="diet_plan">Diet Plans</string>
+    <string name="fit_pro">Fit Pro</string>
+    <string name="diet_plan1">Diet\nPlans</string>
+    <string name="yeshave">YES, I HAD IT</string>
+    <string name="calorie_budget1">Less than 100 Kcal</string>
+    <string name="calorie_budget2">Less than 200 Kcal</string>
+    <string name="calorie_budget3">Less than 300 Kcal</string>
+    <string name="calorie_budget4">Less than 400 Kcal</string>
+    <string name="calorie_budget5">Less than 500 Kcal</string>
+    <string name="calorie_budget6">500 Kcal &amp; Above</string>
+
+    <string name="ente_band_id">Enter BandId</string>
+    <string name="enterYourName">Enter Your Name</string>
+    <string name="enterYourNumber">Enter Number</string>
+    <string name="enterCalories">Enter Calories(kcal)</string>
+    <string name="powered_by_mevo">Powered by Mevo</string>
+
+    <string name="casserole">Casserole</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="salads">Salads</string>
+    <string name="chicken">Chicken</string>
+    <string name="healthyDesert">Healthy desserts</string>
+    <string name="drinks">Drinks</string>
+    <string name="wraps">Wraps</string>
+    <string name="healthySnacks">Healthy snacks</string>
+    <string name="breads"> Breads</string>
+    <string name="dips"> Dips</string>
+    <string name="highIndulgence">High Indulgence</string>
+    <string name="category">Category</string>
+    <string name="non_veg">Non Veg</string>
+    <string name="log_diary">Log Food to Diary</string>
+    <string name="myCredits">My Credits</string>
+    <string name="myRecipes">My Recipes</string>
+    <string name="myTips">My Tips</string>
+    <string name="myChallenges">My Challenges</string>
+    <string name="myDietPlans">My Diet Plans</string>
+    <string name="favourites">Favourites</string>
+    <string name="myfavourites">Favourites</string>
+    <string name="myCreditsText">Summary of your total earned/redeemed credits</string>
+    <string name="myRecipiesText">List of your favorite recipes</string>
+    <string name="myTipsText">List of your favorite tips</string>
+    <string name="myChallengesText">List of challenges you have joined</string>
+    <string name="myDietPlansText">List of your diet plans you are following</string>
+    <string name="noDataFound">No Data Found</string>
+    <string name="Skip">Skip</string>
+    <string name="Continue">Continue</string>
+    <string name="Buy">Buy</string>
+    <string name="OR">OR</string>
+    <string name="About_Company">About Company</string>
+    <string name="Do_not_show_again">Do not show again</string>
+    <string name="food_diary">Food Diary</string>
+    <string name="invalid_mail_id">Email id is not valid</string>
+    <string name="healthyrecipe">Healthy Recipes</string>
+    <string name="checkout_healthyrecipe">Checkout healthy recipes</string>
+    <string name="dietplan">Diet Plans</string>
+    <string name="checkout_diet">Checkout some diet plans</string>
+    <string name="calorie_budget">Calorie Budget Ideas</string>
+    <string name="checkout_calorie_budget">Checkout calorie budget ideas</string>
+    <string name="foodtitle">Food</string>
+    <string name="getStart">Tap To Connect</string>
+    <string name="calorieTracker">Calories Tracker</string>
+    <string name="fitnessCommuity">Fitness Community</string>
+    <string name="fitnessPlans">Workouts &amp; Exercises</string>
+    <string name="viewPagerSunHeading">Get nutritional values of more than 500K food items.</string>
+    <string name="viewPagerSunFitness">A handpicked collection of healthy recipes to help you lose weight faster.</string>
+    <string name="viewPagerSunWorkouts">Easy to follow diet plans to help you timely reach your weight loss goals.</string>
+    <string name="profileInstruction">Knowing more about you helps us give you  better guidance and coaching.</string>
+    <string name="enter">Enter</string>
+    <string name="alreadyRegistered">Already Registered?</string>
+    <string name="profileInfo">Profile Info</string>
+    <string name="welcomesignup">Welcome, Sign up to save sync your data and settings</string>
+    <string name="facebooksignup">Sign up with Facebook</string>
+    <string name="googlesignup">Sign up with Google+</string>
+    <string name="emailsignup">Sign up with email</string>
+    <string name="worry">Don’t worry, we will never post anthing without your permission.</string>
+    <string name="terms">By continuing, you agree to MevoFit <u>terms of service</u> and <u>privacy policy</u></string>
+    <string name="welcomelogin">Welcome back , it’s nice to see you again</string>
+    <string name="facebooklogin">Log in with Facebook</string>
+    <string name="googlelogin">Log in with Google+</string>
+    <string name="emaillogin">Login  with email</string>
+    <string name="password">Password</string>
+    <string name="forgotPassword">Forgot Password</string>
+    <string name="completeDetails">Please enter complete details</string>
+    <string name="rules">RULES</string>
+    <string name="joinChallenge">Join Challenge</string>
+    <string name="startWorkout">Start Workout</string>
+    <string name="congrats">CONGRATULATIONS!</string>
+    <string name="goodjob">Good job! You have finished all exercises.</string>
+    <string name="dairy">Diary</string>
+    <string name="congratulations">CONGRATULATIONS</string>
+    <string name="congratssubheading">Your custom plan is ready and you\'re all set to have a healthy and balanced lifecycle.</string>
+    <string name="dailycaloriegoal">Daily calories goal</string>
+    <string name="targetcaloriegoal">You should reach your target weight in</string>
+    <!--food-->
+    <string name="heading_food">Food</string>
+    <string name="description_food">Recipes, Diet Plans, Food Tips, Calorie Choices</string>
+    <string name="heading_workout">Workouts</string>
+    <string name="description_workout">Exercises, Workout Plans, Yoga &amp; Workout Tips</string>
+    <string name="dash_logfood">Log Food</string>
+    <string name="plus_breakfast">Log Breakfast</string>
+    <string name="plus_lunch">Log Lunch</string>
+    <string name="plus_snacks">Log Snacks</string>
+    <string name="plus_dinner">Log Dinner</string>
+    <string name="plus_logdrinks">Log Drinks</string>
+    <string name="plus_logexcercise">Log Exercise</string>
+    <string name="plus_logweight">Log Weight</string>
+    <string name="plus_post">Add Post</string>
+    <string name="plus_run">Track Run</string>
+
+    <string name="recentctivity">Recent Activity</string>
+    <string name="loadmore">Load more result...</string>
+    <string name="syncdevice">Sync My Device</string>
+    <string name="show_onlyveg">Show only veg items</string>
+    <string name="diet_head_premium">15+ Diet Plans</string>
+    <string name="diet_desc_premium">Unlock diet plans like Low Carb, Ketogenic &amp; more to lose weight faster.</string>
+    <string name="workout_head_premium">50+ Workout Plans</string>
+    <string name="workout_desc_premium">Unlock workout plans like 7 minute, HIIT for faster &amp; quicker results.</string>
+    <string name="recipe_head_premium">1000+ Healthy Recipes</string>
+    <string name="recipe_desc_premium">Get 1000+ healthy recipes categorized on the basis of advanced filters.</string>
+    <string name="remaining_dashboard">Remaining</string>
+    <string name="premium_Rs">\u20B9</string>
+    <string name="premium_dollar">\u0024</string>
+    <string name="select_myfood">Tap on + to create your own food</string>
+    <string name="sleep_tracker">Sleep Tracker</string>
+    <string name="credits_share">Wow! Got so many credits</string>
+    <string name="sub_no_recods">Tip:Log any food item in diary</string>
+    <string name="app_download">Get More Apps</string>
+    <string name="rateUsText">Please rate us on the Google Play</string>
+    <string name="rateUsText1">Ratings keep the app going and make us work hard on updates and improvements.</string>
+    <string name="showUsLove">SHOW US LOVE!</string>
+
+
+    <string name="healthyRecipes">HEALTHY RECIPES</string>
+    <string name="calorieChoices">CALORIE CHOICES</string>
+    <string name="tips_heading">TIPS</string>
+    <string name="juice_heading">JUICE BAR</string>
+    <string name="custom_exercises">CUSTOM EXERCISES</string>
+    <string name="strength_exercises">STRENGTH EXERCISES</string>
+    <string name="workout_plan_heading">WORKOUT PLANS</string>
+    <string name="workout_tips_heading">WORKOUT TIPS</string>
+    <string name="Food_plan_heading">CUSTOM FOOD</string>
+    <string name="premium_calorie">Unlock all the calorie choices to get quick healthy
+eating ideas and make your life easier.</string>
+    <string name="premium_healthy">Get 1000+ healthy recipes categorized along with
+advanced filters.</string>
+    <string name="premium_dietplan">Unlock diet plans including low carb, ketogenic, &amp;  more to
+lose weight faster.</string>
+    <string name="premium_tips">Don\'t be misguided with the wrong information. Get the right
+facts and info in this section.</string>
+    <string name="premium_juice_bar">Make unlimited number of juice glasses in the app &amp; easily
+log in the food diary.</string>
+    <string name="premium_exercises">Create unlimited number of custom exercises in the app.</string>
+    <string name="premium_strength">Unlock all the strength exercises categorized on
+the basis of body parts. Get to know the right way to do the exercise
+with elaborated videos.</string>
+    <string name="premium_workoutplan">Unlock 50+ workout plans including 7 minute workouts,
+HIIT to quickly get visible results.</string>
+    <string name="premium_Food_plan">Create unlimited number of custom foods in the app.</string>
+    <string name="upgradePremium">Upgrade to Mevo Premium to get\n Faster Results!</string>
+    <string name="mevoPremium">MevoFit Premium will renew within 24 hours before the subscription period ends and you will be charged through PlayStore account.</string>
+    <string name="signUp">By signing up you are agreeing to MevoFit\'s \nTerms of Service &amp; Privacy Plicy</string>
+    <string name="upgrade_premium">Upgrade to Premium</string>
+    <string name="new_plan">New</string>
+    <string name="Premium_to_upgrade">Upgrade to Premium</string>
+    <string name="mepro_head_shop">MevoFit Gear</string>
+    <string name="pro_member">You\'re a PRO member!</string>
+    <string name="go_premium_recipes_main">1000+ HEALTHY RECIPES</string>
+    <string name="go_premium_recipes_sub">Get 1000+ recipes categorized on the basis of advanced filters</string>
+    <string name="go_premium_diet_main">15+ DIET PLANS</string>
+    <string name="go_premium_diet_sub">Unlock Diet Plan like low Carbs,Ketogenic &amp; more to lose weight faster.</string>
+    <string name="go_premium_main">Go Premium</string>
+    <string name="go_premium_subhead">Unlock the premium version to get complete weight loss program</string>
+    <string name="popular_foods">Popular Foods</string>
+    <string name="not_now">Not Now</string>
+    <string name="upgrade_weight">Update Weight</string>
+    <string name="registerNow">Register Now</string>
+    <!--<string name="create_account">Thanks for signing up with MevoFit.We are glad to have you with us.Hope you have a successful &amp; healthy journey with us.</string>-->
+    <!--    <string name="create_account">Thanks for signing up. We hope you enjoy using your new fitness tracker!.</string>-->
+    <string name="create_account">Welcome to MevoFit family.
+We\’re glad you are here. You are all set for an all new health &amp; fitness journey now.</string>
+    <string name="weightCheck">Let\'s take a minute to check if you are on the right tracker.Would you like to update your current weight now?</string>
+    <string name="dont_account">Haven\'t signed up yet?</string>
+    <string name="weeklyWeightCheck">WEEKLY WEIGHT CHECK!</string>
+
+    <string name="txt_everyday">Every day</string>
+    <string name="txt_threedays">Once in 3 days</string>
+    <string name="txt_week">Once a week</string>
+    <string name="txt_fortnight">Once a fortnight</string>
+    <string name="txt_remindmonth">Once a month</string>
+    <string name="premiumprompt_text">UNLOCK ALL THE CONTENT AND USE THE APP WITHOUT ANY ADS!</string>
+    <string name="unlimited_tips">UNLIMITED RECIPES</string>
+    <string name="unlimited_subtitle">Unlock all the premium recipes in the app</string>
+    <string name="unlimited_diet">UNLIMITED DIET PLANS</string>
+    <string name="unlimited_subtitle_diet">Unlock all the premium diet plans in the app</string>
+    <string name="removeads_tips">REMOVE ADS</string>
+    <string name="removeads_subtitle">Get ads free version of the app forever!</string>
+    <string name="btn_Why_Should_download">Why Should I Download Other Apps?</string>
+    <string name="btn_you_can">- You can use same login credentials across all MevoFit apps. So all your data is connected  &amp; synced.</string>
+    <string name="btn_earn_Should_download">- Earn credits from different apps and use them together to buy MevoFit Merchandise Gear at discounted price.</string>
+    <string name="set_goals">Set Goals</string>
+    <string name="firmware_update">Firmware Update</string>
+    <string name="my_no_data_device">No Device Found</string>
+    <string name="searchagain">Search Again</string>
+    <string name="schedule_reminders">Set Alarm</string>
+    <string name="set_steps_goals">Set Steps Goal</string>
+    <string name="remote_camera">Camera Click Shortcut</string>
+    <string name="faq">FAQs</string>
+    <string name="trouble_shoot">Send Log Files</string>
+    <string name="trouble_shoot_sub">Tap here to get in touch with us</string>
+
+    <string name="stepsGoal">Set your daily step goals as per your preference</string>
+    <string name="setReminder">Easily set wake up alarm/other reminders here</string>
+    <string name="useBand">Use the band to easily click your selfie</string>
+    <string name="managePushNotification">Manage the apps you want push notifications for on the band</string>
+    <string name="settingstext">Customize the band as per your preference</string>
+    <string name="faqtext">Get answers to all your queries here</string>
+    <string name="my_no_data_band">No Data Available</string>
+
+    <string name="neardevice">Device must be near your phone to connect</string>
+    <string name="synching">Searching...</string>
+    <string name="search_bluetooth">You have lost Bluetooth connection.Please check your connection &amp; search again.</string>
+    <string name="search_gps">You have lost GPS connection.Please check your connection &amp; search again.</string>
+    <string name="search_internet">You have lost INTERNET connection.Please check your connection &amp; search again.</string>
+    <string name="search_banddevice">You have lost MevoFit Device connection.Please check your connection &amp; search again.</string>
+    <string name="minLimit">Minimum Character Limit is 25 Characters</string>
+    <string name="checkIn">Check In</string>
+    <string name="locationtitle">Enable Location Settings</string>
+    <string name="locationservice">Please enable Location Service to check in your location</string>
+    <string name="waterunit">Unit</string>
+    <string name="sleep_infohead">Sleep Tracker</string>
+    <string name="sleep_info_descr">This section displays your daily sleep pattern analysis. \n
+Note: Wear the band while you sleep and sync data to view the same</string>
+    <string name="auto_sleep_infohead">Auto Sleep</string>
+    <string name="auto_sleep_info_descr">Use this switch to enable/disable Auto Sleep mode.</string>
+    <string name="notification_access_enable">Please disable/enable notification access permission.</string>
+    <string name="noti">In order to display "Floating Window" shortcut you may need to activate the "Pop Up" window permission from the settings. Click on "Yes" to activate it now.</string>
+    <string name="mevofit_mobiletrack">MevoFit Mobile Track</string>
+    <string name="socialhint">Talk about Run,Challenges and Diets...</string>
+    <string name="green_tracker">Green Tea Tracker</string>
+    <string name="coffee_tracker">Coffee Tracker</string>
+    <!--period-->
+    <string name="menslength">The length of your \n menstrual cycle?</string>
+    <string name="menslenght_subheader">The duration of two periods start date, usually 23-35 days.</string>
+    <string name="periodlength_heading">The length of your period?</string>
+    <string name="periodlenght_subheader">Bleeding usually lasts between 4-7 days.</string>
+    <string name="start_date_period">The start date of your last period?</string>
+    <string name="view_profile">View Profile</string>
+    <string name="high_range"><![CDATA[<100 (High range)]]></string>
+    <string name="instruction">Choose your phone model to checkout the connection settings required for the background working of the band!</string>
+    <string name="App_phone_setting">Essential Phone Settings</string>
+    <string name="allow">After allowing permission click on the "test device"\nbutton to check if notificationis coming on your band</string>
+    <string name="last_step">The last step is to reboot your phone and MevoFit\nDevice and then reconnect the band with the app\nfor the notification to work</string>
+    <string name="restart">Restart the MevoFit device and then reconnect it with\nthe app and then click on test notification button to\ncheck</string>
+    <string name="test_n">Test Notification</string>
+    <string name="data_empty">No data</string>
+    <string name="device_not_connect">Device not connect</string>
+    <string name="restart_conn">Please unpair device from bluetooth paired devices.</string>
+    <string name="location">Location Permission Denied</string>
+    <string name="warning">Restaurant uses this permission to detect your current location and show you great food items around you. It also enables you to get turn by turn driving directions to restaurants. Are you sure to deny this permission?</string>
+    <string name="sure">I\'M SURE</string>
+    <string name="retry">RETRY</string>
+    <string name="last_step_connection">The last step is to reboot your phone and MevoFit\nDevice and then reconnect the band with the app\nfor the connection to work</string>
+    <string name="App_start_setting">App Permissions</string>
+    <string name="Reset_values">Reset Band</string>
+    <string name="check_live">Check Live</string>
+    <string name="bp">Blood Pressure</string>
+    <string name="close">Close</string>
+    <string name="lead_off">Lead off</string>
+    <string name="tip_1">Poor conductivity, it is recommended to test the water at the sensor contact.</string>
+    <string name="background_app">It is recommended to keep the app in background to get reminders on the band.</string>
+    <string name="period_in">Period in</string>
+    <string name="Beauty_moti">Beauty &amp; Motivational Tips</string>
+    <string name="blood_presure_tracker">Blood Pressure Tracker</string>
+    <string name="blood_presure_tracker_content">This feature is in experimental(beta) mode. It can use only for references and not as a replacement of any medical device</string>
+    <string name="blood_presure_tracker_content_two">Blood Pressure Tracker feature is only visible on the fitness tracker band. This data will not be shown in the app.</string>
+    <string name="blood_presure_tracker_content_calibration">It is recommended to calibrate BP feature for the first time. Please measure the default value using medical device.</string>
+
+
+    <!--checkido-->
+    <string name="sync_config_start">start sync config</string>
+    <string name="sync_health_start">start sync health data</string>
+    <string name="sync_activity_start">start sync activity data</string>
+    <string name="sync_config_stop">stop sync config</string>
+    <string name="sync_health_stop">stop sync health data</string>
+    <string name="sync_activity_stop">stop sync activity data</string>
+    <string name="mepro_logs_meal">Log Meals</string>
+    <string name="refer_and_earn"><![CDATA[Refer & Earn]]></string>
+    <string name="mevoUser">Mevo User</string>
+    <string name="pager_titel">Blood Pressure Tracker</string>
+    <string name="first_desc_new">Use this fitness band for tracking of BP ap home to help your achive and maintain a healthy lifestyle.</string>
+    <string name="Second_desc">The BP tracker fitness band is not a replacement to your medical devices/advice. </string>
+    <string name="third_desc">I understand that the data shown on the band is for the reference purchase only. I will use as it as a secondary device to maintain my BP.</string>
+    <string name="blodescription">CHECKOUT LATEST BLOGS</string>
+    <string name="blode_blog">Get the right info about Health Fitness &amp; Weight Loss.</string>
+    <string name="five_prompt">In order to get Call  &amp; SMS notifications on the band, please enable the same from the Push Notifications option available in the last tab of  the app.</string>
+
+    <string name="normal">Normal</string>
+    <string name="normalValue">18.5 - 24.9</string>
+    <string name="obese3Value">&gt;=40</string>
+    <string name="hint1">Eg - 3.0</string>
+    <string name="hint2">Eg - 21.0</string>
+    <string name="hint3">Eg - 90.0</string>
+    <string name="hint4">Eg - 1095.0</string>
+    <string name="yearly_s">Yearly</string>
+    <string name="underweight">Underweight</string>
+    <string name="underweightValue">17.0 - 18.4</string>
+    <string name="severeUnderweight">Severly Underweight</string>
+    <string name="severeUnderweightValue">16.0 - 16.9</string>
+    <string name="veryUnderweight">Very Severly Underweight</string>
+    <string name="veryUnderweightValue">&lt;16.0</string>
+
+
+    <string name="generating_report">Generating report...</string>
+    <string name="no_ecg_data">ECG data is empty</string>
+    <string name="report_generation_completed">The report is generated!</string>
+
+
+    <string name="string_main_one"> Your current health status is good. Please refer to the following detailed suggestions. To work and rest, moderate exercise, scientific diet and adequate sleep to improve physical fitness.</string>
+    <string name="string_main_two">Stay up late and take part in outdoor activities. Maintain a positive, optimistic and happy mood.</string>
+    <string name="string_main_three">Maintain good mood, delight, optimism.</string>
+    <string name="string_main_four">To work hard to develop regular exercise habits, improve the bodys enthusiasm and excitement.</string>
+    <string name="string_main_five">Often do some tricks to exercise the heart, such as the head backwards, his arms forced upward. Pay attention to eating habits, eat a variety of animal fat, eat more fresh vegetables and fruits, the diet should be light.</string>
+
+    <!-- <string name="string_details_hrv">HRV health index is through analysis of the average heart rate HR and heart rate variability HRV and other parameters, based on the real-time measurement of the results of Holter to analyze the body\'s health parameters, health index increased, representing the health of the body better; health index decreased, on behalf of the body Need to pay attention to daily healthy life.</string>
+     <string name="string_details_cardia">Cardiac Function Users measure a person\'s heart condition, and their performance is different due to their different levels of love for the heart and overall health status. To develop a healthy lifestyle and eating habits: a reasonable strategy to exercise heart to force the heart calcium sodium supplement, to protect the blood vessels, eat sweets, stabilize blood pressure, can actively prevent the occurrence of heart disease, is to strengthen cardiac function strategy.</string>
+     <string name="string_details_fitness">Physical fitness is the level of resilience and mental stress encountered in the face of the ability to adapt and handle the situation. Physical fitness index reflects the human body to adapt to environmental changes and stress stimulation, maintain and restore the health ability. Physical fitness is often manifested in the potential of peoples lives, learning and work, but also naturally in physical exercise. A persons physical quality is related to heredity, but it is more closely related to acquired nutrition and physical exercise. Through correct methods and proper exercise, he / she can improve his physical fitness in all aspects.</string>
+     <string name="string_details_load">Degree of fatigue, stress Comprehensive consideration of the body to bear the load index, reflecting the physical and psychological aspects of the people bear the load situation. External social, life and competition and other factors, but also by their own physical condition and mental state.</string>
+     <string name="string_details_fatigue">Work, work and exercise caused by the degree of fatigue. Excessive fatigue easily lead to shoulder muscle stiffness, headache, insomnia, fatigue, waist pain, and easily lead to nervous system, endocrine disorders, resulting in many chronic diseases and mental fatigue.</string>
+     <string name="hrv_subtext">0 \u003C X \u2264 70 :General \n70 \u003C X \u2264 90 :Good \n90 \u003C X \u2264 100 :Optimal \n </string>
+     <string name="cardia_subtext">0 \u003C X \u2264 70 :General \n70 \u003C X \u2264 90 :Good \n90 \u003C X \u2264 100 :Optimal \n </string>
+     <string name="fitness_subtext">40 \u003C X \u2264 70 :General \n70 \u003C X \u2264 90 :Good \n90 \u003C X \u2264 100 :Optimal \n </string>
+     <string name="load_subtext">0 \u003C X \u2264 55 : Normal \n55 \u003C X \u2264 80 : Little High \n80 \u003C X \u2264 100 : High \n </string>
+     <string name="fatigue_subtext">0 \u003C X \u2264 45 : Normal \n45 \u003C X \u2264 70 : Little High \n70 \u003C X \u2264 100 : High \n </string>
+ -->
+
+    <string name="string_details_hrv">Your current state of health is average. Please refer to the detailed recommendations below. Make work and rest, strengthen exercise, pay attention to diet, and reduce day and night. Can improve the physical fitness. [0&#8211;70]\n\n Your current health is good. Please refer to the detailed recommendations below. A combination of work and rest, moderate exercise, scientific diet and adequate sleep to improve physical fitness. [70&#8211;90]\n\n Your current health status is excellent, please keep it. Please refer to the detailed recommendations below. A combination of work and rest, moderate exercise, scientific diet and adequate sleep to improve physical fitness. [90&#8211;100]</string>
+    <string name="string_details_cardia">The diet should be light. Advocate eating seven or eighty percent full, while eating less animal fats and eating more fresh vegetables and fruits. [40&#8211;70]\n\n Do some small exercises to exercise your heart, such as the head tilting back and lifting your arms upwards. Pay attention to eating habits, eat less animal fat, eat more fresh vegetables and fruits, and eat light. [70&#8211;90] \n\n Maintain good eating habits. Pay attention to balanced diet and nutritional mix. [90&#8211;100]</string>
+    <string name="string_details_fitness"> Appropriate exercise, participate in physical exercise as much as you can, develop your own hobbies, and develop weekly exercise habits. [40&#8211;70]\n\n Strive to develop regular exercise habits and improve the enthusiasm and excitement of the body. [70&#8211;90]\n\n Proper exercise to develop a habit of continuous exercise. [90&#8211;100]</string>
+    <string name="string_details_load"> Participate in social interaction and avoid emotional excitement. If the physical and mental load is too high for a long time, it is recommended to consult a psychiatrist [0&#8211;55]\n\n Avoid fatigue. Don\'t sit for a long time and walk around. [55&#8211;80]\n\n Maintain good mood, mental pleasure, and positive optimism. [80&#8211;100]</string>
+    <string name="string_details_fatigue"> Pay attention to rest, try not to stay up late. [0&#8211;45] \n\n Stay up late and take part in outdoor activities. Maintain a positive, optimistic and happy mood. [45&#8211;70]\n\n Maintain regular healthy living habits. [70&#8211;100]</string>
+    <string name="hrv_subtext"></string>
+    <string name="cardia_subtext"></string>
+    <string name="fitness_subtext"></string>
+    <string name="load_subtext"></string>
+    <string name="fatigue_subtext"></string>
+    <string name="shop_subtitle">MevoFit Credits to buy exclusive MevoFit merchandise at amazing discounts</string>
+    <string name="shop_welcome">You&#8217;ve successfully connected your band.</string>
+    <string name="shop_welcome_situp">Set it Up Now!</string>
+
+    <string name="deice_setup">Device Setup</string>
+    <string name="title_run">Run</string>
+    <string name="swim_battery_head">Battery Surge Protection</string>
+    <string name="swim_battery">Owing to this protection, sometimes the device might not work once removed from charging. Simply connect again for 2 seconds in any USB to make it start working again.</string>
+    <string name="space_txt">Set the watch face you like on your watch. Click on the button to set the face you want to see on the watch screen!</string>
+
+
+    <string name="device_connect_bluetooth">Please make sure your band is not paired with your phone\'s Bluetooth to see the scanning results!</string>
+    <string name="RestaurantCharges">Packaging Charges</string>
+    <string name="cart_emty_text">Your cart is empty</string>
+
+    <!--forrunmodule-->
+    <string name="runStarted">Run Started</string>
+    <string name="runPaused">Run Paused</string>
+    <string name="runResumed">Run Resumed</string>
+    <string name="runFinished">Run Finished</string>
+
+
+    <string name="startRun">START RUN</string>
+    <string name="buyNow"><u>BUY NOW</u></string>
+    <string name="downloadAppNow">Download App Now</string>
+    <string name="low_power">In order to get accurate tracking results, it is recommended to change the GPS setting to High accuracy</string>
+
+    <string name="intro_text">Hi! Let\'s track daily cumulative steps. Use the menu to explore additional actions.</string>
+
+
+    <string name="settings">Settings</string>
+    <string name="action_update_session">Update step count data</string>
+    <string name="action_delete_session">Delete step count data</string>
+
+    <string name="how_to_use_coupon">How to use?\na) Go to Mevo Shop\nb) Add the item you want to buy the cart\nc) Apply coupon on checkout page\nd) Complete the payment process!</string>
+    <string name="smart_look_values">231d92793a7cd6cdd0d16cebded9791be149ede5</string>
+    <string name="device_connect_relauch">Connection issues is found.Please re-launch the App!</string>
+    <string name="already_Played">Already Played</string>
+
+    <string name="connection_troubleshoot">CONNECTION TROUBLESHOOT</string>
+    <string name="connection_desc">As observed some connection issues have been found. Please restrict all battery optimization services like freeze in background mode, doze mode and more. All these services create problems in maintaining a stable connection.</string>
+    <string name="bluetooth_setting">BLUETOOTH SETTINGS</string>
+    <string name="bluetooth_desc">If all the battery optimization services are switched off, and still connection issues are found. Kindly allow the app to manually reset your phone\'s bluetooth to maintain stable connection.</string>
+    <string name="bluetooth_connectio_trouble">BLUETOOTH CONNECTION TROUBLESHOOT</string>
+    <string name="bluetooth_connectio_trouble_desc">As observed some connection issues have been found. Kindly allow the app to manually reset your phone\'s bluetooth to maintain stable connection.</string>
+    <string name="bluetooth_reset">BLUETOOTH RESET</string>
+    <string name="bluetooth_reset_desc">Kindly allow the app to manually reset your phone\'s bluetooth to maintain stable connection. The app will switch off and then switch on the bluetooth to improve connection</string>
+
+</resources>

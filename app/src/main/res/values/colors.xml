@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#306dd0</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="textbold">#433b3b</color>
+    <color name="textlight">#837575</color>
+    <color name="setting_heading">#98a0a1</color>
+    <color name="setting_subheading">#6a7576</color>
+    <color name="deep_white">#ffffff</color>
+    <color name="deep_grey">#cdcdcd</color>
+    <color name="pager_strip_text">#555555</color>
+    <color name="black">#000000</color>
+    <color name="light_black">#777777</color>
+    <color name="grey_light">#e6e6e6</color>
+    <color name="rim_color_grey_light">#e6e6e6</color>
+    <color name="dashboard_bg_grey_new">#ecf0f1</color>
+    <drawable name="grey_dark_image">#cfcfcf</drawable>
+    <color name="exercise_header">#306dd0</color>
+    <color name="grey_text">#6a6a6a</color>
+    <color name="grey_text_light">#afb5b8</color>
+    <color name="backgroundColor">#eeeeee</color>
+    <color name="backgroundShade">#ffffff</color>
+    <color name="new_profile_color">#363636</color>
+    <color name="border_color">#d5dadb</color>
+    <color name="newui_blue_color">#7855cd</color>
+    <color name="newui_red_color">#fa4041</color>
+    <color name="newui_yello_color">#fe9633</color>
+    <color name="newui_grayr">#c6c6c6</color>
+    <color name="newui_htbp">#ff4554</color>
+    <color name="login_siginup">#17acba</color>
+
+    <color name="newui_blue_color_s">#b393ff</color>
+    <color name="newui_red_color_s">#ff6972</color>
+    <color name="newui_yello_color_s">#ffa44c</color>
+    <color name="login_siginup_s">#3b4b5a</color>
+    <color name="login_siginup_subtitlt">#6a727b</color>
+</resources>

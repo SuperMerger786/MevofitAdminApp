@@ -1,0 +1,131 @@
+<resources>
+
+    <dimen name="back_padding">0dip</dimen>
+    <dimen name="image_thumbnail_size">100dip</dimen>
+    <dimen name="button_height">110dip</dimen>
+    <dimen name="edittext_height">65dip</dimen>
+    <dimen name="edittext_width">150dip</dimen>
+    <dimen name="edittext_width_small">120dip</dimen>
+    <dimen name="textSize_extra_small">19dip</dimen>
+    <dimen name="textSize_small">22dip</dimen>
+    <dimen name="textSize_medium">23dip</dimen>
+    <dimen name="textSize_medium_large">20dip</dimen>
+    <dimen name="textSize_large">30dip</dimen>
+    <dimen name="textSize_training">27dip</dimen>
+    <dimen name="textSize_extra_large">28dip</dimen>
+    <dimen name="textSize_exxtra_large">40dip</dimen>
+    <dimen name="textSize_extra_xxl">50dip</dimen>
+    <dimen name="textsize_menu">25sp</dimen>
+    <dimen name="age_bottom_height">100dip</dimen>
+    <dimen name="header_right_padding">4dp</dimen>
+    <dimen name="navmenuitem_icon_height">35dp</dimen>
+
+    <!-- <dimen name="header_height">50dip</dimen> -->
+    <dimen name="dash_text_small">10sp</dimen>
+    <!-- begining   temp value -->
+    <dimen name="button_width_medium">150dip</dimen>
+    <!-- End   temp value -->
+
+    <dimen name="header_height">50dip</dimen>
+    <dimen name="header_height_strip">60dip</dimen>
+    <dimen name="header_height_small">60dip</dimen>
+    <dimen name="calorei_top_container">90dip</dimen>
+    <dimen name="footer_main_height">40dip</dimen>
+    <dimen name="header_height_large">70dip</dimen>
+    <dimen name="search_layout_height">70dp</dimen>
+    <dimen name="footer1_height">75dip</dimen>
+    <dimen name="circle_size">200dip</dimen>
+    <dimen name="circle_size_welcome">100dip</dimen>
+    <dimen name="list_item_height">60dip</dimen>
+    <dimen name="list_item_height_avg">75dip</dimen>
+    <dimen name="list_item_height_avg_above">85dip</dimen>
+    <dimen name="list_item_height_medium">100dip</dimen>
+    <dimen name="list_item_height_large">110dip</dimen>
+    <dimen name="list_item_height_small">45dip</dimen>
+    <dimen name="calendar_header_height">70dip</dimen>
+    <dimen name="calendar_list_height">35dip</dimen>
+    <dimen name="menu_list_size">150dip</dimen>
+    <dimen name="cal_height">360dip</dimen>
+
+    <!-- ===PROFILE DIMEN=== -->
+
+    <dimen name="width_seekbar_toggle">60dp</dimen>
+    <dimen name="height_seekbar_toggle">25dp</dimen>
+    <dimen name="auto_btn_left">10dp</dimen>
+    <dimen name="auto_btn_right">10dp</dimen>
+
+    <!-- YOGA VALUES -->
+    <dimen name="yoga_veganFormat_height">80dp</dimen>
+
+    <!-- VIDEOS VALUES -->
+
+    <dimen name="video_tabs_heigth">50dp</dimen>
+    <!-- Doodle -->
+
+    <!-- HEALTH CARE VALUES -->
+
+    <dimen name="hc_custom_height">180dp</dimen>
+
+    <!-- FOODIE VALUES -->
+
+    <dimen name="button_height_small">40dip</dimen>
+    <dimen name="button_width">120dip</dimen>
+    <dimen name="button_width_large">250dip</dimen>
+    <dimen name="button_width_follow">200dip</dimen>
+    <dimen name="imgView_height">220dp</dimen>
+    <dimen name="comment_img_height">250dip</dimen>
+
+    <!-- ANGEL'S DIET  VALUES -->
+
+    <!-- RECIPES VALUES -->
+    <dimen name="image_height_large">170dip</dimen>
+    <dimen name="logreg_edittext">55dp</dimen>
+
+    <!-- SUGGEST FEATURES VALUES -->
+
+    <dimen name="suggestion_edittext">200dp</dimen>
+
+    <!-- COMMUNITY VALUES -->
+
+    <dimen name="description_edittext">70dp</dimen>
+    <dimen name="around_food_tile_H">155dip</dimen>
+    <dimen name="around_food_tile_W">175dip</dimen>
+
+    <!-- FITNESS CALC VALUES -->
+
+    <!-- CALORIES TRACKER VALUES -->
+
+    <dimen name="copy_save_marginright">70dp</dimen>
+    <dimen name="copy_save_marginleft">50dp</dimen>
+    <dimen name="copy_save_cancel_top">20dp</dimen>
+    <dimen name="copy_save_cancel_right">80dp</dimen>
+    <dimen name="copy_save_cancel_left">50dp</dimen>
+    <dimen name="copy_save_margin_top">15dp</dimen>
+    <dimen name="copy_margin_right">50dp</dimen>
+    <dimen name="copy_margin_left">30dp</dimen>
+    <dimen name="copy_margin_top">15dp</dimen>
+    <dimen name="xls_textsize">22sp</dimen>
+    <dimen name="yesterday_textsize">20sp</dimen>
+    <dimen name="drawer_image_width">110dp</dimen>
+    <dimen name="meal_list_height">40dp</dimen>
+    <dimen name="more_layout_hieght">55dip</dimen>
+
+
+    <!--new_dimen_akkash-->
+    <dimen name="textSize_small_new">22dip</dimen>
+    <dimen name="textSize_extra_small_new">19sp</dimen>
+    <dimen name="textSize_medium_new">23sp</dimen>
+    <dimen name="yesterday_textsize_new">20sp</dimen>
+    <dimen name="header_height_new">50dip</dimen>
+    <dimen name="button_height_new">110dip</dimen>
+    <dimen name="textSize_extra_large_new">28sp</dimen>
+    <dimen name="textSize_medium_large_new">20sp</dimen>
+    <dimen name="edittext_height_new">65dip</dimen>
+    <dimen name="textsize_menu_new">25sp</dimen>
+    <dimen name="search_layout_height_new">70dp</dimen>
+    <!--dash-->
+
+    <dimen name="reminder_submenu_height">60dp</dimen>
+
+    <dimen name="meal_rec_image_height">220dp</dimen>
+</resources>

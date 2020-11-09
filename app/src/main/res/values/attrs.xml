@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LSettingView">
+        <attr name="leftText" format="string" />
+        <attr name="leftIcon" format="integer" />
+        <attr name="rightIcon" format="integer" />
+        <attr name="LtextSize" format="float" />
+        <attr name="LtextColor" format="color" />
+        <attr name="isShowUnderLine" format="boolean" />
+        <attr name="leftIconSize" format="dimension" />
+        <attr name="leftTextMarginLeft" format="dimension" />
+        <attr name="rightStyle" format="enum">
+            <enum name="iconShow" value="0" />
+            <enum name="iconHide" value="1" />
+            <enum name="iconCheck" value="2" />
+            <enum name="iconSwitch" value="3" />
+        </attr>
+        <attr name="isShowRightText" format="boolean" />
+        <attr name="rightText" format="string" />
+        <attr name="rightTextSize" format="float" />
+        <attr name="rightTextColor" format="color" />
+    </declare-styleable>
+    <declare-styleable name="CircleProgressBar">
+        <attr name="min" format="integer" />
+        <attr name="max" format="integer" />
+        <attr name="progress" format="integer" />
+        <attr name="progressbarColor" format="color" />
+        <attr name="progressBarThickness" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="WaveLoadingView">
+        <attr name="wlv_borderWidth" format="dimension" />
+        <attr name="wlv_borderColor" format="color" />
+        <attr name="wlv_progressValue" format="integer" />
+        <attr name="wlv_shapeType" format="enum">
+            <enum name="triangle" value="0" />
+            <enum name="circle" value="1" />
+            <enum name="square" value="2" />
+            <enum name="rectangle" value="3" />
+        </attr>
+        <attr name="wlv_triangle_direction" format="enum">
+            <enum name="north" value="0" />
+            <enum name="south" value="1" />
+            <enum name="east" value="2" />
+            <enum name="west" value="3" />
+        </attr>
+        <attr name="wlv_round_rectangle" format="boolean" />
+        <attr name="wlv_round_rectangle_x_and_y" format="integer" />
+        <attr name="wlv_waveColor" format="color" />
+        <attr name="wlv_wave_background_Color" format="color" />
+        <attr name="wlv_waveAmplitude" format="float" />
+        <attr name="wlv_titleTop" format="string" />
+        <attr name="wlv_titleCenter" format="string" />
+        <attr name="wlv_titleBottom" format="string" />
+        <attr name="wlv_titleTopSize" format="dimension" />
+        <attr name="wlv_titleCenterSize" format="dimension" />
+        <attr name="wlv_titleBottomSize" format="dimension" />
+        <attr name="wlv_titleTopColor" format="color" />
+        <attr name="wlv_titleCenterColor" format="color" />
+        <attr name="wlv_titleBottomColor" format="color" />
+        <attr name="wlv_titleTopStrokeColor" format="color" />
+        <attr name="wlv_titleTopStrokeWidth" format="dimension" />
+        <attr name="wlv_titleBottomStrokeColor" format="color" />
+        <attr name="wlv_titleBottomStrokeWidth" format="dimension" />
+        <attr name="wlv_titleCenterStrokeColor" format="color" />
+        <attr name="wlv_titleCenterStrokeWidth" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="SwipyRefreshLayout">
+        <attr name="srl_direction">
+            <enum name="top" value="0" />
+            <!--<enum name="bottom" value="1" />-->
+            <enum name="both" value="2" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="ReminderRippleView">
+        <attr name="reminder_rv_alpha" format="integer" />
+        <attr name="reminder_rv_framerate" format="integer" />
+        <attr name="reminder_rv_rippleDuration" format="integer" />
+        <attr name="reminder_rv_zoomDuration" format="integer" />
+        <attr name="reminder_rv_color" format="color" />
+        <attr name="reminder_rv_centered" format="boolean" />
+        <attr name="reminder_rv_type" format="enum">
+            <enum name="reminder_simpleRipple" value="0" />
+            <enum name="reminder_doubleRipple" value="1" />
+            <enum name="reminder_rectangle" value="2" />
+        </attr>
+        <attr name="reminder_rv_ripplePadding" format="dimension" />
+        <attr name="reminder_rv_zoom" format="boolean" />
+        <attr name="reminder_rv_zoomScale" format="float" />
+    </declare-styleable>
+    <declare-styleable name="RippleView">
+        <attr name="rippleColor1" format="color" />
+        <attr name="alphaFactor" format="float" />
+        <attr name="hover" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="ProgressWheelMaterial">
+        <attr name="matProg_progressIndeterminate" format="boolean" />
+        <attr name="matProg_barColor" format="color" />
+        <attr name="matProg_rimColor" format="color" />
+        <attr name="matProg_rimWidth" format="dimension" />
+        <attr name="matProg_spinSpeed" format="float" />
+        <attr name="matProg_barSpinCycleTime" format="integer" />
+        <attr name="matProg_circleRadius" format="dimension" />
+        <attr name="matProg_fillRadius" format="boolean" />
+        <attr name="matProg_barWidth" format="dimension" />
+        <attr name="matProg_linearProgress" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="ProgressWheel">
+        <attr name="text" format="string" />
+        <attr name="textColor1" format="color" />
+        <attr name="textSize1" format="dimension" />
+        <attr name="textSize2" format="dimension" />
+        <attr name="barColor" format="color" />
+        <attr name="rimColor" format="color" />
+        <attr name="rimWidth" format="dimension" />
+        <attr name="spinSpeed" format="dimension" />
+        <attr name="delayMillis" format="integer" />
+        <attr name="circleColor1" format="color" />
+        <attr name="radius" format="dimension" />
+        <attr name="barWidth" format="dimension" />
+        <attr name="barLength1" format="dimension" />
+        <attr name="contourColor" format="color" />
+        <attr name="contourSize" format="dimension" />
+        <attr name="stroke_width" format="dimension" />
+
+    </declare-styleable>
+    <declare-styleable name="ProgressWheel1">
+        <attr name="pw_text" format="string" />
+        <attr name="pw_textColor" format="color" />
+        <attr name="pw_textSize" format="dimension" />
+        <attr name="pw_barColor" format="color" />
+        <attr name="pw_rimColor" format="color" />
+        <attr name="pw_rimWidth" format="dimension" />
+        <attr name="pw_spinSpeed" format="dimension" />
+        <attr name="pw_delayMillis" format="integer" />
+        <attr name="pw_circleColor" format="color" />
+        <attr name="pw_radius2" format="dimension" />
+        <attr name="pw_barWidth" format="dimension" />
+        <attr name="pw_barLength" format="dimension" />
+        <attr name="pw_contourColor" format="color" />
+        <attr name="pw_contourSize" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="CircularImageView">
+
+        <!-- Specifies whether or not to draw a circular border around the image. -->
+        <attr name="border" format="boolean"></attr>
+        <!-- Specifies the color of the border draw around the image. (if enabled) -->
+        <attr name="border_color" format="color"></attr>
+        <!-- Makes the border this pixels wide. (if enabled) -->
+        <attr name="border_width" format="dimension"></attr>
+        <!-- Specifies whether or not to draw a selector on this view upon touch events. -->
+        <attr name="selector" format="boolean"></attr>
+        <!-- Specifies the color of the selector draw on top of the image upon touch events. (if enabled) -->
+        <attr name="selector_color" format="color"></attr>
+        <!-- Specifies the color of the selector stroke drawn around the image upon touch events. Be sure to provide some opacity. (if enabled) -->
+        <attr name="selector_stroke_color" format="color"></attr>
+        <!-- Makes the selector stroke drawn around the image upon touch events this pixels wide. (if enabled) -->
+        <attr name="selector_stroke_width" format="dimension"></attr>
+        <!-- Specifies whether or not to draw a shadow around your circular image. -->
+        <attr name="shadow" format="boolean"></attr>
+    </declare-styleable>
+    <declare-styleable name="SwitchButton">
+        <attr name="kswThumbDrawable" format="reference" />
+        <attr name="kswThumbColor" format="color|reference" />
+        <attr name="kswThumbMargin" format="dimension|reference" />
+        <attr name="kswThumbMarginTop" format="dimension|reference" />
+        <attr name="kswThumbMarginBottom" format="dimension|reference" />
+        <attr name="kswThumbMarginLeft" format="dimension|reference" />
+        <attr name="kswThumbMarginRight" format="dimension|reference" />
+        <attr name="kswThumbWidth" format="dimension|reference" />
+        <attr name="kswThumbHeight" format="dimension|reference" />
+        <attr name="kswThumbRadius" format="dimension|reference" />
+        <attr name="kswBackRadius" format="dimension|reference" />
+        <attr name="kswBackDrawable" format="reference" />
+        <attr name="kswBackColor" format="color|reference" />
+        <attr name="kswFadeBack" format="boolean" />
+        <attr name="kswBackMeasureRatio" format="float" />
+        <attr name="kswAnimationDuration" format="integer" />
+        <attr name="kswTintColor" format="color|reference" />
+        <attr name="kswTextOn" format="string" />
+        <attr name="kswTextOff" format="string" />
+        <attr name="kswTextMarginH" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="AVLoadingIndicatorView">
+        <attr name="minWidth" format="dimension" />
+        <attr name="maxWidth" format="dimension" />
+        <attr name="minHeight" format="dimension" />
+        <attr name="maxHeight" format="dimension" />
+        <attr name="indicatorName" format="string" />
+        <attr name="indicatorColor" format="color" />
+    </declare-styleable>
+    <declare-styleable name="VerticalLabelView">
+        <attr name="text_v" format="string" />
+        <attr name="textColor_v" format="color" />
+        <attr name="textSize_v" format="dimension" />
+    </declare-styleable>
+
+    <attr name="home_heart_bp" format="reference|color" />
+    <attr name="backgroundColor" format="reference|color" />
+    <attr name="backgroundShade" format="reference|color" />
+    <attr name="textColorMain" format="reference|color" />
+    <attr name="textColorSteps" format="reference|color" />
+    <attr name="textColorCalories" format="reference|color" />
+    <attr name="textColorDistance" format="reference|color" />
+    <attr name="textColorGlass" format="reference|color" />
+    <attr name="textColorHeartRate" format="reference|color" />
+    <attr name="textColorSleep" format="reference|color" />
+    <attr name="textColorStepStart" format="reference|color" />
+    <attr name="textColorStepEnd" format="reference|color" />
+    <attr name="textColorDistanceStart" format="reference|color" />
+    <attr name="textColorDistanceEnd" format="reference|color" />
+    <attr name="textColorCaloriesStart" format="reference|color" />
+    <attr name="textColorCaloriesEnd" format="reference|color" />
+    <attr name="textColorMainUnit" format="reference|color" />
+    <attr name="NextButtonBackColor" format="reference|color" />
+    <attr name="textColorhint" format="reference|color" />
+    <attr name="BackCircleColor" format="reference|color" />
+    <attr name="promptcolor" format="reference|color" />
+    <declare-styleable name="RadarScanView">
+        <attr name="circleColor" format="color" />
+        <attr name="radarColor" format="color" />
+        <attr name="tailColor" format="color" />
+    </declare-styleable>
+    <declare-styleable name="StickyScrollView">
+        <attr name="stuckShadowHeight" format="dimension" />
+        <attr name="stuckShadowDrawable" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="UnlockView">
+        <attr name="tintColor" format="color" />
+        <attr name="backgroundColor_Unlock" format="color" />
+        <attr name="space" format="dimension" />
+        <attr name="trigger" format="float" />
+        <attr name="animationTimeDuration" format="integer" />
+        <attr name="tintAnimationDuration" format="integer" />
+        <attr name="tin" format="boolean" />
+
+    </declare-styleable>
+    <declare-styleable name="ShimmerLayout">
+        <attr name="shimmer_color" format="color|reference" />
+        <attr name="shimmer_animation_duration" format="integer|reference" />
+        <attr name="shimmer_auto_start" format="boolean|reference" />
+        <attr name="shimmer_angle" format="integer|reference" />
+        <attr name="shimmer_mask_width" format="float|reference" />
+        <attr name="shimmer_gradient_center_color_width" format="float|reference" />
+        <attr name="shimmer_reverse_animation" format="boolean|reference" />
+    </declare-styleable>
+    <declare-styleable name="LuckyWheelView">
+        <attr name="lkwBackgroundColor" format="color" />
+        <attr name="lkwCursor" format="reference" />
+        <attr name="lkwCenterImage" format="reference" />
+        <attr name="lkwEdgeColor" format="color" />
+        <attr name="lkwEdgeWidth" format="integer" />
+        <attr name="lkwTopTextColor" format="color" />
+        <attr name="lkwTopTextPadding" format="dimension" />
+        <attr name="lkwTopTextSize" format="dimension" />
+        <attr name="lkwSecondaryTextSize" format="dimension" />
+    </declare-styleable>
+</resources>

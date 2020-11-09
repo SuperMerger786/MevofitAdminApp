@@ -1,0 +1,297 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="dip_size_5">5dp</dimen>
+    <dimen name="dip_size_8">8dp</dimen>
+    <dimen name="Roboto_10sp">10dp</dimen>
+    <dimen name="dip_size_12">12dp</dimen>
+    <dimen name="dip_size_14">14dp</dimen>
+    <dimen name="dip_size_16">16dp</dimen>
+    <dimen name="dip_size_18">18dp</dimen>
+    <dimen name="dip_size_20">20dp</dimen>
+    <dimen name="dip_size_22">22dp</dimen>
+    <dimen name="dip_size_24">24dp</dimen>
+    <dimen name="dip_size_30">30dp</dimen>
+    <dimen name="dip_size_60">60dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="grapheight">220dp</dimen>
+    <dimen name="grapheight_new">250dp</dimen>
+    <dimen name="grapheight_new_">185dp</dimen>
+
+    <dimen name="adsheight">50dp</dimen>
+    <dimen name="back_padding">0dip</dimen>
+    <dimen name="image_thumbnail_size">100dip</dimen>
+    <dimen name="button_height">50dip</dimen>
+    <dimen name="edittext_height">42dip</dimen>
+    <dimen name="edittext_width">150dip</dimen>
+    <dimen name="edittext_width_small">120dip</dimen>
+    <dimen name="textSize_extra_small">12dip</dimen>
+    <dimen name="textSize_small">16sp</dimen>
+    <dimen name="textSize_medium">18sp</dimen>
+    <dimen name="textSize_medium_large">20dip</dimen>
+    <dimen name="textSize_large">24dip</dimen>
+    <dimen name="textSize_training">21dip</dimen>
+    <dimen name="textSize_extra_large">28dip</dimen>
+    <dimen name="textSize_exxtra_large">35dip</dimen>
+    <dimen name="textSize_extra_xxl">50dip</dimen>
+    <dimen name="textsize_menu">18sp</dimen>
+    <dimen name="age_bottom_height">100dip</dimen>
+    <dimen name="header_right_padding">4dp</dimen>
+    <dimen name="navmenuitem_icon_height">22dp</dimen>
+
+    <!-- <dimen name="header_height">50dip</dimen> -->
+    <dimen name="dash_text_small">10sp</dimen>
+    <!-- begining   temp value -->
+    <dimen name="button_width_medium">150dip</dimen>
+    <!-- End   temp value -->
+
+    <dimen name="header_height">50dip</dimen>
+    <dimen name="header_height_strip">50dip</dimen>
+    <dimen name="header_height_small">20dip</dimen>
+    <dimen name="calendar_header_height">70dip</dimen>
+    <dimen name="header_height_large">70dip</dimen>
+    <dimen name="calorei_top_container">90dip</dimen>
+
+    <dimen name="footer_main_height">40dip</dimen>
+
+    <dimen name="search_layout_height">70dp</dimen>
+    <dimen name="footer1_height">75dip</dimen>
+    <dimen name="circle_size">200dip</dimen>
+    <dimen name="circle_size_welcome">100dip</dimen>
+    <dimen name="list_item_height">60dip</dimen>
+    <dimen name="list_item_height_x">75dip</dimen>
+    <dimen name="list_item_height_avg">75dip</dimen>
+    <dimen name="list_item_height_avg_above">95dip</dimen>
+    <dimen name="list_item_height_medium">100dip</dimen>
+    <dimen name="list_item_height_large">110dip</dimen>
+    <dimen name="list_item_height_small">45dip</dimen>
+
+    <dimen name="calendar_list_height">35dip</dimen>
+    <dimen name="menu_list_size">150dip</dimen>
+    <dimen name="cal_height">360dip</dimen>
+
+
+    <!-- ===PROFILE DIMEN=== -->
+
+    <dimen name="width_seekbar_toggle">60dp</dimen>
+    <dimen name="height_seekbar_toggle">25dp</dimen>
+    <dimen name="auto_btn_left">10dp</dimen>
+    <dimen name="auto_btn_right">10dp</dimen>
+
+    <!-- YOGA VALUES -->
+    <dimen name="yoga_veganFormat_height">80dp</dimen>
+
+    <!-- VIDEOS VALUES -->
+
+    <dimen name="video_tabs_heigth">50dp</dimen>
+    <!-- Doodle -->
+
+    <!-- HEALTH CARE VALUES -->
+
+    <dimen name="hc_custom_height">180dp</dimen>
+
+    <!-- FOODIE VALUES -->
+
+    <dimen name="button_height_small">40dip</dimen>
+    <dimen name="button_width">120dip</dimen>
+    <dimen name="button_width_large">250dip</dimen>
+    <dimen name="button_width_follow">200dip</dimen>
+    <dimen name="imgView_height">220dp</dimen>
+    <dimen name="comment_img_height">250dip</dimen>
+
+    <!-- FITNESS CALC VALUES -->
+
+    <!-- ANGEL'S DIET  VALUES -->
+
+    <!-- RECIPES VALUES -->
+    <dimen name="image_height_large">170dip</dimen>
+    <dimen name="logreg_edittext">35dp</dimen>
+
+    <!-- SUGGEST FEATURES VALUES -->
+
+    <dimen name="suggestion_edittext">200dp</dimen>
+
+    <!-- COMMUNITY VALUES -->
+
+    <dimen name="description_edittext">70dp</dimen>
+    <dimen name="around_food_tile_H">155dip</dimen>
+    <dimen name="around_food_tile_W">175dip</dimen>
+
+    <!-- CALORIES TRACKER VALUES -->
+
+    <dimen name="copy_save_marginright">40dp</dimen>
+    <dimen name="copy_save_marginleft">30dp</dimen>
+    <dimen name="copy_save_cancel_top">10dp</dimen>
+    <dimen name="copy_save_cancel_right">40dp</dimen>
+    <dimen name="copy_save_cancel_left">20dp</dimen>
+    <dimen name="copy_save_margin_top">15dp</dimen>
+    <dimen name="copy_margin_right">30dp</dimen>
+    <dimen name="copy_margin_left">30dp</dimen>
+    <dimen name="copy_margin_top">15dp</dimen>
+    <dimen name="xls_textsize">22sp</dimen>
+    <dimen name="yesterday_textsize">14sp</dimen>
+    <dimen name="drawer_image_width">65dp</dimen>
+    <dimen name="meal_list_height">25dp</dimen>
+    <dimen name="calorie_margin_circles">10dp</dimen>
+
+
+    <!-- SLEEP VALUES -->
+    <dimen name="sleep_toggle_width">50dp</dimen>
+    <dimen name="sleep_toggle_height">35dp</dimen>
+    <dimen name="sleep_btn_left">15dp</dimen>
+    <dimen name="quiz_radio_padding">5dp</dimen>
+    <dimen name="workout_category_list_height">35dp</dimen>
+    <dimen name="list_item_height_small_x">55dp</dimen>
+
+
+    <dimen name="wt_collage_width">320dp</dimen>
+    <dimen name="wt_collage_height">300dp</dimen>
+    <dimen name="community_header_add_height">80dp</dimen>
+
+    <dimen name="banner_height">180dp</dimen>
+    <dimen name="textsize_extra_xx">42sp</dimen>
+    <dimen name="header_height_avg">40dp</dimen>
+    <dimen name="list_item_height_extra_small">45dp</dimen>
+    <dimen name="dashboardcard_header_height">45dp</dimen>
+    <dimen name="dashboard_card_footer_height">60dp</dimen>
+
+    <dimen name="wt_card_height">300dp</dimen>
+    <dimen name="merchendise_header">180dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="widthheight_exercise">75dp</dimen>
+
+    <!--new_dimen_akkash-->
+    <dimen name="banner_height_new">180dp</dimen>
+    <dimen name="textSize_small_new">16sp</dimen>
+    <dimen name="textSize_extra_small_new">12sp</dimen>
+    <dimen name="textSize_medium_new">18sp</dimen>
+    <dimen name="yesterday_textsize_new">14sp</dimen>
+    <dimen name="header_height_new">50dip</dimen>
+    <dimen name="button_height_new">50dip</dimen>
+    <dimen name="textSize_extra_large_new">28sp</dimen>
+    <dimen name="textSize_medium_large_new">20sp</dimen>
+    <dimen name="search_edittext_height">35dp</dimen>
+    <dimen name="search_edittext_height_new">38dp</dimen>
+    <dimen name="edittext_height_new">42dip</dimen>
+    <dimen name="view_dimen">1dp</dimen>
+    <dimen name="textsize_menu_new">18sp</dimen>
+    <dimen name="search_layout_height_new">70dp</dimen>
+    <!--social_main-->
+    <!--workout_exercise_format-->
+    <dimen name="workout_exercise_format_margin">5dp</dimen>
+    <dimen name="exercise_main_search_corner_radius">4dp</dimen>
+    <dimen name="exercise_add_rl_clock_height">150dp</dimen>
+    <!--workout_main-->
+    <dimen name="workout_main_lower_card_margin">10dp</dimen>
+    <!--dash-->
+    <dimen name="banner_height_large">200dp</dimen>
+    <integer name="dash_calories_text_image_space">2</integer>
+    <integer name="dash_calories_text_text_space">25</integer>
+
+    <!--profile_main_new-->
+    <dimen name="profile_main_new_header_height">250dp</dimen>
+    <dimen name="profile_main_new_header_heigh_part_one">150dp</dimen>
+    <dimen name="profile_main_new_header_height_part_two">100dp</dimen>
+
+    <dimen name="list_row_height">80dp</dimen>
+
+
+    <dimen name="item_width">270dp</dimen>
+    <dimen name="padding_item_width1">20dp</dimen>
+
+    <!--Reminders -->
+    <dimen name="marginleft_remindermain">5dp</dimen>
+    <dimen name="txtsize_small_remindermain">13sp</dimen>
+    <dimen name="txtsize_medium_remindermain">17sp</dimen>
+    <dimen name="txtsize_medium_reminder_time">16sp</dimen>
+    <dimen name="reminder_submenu_height">60dp</dimen>
+
+
+    <!--Togglebutton-->
+    <dimen name="ksw_md_thumb_ripple_size">42dp</dimen>
+    <dimen name="ksw_md_thumb_solid_inset">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset_top">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset_bottom">10dp</dimen>
+
+    <dimen name="tips_category_height">125dp</dimen>
+    <dimen name="textsize_notification_large">25dip</dimen>
+    <dimen name="textsize_notification_medium">20dip</dimen>
+    <dimen name="textsize_14">14sp</dimen>
+    <dimen name="textsize_12">12sp</dimen>
+    <!--Togglebutton-->
+
+    <!--TOOLTIPS-->
+    <dimen name="downwards_drop_shadow_height">16dp</dimen>
+    <dimen name="text_size_pedo">38sp</dimen>
+    <dimen name="popup_width">120dp</dimen>
+
+
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="preview_pager_top_margin">280dp</dimen>
+    <dimen name="preview_pager_height">450dp</dimen>
+    <dimen name="text_size_small_extra">10sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="size_14">14sp</dimen>
+    <dimen name="size_12">12sp</dimen>
+    <dimen name="text_size_large">24sp</dimen>
+    <dimen name="text_size_large_extra">32sp</dimen>
+    <dimen name="text_size_65">65sp</dimen>
+    <dimen name="text_size_60">60sp</dimen>
+    <dimen name="tracking_summary_map_h">200dp</dimen>
+    <dimen name="item_height_60">60dp</dimen>
+    <dimen name="item_height_75">75dp</dimen>
+    <dimen name="text_size_36">36sp</dimen>
+    <dimen name="run_summary_moticon_h">80dp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="dashboard_card_header_size">19sp</dimen>
+    <dimen name="dash_calories_side_progress_width_height">90dp</dimen>
+    <dimen name="dash_calories_center_progress_width_height">140dp</dimen>
+    <dimen name="dashboard_card_glass">40dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="meal_image_height">265dp</dimen>
+
+    <dimen name="scale_line_small">12dp</dimen>
+    <dimen name="scale_line_medium">25dp</dimen>
+    <dimen name="scale_line_large">39dp</dimen>
+    <dimen name="text_start_point">90dp</dimen>
+    <dimen name="yellow_line_stroke_width">3dp</dimen>
+
+    <!-- Band Dimens -->
+
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <!--<dimen name="activity_horizontal_margin">16dp</dimen>-->
+    <!--<dimen name="activity_vertical_margin">16dp</dimen>-->
+    <!--<dimen name="fab_margin">16dp</dimen>-->
+
+    <!--<dimen name="ksw_md_thumb_ripple_size">42dp</dimen>-->
+    <!--<dimen name="ksw_md_thumb_solid_inset">11dp</dimen>-->
+    <!--<dimen name="ksw_md_thumb_shadow_inset">11dp</dimen>-->
+    <!--<dimen name="ksw_md_thumb_shadow_inset_top">11dp</dimen>-->
+    <!--<dimen name="ksw_md_thumb_shadow_inset_bottom">10dp</dimen>-->
+
+    <!--<dimen name="ksw_md_thumb_solid_size">20dp</dimen>-->
+    <!--<dimen name="ksw_md_thumb_shadow_size">21dp</dimen>-->
+    <!--<dimen name="ksw_md_thumb_shadow_offset">2dp</dimen>-->
+
+    <dimen name="indicator_right_padding">10dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">12dp</dimen>
+    <dimen name="user_detail_value_width">150dp</dimen>
+    <dimen name="fill_user_box">250dp</dimen>
+
+    <dimen name="default_circle_width">1dp</dimen>
+    <dimen name="default_circle_background_width">0dp</dimen>
+    <dimen name="megouser_zomato_profile_btn_height_new1">0dp</dimen>
+
+
+    <dimen name="margin_medium">16dp</dimen>
+
+</resources>

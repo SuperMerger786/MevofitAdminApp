@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="false"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp30"
+            android:layout_marginRight="@dimen/dp30">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mainContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp15"
+                app:cardBackgroundColor="@color/deep_white"
+                app:cardCornerRadius="@dimen/dp5"
+                card_view:elevation="@dimen/dp5">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:layout_toLeftOf="@+id/icon"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/dp5"
+                    android:paddingBottom="@dimen/dp45">
+
+                    <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/dp5"
+                        android:layout_marginBottom="@dimen/dp5"
+                        android:text="Upcoming Classes"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textlight"
+                        android:textSize="@dimen/sp14" />
+
+                    <com.app.newuidashboardadmin.font.FiraSansMediumTextView
+                        android:id="@+id/tv_title_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:maxLines="2"
+                        android:text="Mediation|HR"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp16" />
+
+                    <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                        android:id="@+id/tv_upcome_duration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:gravity="center"
+                        android:text="@string/bandra_disc"
+                        android:textColor="@color/setting_subheading"
+                        android:textSize="@dimen/sp13" />
+
+                    <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Individual Challenge"
+                        android:textColor="@color/deep_white"
+                        android:textSize="@dimen/Roboto_14sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <com.app.newuidashboardadmin.font.FiraSansMediumTextView
+            android:layout_width="@dimen/dp100"
+            android:layout_height="@dimen/dp35"
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="@dimen/dp45"
+            android:background="@drawable/btn_green_solid30"
+            android:gravity="center"
+            android:text="View Detail"
+            android:textColor="@color/deep_white"
+            android:textSize="@dimen/sp12" />
+
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@color/deep_white"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/dp55"
+            android:layout_height="@dimen/dp55"
+            android:scaleType="centerCrop"
+            android:src="@drawable/banner_menu" />
+
+
+        <com.app.newuidashboardadmin.font.LatoBlackTextView
+            android:id="@+id/tvName"
+            android:layout_width="@dimen/dp55"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/dp5"
+            android:gravity="center"
+            android:text="Personal Trainer"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp10" />
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
