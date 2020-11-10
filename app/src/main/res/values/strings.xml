@@ -2846,5 +2846,5 @@ Note: Wear the band while you sleep and sync data to view the same</string>
     <string name="bluetooth_connectio_trouble_desc">As observed some connection issues have been found. Kindly allow the app to manually reset your phone\'s bluetooth to maintain stable connection.</string>
     <string name="bluetooth_reset">BLUETOOTH RESET</string>
     <string name="bluetooth_reset_desc">Kindly allow the app to manually reset your phone\'s bluetooth to maintain stable connection. The app will switch off and then switch on the bluetooth to improve connection</string>
-
+<string name="choose_file">Choose File</string>
 </resources>

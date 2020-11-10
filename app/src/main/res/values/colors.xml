@@ -35,4 +35,7 @@
     <color name="newui_yello_color_s">#ffa44c</color>
     <color name="login_siginup_s">#3b4b5a</color>
     <color name="login_siginup_subtitlt">#6a727b</color>
+    <color name="header_color">#c2d3f1</color>
+    <color name="promptcolor">#ffffff</color>
+    <color name="separatorline">#d8d8d8</color>
 </resources>
