@@ -12,6 +12,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.app.newuidashboardadmin.plan.BookingListFragment;
+import com.app.newuidashboardadmin.plan.PlanConfigurationMainFragment;
 import com.app.newuidashboardadmin.planner.PlanWorkout;
 
 
@@ -149,11 +151,11 @@ public class AdminUI extends AppCompatActivity  {
             if (position == 0) {
                 return tabListFragment;
             } else if (position == 2) {
-                return new AdminDashBoardNewFragment();
+                return new PlanConfigurationMainFragment();
             } else if (position == 1) {
-                return new AdminDashBoardNewFragment();
+                return new BookingListFragment();
             } else if (position == 4) {
-                return new PlanWorkout();
+                return new AdminDashBoardNewFragment();
 
             } else {
                 return new AdminDashBoardNewFragment();

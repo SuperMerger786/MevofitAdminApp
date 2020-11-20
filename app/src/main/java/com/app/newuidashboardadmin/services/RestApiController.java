@@ -1,6 +1,8 @@
 package com.app.newuidashboardadmin.services;
 
 import android.content.Context;
+
+import com.app.newuidashboardadmin.plan.bean.request.GetSellerBookingSlotsRequest;
 import com.app.newuidashboardadmin.todaysbooking.BookingTokSIDRequest;
 import com.megogrid.megoauth.AuthorisedPreference;
 
@@ -70,6 +72,10 @@ public class RestApiController implements Response {
     }*/
 
     public void makemebasedRequest(BookingTokSIDRequest request) {
+        client.Communicate(bookingUrl, request, responseType);
+    }
+
+    public void fetchBookingHisory(GetSellerBookingSlotsRequest request) {
         client.Communicate(bookingUrl, request, responseType);
     }
 

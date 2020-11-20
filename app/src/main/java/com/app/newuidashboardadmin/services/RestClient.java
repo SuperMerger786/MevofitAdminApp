@@ -34,6 +34,7 @@ public class RestClient {public int responseType = 0;
     }
 
     public void Communicate(String url, Object value, int responseType) {
+        System.out.println("RestClient.Communicate url "+url);
         this.responseType = responseType;
         try {
 

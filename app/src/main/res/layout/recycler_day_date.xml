@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/parent"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:background="@drawable/day_week_bg"
+              android:layout_margin="10dp"
+              android:padding="7dp"
+              android:gravity="center_horizontal">
+
+    <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+        android:id="@+id/day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WED"
+        android:maxLength="3"
+        android:textAllCaps="true"
+        android:textSize="@dimen/sp11"
+        android:layout_marginBottom="5dp"
+        android:textColor="#818181" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/white_circle"
+        android:textColor="#2E2D2D"
+        android:text="03" />
+
+    <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+        android:id="@+id/slotcount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10 slots"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        android:textSize="@dimen/dp8"
+        android:textColor="#818181" />
+
+
+</LinearLayout>
