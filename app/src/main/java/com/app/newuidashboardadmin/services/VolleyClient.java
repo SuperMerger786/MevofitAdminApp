@@ -107,7 +107,6 @@ public class VolleyClient {
 //            reqeustJsonPost.setRetryPolicy(new DefaultRetryPolicy(30000, 0, 1f));
             reqeustJsonPost.setShouldCache(false);
             new Thread(new Runnable() {
-
                 @Override
                 public void run() {
                     reqeustJsonPost.setRetryPolicy(new DefaultRetryPolicy((int) TimeUnit.SECONDS

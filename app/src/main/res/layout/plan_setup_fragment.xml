@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/dp230"
+              android:padding="15dp"
+              android:layout_gravity="center"
+              android:orientation="vertical"
+              android:background="#ffffff">
+
+    <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp14"
+        android:text="Single Session"
+        android:id="@+id/session_titel"
+        android:textColor="#48526A"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/dp10" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp20"
+        android:orientation="horizontal">
+
+        <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp12"
+            android:text="TIME"
+            android:textColor="#48526A"
+            android:gravity="center_vertical"
+            android:layout_gravity="center"
+            android:drawablePadding="@dimen/dp10" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp11"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:layout_gravity="center"
+            android:textColor="#48526A"
+            android:padding="7dp"
+            android:background="@drawable/grey_border_container"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp20"
+        android:orientation="horizontal">
+
+        <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp12"
+            android:text="SESSION"
+            android:textColor="#48526A"
+            android:gravity="center_vertical"
+            android:layout_gravity="center"
+            android:drawablePadding="@dimen/dp10" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/session"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp11"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:layout_gravity="center"
+            android:textColor="#48526A"
+            android:padding="7dp"
+            android:background="@drawable/grey_border_container"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp20"
+        android:orientation="horizontal">
+
+        <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp12"
+            android:text="PRICE"
+            android:textColor="#48526A"
+            android:gravity="center_vertical"
+            android:layout_gravity="center"
+            android:drawablePadding="@dimen/dp10" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp11"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:layout_gravity="center"
+            android:textColor="#48526A"
+            android:padding="7dp"
+            android:background="@drawable/grey_border_container"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp15"
+        android:layout_marginLeft="@dimen/dp20"
+        android:layout_marginRight="@dimen/dp25">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp40"
+                android:text="SAVE"
+                android:background="@drawable/background_signup_us" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentRight="true">
+
+                <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColor="#ACACAC"
+                    android:text="OFF" />
+                <Switch
+                    android:id="@+id/switchonoff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:layout_marginRight="@dimen/dp10"
+                    android:buttonTint="@color/exercise_header"
+                    android:textSize="@dimen/sp15"
+                    android:textColor="#48526A" />
+                <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColor="#7E7E7E"
+                    android:text="ON" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -3,7 +3,9 @@ package com.app.newuidashboardadmin.plan.bean;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class SlotData {
+import java.io.Serializable;
+
+public class SlotData implements Serializable {
 
     @SerializedName("store_id")
     @Expose public String store_id;

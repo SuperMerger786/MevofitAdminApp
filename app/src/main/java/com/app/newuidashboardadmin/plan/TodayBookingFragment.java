@@ -1,11 +1,15 @@
 package com.app.newuidashboardadmin.plan;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.newuidashboardadmin.R;
 import com.app.newuidashboardadmin.plan.adapter.BookingListAdapter;
@@ -43,6 +47,7 @@ public class TodayBookingFragment extends Fragment {
         View view = inflater.inflate(R.layout.today_booking_slot_fragment, container, false);
         currentdate = Calendar.getInstance();
         initView(view);
+        System.out.println("TodayBookingFragment.onCreateView internet check "+Check());
         return view;
     }
 
@@ -132,6 +137,18 @@ public class TodayBookingFragment extends Fragment {
         GetSellerBookingSlotsRequest getSellerBookingSlotsRequest = new GetSellerBookingSlotsRequest(getContext(), slotdate);
         restApiController.fetchBookingHisory(getSellerBookingSlotsRequest);
 
+    }
+    public Boolean Check() {
+        ConnectivityManager cn = (ConnectivityManager) getContext()
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo nf = cn.getActiveNetworkInfo();
+        if (nf != null && nf.isConnected() == true) {
+            return true;
+        } else {
+            Toast.makeText(getContext(), "No internet connection.!",
+                    Toast.LENGTH_LONG).show();
+            return false;
+        }
     }
 
 }

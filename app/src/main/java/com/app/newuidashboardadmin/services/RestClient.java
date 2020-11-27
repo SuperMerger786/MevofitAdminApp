@@ -44,7 +44,7 @@ public class RestClient {public int responseType = 0;
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url,
                         jsonObject, createResponseListener(),
                         createErrorListener());
-                jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(20 * 1000, 0,
+                jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(60 * 1000, 0,
                         DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                 jsonObjectRequest.setShouldCache(false);
                 queue.add(jsonObjectRequest);
