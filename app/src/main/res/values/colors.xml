@@ -38,4 +38,6 @@
     <color name="header_color">#c2d3f1</color>
     <color name="promptcolor">#ffffff</color>
     <color name="separatorline">#d8d8d8</color>
+    <color name="social_grey_bg">#ececec</color>
+    <color name="bottom_tab_color">#2e3955</color>
 </resources>

@@ -85,17 +85,17 @@
                             android:layout_height="wrap_content"
                             android:src="@drawable/icon_coach_drawable" />
 
-                        <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                        <com.app.newuidashboardadmin.font.FiraSansBoldTextView
                             android:id="@+id/tab_text1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/icon_tab1"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="5dp"
-                            android:text="@string/bottom_home"
-                            android:textColor="@color/setting_subheading"
-                            android:textSize="@dimen/Roboto_10sp"
-                            android:visibility="gone" />
+                            android:layout_marginTop="@dimen/dp6"
+                            android:text="DASHBOARD"
+                            android:textColor="@color/bottom_tab_color"
+                            android:textSize="@dimen/sp10"
+                            android:visibility="visible" />
 
                     </LinearLayout>
 
@@ -128,18 +128,19 @@
                             android:id="@+id/icon_tab2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/icon_food_drawable" />
+                            android:src="@drawable/icon_plan_drawable" />
 
-                        <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                        <com.app.newuidashboardadmin.font.FiraSansBoldTextView
                             android:id="@+id/tab_text2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/icon_tab2"
-                            android:layout_marginTop="5dp"
-                            android:text="@string/bottom_community"
-                            android:textColor="@color/setting_subheading"
-                            android:textSize="@dimen/Roboto_10sp"
-                            android:visibility="gone" />
+                            android:layout_marginTop="@dimen/dp6"
+                            android:text="Plan"
+                            android:textAllCaps="true"
+                            android:textColor="@color/bottom_tab_color"
+                            android:textSize="@dimen/sp10"
+                            android:visibility="visible" />
                     </LinearLayout>
 
 
@@ -172,7 +173,7 @@
                             android:id="@+id/icon_tab3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/icon_food_drawable" />
+                            android:src="@drawable/icon_booking_drawable" />
                         <!-- <com.mig.server.utils.RobotoRegularTextView
                              android:id="@+id/tab_text3"
                              android:layout_width="wrap_content"
@@ -183,16 +184,17 @@
                              android:textColor="@color/setting_subheading"
                              android:textSize="@dimen/Roboto_10sp" />-->
 
-                        <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                        <com.app.newuidashboardadmin.font.FiraSansBoldTextView
                             android:id="@+id/tab_text3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/icon_tab3"
-                            android:layout_marginTop="5dp"
-                            android:text="@string/challenges"
-                            android:textColor="@color/setting_subheading"
-                            android:textSize="@dimen/Roboto_10sp"
-                            android:visibility="gone" />
+                            android:layout_marginTop="@dimen/dp6"
+                            android:text="Booking"
+                            android:textAllCaps="true"
+                            android:textColor="@color/bottom_tab_color"
+                            android:textSize="@dimen/sp10"
+                            android:visibility="visible" />
                     </LinearLayout>
 
 
@@ -224,7 +226,7 @@
                             android:id="@+id/icon_tab6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/icon_social" />
+                            android:src="@drawable/icon_client" />
                         <!-- <com.mig.server.utils.RobotoRegularTextView
                              android:id="@+id/tab_text3"
                              android:layout_width="wrap_content"
@@ -235,16 +237,17 @@
                              android:textColor="@color/setting_subheading"
                              android:textSize="@dimen/Roboto_10sp" />-->
 
-                        <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                        <com.app.newuidashboardadmin.font.FiraSansBoldTextView
                             android:id="@+id/tab_text6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/icon_tab3"
-                            android:layout_marginTop="5dp"
-                            android:text="@string/challenges"
-                            android:textColor="@color/setting_subheading"
-                            android:textSize="@dimen/Roboto_10sp"
-                            android:visibility="gone" />
+                            android:layout_marginTop="@dimen/dp6"
+                            android:text="Client"
+                            android:textAllCaps="true"
+                            android:textColor="@color/bottom_tab_color"
+                            android:textSize="@dimen/sp10"
+                            android:visibility="visible" />
                     </LinearLayout>
 
 
@@ -278,16 +281,17 @@
                             android:layout_height="wrap_content"
                             android:src="@drawable/icon_me_drawable" />
 
-                        <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                        <com.app.newuidashboardadmin.font.FiraSansBoldTextView
                             android:id="@+id/tab_text4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/icon_tab4"
-                            android:layout_marginTop="5dp"
-                            android:text="@string/tips"
-                            android:textColor="@color/setting_subheading"
-                            android:textSize="@dimen/Roboto_10sp"
-                            android:visibility="gone" />
+                            android:layout_marginTop="@dimen/dp6"
+                            android:text="Planner"
+                            android:textAllCaps="true"
+                            android:textColor="@color/bottom_tab_color"
+                            android:textSize="@dimen/sp10"
+                            android:visibility="visible" />
 
                     </LinearLayout>
 

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/social_grey_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_height"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/header_color"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp10"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:id="@+id/rl_challengeHeaderLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/frag_menu_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="false"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/dp10"
+                android:src="@drawable/back_button_newui"
+                android:visibility="visible" />
+
+            <com.app.newuidashboardadmin.font.LatoBoldTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="Workout"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSize_medium" />
+
+            <ImageView
+                android:id="@+id/iv_pre_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="@dimen/dp15"
+                android:src="@drawable/newui_bell"
+                android:visibility="gone" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/dp5"
+            android:text="create workout"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp15" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:orientation="vertical">
+
+            <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Workout Name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dp18" />
+
+            <EditText
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp50"
+                android:background="@drawable/edittextbackground" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Select Excercise"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dp18" />
+
+                <Spinner
+                    android:id="@+id/selectSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp50"
+                    android:background="@drawable/edittextbackground"
+                    android:dropDownSelector="@drawable/reminder_arrow_open" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:layout_gravity="bottom"
+                android:src="@drawable/menu_seleted" />
+
+            <ImageView
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:layout_gravity="bottom"
+                android:src="@drawable/workout_add_s" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp50"
+                    android:layout_marginLeft="@dimen/dp2"
+                    android:layout_marginRight="@dimen/dp2"
+                    android:layout_weight="1"
+                    android:background="@drawable/edittextbackground"
+                    android:dropDownSelector="@drawable/reminder_arrow_open" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp50"
+                    android:layout_weight="1"
+                    android:background="@drawable/edittextbackground" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp50"
+                    android:layout_marginLeft="@dimen/dp2"
+                    android:layout_marginRight="@dimen/dp2"
+                    android:layout_weight="1"
+                    android:background="@drawable/edittextbackground"
+                    android:dropDownSelector="@drawable/reminder_arrow_open" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:layout_gravity="bottom"
+                android:src="@drawable/menu_seleted" />
+
+            <ImageView
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:layout_gravity="bottom"
+                android:src="@drawable/workout_add_s" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp10"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estimate Time"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dp18" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp50"
+                    android:background="@drawable/edittextbackground" />
+
+            </LinearLayout>
+            <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="minutes"
+                android:layout_marginBottom="@dimen/dp5"
+                android:layout_gravity="bottom"
+                android:layout_weight="1.3"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/dp18" />
+            <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp50"
+                android:text="@string/save"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/background_signup"
+                android:textColor="@color/deep_white"
+                android:textSize="@dimen/dp18" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

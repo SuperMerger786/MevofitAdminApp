@@ -35,15 +35,19 @@ public class SectionListAdapter extends RecyclerView.Adapter<SectionListViewHold
     @Override
     public void onBindViewHolder(@NonNull SectionListViewHolder holder, int position) {
         SectionData sectionData = arrayList.get(position);
-        holder.sectiontitel.setText(sectionData.slot_title+"("+sectionData.slot_title_booked_slot+")");
+        holder.sectiontitel.setText(sectionData.slot_title + "(" + sectionData.slot_title_booked_slot + ")");
         holder.firstsection.setLayoutManager(new LinearLayoutManager(context));
-        BookingListAdapter adapter = new BookingListAdapter(sectionData.slotDataArrayList,context);
+        BookingListAdapter adapter = new BookingListAdapter(sectionData.slotDataArrayList, context);
         holder.firstsection.setAdapter(adapter);
     }
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        if (arrayList != null) {
+            return arrayList.size();
+        } else {
+            return 0;
+        }
     }
 }
 

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/head_ln"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/dp25"
+        android:background="#ebebeb"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top|center"
+            android:layout_weight="2.5"
+            android:gravity="top|center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center"
+                android:layout_marginTop="@dimen/dp10"
+                android:padding="@dimen/dp45"
+                android:src="@drawable/newui_login" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight=".7"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/ed_sellerId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp55"
+                        android:layout_below="@+id/text_connectNow"
+                        android:layout_marginLeft="@dimen/dp30"
+                        android:layout_marginRight="@dimen/dp30"
+                        android:layout_marginBottom="@dimen/dp2"
+                        android:background="@drawable/newui_entername"
+                        android:gravity="center|left"
+                        android:hint="Seller Id"
+                        android:maxLines="1"
+                        android:maxLength="6"
+                        android:singleLine="true"
+                        android:inputType="number"                        android:paddingLeft="@dimen/dp60"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp16"
+
+                        android:textColorHint="@color/auth_grey"/>
+
+                    <EditText
+                        android:textColorHint="@color/auth_grey"
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp55"
+                        android:layout_below="@+id/text_connectNow"
+                        android:layout_marginLeft="@dimen/dp30"
+                        android:layout_marginTop="@dimen/dp2"
+                        android:layout_marginRight="@dimen/dp30"
+                        android:layout_marginBottom="@dimen/dp2"
+                        android:background="@drawable/newui_enteremail"
+                        android:gravity="center|left"
+                        android:hint="Your Email Address"
+                        android:inputType="textEmailAddress"
+                        android:paddingLeft="@dimen/dp60"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp16" />
+
+                    <EditText
+                        android:textColorHint="@color/auth_grey"
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp55"
+                        android:layout_below="@+id/text_connectNow"
+                        android:layout_marginLeft="@dimen/dp30"
+                        android:layout_marginTop="@dimen/dp2"
+                        android:layout_marginRight="@dimen/dp30"
+                        android:background="@drawable/newui_enterpassword"
+                        android:gravity="center|left"
+                        android:hint="Enter Password"
+                        android:inputType="textPassword"
+                        android:paddingLeft="@dimen/dp60"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp16" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_next"
+                        android:layout_width="@dimen/dp78"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_gravity="center|left"
+                        android:background="@drawable/new_skipui"
+                        android:gravity="center"
+                        android:text="@string/log_in"
+                        android:textAllCaps="true"
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/dp14"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

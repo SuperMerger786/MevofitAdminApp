@@ -139,7 +139,10 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         }
         MyLogger.println("todays>>>>>booking>>2>" + adminDashboard.getData().getUpcomingBookings().getBookedList());
         if (adminDashboard.getData().getUpcomingBookings().getBookedList() != null) {
+            ln_upcomming_class.setVisibility(View.VISIBLE);
             bookingSetUp((ArrayList<BookedList>) adminDashboard.getData().getUpcomingBookings().getBookedList());
+        }else {
+            ln_upcomming_class.setVisibility(View.GONE);
         }
     }
 
@@ -220,7 +223,13 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             @Override
             public void run() {
                 System.out.println("MainWristActivity.callBoking call");
-                displayListUpCommingClasses(bookinglist);
+                if (bookinglist.size() > 0) {
+                    ln_upcomming_class.setVisibility(View.VISIBLE);
+                    displayListUpCommingClasses(bookinglist);
+
+                } else {
+                    ln_upcomming_class.setVisibility(View.GONE);
+                }
 
             }
         }, 500);
@@ -434,21 +443,23 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         listView.requestLayout();
 
     }
-AuthorisedPreference authorisedPreference;
+
+    AuthorisedPreference authorisedPreference;
+
     private JSONObject getHome() {
-        authorisedPreference=new AuthorisedPreference(mContext);
-        MyLogger.println("seller_id>>>>>>>>>0> "+authorisedPreference.getString("app_sellerrid"));
-        authorisedPreference.setSellerId("740bb9c3-17ff-4ef8-8922-9de82a9a2471");
-        authorisedPreference.setString("app_sellerrid","740bb9c3-17ff-4ef8-8922-9de82a9a2471");
-        MyLogger.println("seller_id>>>>>>>>>1> "+authorisedPreference.getString("app_sellerrid"));
+        authorisedPreference = new AuthorisedPreference(mContext);
+        MyLogger.println("seller_id>>>>>>>>>0> " + authorisedPreference.getString("app_sellerrid"));
+//        authorisedPreference.setSellerId("740bb9c3-17ff-4ef8-8922-9de82a9a2471");
+//        authorisedPreference.setString("app_sellerrid", "740bb9c3-17ff-4ef8-8922-9de82a9a2471");
+//        MyLogger.println("seller_id>>>>>>>>>1> " + authorisedPreference.getString("app_sellerrid"));
         JSONObject jsonObj = null;
         jsonObj = new JSONObject();
         try {
             jsonObj.put("action", "GetHomeDashBoard");
-            jsonObj.put("mewardid", "74PFT15YQ1602148478");
-            jsonObj.put("tokenkey", "Y5OVS2AC81602588317_d3ec1951-abcf-4354-9c90-5d776e1d1126_ShOZpXKHR_bpSa25QWk");
+            jsonObj.put("mewardid", authorisedPreference.getMewardId());
+            jsonObj.put("tokenkey", authorisedPreference.getTokenKey());
             jsonObj.put("user_type", "developer");
-            jsonObj.put("requestTime", "1601976588925");
+            jsonObj.put("requestTime", System.currentTimeMillis());
             jsonObj.put("seller_uid", authorisedPreference.getString("app_sellerrid"));
             jsonObj.put("isadmin", "1");
             jsonObj.put("store_id", "");
