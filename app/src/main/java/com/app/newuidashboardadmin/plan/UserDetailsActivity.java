@@ -28,7 +28,8 @@ public class UserDetailsActivity extends AppCompatActivity {
     TextView name, subtitel, description;
     private ArrayList<String> tabTitle = new ArrayList<>();
     private ArrayList<Fragment> tabFrag = new ArrayList<>();
-SlotData slotData;
+    SlotData slotData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +45,10 @@ SlotData slotData;
         subtitel = findViewById(R.id.subtitel);
         description = findViewById(R.id.description);
         sellerimage = findViewById(R.id.sellerimage);
-
         Glide.with(this).load(slotData.user_profilepic).into(sellerimage);
         name.setText(slotData.user_name);
-        subtitel.setText(slotData.user_gender+" "+slotData.user_age +" years");
-        description.setText("Marketplce | "+slotData.user_city+","+slotData.user_country);
-
+        subtitel.setText(slotData.user_gender + " " + slotData.user_age + " years");
+        description.setText("Marketplce | " + slotData.user_city + "," + slotData.user_country);
         setTabview();
     }
 
@@ -61,21 +60,17 @@ SlotData slotData;
         VitalFragment viaVitalFragment = new VitalFragment();
         tabFrag.add(viaVitalFragment);
 
-
         tabTitle.add("TRACKER");
         VitalFragment vitalFragmenta = new VitalFragment();
         tabFrag.add(vitalFragmenta);
-
 
         tabTitle.add("SUPPORT");
         VitalFragment vitalFragmentb = new VitalFragment();
         tabFrag.add(vitalFragmentb);
 
-
         tabTitle.add("BILLING");
         VitalFragment vitalFragmentc = new VitalFragment();
         tabFrag.add(vitalFragmentc);
-
 
         PlanViewPagerAdapterAdmin adapter = new PlanViewPagerAdapterAdmin(this.getSupportFragmentManager(), tabFrag, tabTitle);
         viewPager.setAdapter(adapter);

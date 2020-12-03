@@ -16,7 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".plan.UserDetailsActivity"></activity>
+        <activity android:name=".PlanConfigureActivity"></activity>
+        <activity android:name=".plan.InstanceListFragment" />
+        <activity android:name=".plan.UserDetailsActivity" />
         <activity android:name=".splash.LoadingScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
