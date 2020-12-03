@@ -16,6 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".plan.UserDetailsActivity"></activity>
+
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity android:name="com.app.newuidashboardadmin.login.SellerIdActivity">
         <activity android:name=".PlanConfigureActivity"></activity>
         <activity android:name=".plan.InstanceListFragment" />
         <activity android:name=".plan.UserDetailsActivity" />

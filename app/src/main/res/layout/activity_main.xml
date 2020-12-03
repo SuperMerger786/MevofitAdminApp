@@ -136,7 +136,7 @@
                             android:id="@+id/icon_tab2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/icon_food_drawable" />
+                            android:src="@drawable/icon_plan_drawable" />
 
                         <TextView
                             android:id="@+id/tab_text2"
@@ -180,7 +180,7 @@
                             android:id="@+id/icon_tab3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/icon_news_drawable" />
+                            android:src="@drawable/icon_booking_drawable" />
 
                         <TextView
                             android:id="@+id/tab_text3"
@@ -224,7 +224,7 @@
                             android:id="@+id/icon_tab6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/icon_social" />
+                            android:src="@drawable/icon_client" />
 
                         <TextView
                             android:id="@+id/tab_text6"

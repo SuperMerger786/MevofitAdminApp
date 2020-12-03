@@ -10,10 +10,13 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/FacebookLib" />
             <option value="$PROJECT_DIR$/MPAndroidChartLibrary" />
+            <option value="$PROJECT_DIR$/MegoUser-release" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/mego-auth-1.1.0" />
             <option value="$PROJECT_DIR$/mego-dmaxloader-1.0.0" />
+            <option value="$PROJECT_DIR$/mego-event-1.1.0" />
             <option value="$PROJECT_DIR$/videochat-release" />
             <option value="$PROJECT_DIR$/volley-master-release" />
           </set>

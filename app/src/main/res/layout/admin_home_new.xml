@@ -278,7 +278,7 @@
                 android:clickable="true"
                 app:cardBackgroundColor="@color/deep_white"
                 app:cardCornerRadius="6dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:cardElevation="2dp">
 
                 <LinearLayout
@@ -351,6 +351,7 @@
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="@string/all_c"
+                                android:visibility="gone"
                                 android:background="@drawable/btn_green_solid30"
                                 android:textColor="@color/deep_white"
                                 android:textSize="@dimen/sp14" />
@@ -364,6 +365,7 @@
                                 android:gravity="center"
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp"
+                                android:background="@drawable/btn_green_solid30"
                                 android:text="BOOKING"
                                 android:textColor="@color/colorPrimary"
                                 android:textSize="@dimen/sp14" />

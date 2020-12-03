@@ -22,7 +22,8 @@ import com.app.newuidashboardadmin.MyLogger;
 import com.app.newuidashboardadmin.R;
 import com.app.newuidashboardadmin.services.VolleyClient;
 import com.app.newuidashboardadmin.services.WebServicesUrl;
-import com.google.firebase.FirebaseApp;
+//import com.google.firebase.FirebaseApp;
+//import com.google.firebase.FirebaseApp;
 import com.google.gson.Gson;
 import com.megogrid.megoauth.AuthorisedPreference;
 import com.megogrid.megoauth.IAuthorized;
@@ -149,7 +150,7 @@ public class LoadingScreen
 //        newSharedData = new SettingSharedData(this);
 //        fitSharedData = new FitSharedPrefreces(this);
 //        FacebookSdk.sdkInitialize(getApplicationContext());
-        FirebaseApp.initializeApp(LoadingScreen.this);
+//        FirebaseApp.initializeApp(LoadingScreen.this);
         authorisedPreference1 = new AuthorisedPreference(LoadingScreen.this);
 //        sharedData = new AppSharedData(this);
         initOncreate();

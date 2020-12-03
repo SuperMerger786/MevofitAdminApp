@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.app.newuidashboardadmin"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -28,7 +28,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    android {
+        lintOptions {
+            checkReleaseBuilds false
+            abortOnError false
+        }
 
+    }
+    flavorDimensions 'Admin App'
+    productFlavors {
+        def fmevofitflavor = signingConfigs.debug
+        admindevice {
+//            applicationId 'com.fitness.ido'
+            applicationId 'fitness.mevofit.fitnesstracker'
+            versionCode 1//lastupdate 45 for link46
+            versionName "1.0"//4.7   for link4.8
+
+//            applicationId 'com.mevofit.fitness.fitnesstracker.walkingjogginghrbp.echotrackers'
+            signingConfig fmevofitflavor
+        }
+    }
 }
 
 dependencies {
@@ -67,12 +86,28 @@ dependencies {
     implementation 'com.opentok.android:opentok-android-sdk:2.16.+'
     implementation 'com.github.ybq:Android-SpinKit:1.2.0'
     implementation 'pub.devrel:easypermissions:0.4.0'
-    implementation 'com.google.firebase:firebase-database:12.0.0'
-    implementation 'com.google.firebase:firebase-messaging:12.0.0'
+//    implementation 'com.google.firebase:firebase-database:12.0.0'
+//    implementation 'com.google.firebase:firebase-messaging:12.0.0'
 //    implementation 'com.google.firebase:firebase-storage:12.0.0'
-
-    implementation 'com.opentok.android:opentok-android-sdk:2.16.+'
-    implementation 'com.google.firebase:firebase-storage:16.0.4'
+    def playserviceVersion = '12.0.1'
+//    implementation fileTree(include: '*.jar', dir: 'libs')
+//    implementation "com.google.android.gms:play-services-fitness:${playserviceVersion}"
+//    implementation "com.google.android.gms:play-services-ads:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-base:${playserviceVersion}"
+//    implementation "com.google.android.gms:play-services-analytics:${playserviceVersion}"
+//    implementation "com.google.android.gms:play-services-plus:${playserviceVersion}"
+//    implementation "com.google.android.gms:play-services-gcm:${playserviceVersion}"
+//    implementation "com.google.android.gms:play-services-auth:${playserviceVersion}"
+//    implementation "com.google.android.gms:play-services-basement:${playserviceVersion}"
+//    implementation "com.google.android.gms:play-services-maps:${playserviceVersion}"
+//    implementation "com.google.android.gms:play-services-location:${playserviceVersion}"
+//    implementation "com.google.android.gms:play-services-places:${playserviceVersion}"
+//    implementation 'com.opentok.android:opentok-android-sdk:2.16.+'
+//    implementation 'com.google.firebase:firebase-storage:16.0.1'
+    implementation project(':MegoUser-release')
+    implementation project(':mego-event-1.1.0')
+    implementation project(':FacebookLib')
+    implementation 'com.android.support:multidex:1.0.0'
 }
 repositories {
     mavenCentral()

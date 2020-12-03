@@ -5,6 +5,8 @@ package com.app.newuidashboardadmin;
 import android.app.Application;
 import android.text.TextUtils;
 
+import androidx.multidex.MultiDex;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
@@ -27,6 +29,7 @@ public class AppController extends Application {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
+        MultiDex.install(this);
 
     }
     public RequestQueue getRequestQueue() {
