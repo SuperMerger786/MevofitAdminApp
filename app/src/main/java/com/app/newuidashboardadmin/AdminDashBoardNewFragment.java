@@ -30,7 +30,16 @@ import com.app.newuidashboardadmin.services.WebServicesUrl;
 import com.app.newuidashboardadmin.todaysbooking.BookingTokSIDRequest;
 import com.app.newuidashboardadmin.todaysbooking.BookingTokSIDResponse;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.util.Util;
 import com.contact.util.ContactSdk;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.gson.Gson;
 import com.megogrid.megoauth.AuthorisedPreference;
 
@@ -87,6 +96,8 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
     SpotsDialog progressdialog;
     ListView booking_list;
+    LineChart chart;
+    LinearLayout add_entry;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.admin_home_new, container, false);
@@ -99,6 +110,8 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         total_booking = (TextView) view.findViewById(R.id.total_booking);
         total_earn = (TextView) view.findViewById(R.id.total_earn);
         total_avrrate = (TextView) view.findViewById(R.id.total_avrrate);
+        chart = (LineChart) view.findViewById(R.id.chart);
+        add_entry = (LinearLayout) view.findViewById(R.id.add_entry);
         volleyClient = new VolleyClient(mContext, this);
         gson = new Gson();
         MyLogger.println("volleyclient Inside  on oncreate==");
@@ -141,7 +154,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         if (adminDashboard.getData().getUpcomingBookings().getBookedList() != null) {
             ln_upcomming_class.setVisibility(View.VISIBLE);
             bookingSetUp((ArrayList<BookedList>) adminDashboard.getData().getUpcomingBookings().getBookedList());
-        }else {
+        } else {
             ln_upcomming_class.setVisibility(View.GONE);
         }
     }
@@ -210,6 +223,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         } else {
 
         }
+        initializeChart(chart, ModuleAnalyzer.ModuleAnalyze.Calories);
     }
 
     @Override
@@ -508,5 +522,183 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             }
         }, 0);
         controller.makemebasedRequest(request);
+    }
+
+    public void initializeChart(LineChart mChart, ModuleAnalyzer.ModuleAnalyze chartType) {
+        mChart.setDrawGridBackground(false);
+        mChart.setDrawBorders(false);
+        mChart.setBorderWidth(0);
+        mChart.setDescription("");
+        mChart.setTouchEnabled(true);
+        mChart.setDragEnabled(false);
+        mChart.setScaleEnabled(false);
+        mChart.setPinchZoom(false);
+        mChart.setMinOffset(1);
+        mChart.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        mChart.setMaxVisibleValueCount(60);
+        mChart.setDrawGridBackground(false);
+
+        XAxis xAxis = mChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setSpaceBetweenLabels(0);
+        xAxis.setDrawGridLines(false);
+
+//        xAxis.setAxisLineWidth(5);
+        xAxis.setAxisLineColor(getActivity().getResources().getColor(R.color.setting_subheading));
+        xAxis.setTextColor(getActivity().getResources().getColor(R.color.setting_subheading));
+//        xAxis.setEnabled(false);
+        mChart.animateY(12500);
+        mChart.getLegend().setEnabled(false);
+        mChart.getAxisLeft().setDrawGridLines(true);
+//        mChart.getAxisRight().setDrawGridLines(true);
+
+        MyMarkerView mv = new MyMarkerView(getActivity(), R.layout.custom_marker_view);
+        mChart.setMarkerView(mv);
+        XAxis xl = mChart.getXAxis();
+        xl.setAvoidFirstLastClipping(true);
+        xl.setAxisLineColor(getActivity().getResources().getColor(R.color.setting_subheading));
+        xl.setDrawGridLines(true);
+        xl.setTextColor(getActivity().getResources().getColor(R.color.setting_subheading));
+        xl.setLabelsToSkip(0);
+//        xl.setEnabled(false);
+
+        YAxis leftAxis = mChart.getAxisLeft();
+        leftAxis.setInverted(false);
+        leftAxis.setAxisMinValue(0f);
+//        leftAxis.setAxisLineColor(getActivity().getResources().getColor(R.color.setting_subheading));
+        leftAxis.setAxisLineColor(getActivity().getResources().getColor(R.color.setting_subheading));
+        leftAxis.setTextColor(getActivity().getResources().getColor(R.color.setting_subheading));
+//        leftAxis.setEnabled(false);
+//        xl.setDrawAxisLine(false);
+
+        YAxis rightAxis = mChart.getAxisRight();
+//        rightAxis.setAxisLineColor(Color.WHITE);
+        rightAxis.setDrawGridLines(false);
+        rightAxis.setEnabled(false);
+//        rightAxis.setAxisLineColor(Color.RED);
+        rightAxis.setTextColor(getActivity().getResources().getColor(R.color.setting_subheading));
+        rightAxis.setEnabled(false);
+//        xl.setDrawAxisLine(false);
+        /* Set data on the chart */
+        setFatData(mChart, "fragmentType");
+        Legend l = mChart.getLegend();
+        l.setForm(Legend.LegendForm.LINE);
+        l.setMaxSizePercent(4);
+        mChart.invalidate();
+    }
+
+    ArrayList<String> xVals;
+    ArrayList<Entry> yVals;
+    ArrayList<ModuleAnalyzer.AnalyzeEntity> graphValues;
+    ModuleAnalyzer moduleAnalyzer;
+
+    //graph chart pr data aur color set hota he
+    public void setFatData(LineChart chart, String fragmentTypeNew) {
+        moduleAnalyzer = new ModuleAnalyzer(getActivity());
+        xVals = new ArrayList<String>();
+        yVals = new ArrayList<Entry>();
+        graphValues = new ArrayList<>();
+        int totalEntries = 0;
+        MyLogger.println("fragment type value is ==  fragment type " + fragmentTypeNew);
+       /* if (fragmentTypeNew.equalsIgnoreCase("Daily")) {
+            selectAllTab();
+        }*/
+
+        graphValues.addAll(moduleAnalyzer.getAllWristStepsDailyDaily12(dateCalendar.getTimeInMillis()));
+
+        /*stepsAdapter = new StepsFrag.StepsAdapter(context);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(stepsAdapter);
+        setThisTabSelect(true, false, false, false);
+        which = 0;
+        stepsAdapter.notifyDataSetChanged();
+        */
+
+//        graphHeading.setText(getActivity().getResources().getString(R.string.steps));
+//        vView.setText(getActivity().getResources().getString(R.string.steps));
+
+        for (int i = 0; i < graphValues.size(); i++) {
+            xVals.add(graphValues.get(i).getKey());
+            float val = graphValues.get(i).getValue();
+            if (val > 0) {
+                totalEntries++;
+            }
+            yVals.add(new Entry(val, i));
+        }
+        /*for (int i = 0; i < graphValues1.size(); i++) {
+            xVals.add(graphValues1.get(i).getKey());
+            float val = graphValues1.get(i).getValue();
+            if (val > 0) {
+                totalEntries++;
+            }
+            yVals1.add(new Entry(val, i));
+        }
+        for (int i = 0; i < graphValues2.size(); i++) {
+            xVals.add(graphValues2.get(i).getKey());
+            float val = graphValues2.get(i).getValue();
+            if (val > 0) {
+                totalEntries++;
+            }
+            yVals2.add(new Entry(val, i));
+        }*/
+
+        if (totalEntries == 0) {
+            chart.setVisibility(View.INVISIBLE);
+            add_entry.setVisibility(View.VISIBLE);
+//            goal.setVisibility(View.VISIBLE);
+        } else {
+            chart.setVisibility(View.VISIBLE);
+//            goal.setVisibility(View.VISIBLE);
+            add_entry.setVisibility(View.INVISIBLE);
+        }
+
+
+        MyLogger.println("<<<<< graphValues setting graph : " + graphValues.size() + " <<<details>>> " + graphValues.toString());
+        MyLogger.println("<<<< graphValues setting graph 1111 : " + xVals.size() + " <<<y.size>>> " + yVals.size() + " <<<totalEntries>>> " + totalEntries);
+        if (totalEntries > 0) {
+            chart.setVisibility(View.VISIBLE);
+            ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
+            LineDataSet set1 = addlineToChart(getResources().getColor(R.color.colorPrimary), yVals);
+            dataSets.add(set1);
+            /*LineDataSet set2 = addlineToChart(getResources().getColor(R.color.graph_circle_color_orange), yVals1);
+            dataSets.add(set2);
+            LineDataSet set3 = addlineToChart(getResources().getColor(R.color.graph_circle_color_red), yVals2);
+            dataSets.add(set3);*/
+            ArrayList<String> filterxVAls = removeDuplicates(xVals);
+            LineData data = new LineData(filterxVAls, dataSets);
+            chart.setData(data);
+            chart.animateY(5000);
+        } else {
+            chart.setVisibility(View.GONE);
+        }
+    }
+
+    public LineDataSet addlineToChart(int color, ArrayList<Entry> val) {
+        LineDataSet set2 = new LineDataSet(val, "");
+
+        set2.setCircleColorHole(getResources().getColor(android.R.color.white));
+        set2.setFillColor(getResources().getColor(R.color.colorPrimary));
+        set2.setCircleColor(color);
+        set2.setDrawValues(false);
+        set2.setColor(color);
+        set2.setCircleRadius(4.0f);
+        set2.setLineWidth(2.0f);
+        set2.setDrawFilled(true);
+        return set2;
+    }
+
+    public static <T> ArrayList<T> removeDuplicates(ArrayList<T> list) {
+        ArrayList<T> newList = new ArrayList<T>();
+        for (T element : list) {
+            if (!newList.contains(element)) {
+                newList.add(element);
+            }
+        }
+        // return the new list
+        return newList;
     }
 }
