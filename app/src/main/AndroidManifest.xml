@@ -24,10 +24,6 @@
             android:required="false" />
 
         <activity android:name="com.app.newuidashboardadmin.login.SellerIdActivity">
-        <activity android:name=".PlanConfigureActivity"></activity>
-        <activity android:name=".plan.InstanceListFragment" />
-        <activity android:name=".plan.UserDetailsActivity" />
-        <activity android:name=".splash.LoadingScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,6 +36,23 @@
         <activity
             android:name="com.contact.activity.PublisherVideoActivity"
             android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
+            android:name="com.app.newuidashboardadmin.login.LogInpage"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
+            android:name="com.app.newuidashboardadmin.login.Admin"
+            android:theme="@style/Theme.Design.NoActionBar" />
+
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/fb_id" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationName"
+            android:value="@string/app_name" />
+        <meta-data
+            android:name="com.facebook.sdk.WebDialogTheme"
+            android:resource="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 
 </manifest>
