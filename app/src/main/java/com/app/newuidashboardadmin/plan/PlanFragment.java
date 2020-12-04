@@ -202,5 +202,9 @@ public class PlanFragment extends Fragment {
         LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
     }
 
+    private void openTimePrompt() {
+
+    }
+
 
 }

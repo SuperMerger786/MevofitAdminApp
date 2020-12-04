@@ -37,12 +37,21 @@ public class BookingListFragment extends Fragment {
     private void setView() {
         List<Fragment> mFragmentList = new ArrayList<>();
         List<String> titleList = new ArrayList<>();
-        mFragmentList.add(new TodayBookingFragment());
-        titleList.add("Previous");
-        mFragmentList.add(new TodayBookingFragment());
-        titleList.add("All");
-        mFragmentList.add(new TodayBookingFragment());
-        titleList.add("Upcomming");
+        TodayBookingFragment fragmentone = new TodayBookingFragment();
+        fragmentone.type = "previous";
+        mFragmentList.add(fragmentone);
+        titleList.add("PREVIOUS");
+
+        TodayBookingFragment fragmenttwo = new TodayBookingFragment();
+        fragmenttwo.type = "today";
+        mFragmentList.add(fragmenttwo);
+        titleList.add("TODAY");
+
+
+        TodayBookingFragment fragmentthree = new TodayBookingFragment();
+        fragmentthree.type = "upcoming";
+        mFragmentList.add(fragmentthree);
+        titleList.add("UPCOMING");
 
         PlanViewPagerAdapterAdmin adapter = new PlanViewPagerAdapterAdmin(getActivity().getSupportFragmentManager(), mFragmentList, titleList) {
         };

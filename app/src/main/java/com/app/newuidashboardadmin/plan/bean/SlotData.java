@@ -26,7 +26,7 @@ public class SlotData implements Serializable {
     @Expose public String bookedBoxId;
 
     @SerializedName("is_slot_booked")
-    @Expose public String is_slot_booked;
+    @Expose public int is_slot_booked;
 
     @SerializedName("user_name")
     @Expose public String user_name;

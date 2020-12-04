@@ -3,6 +3,7 @@ package com.app.newuidashboardadmin.services;
 import android.content.Context;
 
 import com.app.newuidashboardadmin.plan.bean.request.GetSellerBookingSlotsRequest;
+import com.app.newuidashboardadmin.plan.bean.request.GetSellerInstancesRequest;
 import com.app.newuidashboardadmin.plan.bean.request.GetStandardPlan;
 import com.app.newuidashboardadmin.todaysbooking.BookingTokSIDRequest;
 import com.megogrid.megoauth.AuthorisedPreference;
@@ -86,6 +87,12 @@ public class RestApiController implements Response {
     public void fetchStandardPlan(GetStandardPlan request) {
         client.Communicate(baseUrl, request, responseType);
     }
+
+    public void fetchInstnce(GetSellerInstancesRequest request) {
+        client.Communicate(baseUrl, request, responseType);
+    }
+
+
 
     /*public void setDeviceIdRequest(SetDeviceRequest request) {
         if(BaseUtility.isValid(request.tokenkey) && BaseUtility.isValid(request.mac_id) && BaseUtility.isValid(request.device_id) )
