@@ -15,19 +15,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
+        <RelativeLayout
             android:layout_width="@dimen/dp5"
+            android:id="@+id/side_bar"
             android:layout_height="match_parent"
-            android:src="@drawable/left_color_bar" />
+            android:background="@drawable/left_color_bar" />
 
         <com.app.newuidashboardadmin.CircularImageView
             android:layout_width="@dimen/dp50"
             android:layout_height="@dimen/dp50"
-            android:src="@drawable/banner_menu"
+            android:src="@drawable/profile"
             app:border="true"
             android:id="@+id/sellerimage"
             app:border_width="1dp"
-            app:border_color="#000000"
+            app:border_color="#2F3855"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/dp7" />
 
@@ -39,38 +40,38 @@
             android:orientation="vertical"
             android:layout_marginTop="@dimen/dp10"
             android:layout_marginBottom="@dimen/dp10"
-            android:layout_marginLeft="@dimen/dp7"
             android:padding="@dimen/sp10">
-            <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+            <com.app.newuidashboardadmin.font.FiraSansBoldTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Somanath lenka"
                 android:id="@+id/name"
                 android:textSize="@dimen/sp13"
-                android:textColor="#6C6C6C"/>
-            <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                android:textColor="#2F3855"/>
+            <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
                 android:layout_width="match_parent"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="3dp"
                 android:layout_height="wrap_content"
                 android:text="24, Male | Odisha,India"
                 android:maxLines="1"
                 android:id="@+id/subtitel"
                 android:textSize="@dimen/sp10"
-                android:textColor="#979797"/>
-            <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                android:textColor="#747B83"/>
+            <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="08:00 AM - 09:15 AM"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:id="@+id/time"
                 android:textSize="@dimen/sp10"
-                android:textColor="#979797"/>
+                android:textColor="#747B83"/>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_gravity="center|right"
             android:orientation="vertical"
             android:gravity="right"
@@ -78,34 +79,38 @@
             android:layout_marginBottom="@dimen/dp5"
             android:layout_marginRight="@dimen/dp10"
             android:padding="@dimen/sp10">
+
             <ImageView
-                android:layout_gravity="right"
                 android:layout_width="@dimen/dp23"
                 android:layout_height="@dimen/dp23"
-                android:tint="#595959"
+                android:layout_gravity="right"
+                android:tint="#2F3855"
                 android:padding="3dp"
-                android:src="@drawable/menu"/>
-            <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                android:src="@drawable/menu" />
+
+            <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+                android:id="@+id/sessiontype"
                 android:layout_width="match_parent"
-                android:layout_marginTop="5dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="GROUP SESSION"
                 android:layout_gravity="right"
-                android:id="@+id/sessiontype"
                 android:gravity="right"
                 android:textSize="@dimen/sp10"
-                android:textColor="#B16A00"/>
+                android:textColor="#B16A00" />
+
             <Button
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:text="VIEW DETAILS"
                 android:id="@+id/bookbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginTop="5dp"
+                android:text="VIEW DETAILS"
                 android:textSize="@dimen/sp9"
                 android:paddingRight="@dimen/dp10"
+                android:clickable="false"
                 android:paddingLeft="@dimen/dp10"
                 android:textColor="#ffffff"
-                android:layout_height="@dimen/dp30"
-                android:background="@drawable/round_rectangle_blue"/>
+                android:background="@drawable/round_rectangle_blue" />
 
 
         </LinearLayout>

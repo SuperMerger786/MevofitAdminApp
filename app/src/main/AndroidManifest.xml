@@ -23,6 +23,10 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
+        <activity android:name=".PlanConfigureActivity"></activity>
+        <activity android:name=".plan.InstanceListFragment" />
+        <activity android:name=".plan.UserDetailsActivity" />
+
         <activity android:name="com.app.newuidashboardadmin.login.SellerIdActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

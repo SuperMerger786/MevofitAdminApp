@@ -9,24 +9,33 @@ import com.megogrid.megoauth.AuthorisedPreference;
 public class GetStandardPlan {
 
     @SerializedName("action")
-    @Expose public String action = "GetStandardPlan";
+    @Expose
+    public String action = "GetStandardPlan";
 
     @SerializedName("seller_uid")
-    @Expose public String seller_uid;
+    @Expose
+    public String seller_uid;
 
     @SerializedName("mewardid")
-    @Expose public String mewardid;
+    @Expose
+    public String mewardid;
 
     @SerializedName("tokenkey")
-    @Expose public String tokenkey;
+    @Expose
+    public String tokenkey;
 
-    public GetStandardPlan(Context context) {
+    @SerializedName("instace_id")
+    @Expose
+    public String instace_id;
+
+    public GetStandardPlan(Context context, String instace_id) {
         AuthorisedPreference authorisedPreference = new AuthorisedPreference(context);
 //        this.mewardid = authorisedPreference.getMewardId();
 //        this.tokenkey = authorisedPreference.getTokenKey();
-        mewardid ="74PFT15YQ1602148478";
-        tokenkey ="Y5OVS2AC81602588317_d3ec1951-abcf-4354-9c90-5d776e1d1126_ShOZpXKHR_bpSa25QWk";
+        mewardid = "74PFT15YQ1602148478";
+        tokenkey = "Y5OVS2AC81602588317_d3ec1951-abcf-4354-9c90-5d776e1d1126_ShOZpXKHR_bpSa25QWk";
         this.seller_uid = authorisedPreference.getString(AuthorisedPreference.APP_SELLER_ID);
+        this.instace_id = instace_id;
     }
 }
 

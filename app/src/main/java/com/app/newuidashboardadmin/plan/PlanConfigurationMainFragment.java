@@ -22,10 +22,13 @@ import androidx.viewpager.widget.ViewPager;
 public class PlanConfigurationMainFragment extends Fragment {
     ViewPager viewPager;
     TabLayout tabLayout;
+    String instanceId;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.plan_configuration_main_fragment,container,false);
+        instanceId = getArguments().getString("instanceid");
+        System.out.println("PlanConfigurationMainFragment.onCreateView instance id "+instanceId);
     initView(view);
     return view;
     }
@@ -37,7 +40,12 @@ public class PlanConfigurationMainFragment extends Fragment {
     private void setView() {
         List<Fragment> mFragmentList = new ArrayList<>();
         List<String> titleList = new ArrayList<>();
-        mFragmentList.add(new PlanFragment());
+        PlanFragment planFragment = new PlanFragment();
+        planFragment.instanceid = instanceId;
+//        Bundle bundle = new Bundle();
+//        bundle.putString("instanceid",instanceId);
+//        planFragment.setArguments(bundle);
+        mFragmentList.add(planFragment);
         titleList.add("Plan");
         mFragmentList.add(new ScheduleFragment());
         titleList.add("Schedule");

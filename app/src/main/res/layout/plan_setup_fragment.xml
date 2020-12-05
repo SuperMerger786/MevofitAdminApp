@@ -175,10 +175,15 @@
                     android:text="OFF" />
                 <Switch
                     android:id="@+id/switchonoff"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/dp70"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp10"
                     android:layout_marginRight="@dimen/dp10"
+                    android:track="@drawable/custom_track"
+                    android:checked="true"
+                    android:thumb="@drawable/custom_thumb"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:buttonTint="@color/exercise_header"
                     android:textSize="@dimen/sp15"
                     android:textColor="#48526A" />

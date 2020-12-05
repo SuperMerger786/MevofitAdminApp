@@ -2,11 +2,14 @@ package com.app.newuidashboardadmin.plan.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.app.newuidashboardadmin.R;
@@ -18,12 +21,19 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class BookingListAdapter extends RecyclerView.Adapter<BookingListViewHolder> {
 
     ArrayList<SlotData> slotDataArrayList;
     Context context;
+
+    private final String[] backgroundColors = {
+            "#FFA7C9",
+            "#FFC59F",
+            "#FFFCB9",
+            "#A2FC9A"};
 
     public BookingListAdapter(ArrayList<SlotData> slotDataArrayList, Context context) {
         this.slotDataArrayList = slotDataArrayList;
@@ -46,8 +56,10 @@ public class BookingListAdapter extends RecyclerView.Adapter<BookingListViewHold
             holder.subtitel.setText(slotDataArrayList.get(position).user_age + ", " + slotDataArrayList.get(position).user_gender + " | " + slotDataArrayList.get(position).user_city + "," + slotDataArrayList.get(position).user_country);
             Glide.with(context).load(slotDataArrayList.get(position).user_profilepic).into(holder.sellerimage);
             holder.time.setText(slotDataArrayList.get(position).from_time + " - " + slotDataArrayList.get(position).to_time);
-            holder.sessiontype.setText(slotDataArrayList.get(position).plan_session_type.toUpperCase());
+            holder.sessiontype.setText(slotDataArrayList.get(position).plan_session_title.toUpperCase());
             holder.bookbutton.setText("VIEW DETAILS");
+            GradientDrawable gradientDrawable = (GradientDrawable) holder.bookbutton.getBackground();
+            gradientDrawable.setColor(Color.parseColor("#898989"));
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -62,7 +74,9 @@ public class BookingListAdapter extends RecyclerView.Adapter<BookingListViewHold
             holder.subtitel.setVisibility(View.GONE);
             holder.time.setText(slotDataArrayList.get(position).from_time + " - " + slotDataArrayList.get(position).to_time);
             holder.bookbutton.setText("BOOK NOW");
-            holder.sessiontype.setText(slotDataArrayList.get(position).plan_session_type.toUpperCase());
+            holder.sessiontype.setText(slotDataArrayList.get(position).plan_session_title.toUpperCase());
+            GradientDrawable gradientDrawable = (GradientDrawable) holder.bookbutton.getBackground();
+            gradientDrawable.setColor(Color.parseColor("#306dd0"));
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -71,10 +85,20 @@ public class BookingListAdapter extends RecyclerView.Adapter<BookingListViewHold
 //                    context.startActivity(intent);
                 }
             });
+        }
 
+        if(slotDataArrayList.get(position).plan_session_type.equalsIgnoreCase("group_session")){
+            holder.sessiontype.setTextColor(Color.parseColor("#B45F05"));
+        }else if(slotDataArrayList.get(position).plan_session_type.equalsIgnoreCase("single_session")){
+            holder.sessiontype.setTextColor(Color.parseColor("#0B5292"));
+        }else {
+            holder.sessiontype.setTextColor(Color.parseColor("#0097A8"));
 
         }
 
+        int index = position % backgroundColors.length;
+        GradientDrawable drawable = (GradientDrawable) holder.side_bar.getBackground();
+        drawable.setColor(Color.parseColor(backgroundColors[index]));
 
     }
 
@@ -90,10 +114,12 @@ class BookingListViewHolder extends RecyclerView.ViewHolder {
     ImageView sellerimage;
     CardView cardView;
     Button bookbutton;
+    RelativeLayout side_bar;
 
     public BookingListViewHolder(@NonNull View itemView) {
         super(itemView);
         bookbutton = itemView.findViewById(R.id.bookbutton);
+        side_bar = itemView.findViewById(R.id.side_bar);
         sessiontype = itemView.findViewById(R.id.sessiontype);
         name = itemView.findViewById(R.id.name);
         subtitel = itemView.findViewById(R.id.subtitel);

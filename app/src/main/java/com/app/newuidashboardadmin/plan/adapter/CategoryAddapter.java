@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class CategoryAddapter extends RecyclerView.Adapter<CategoryViewHolder> {
@@ -48,10 +49,11 @@ public class CategoryAddapter extends RecyclerView.Adapter<CategoryViewHolder> {
             holder.complete.setVisibility(View.GONE);
             holder.setup.setVisibility(View.VISIBLE);
         }
-        holder.setup.setOnClickListener(new View.OnClickListener() {
+        holder.background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, PlanConfigureActivity.class);
+                intent.putExtra("instanceId",categoryDataArrayList.get(position).instance_boxid);
                 context.startActivity(intent);
             }
         });
@@ -70,10 +72,11 @@ class CategoryViewHolder extends RecyclerView.ViewHolder {
     TextView instancename, categoryname;
     LinearLayout complete;
     TextView setup;
+    CardView background;
 
     public CategoryViewHolder(@NonNull View itemView) {
         super(itemView);
-
+        background = itemView.findViewById(R.id.background);
         image = itemView.findViewById(R.id.image);
         instancename = itemView.findViewById(R.id.instancename);
         categoryname = itemView.findViewById(R.id.categoryname);

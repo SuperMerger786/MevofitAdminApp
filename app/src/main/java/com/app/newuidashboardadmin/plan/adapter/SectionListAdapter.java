@@ -1,9 +1,11 @@
 package com.app.newuidashboardadmin.plan.adapter;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.newuidashboardadmin.R;
@@ -35,10 +37,25 @@ public class SectionListAdapter extends RecyclerView.Adapter<SectionListViewHold
     @Override
     public void onBindViewHolder(@NonNull SectionListViewHolder holder, int position) {
         SectionData sectionData = arrayList.get(position);
-        holder.sectiontitel.setText(sectionData.slot_title + "(" + sectionData.slot_title_booked_slot + ")");
+        holder.sectiontitel.setText(sectionData.slot_title + "  (" + sectionData.slot_title_booked_slot + ")");
         holder.firstsection.setLayoutManager(new LinearLayoutManager(context));
         BookingListAdapter adapter = new BookingListAdapter(sectionData.slotDataArrayList, context);
         holder.firstsection.setAdapter(adapter);
+        holder.arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(holder.firstsection.getVisibility() == View.VISIBLE){
+                    holder.firstsection.setVisibility(View.GONE);
+                    holder.arrow.setRotation(180);
+
+                }else{
+                    holder.firstsection.setVisibility(View.VISIBLE);
+                    holder.arrow.setRotation(0);
+                }
+            }
+        });
+
+
     }
 
     @Override
@@ -54,10 +71,12 @@ public class SectionListAdapter extends RecyclerView.Adapter<SectionListViewHold
 class SectionListViewHolder extends RecyclerView.ViewHolder {
     TextView sectiontitel;
     RecyclerView firstsection;
+    ImageView arrow;
 
     public SectionListViewHolder(@NonNull View itemView) {
         super(itemView);
         firstsection = itemView.findViewById(R.id.firstsection);
         sectiontitel = itemView.findViewById(R.id.sectiontitel);
+        arrow = itemView.findViewById(R.id.arrow);
     }
 }
