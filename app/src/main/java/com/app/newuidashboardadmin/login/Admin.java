@@ -9,8 +9,11 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.newuidashboardadmin.AdminUI;
+import com.app.newuidashboardadmin.MyLogger;
 import com.app.newuidashboardadmin.R;
 import com.app.newuidashboardadmin.Utility.AppPrefernce;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
 import com.megogrid.megoauth.AuthorisedPreference;
 import com.megogrid.megoeventssdkhandler.ActionSdkIntializer;
 import com.megogrid.megouser.MegoUserConfig;
@@ -36,7 +39,7 @@ public class Admin extends AppCompatActivity {
         initMegoEvent();
 
 
-        /*FirebaseOptions firebaseOptions = new FirebaseOptions.Builder()
+        FirebaseOptions firebaseOptions = new FirebaseOptions.Builder()
                 .setGcmSenderId("928900584668")
                 .setApiKey("AIzaSyA0yafBpA9aGU_XwtADlipesU01-2R2xCE")
                 .setApplicationId(getApplicationContext().getPackageName())
@@ -45,10 +48,9 @@ public class Admin extends AppCompatActivity {
                 .setStorageBucket("testproject-b2393.appspot.com")
                 .build();
 
-
+        MyLogger.println("check>>>>>makeSessionRequest>>Admin"+(FirebaseApp.getApps(Admin.this).isEmpty()));
         if(FirebaseApp.getApps(Admin.this).isEmpty())
             FirebaseApp.initializeApp(getApplicationContext(), firebaseOptions);
-*/
 
 
         new MegoUserConfig.ConfigBuilder(Admin.this).setGoogleKey("").enableResourceAppIcon().enableResourceAppBackground().build();
@@ -90,6 +92,7 @@ public class Admin extends AppCompatActivity {
     public void initMegoEvent() {
         ActionSdkIntializer actionSdkIntializer = new ActionSdkIntializer(Admin.this);
         actionSdkIntializer.intializeSdk();
+//        eventTrigger = new MevoEventTrigger(this, "MainWristActivity");
     }
 
     public void initHeader() {

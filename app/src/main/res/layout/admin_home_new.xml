@@ -249,7 +249,7 @@
                             android:background="@drawable/circular_image_stroke"
                             android:gravity="center"
                             android:padding="@dimen/dp5"
-                            android:text="5"
+                            android:text=""
                             android:textAllCaps="true"
                             android:textColor="@color/colorPrimary"
                             android:textSize="@dimen/dp12" />
@@ -341,7 +341,7 @@
                             android:weightSum="2">
 
                             <com.app.newuidashboardadmin.font.FiraSansRegularTextView
-                                android:id="@+id/weekly_tab"
+                                android:id="@+id/all_tab"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/graphHeading"
@@ -356,7 +356,7 @@
                                 android:textSize="@dimen/sp14" />
 
                             <com.app.newuidashboardadmin.font.FiraSansRegularTextView
-                                android:id="@+id/monthly_tab"
+                                android:id="@+id/booking_tab"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/graphHeading"
@@ -369,7 +369,7 @@
                                 android:textSize="@dimen/sp14" />
 
                             <com.app.newuidashboardadmin.font.FiraSansRegularTextView
-                                android:id="@+id/yearly_tab"
+                                android:id="@+id/payment_tab"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/graphHeading"

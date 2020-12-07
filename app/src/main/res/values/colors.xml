@@ -40,4 +40,6 @@
     <color name="separatorline">#d8d8d8</color>
     <color name="social_grey_bg">#ececec</color>
     <color name="bottom_tab_color">#2e3955</color>
+    <color name="Graph_tab_color">#76aaff</color>
+    <color name="Graph_tab_color_shadow">#f4f8ff</color>
 </resources>

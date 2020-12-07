@@ -18,7 +18,8 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".plan.UserDetailsActivity"></activity>
 
-
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
@@ -34,6 +35,10 @@
             android:name=".AdminUI"
             android:theme="@style/Theme.Design.NoActionBar" />
         <activity
+            android:name="com.app.newuidashboardadmin.plan.callback.InstanceListActivity"
+            android:theme="@style/Theme.Design.NoActionBar" />
+
+        <activity
             android:name="com.contact.activity.PublisherVideoActivity"
             android:theme="@style/Theme.Design.NoActionBar" />
         <activity
@@ -42,8 +47,13 @@
         <activity
             android:name="com.app.newuidashboardadmin.login.Admin"
             android:theme="@style/Theme.Design.NoActionBar" />
-
-
+        <activity
+            android:name="com.contact.activity.SubscriberVideoActivity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:resizeableActivity="true"
+            android:supportsPictureInPicture="true" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/fb_id" />

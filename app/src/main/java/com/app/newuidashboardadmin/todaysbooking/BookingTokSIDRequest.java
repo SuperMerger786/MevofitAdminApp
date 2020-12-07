@@ -42,10 +42,10 @@ public class BookingTokSIDRequest {
         AuthorisedPreference authorisedPreference=new AuthorisedPreference(context);
 //        jsonObj.put("mewardid", "74PFT15YQ1602148478");
 //        jsonObj.put("tokenkey", "Y5OVS2AC81602588317_d3ec1951-abcf-4354-9c90-5d776e1d1126_ShOZpXKHR_bpSa25QWk");
-        mewardid ="74PFT15YQ1602148478";
-        tokenkey ="Y5OVS2AC81602588317_d3ec1951-abcf-4354-9c90-5d776e1d1126_ShOZpXKHR_bpSa25QWk";
-//        mewardid =authorisedPreference.getMewardId();
-//        tokenkey=authorisedPreference.getTokenKey();
+//        mewardid ="74PFT15YQ1602148478";
+//        tokenkey ="Y5OVS2AC81602588317_d3ec1951-abcf-4354-9c90-5d776e1d1126_ShOZpXKHR_bpSa25QWk";
+        mewardid =authorisedPreference.getMewardId();
+        tokenkey=authorisedPreference.getTokenKey();
         this.bookedboxId = bookedboxId;
         this.itemBoxId = itemBoxId;
         this.start_time = start_time;

@@ -14,8 +14,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.newuidashboardadmin.AdminUI;
+import com.app.newuidashboardadmin.MyLogger;
 import com.app.newuidashboardadmin.R;
 import com.app.newuidashboardadmin.Utility.AppPrefernce;
+import com.app.newuidashboardadmin.plan.callback.InstanceListActivity;
 import com.megogrid.activities.ModuleHandler;
 import com.megogrid.activities.ProfileDetailsResponse;
 import com.megogrid.megoauth.AuthUtility;
@@ -206,14 +208,14 @@ public class LogInpage extends AppCompatActivity implements View.OnClickListener
             {
                 case EMAIL_LOGIN:
 
-
-
+                    MyLogger.println("LogInpage.onRespon>>>>>makeSessionRequest>>0>>>>>> "+profileDetailsResponse.profilepic);
+                            prefernce.setProfilePic(profileDetailsResponse.profilepic);
                     prefernce.setString("logIn","LoggedIn");
                     prefernce.setString("userName",email);
                     prefernce.setString("password",password);
 
 
-                    Intent intent = new Intent(this, AdminUI.class);
+                    Intent intent = new Intent(this, InstanceListActivity.class);
                     startActivity(intent);
                     finish();
 
