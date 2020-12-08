@@ -52,4 +52,8 @@ public class SlotData implements Serializable {
     @SerializedName("user_age")
     @Expose public String user_age;
 
+    @SerializedName("plan_session_title")
+    @Expose public String plan_session_title;
+
+
 }

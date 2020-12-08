@@ -9,13 +9,21 @@ import android.os.Bundle;
 import android.widget.FrameLayout;
 
 import com.app.newuidashboardadmin.plan.PlanConfigurationMainFragment;
+import com.app.newuidashboardadmin.plan.PlanFragment;
 
 public class PlanConfigureActivity extends AppCompatActivity {
+    String instanceId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_configure);
-        setFragment(new PlanConfigurationMainFragment());
+        instanceId = getIntent().getStringExtra("instanceId");
+        System.out.println("PlanConfigureActivity.onCreate instance id "+instanceId);
+        PlanConfigurationMainFragment planConfigurationMainFragment = new PlanConfigurationMainFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("instanceid",instanceId);
+        planConfigurationMainFragment.setArguments(bundle);
+        setFragment(planConfigurationMainFragment);
     }
 
     protected void setFragment(Fragment fragment) {
