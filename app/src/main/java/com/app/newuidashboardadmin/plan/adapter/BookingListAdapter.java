@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,10 @@ import com.app.newuidashboardadmin.R;
 import com.app.newuidashboardadmin.plan.UserDetailsActivity;
 import com.app.newuidashboardadmin.plan.bean.SlotData;
 import com.bumptech.glide.Glide;
+import com.migital.digiproducthelper.MevoSellerDetailsActivity;
+import com.migital.digiproducthelper.SellerDetailsSlotActivity;
+import com.migital.digiproducthelper.bean.incomming.SellerDetailData;
+import com.migital.digiproducthelper.util.DigiHelperPreference;
 
 import java.util.ArrayList;
 
@@ -28,6 +33,7 @@ public class BookingListAdapter extends RecyclerView.Adapter<BookingListViewHold
 
     ArrayList<SlotData> slotDataArrayList;
     Context context;
+    DigiHelperPreference digiHelperPreference;
 
     private final String[] backgroundColors = {
             "#FFA7C9",
@@ -38,6 +44,7 @@ public class BookingListAdapter extends RecyclerView.Adapter<BookingListViewHold
     public BookingListAdapter(ArrayList<SlotData> slotDataArrayList, Context context) {
         this.slotDataArrayList = slotDataArrayList;
         this.context = context;
+        this.digiHelperPreference = DigiHelperPreference.getInstance(context);
     }
 
     @NonNull
@@ -58,6 +65,22 @@ public class BookingListAdapter extends RecyclerView.Adapter<BookingListViewHold
             holder.time.setText(slotDataArrayList.get(position).from_time + " - " + slotDataArrayList.get(position).to_time);
             holder.sessiontype.setText(slotDataArrayList.get(position).plan_session_title.toUpperCase());
             holder.bookbutton.setText("VIEW DETAILS");
+            holder.bookbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    digiHelperPreference.setBoolean(DigiHelperPreference.ISADMIN,true);
+                    digiHelperPreference.setString(DigiHelperPreference.TokenKey,"VUHQ3ELWZ1585572379_d3ec1951-abcf-4354-9c90-5d776e1d1126_ShOZpXKHR_bpSa25QWk");
+                    digiHelperPreference.setString(DigiHelperPreference.MewardID,"G8TFQ6MU01585570555");
+
+                    Intent intent = new Intent(context, MevoSellerDetailsActivity.class);
+                    intent.putExtra("instance_id","0RSTJNUQS");
+                    intent.putExtra("sellerid","740bb9c3-17ff-4ef8-8922-9de82a9a2471");
+//                    Bundle bundle = new Bundle();
+//                    bundle.putSerializable("datas", sellerDetailData);
+//                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+                }
+            });
             GradientDrawable gradientDrawable = (GradientDrawable) holder.bookbutton.getBackground();
             gradientDrawable.setColor(Color.parseColor("#898989"));
             holder.cardView.setOnClickListener(new View.OnClickListener() {

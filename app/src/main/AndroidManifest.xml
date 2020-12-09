@@ -47,6 +47,32 @@
             android:name="com.app.newuidashboardadmin.login.Admin"
             android:theme="@style/Theme.Design.NoActionBar" />
 
+        <activity android:name="com.migital.digiproducthelper.FavoriteActivity"
+                  android:theme="@style/Theme.Design.NoActionBar"></activity>
+        <activity android:name="com.migital.digiproducthelper.processui.TrackerAppListActivity"
+                  android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name="com.migital.digiproducthelper.extraui.NotificatinSetingactivity"
+                  android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name="com.migital.digiproducthelper.ImageViewerActivity"
+                  android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name="com.migital.digiproducthelper.SearchActivitySeller"
+                  android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name="com.migital.digiproducthelper.SellerDetailsSlotActivity"
+                  android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name="com.migital.digiproducthelper.MevoSellerDetailsActivity"
+                  android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name="com.migital.digiproducthelper.SelleristActivity"
+                  android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name="com.migital.digiproducthelper.MainActivity"
+                  android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name="com.migital.digiproducthelper.BookingActivity"
+                  android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name="com.migital.digiproducthelper.BookingHistoryDigital"
+                  android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name="com.migital.digiproducthelper.ConfirmActivity"
+                  android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name="com.migital.digiproducthelper.RescheduledActivity"
+                  android:theme="@style/Theme.Design.NoActionBar"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

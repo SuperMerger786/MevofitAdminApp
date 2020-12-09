@@ -107,7 +107,12 @@ dependencies {
     implementation project(':MegoUser-release')
     implementation project(':mego-event-1.1.0')
     implementation project(':FacebookLib')
+    implementation project(':digiproducthelper-release')
     implementation 'com.android.support:multidex:1.0.0'
+    implementation 'com.wang.avi:library:1.0.3'
+    implementation project(':MigCart-release')
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
 }
 repositories {
     mavenCentral()

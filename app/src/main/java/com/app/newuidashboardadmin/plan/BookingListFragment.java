@@ -20,6 +20,7 @@ public class BookingListFragment extends Fragment {
     ViewPager viewPager;
     TabLayout tabLayout;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
