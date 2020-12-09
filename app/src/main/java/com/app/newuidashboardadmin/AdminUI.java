@@ -15,6 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.app.newuidashboardadmin.plan.BookingListFragment;
 import com.app.newuidashboardadmin.plan.InstanceListFragment;
+import com.app.newuidashboardadmin.planner.PlanWorkout;
 
 
 public class AdminUI extends AppCompatActivity {
@@ -73,6 +74,9 @@ public class AdminUI extends AppCompatActivity {
             public void onClick(View view) {
 //                stopTimerSync();
                 pager.setCurrentItem(4);
+                if (planWorkout != null) {
+                    planWorkout.getExpandableList();
+                }
             }
         });
 
@@ -149,6 +153,7 @@ public class AdminUI extends AppCompatActivity {
     }
 
     AdminDashBoardNewFragment tabListFragment;
+    PlanWorkout planWorkout;
 
     public class BootstrapPagerAdapter extends FragmentStatePagerAdapter {
 
@@ -176,7 +181,8 @@ public class AdminUI extends AppCompatActivity {
             } else if (position == 1) {
                 return new BookingListFragment();
             } else if (position == 4) {
-                return new AdminDashBoardNewFragment();
+                planWorkout = new PlanWorkout();
+                return planWorkout;
             } else {
                 return new AdminDashBoardNewFragment();
             }

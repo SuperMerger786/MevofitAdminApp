@@ -12,4 +12,9 @@ public class BookingTokSIDResponse {
     @Expose
     public String TokBoxTokenID;
 
+    @SerializedName("TokApiKey")
+    @Expose
+    public String TokApiKey;
+
+
 }

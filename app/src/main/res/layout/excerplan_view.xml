@@ -4,7 +4,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-<androidx.core.widget.NestedScrollView
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp50"
+    android:orientation="horizontal"
+    android:background="#C2D3F1">
+
+    <ImageView
+        android:layout_width="@dimen/dp30"
+        android:layout_height="@dimen/dp30"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/dp10"
+        android:src="@drawable/arrow_me"
+        android:rotation="180"
+        android:tint="#4C4C4C"
+        android:padding="5dp" />
+
+    <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="@dimen/sp20"
+        android:layout_weight="1"
+        android:textColor="#4C4C4C"
+        android:text="PLANNER" />
+
+    <ImageView
+        android:layout_width="@dimen/dp30"
+        android:layout_height="@dimen/dp30"
+        android:layout_gravity="center"
+        android:layout_marginRight="@dimen/dp10"
+        android:rotation="180"
+        android:padding="5dp" />
+
+</LinearLayout>
+    <WebView
+        android:id="@+id/web_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+<!--<androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout
@@ -402,5 +441,5 @@
             android:paddingBottom="@dimen/dp10"
             android:visibility="gone" />
     </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>-->
 </LinearLayout>

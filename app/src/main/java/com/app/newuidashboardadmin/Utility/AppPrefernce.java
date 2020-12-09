@@ -91,6 +91,18 @@ public class AppPrefernce {
         return  sharedPreferences.getString("tableIDD", "na");
     }
 
+    public void setProfilePic(String profilepic){
+        sharedPreferences.edit().putString("ProfilePic", profilepic).commit();
+    }
 
+    public String getProfilePic(){
+        return  sharedPreferences.getString("ProfilePic", "http://alphaservices13.migital.net/webroot/profilepic/d3ec1951-abcf-4354-9c90-5d776e1d1126/TG5PJUQA81568883182_d3ec1951-abcf-4354-9c90-5d776e1d1126_ShOZpXKHR_bpSa25QWk_1594121744.jpg");
+    }
+    public void setInstanceBoxid(String profilepic){
+        sharedPreferences.edit().putString("InstanceBoxid", profilepic).commit();
+    }
 
+    public String getInstanceBoxid(){
+        return  sharedPreferences.getString("InstanceBoxid", "NA");
+    }
 }

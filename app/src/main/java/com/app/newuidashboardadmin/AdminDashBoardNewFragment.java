@@ -19,6 +19,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.app.newuidashboardadmin.Utility.AppPrefernce;
+import com.app.newuidashboardadmin.admingraph.GraphDatum;
+import com.app.newuidashboardadmin.admingraph.GraphValues;
 import com.app.newuidashboardadmin.newadmin.BookedList;
 import com.app.newuidashboardadmin.newadmin.BookingPerformance;
 import com.app.newuidashboardadmin.newadmin.NewDashboardEntity;
@@ -31,6 +34,7 @@ import com.app.newuidashboardadmin.todaysbooking.BookingTokSIDRequest;
 import com.app.newuidashboardadmin.todaysbooking.BookingTokSIDResponse;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.util.Util;
+import com.contact.util.CallUtility;
 import com.contact.util.ContactSdk;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -41,7 +45,12 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.gson.Gson;
+import com.megogrid.activities.MeUserSDKMevo;
 import com.megogrid.megoauth.AuthorisedPreference;
+import com.megogrid.megoeventbuilder.bean.Events;
+import com.megogrid.megoeventpersistence.MewardDbHandler;
+import com.megogrid.megoeventssdkhandler.ActionPerformer;
+import com.megogrid.megouser.MegoUser;
 
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -74,7 +83,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
     //booking
     FrameLayout ln_upcomming_class;
     CardView booking_status;
-    TextView book_count;
+    TextView book_count, booking_tab, payment_tab;
 
     //    bookingperformance
     TextView total_booking, total_earn, total_avrrate;
@@ -98,6 +107,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
     ListView booking_list;
     LineChart chart;
     LinearLayout add_entry;
+    AppPrefernce appPrefernce;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.admin_home_new, container, false);
@@ -110,6 +120,9 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         total_booking = (TextView) view.findViewById(R.id.total_booking);
         total_earn = (TextView) view.findViewById(R.id.total_earn);
         total_avrrate = (TextView) view.findViewById(R.id.total_avrrate);
+        booking_tab = (TextView) view.findViewById(R.id.booking_tab);
+        payment_tab = (TextView) view.findViewById(R.id.payment_tab);
+
         chart = (LineChart) view.findViewById(R.id.chart);
         add_entry = (LinearLayout) view.findViewById(R.id.add_entry);
         volleyClient = new VolleyClient(mContext, this);
@@ -117,6 +130,19 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         MyLogger.println("volleyclient Inside  on oncreate==");
         dateCalendar = Calendar.getInstance();
         frag_menu = (ImageView) view.findViewById(R.id.frag_menu_id);
+        appPrefernce = new AppPrefernce(mContext);
+        booking_tab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                initializeChart(chart, "booking");
+            }
+        });
+        payment_tab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                initializeChart(chart, "payment");
+            }
+        });
         frag_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,6 +158,12 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         progressdialog = startProgressDialog(mContext, "Loading.....");
         progressdialog.show();
         volleyClient.makeRequest(WebServicesUrl.Categaries, getHome().toString(), "Adminhome");
+    }
+
+    private void hitGraphValues() {
+        progressdialog = startProgressDialog(mContext, "Loading.....");
+        progressdialog.show();
+        volleyClient.makeRequest(WebServicesUrl.CategariesBooking, getGraphValues().toString(), "GraphValues");
     }
 
     private void listenerSet(String response) {
@@ -213,6 +245,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             if (progressdialog != null && progressdialog.isShowing())
                 progressdialog.dismiss();
             MyLogger.println("GetHomePublishData>>>check>>>>>1>>>>>>>" + reqTag + "===========" + response);
+            hitGraphValues();
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -221,10 +254,15 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             }, 2000);
             MyLogger.println("GetHomePublishData>>>check>>>>>1>>>>>>22222>" + reqTag);
         } else {
-
+            if (progressdialog != null && progressdialog.isShowing())
+                progressdialog.dismiss();
+            adminDashboard = gson.fromJson(response, GraphValues.class);
+            initializeChart(chart, "booking");
         }
-        initializeChart(chart, ModuleAnalyzer.ModuleAnalyze.Calories);
+
     }
+
+    GraphValues adminDashboard;
 
     @Override
     public void onServerResponseError(String reqTag, String errorMessage) {
@@ -477,6 +515,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             jsonObj.put("seller_uid", authorisedPreference.getString("app_sellerrid"));
             jsonObj.put("isadmin", "1");
             jsonObj.put("store_id", "");
+            jsonObj.put("has_seller", "true");
             jsonObj.put("encryption_status", "0");
 
             return jsonObj;
@@ -507,11 +546,17 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             public void onResponseObtained(Object response, int responseType, boolean isCachedData) {
                 if (progressdialog != null && progressdialog.isShowing())
                     progressdialog.dismiss();
+
                 BookingTokSIDResponse sidResponse = new Gson().fromJson(response.toString(), BookingTokSIDResponse.class);
+                CallUtility.currentbookingid = todaylistnew.getBookingId();
+                MyLogger.println("check>>>>>makeSessionRequest>>0 " + response.toString() + " " + CallUtility.currentbookingid + " " + todaylistnew.getBookingId());
                 ContactSdk.PublisherVideoCall(mContext, "30",
-                        todaylistnew.getCustomername(), todaylistnew.getCustomerProfilepic(), todaylistnew.getCustomerProfilepic(),
-                        sidResponse.TokBoxTokenID, sidResponse.TokBoxSID, "");
-//            sendPush(PushLogger.EVENT_CALL_TO_CUSTOMER);
+                        todaylistnew.getCustomername(), appPrefernce.getProfilePic(), todaylistnew.getCustomerProfilepic(),
+                        sidResponse.TokBoxTokenID, sidResponse.TokBoxSID, sidResponse.TokApiKey, "11");
+                /*ContactSdk.PublisherVideoCall(this, bookSummary.BookingDuration.split("")[0],
+                        bookSummary.customername, bookSummary.ImageUrl,bookSummary.profilepic,
+                        sidResponse.TokBoxTokenID, sidResponse.TokBoxSID,sidResponse.TokApiKey,bookSummary.messenger_type_val);*/
+                sendPush(EVENT_CALL_TO_CUSTOMER, todaylistnew.getBookingId());
             }
 
             @Override
@@ -524,7 +569,31 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         controller.makemebasedRequest(request);
     }
 
-    public void initializeChart(LineChart mChart, ModuleAnalyzer.ModuleAnalyze chartType) {
+    public static String EVENT_CALL_TO_CUSTOMER = "DBIXLKLBA";
+
+    public void sendPush(String id, String bookingId) {
+        MewardDbHandler mewardDbHandler = new MewardDbHandler(mContext);
+        ArrayList<Events> eventses = mewardDbHandler.getEvent(id, "Complete");
+        ArrayList<String> rules = new ArrayList<>();
+        MyLogger.println("check>>>>>makeSessionRequest>>1 " + eventses);
+        if (eventses != null) {
+
+            try {
+                ActionPerformer actionPerformer = new ActionPerformer();
+                ArrayList<String> key = new ArrayList<>();
+                key.add(bookingId);
+                actionPerformer.sendPush(mContext, id, eventses.get(0).ruleId, key);
+            } catch (Exception e) {
+                System.out.println("CallSummary.updateCallStatus " + e);
+            }
+
+
+        }
+
+
+    }
+
+    public void initializeChart(LineChart mChart, String str) {
         mChart.setDrawGridBackground(false);
         mChart.setDrawBorders(false);
         mChart.setBorderWidth(0);
@@ -580,7 +649,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         rightAxis.setEnabled(false);
 //        xl.setDrawAxisLine(false);
         /* Set data on the chart */
-        setFatData(mChart, "fragmentType");
+        setFatData(mChart, str);
         Legend l = mChart.getLegend();
         l.setForm(Legend.LegendForm.LINE);
         l.setMaxSizePercent(4);
@@ -589,7 +658,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
     ArrayList<String> xVals;
     ArrayList<Entry> yVals;
-    ArrayList<ModuleAnalyzer.AnalyzeEntity> graphValues;
+    ArrayList<GraphDatum> graphValues;
     ModuleAnalyzer moduleAnalyzer;
 
     //graph chart pr data aur color set hota he
@@ -600,35 +669,38 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         graphValues = new ArrayList<>();
         int totalEntries = 0;
         MyLogger.println("fragment type value is ==  fragment type " + fragmentTypeNew);
-       /* if (fragmentTypeNew.equalsIgnoreCase("Daily")) {
-            selectAllTab();
-        }*/
-
-        graphValues.addAll(moduleAnalyzer.getAllWristStepsDailyDaily12(dateCalendar.getTimeInMillis()));
-
-        /*stepsAdapter = new StepsFrag.StepsAdapter(context);
-        recyclerView.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
-        linearLayoutManager.setReverseLayout(true);
-        linearLayoutManager.setStackFromEnd(true);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(stepsAdapter);
-        setThisTabSelect(true, false, false, false);
-        which = 0;
-        stepsAdapter.notifyDataSetChanged();
-        */
-
-//        graphHeading.setText(getActivity().getResources().getString(R.string.steps));
-//        vView.setText(getActivity().getResources().getString(R.string.steps));
-
-        for (int i = 0; i < graphValues.size(); i++) {
-            xVals.add(graphValues.get(i).getKey());
-            float val = graphValues.get(i).getValue();
-            if (val > 0) {
-                totalEntries++;
+        if (fragmentTypeNew.equalsIgnoreCase("booking")) {
+            booking_tab.setBackground(getResources().getDrawable(R.drawable.btn_green_solid30));
+            booking_tab.setTextColor(getResources().getColor(R.color.deep_white));
+            payment_tab.setBackground(null);
+            payment_tab.setTextColor(getResources().getColor(R.color.colorPrimary));
+            graphValues.addAll(adminDashboard.getData().getGraphData());
+            for (int i = 0; i < graphValues.size(); i++) {
+                xVals.add(getMonth(Integer.parseInt(graphValues.get(i).getBookingMonth())));
+                float val = Float.parseFloat(graphValues.get(i).getTotalBookings());
+                if (val > 0) {
+                    totalEntries++;
+                }
+                yVals.add(new Entry(val, i));
             }
-            yVals.add(new Entry(val, i));
+        } else {
+            payment_tab.setBackground(getResources().getDrawable(R.drawable.btn_green_solid30));
+            payment_tab.setTextColor(getResources().getColor(R.color.deep_white));
+            booking_tab.setBackground(null);
+            booking_tab.setTextColor(getResources().getColor(R.color.colorPrimary));
+            graphValues.addAll(adminDashboard.getData().getGraphData());
+            for (int i = 0; i < graphValues.size(); i++) {
+                xVals.add(getMonth(Integer.parseInt(graphValues.get(i).getBookingMonth())));
+                float val = Float.parseFloat(graphValues.get(i).getTotalEarnings());
+                if (val > 0) {
+                    totalEntries++;
+                }
+                yVals.add(new Entry(val, i));
+            }
         }
+
+
+
         /*for (int i = 0; i < graphValues1.size(); i++) {
             xVals.add(graphValues1.get(i).getKey());
             float val = graphValues1.get(i).getValue();
@@ -662,7 +734,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         if (totalEntries > 0) {
             chart.setVisibility(View.VISIBLE);
             ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
-            LineDataSet set1 = addlineToChart(getResources().getColor(R.color.colorPrimary), yVals);
+            LineDataSet set1 = addlineToChart(getResources().getColor(R.color.Graph_tab_color), yVals);
             dataSets.add(set1);
             /*LineDataSet set2 = addlineToChart(getResources().getColor(R.color.graph_circle_color_orange), yVals1);
             dataSets.add(set2);
@@ -681,12 +753,12 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         LineDataSet set2 = new LineDataSet(val, "");
 
         set2.setCircleColorHole(getResources().getColor(android.R.color.white));
-        set2.setFillColor(getResources().getColor(R.color.colorPrimary));
+        set2.setFillColor(getResources().getColor(R.color.Graph_tab_color));
         set2.setCircleColor(color);
         set2.setDrawValues(false);
         set2.setColor(color);
-        set2.setCircleRadius(4.0f);
-        set2.setLineWidth(2.0f);
+        set2.setCircleRadius(3.0f);
+        set2.setLineWidth(1.0f);
         set2.setDrawFilled(true);
         return set2;
     }
@@ -700,5 +772,61 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         }
         // return the new list
         return newList;
+    }
+
+    private JSONObject getGraphValues() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        authorisedPreference = new AuthorisedPreference(mContext);
+        JSONObject jsonObj = null;
+        jsonObj = new JSONObject();
+        try {
+            jsonObj.put("action", "GetBookingGraphData");
+            jsonObj.put("mewardid", authorisedPreference.getMewardId());
+            jsonObj.put("tokenkey", authorisedPreference.getTokenKey());
+            jsonObj.put("user_type", "selleradmin");
+            jsonObj.put("year", "" + year);
+            jsonObj.put("instance_boxid", appPrefernce.getInstanceBoxid());
+            jsonObj.put("seller_uid", authorisedPreference.getString("app_sellerrid"));
+            jsonObj.put("isadmin", "1");
+            jsonObj.put("store_id", "");
+            jsonObj.put("has_seller", "true");
+            jsonObj.put("encryption_status", "0");
+
+            return jsonObj;
+        } catch (Exception e) {
+            return jsonObj;
+        }
+
+    }
+
+    private String getMonth(int month) {
+        String monthname = "NA";
+        if (month == 1) {
+            monthname = "Jan";
+        } else if (month == 2) {
+            monthname = "Feb";
+        } else if (month == 3) {
+            monthname = "March";
+        } else if (month == 4) {
+            monthname = "April";
+        } else if (month == 5) {
+            monthname = "May";
+        } else if (month == 6) {
+            monthname = "June";
+        } else if (month == 7) {
+            monthname = "July";
+        } else if (month == 8) {
+            monthname = "August";
+        } else if (month == 9) {
+            monthname = "Sept";
+        } else if (month == 10) {
+            monthname = "Oct";
+        } else if (month == 11) {
+            monthname = "Nov";
+        } else if (month == 12) {
+            monthname = "Dec";
+        }
+        return monthname;
     }
 }
