@@ -65,22 +65,6 @@ public class BookingListAdapter extends RecyclerView.Adapter<BookingListViewHold
             holder.time.setText(slotDataArrayList.get(position).from_time + " - " + slotDataArrayList.get(position).to_time);
             holder.sessiontype.setText(slotDataArrayList.get(position).plan_session_title.toUpperCase());
             holder.bookbutton.setText("VIEW DETAILS");
-            holder.bookbutton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    digiHelperPreference.setBoolean(DigiHelperPreference.ISADMIN,true);
-                    digiHelperPreference.setString(DigiHelperPreference.TokenKey,"VUHQ3ELWZ1585572379_d3ec1951-abcf-4354-9c90-5d776e1d1126_ShOZpXKHR_bpSa25QWk");
-                    digiHelperPreference.setString(DigiHelperPreference.MewardID,"G8TFQ6MU01585570555");
-
-                    Intent intent = new Intent(context, MevoSellerDetailsActivity.class);
-                    intent.putExtra("instance_id","0RSTJNUQS");
-                    intent.putExtra("sellerid","740bb9c3-17ff-4ef8-8922-9de82a9a2471");
-//                    Bundle bundle = new Bundle();
-//                    bundle.putSerializable("datas", sellerDetailData);
-//                    intent.putExtras(bundle);
-                    context.startActivity(intent);
-                }
-            });
             GradientDrawable gradientDrawable = (GradientDrawable) holder.bookbutton.getBackground();
             gradientDrawable.setColor(Color.parseColor("#898989"));
             holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +92,24 @@ public class BookingListAdapter extends RecyclerView.Adapter<BookingListViewHold
 //                    context.startActivity(intent);
                 }
             });
+
+            holder.bookbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    digiHelperPreference.setBoolean(DigiHelperPreference.ISADMIN,true);
+                    digiHelperPreference.setString(DigiHelperPreference.TokenKey,"VUHQ3ELWZ1585572379_d3ec1951-abcf-4354-9c90-5d776e1d1126_ShOZpXKHR_bpSa25QWk");
+                    digiHelperPreference.setString(DigiHelperPreference.MewardID,"G8TFQ6MU01585570555");
+
+                    Intent intent = new Intent(context, MevoSellerDetailsActivity.class);
+                    intent.putExtra("instance_id","0RSTJNUQS");
+                    intent.putExtra("sellerid","740bb9c3-17ff-4ef8-8922-9de82a9a2471");
+//                    Bundle bundle = new Bundle();
+//                    bundle.putSerializable("datas", sellerDetailData);
+//                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+                }
+            });
+
         }
 
         if(slotDataArrayList.get(position).plan_session_type.equalsIgnoreCase("group_session")){
