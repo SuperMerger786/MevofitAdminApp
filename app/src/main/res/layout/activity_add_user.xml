@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_rectangle_top_rounded"
+    android:layout_marginTop="@dimen/dp150"
+    android:layout_alignParentTop="true">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="visible"
+    android:id="@+id/existing_user"
+    android:layout_alignParentTop="true"
+    android:layout_above="@+id/confirm_new_user">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/dp18"
+        android:layout_marginRight="@dimen/dp18"
+        android:layout_marginTop="@dimen/dp18"
+         android:layout_marginBottom="@dimen/dp10">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp14"
+            android:layout_centerInParent="true"
+            android:textColor="#393939"
+            android:text="Choose Clients"
+            android:textAllCaps="true"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:layout_width="@dimen/dp18"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:id="@+id/back"
+            android:src="@drawable/megouser_sync_cancel"
+            android:tint="#393939"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp15"
+        android:paddingLeft="@dimen/dp5"
+        android:paddingRight="@dimen/dp5"
+        android:paddingTop="@dimen/dp5"
+        android:paddingBottom="@dimen/dp5">
+        <ImageView
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp44"
+            android:layout_alignParentRight="true"
+            android:id="@+id/search_icon"
+            android:src="@drawable/filter"
+            android:padding="@dimen/dp11"
+            android:adjustViewBounds="true"
+            android:background="@drawable/client_item_bg"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp44"
+            android:hint="Search"
+            android:textColorHint="#cfcfcf"
+            android:textSize="@dimen/sp12"
+            android:background="@drawable/client_item_bg"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/search_text"
+            android:drawableLeft="@drawable/search"
+            android:layout_toLeftOf="@+id/search_icon"
+            android:layout_marginRight="@dimen/dp5"
+            android:paddingLeft="@dimen/dp12"
+            android:drawablePadding="@dimen/dp8"
+            android:paddingRight="@dimen/dp12"/>
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_list">
+    </androidx.recyclerview.widget.RecyclerView>
+</LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/new_user"
+        android:layout_marginTop="@dimen/dp5"
+        android:visibility="gone">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp8"
+        android:paddingTop="@dimen/dp8"
+        android:layout_alignParentTop="true">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#929292"
+            android:textSize="@dimen/sp12"
+            android:background="@drawable/background_edittext"
+            android:hint="Name"
+            android:padding="@dimen/dp8"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginBottom="@dimen/dp10"
+            android:layout_marginLeft="@dimen/dp42"
+            android:layout_marginRight="@dimen/dp42"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/ed_name"
+            android:textColorHint="#d6d6d6"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:textSize="@dimen/sp12"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_edittext"
+            android:textColor="#929292"
+            android:padding="@dimen/dp8"
+            android:hint="Phone Number"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginBottom="@dimen/dp10"
+            android:layout_marginLeft="@dimen/dp42"
+            android:layout_marginRight="@dimen/dp42"
+            android:layout_gravity="center_horizontal"
+            android:textColorHint="#d6d6d6"
+            android:id="@+id/ed_phone"
+            />
+        <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#929292"
+        android:textSize="@dimen/sp12"
+        android:hint="Email"
+        android:padding="@dimen/dp8"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginBottom="@dimen/dp10"
+        android:layout_marginLeft="@dimen/dp42"
+        android:layout_marginRight="@dimen/dp42"
+        android:textColorHint="#d6d6d6"
+        android:background="@drawable/background_edittext"
+        android:layout_gravity="center_horizontal"
+            android:id="@+id/ed_email"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginLeft="@dimen/dp42"
+            android:gravity="center_vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/sp15"
+            android:layout_height="wrap_content"
+            android:textColor="#8f8f8f"
+            android:text="Timing"
+            android:layout_marginRight="@dimen/dp35"/>
+            <TextView
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/sp10"
+            android:layout_height="wrap_content"
+            android:textColorHint="#c6c6c6"
+            android:paddingLeft="@dimen/dp20"
+            android:paddingRight="@dimen/dp20"
+            android:paddingTop="@dimen/dp10"
+            android:paddingBottom="@dimen/dp10"
+            android:hint="10:30 AM"
+            android:id="@+id/txt_timing"
+            android:textColor="#929292"   />
+        </LinearLayout>
+    </LinearLayout>
+
+    </RelativeLayout>
+    <TextView
+        android:layout_width="@dimen/dp250"
+        android:layout_height="@dimen/dp45"
+        android:background="@drawable/round_blue_button"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp16"
+        android:gravity="center"
+        android:text="Book Now"
+        android:textAllCaps="true"
+        android:id="@+id/confirm_new_user"
+        android:layout_alignParentBottom="true"
+        android:onClick="AddNewUser"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp28"
+        android:layout_marginBottom="@dimen/dp22"/>
+
+</RelativeLayout>
+</RelativeLayout>

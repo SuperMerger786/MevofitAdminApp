@@ -58,6 +58,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Currency;
 import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
 
 import android.view.View.MeasureSpec;
@@ -108,6 +109,8 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
     LineChart chart;
     LinearLayout add_entry;
     AppPrefernce appPrefernce;
+    TextView id_date, id_time, id_timetwo, id_minone, id_mintwo;
+    LinearLayout booking_id;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.admin_home_new, container, false);
@@ -122,6 +125,14 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         total_avrrate = (TextView) view.findViewById(R.id.total_avrrate);
         booking_tab = (TextView) view.findViewById(R.id.booking_tab);
         payment_tab = (TextView) view.findViewById(R.id.payment_tab);
+
+        //booking counter
+
+        id_time = (TextView) view.findViewById(R.id.id_time);
+        id_timetwo = (TextView) view.findViewById(R.id.id_timetwo);
+        id_minone = (TextView) view.findViewById(R.id.id_minone);
+        id_mintwo = (TextView) view.findViewById(R.id.id_minone);
+        booking_id = (LinearLayout) view.findViewById(R.id.booking_id);
 
         chart = (LineChart) view.findViewById(R.id.chart);
         add_entry = (LinearLayout) view.findViewById(R.id.add_entry);
@@ -178,7 +189,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             booking_list.setAdapter(new BookingTodaysItemAdapter((ArrayList<TodayBooking>) adminDashboard.getData().getTodayBookings()));
             setListHeight(booking_list);
             book_count.setText("" + adminDashboard.getData().getTodayBookings().size());
-
+            SetCounter(adminDashboard.getData().getTodayBookings());
         } else {
             booking_status.setVisibility(View.GONE);
         }
@@ -393,6 +404,22 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         return "";
     }
 
+    /*public long getMilliFromDateCounter(String dateFormat) {
+        String[] straarray = dateFormat.split(":");
+//        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(straarray[0]));
+        calendar.set(Calendar.MINUTE, Integer.parseInt(straarray[1]));
+//        date.setTime(calendar.getTimeInMillis());
+//        SimpleDateFormat formatter = new SimpleDateFormat("hh:mm");
+       *//* try {
+            date = formatter.parse(dateFormat);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }*//*
+        System.out.println("Today is " + calendar.getTimeInMillis());
+        return calendar.getTimeInMillis();
+    }*/
     public long getMilliFromDate(String dateFormat) {
         String[] straarray = dateFormat.split(":");
 //        Date date = new Date();
@@ -828,5 +855,61 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             monthname = "Dec";
         }
         return monthname;
+    }
+
+    public void SetCounter(List<TodayBooking> bookingList) {
+
+        if (bookingList.size() > 0) {
+            booking_id.setVisibility(View.VISIBLE);
+//                            id_desc.setText(bookingList.get(0).company_name);
+//            id_date.setText("Your booking with " + bookingList.get(0).tablename + " is confirmed for " + bookingList.get(0).starttime);
+                          /*  Glide.with(mContext.get())
+                                    .load(bookingList.get(0).ImageUrl)
+                                    .error(Glide.with(book_img).load(R.drawable.prfile_background))
+                                    .into(book_img);*/
+
+            for (int i = 0; i < bookingList.size(); i++) {
+                System.out.println("MainWristActivity.callBoking <<<<<list1>" + bookingList.size() + "====" + getMilliFromDate(bookingList.get(i).getStartTime()) + "===" + (getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) + "=minute=" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) / 60) + "==seconds==" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) % 60) + "===hour=" + (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600));
+                if ((getMilliFromDate(bookingList.get(i).getStartTime()) > System.currentTimeMillis())) {
+                    int hour = (int) (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600);
+                    String minute = "" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) / 60);
+                    String seconds = "" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) % 60);
+                    int[] minutearr = setIntArray(minute);
+                    int[] secondarr = setIntArray(seconds);
+//                    System.out.println("MainWristActivity.callBoking <<<<<list2>" + bookingList.size() + "====" + minutearr.length + "====" + minute + "====" + secondarr.length + "====" + seconds);
+                    if (hour == 0) {
+                        if (Integer.parseInt(minute) >= 0) {
+                            if (minutearr.length > 1) {
+                                id_time.setText("" + minutearr[0]);
+                                id_timetwo.setText("" + minutearr[1]);
+                            } else {
+                                id_time.setText("0");
+                                id_timetwo.setText("" + minutearr[0]);
+                            }
+                        } else {
+                            id_time.setText("0");
+                            id_timetwo.setText("0");
+                        }
+                        if (secondarr.length > 1) {
+                            id_minone.setText("" + secondarr[0]);
+                            id_mintwo.setText("" + secondarr[1]);
+
+                        } else {
+                            id_minone.setText("0");
+                            id_mintwo.setText("" + secondarr[0]);
+                        }
+                    } else {
+                        id_time.setText("0");
+                        id_timetwo.setText("0");
+                        id_minone.setText("0");
+                        id_mintwo.setText("0");
+                    }
+                    break;
+                }
+            }
+        } else {
+            booking_id.setVisibility(View.GONE);
+        }
+
     }
 }

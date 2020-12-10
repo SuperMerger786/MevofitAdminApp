@@ -109,6 +109,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_marginTop="@dimen/dp10"
                             android:layout_marginRight="@dimen/dp10"
+                            android:visibility="gone"
                             android:src="@drawable/newui_ordercale" />
                     </RelativeLayout>
 
@@ -276,9 +277,9 @@
                 android:layout_marginTop="@dimen/dp15"
                 android:layout_marginRight="@dimen/auto_btn_right"
                 android:clickable="true"
+                android:visibility="visible"
                 app:cardBackgroundColor="@color/deep_white"
                 app:cardCornerRadius="6dp"
-                android:visibility="visible"
                 app:cardElevation="2dp">
 
                 <LinearLayout
@@ -320,7 +321,6 @@
                     </RelativeLayout>
 
 
-
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -351,9 +351,9 @@
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="@string/all_c"
-                                android:visibility="gone"
                                 android:textColor="@color/deep_white"
-                                android:textSize="@dimen/sp14" />
+                                android:textSize="@dimen/sp14"
+                                android:visibility="gone" />
 
                             <com.app.newuidashboardadmin.font.FiraSansRegularTextView
                                 android:id="@+id/booking_tab"
@@ -405,9 +405,9 @@
                                     android:layout_centerVertical="true"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginRight="5dp"
+                                    android:visibility="gone"
                                     app:textColor_v="@color/black"
                                     app:textSize_v="@dimen/sp16"
-                                    android:visibility="gone"
                                     app:text_v="Sleep" />
 
                                 <com.github.mikephil.charting.charts.LineChart
@@ -586,7 +586,178 @@
 
 
             <!--        </android.support.v7.widget.CardView>-->
+            <LinearLayout
+                android:id="@+id/booking_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:paddingBottom="@dimen/dp10"
+                android:background="#6cc374"
+                android:orientation="vertical"
+                android:visibility="gone">
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="@dimen/dp25"
+                    android:layout_marginTop="@dimen/dp20"
+                    android:layout_marginRight="@dimen/dp25"
+                    android:gravity="right|center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/dp120"
+                        android:layout_height="@dimen/dp70"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_marginTop="@dimen/dp30"
+                        android:layout_marginRight="@dimen/dp15"
+                        android:layout_marginBottom="@dimen/dp20"
+                        android:layout_weight="1"
+                        android:scaleType="fitXY"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <com.app.newuidashboardadmin.font.LatoBoldTextView
+                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="@dimen/dp10"
+                            android:layout_marginBottom="@dimen/dp10"
+                            android:gravity="center"
+                            android:text="Start session"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/dp16" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="@dimen/dp1"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp5"
+                        android:layout_marginRight="@dimen/dp8"
+                        android:layout_marginBottom="@dimen/dp20"
+                        android:background="@color/deep_white"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.app.newuidashboardadmin.font.LatoBoldTextView
+                                android:id="@+id/id_time"
+                                android:layout_width="@dimen/dp20"
+                                android:layout_height="@dimen/dp35"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="@dimen/dp5"
+                                android:background="@drawable/round_corners_new"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="@color/profile_slider_target"
+                                android:textSize="@dimen/dp16" />
+
+                            <com.app.newuidashboardadmin.font.LatoSemiBoldTextView
+                                android:id="@+id/id_timetwo"
+                                android:layout_width="@dimen/dp20"
+                                android:layout_height="@dimen/dp35"
+                                android:layout_gravity="center"
+                                android:background="@drawable/round_corners_new"
+                                android:gravity="center"
+                                android:text="2"
+                                android:textColor="@color/profile_slider_target"
+                                android:textSize="@dimen/dp16" />
+                        </LinearLayout>
+
+                        <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/dp4"
+                            android:gravity="center"
+                            android:text="MINS"
+                            android:textColor="@color/deep_white"
+                            android:textSize="@dimen/dp12" />
+                    </LinearLayout>
+
+                  <!--  <View
+                        android:layout_width="@dimen/dp1"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp5"
+                        android:layout_marginRight="@dimen/dp8"
+                        android:layout_marginBottom="@dimen/dp20"
+                        android:background="@color/deep_white" />-->
+                    <TextView
+                        android:layout_width="@dimen/dp1"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp5"
+                        android:layout_marginRight="@dimen/dp8"
+                        android:layout_marginBottom="@dimen/dp20"
+                        android:text=":" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.app.newuidashboardadmin.font.LatoSemiBoldTextView
+                                android:id="@+id/id_minone"
+                                android:layout_width="@dimen/dp20"
+                                android:layout_height="@dimen/dp35"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="@dimen/dp5"
+                                android:background="@drawable/round_corners_new"
+                                android:gravity="center"
+                                android:text="3"
+                                android:textColor="@color/profile_slider_target"
+                                android:textSize="@dimen/dp16" />
+
+                            <com.app.newuidashboardadmin.font.LatoSemiBoldTextView
+                                android:id="@+id/id_mintwo"
+                                android:layout_width="@dimen/dp20"
+                                android:layout_height="@dimen/dp35"
+                                android:layout_gravity="center"
+                                android:background="@drawable/round_corners_new"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="@color/profile_slider_target"
+                                android:textSize="@dimen/dp16" />
+                        </LinearLayout>
+
+                        <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/dp4"
+                            android:gravity="center"
+                            android:text="SECS"
+                            android:textColor="@color/deep_white"
+                            android:textSize="@dimen/dp12" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

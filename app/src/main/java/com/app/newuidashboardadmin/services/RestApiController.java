@@ -2,6 +2,7 @@ package com.app.newuidashboardadmin.services;
 
 import android.content.Context;
 
+import com.app.newuidashboardadmin.clienttab.sevices.GetUserListRequest;
 import com.app.newuidashboardadmin.plan.bean.request.GetSellerBookingSlotsRequest;
 import com.app.newuidashboardadmin.plan.bean.request.GetSellerInstancesRequest;
 import com.app.newuidashboardadmin.plan.bean.request.GetStandardPlan;
@@ -10,7 +11,8 @@ import com.megogrid.megoauth.AuthorisedPreference;
 
 import java.lang.ref.WeakReference;
 
-
+import dmax.dialog.SpotsDialog;
+import com.app.newuidashboardadmin.clienttab.sevices.ProfileSetupRequest;
 
 public class RestApiController implements Response {
     private WeakReference<Context> contxt;
@@ -28,6 +30,8 @@ public class RestApiController implements Response {
     private String bookingUrl = "http://alphaservices13.migital.net/booking/BookingV3/booking";
     private String baseUrl = "http://alphaservices13.migital.net/me_base/MeBase/mebase/";
     public RestClient client;
+    public static final int REGISTRATIONREQUEST = 27;
+    public static final int GETUSERS = 16;
 
 
     public RestApiController(Context context, Response response, int responseType) {
@@ -61,7 +65,7 @@ public class RestApiController implements Response {
     @Override
     public void onResponseObtained(Object response, int responseType,
                                    boolean iscached) {
-
+        stopDialog();
         this.response.onResponseObtained(response, responseType, iscached);
     }
 
@@ -92,8 +96,40 @@ public class RestApiController implements Response {
         client.Communicate(baseUrl, request, responseType);
     }
 
+    public void makemebasedRequest(GetUserListRequest request, boolean b) {
+        if(b)
+            startDialog();
+        client.Communicate(urlAplha, request, responseType);
 
+    }
 
+    public void makemebasedRequest(ProfileSetupRequest request, boolean show) {
+        if(show)
+            startDialog();
+        client.Communicate(urlAplha, request, responseType);
+
+    }
+    SpotsDialog progressdialog;
+    public void startDialog() {
+        if(progressdialog!=null){
+            progressdialog.dismiss();
+            progressdialog.cancel();
+            progressdialog=null;
+
+        }
+        progressdialog = new SpotsDialog(mContext, "loading");
+        progressdialog.setCancelable(true);
+        progressdialog.setCanceledOnTouchOutside(true);
+    }
+    public void stopDialog() {
+        if(progressdialog!=null){
+            progressdialog.dismiss();
+            progressdialog.cancel();
+            progressdialog=null;
+
+        }
+
+    }
     /*public void setDeviceIdRequest(SetDeviceRequest request) {
         if(BaseUtility.isValid(request.tokenkey) && BaseUtility.isValid(request.mac_id) && BaseUtility.isValid(request.device_id) )
             client.Communicate(push_url, request, responseType);

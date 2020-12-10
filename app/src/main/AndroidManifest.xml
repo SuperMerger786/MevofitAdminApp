@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".plan.UserDetailsActivity"></activity>
+<!--        <activity android:name=".plan.UserDetailsActivity"></activity>-->
 
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -47,7 +47,10 @@
         <activity
             android:name="com.app.newuidashboardadmin.login.Admin"
             android:theme="@style/Theme.Design.NoActionBar" />
+        <activity android:name="com.app.newuidashboardadmin.clienttab.activity.AddUserActivity"
+            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar">
 
+        </activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

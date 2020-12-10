@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_marginLeft="@dimen/dp10"
+    android:layout_marginTop="@dimen/dp5"
+    android:layout_marginRight="@dimen/dp10"
+    android:layout_marginBottom="@dimen/dp5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp2"
+        android:paddingRight="@dimen/dp2"
+        android:paddingTop="@dimen/dp7"
+        android:paddingBottom="@dimen/dp7"
+
+        android:background="@drawable/client_item_bg">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight=".6"
+        android:gravity="center_horizontal"
+        android:id="@+id/profiledetail"
+        android:visibility="visible">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center_horizontal">
+        <FrameLayout
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40">
+
+        <LinearLayout
+            android:id="@+id/main_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@drawable/circle"
+            android:visibility="gone"
+            >
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/imageLoader"
+                style="@style/SpinKitView.CubeGrid"
+                android:layout_width="@dimen/dp10"
+                android:layout_height="@dimen/dp10"
+                android:layout_gravity="center"
+                android:visibility="visible"
+                app:SpinKit_Color="@color/white" />
+        </LinearLayout>
+
+        <com.app.newuidashboardadmin.CircularImageView
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:src="@drawable/profile"
+            android:id="@+id/user_profile"
+            app:border="true"
+            app:border_color="@android:color/black"
+            app:border_width="3dp"/>
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="3"
+        android:layout_marginBottom="@dimen/dp1">
+<LinearLayout
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1.3"
+    android:orientation="vertical"
+    android:layout_marginLeft="@dimen/dp7">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aliena Doris"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textColor="#595959"
+        android:id="@+id/user_name"
+        android:textSize="@dimen/sp12"
+        android:textAlignment="center"
+        android:textAllCaps="true"/>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="@dimen/dp2">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female, "
+            android:textAlignment="center"
+            android:textColor="#595959"
+            android:textSize="@dimen/sp10"
+            android:id="@+id/gender"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="29 years"
+            android:textColor="#595959"
+            android:id="@+id/age"
+            android:textSize="@dimen/sp10"
+            android:maxLines="1"
+            android:textStyle="bold"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight=".9"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="@dimen/dp2">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Self client"
+            android:textColor="#B18605"
+            android:id="@+id/client_type"
+            android:textSize="@dimen/sp10"
+            android:paddingRight="@dimen/dp6"
+            android:textAllCaps="false"
+            />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1.2"
+        android:gravity="center_vertical|right"
+        android:layout_marginRight="@dimen/dp6">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:gravity="right">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Monteral, "
+                android:textAlignment="center"
+                android:textColor="#595959"
+                android:textSize="@dimen/sp10"
+                android:id="@+id/city"
+                android:textAllCaps="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Canada"
+                android:textColor="#595959"
+                android:id="@+id/country"
+                android:textSize="@dimen/sp10"
+                android:textAllCaps="true"/>
+
+
+        </LinearLayout>
+        <ImageView
+            android:layout_width="@dimen/dp32"
+            android:layout_height="wrap_content"
+            android:src="@drawable/selected_client"
+            android:adjustViewBounds="true"
+            android:padding="@dimen/dp4"
+            android:id="@+id/selected_client"/>
+</LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+
+</LinearLayout>

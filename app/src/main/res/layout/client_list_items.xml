@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/dp10"
+    android:layout_marginTop="@dimen/dp5"
+    android:layout_marginRight="@dimen/dp10"
+    android:layout_marginBottom="@dimen/dp5"
+    app:cardCornerRadius="@dimen/dp8"
+    app:cardBackgroundColor="@android:color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp2"
+        android:paddingRight="@dimen/dp2"
+        android:paddingTop="@dimen/dp7"
+        android:paddingBottom="@dimen/dp7"
+        >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight=".6"
+        android:gravity="center_horizontal"
+        android:id="@+id/profiledetail"
+        android:visibility="visible">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center_horizontal">
+        <FrameLayout
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40">
+
+        <LinearLayout
+            android:id="@+id/main_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@drawable/circle"
+            android:visibility="gone"
+            >
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/imageLoader"
+                style="@style/SpinKitView.CubeGrid"
+                android:layout_width="@dimen/dp10"
+                android:layout_height="@dimen/dp10"
+                android:layout_gravity="center"
+                android:visibility="visible"
+                app:SpinKit_Color="@color/white" />
+        </LinearLayout>
+
+        <com.app.newuidashboardadmin.CircularImageView
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:src="@drawable/profile"
+            android:id="@+id/user_profile"
+            app:border="true"
+            app:border_color="@android:color/black"
+            app:border_width="3dp"/>
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="3"
+        android:layout_marginBottom="@dimen/dp1">
+<LinearLayout
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1.3"
+    android:orientation="vertical"
+    android:layout_marginLeft="@dimen/dp7">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aliena Doris"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textColor="#595959"
+        android:id="@+id/user_name"
+        android:textSize="@dimen/sp12"
+        android:textAlignment="center"/>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="@dimen/dp2">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female, "
+            android:textAlignment="center"
+            android:textColor="#595959"
+            android:textSize="@dimen/sp10"
+            android:id="@+id/gender"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="29 years"
+            android:textColor="#595959"
+            android:id="@+id/age"
+            android:textSize="@dimen/sp10"
+            android:maxLines="1"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight=".9"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="@dimen/dp2">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Self client"
+            android:textColor="#B18605"
+            android:id="@+id/client_type"
+            android:textSize="@dimen/sp10"
+            android:paddingRight="@dimen/dp6"
+            android:textAllCaps="true"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monteral, "
+            android:textAlignment="center"
+            android:textColor="#595959"
+            android:textSize="@dimen/sp10"
+            android:id="@+id/city"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Canada"
+            android:textColor="#595959"
+            android:id="@+id/country"
+            android:textSize="@dimen/sp10"
+            android:paddingRight="@dimen/dp5" />
+
+
+    </LinearLayout></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1.2"
+        android:gravity="center_vertical|right"
+        android:layout_marginRight="@dimen/dp6">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp34"
+            android:orientation="vertical"
+            android:gravity="right"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New client"
+                android:textColor="#B18605"
+                android:id="@+id/new_client"
+                android:textSize="@dimen/sp10"
+                android:paddingRight="@dimen/dp6"
+                android:textAllCaps="true"
+                android:visibility="gone"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last Session | Personal"
+                android:gravity="center"
+                android:textColor="#00BCD4"
+                android:id="@+id/session"
+                android:textSize="@dimen/sp10"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:visibility="visible"/>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/date_linear"
+            android:visibility="visible"
+            android:layout_marginBottom="@dimen/dp4">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="23 JUL | 06:30 - 9:15 PM"
+                android:gravity="center"
+                android:textColor="@color/color_mark_header"
+                android:id="@+id/date"
+                android:textAllCaps="true"
+                android:textSize="@dimen/sp9"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:gravity="center"
+                android:id="@+id/time"
+                android:textColor="@color/color_mark_header"
+                android:textSize="@dimen/sp9"/>
+        </LinearLayout>
+
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="@dimen/dp70"
+            android:layout_height="@dimen/dp25"
+            android:orientation="horizontal"
+            android:background="#ff0000"
+            android:padding="1dp"
+            android:id="@+id/bg_price">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:gravity="center"
+                >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$"
+            android:gravity="center"
+            android:textColor="@color/color_mark_header"
+            android:id="@+id/currency"
+            android:textSize="@dimen/sp9"/>
+
+
+        <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="40"
+    android:gravity="center"
+    android:textColor="@color/color_mark_header"
+            android:textSize="@dimen/sp12"
+            android:id="@+id/price"/>
+    </LinearLayout>
+        </LinearLayout></LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+
+</LinearLayout>
+</androidx.cardview.widget.CardView>

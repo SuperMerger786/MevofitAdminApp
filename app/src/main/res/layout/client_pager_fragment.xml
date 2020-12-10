@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/parent"
+    android:background="@color/white">
+
+
+
+    <!-- <View
+         android:layout_width="match_parent"
+         android:layout_height="@dimen/dp1"
+         android:background="#acacac"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp45"
+        android:background="#522580C5"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/size_14"
+        android:paddingRight="@dimen/size_14"
+        android:visibility="visible"
+        android:translationZ="1dp"
+        android:id="@+id/toolbar">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp18"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:rotation="90"
+            android:src="@drawable/arrow_me"
+            android:tint="@color/black"
+            android:id="@+id/back"/>
+
+        <com.megogrid.font.RobotoBoldTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Clients"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp12"
+            android:textStyle="bold"/>
+
+
+    </LinearLayout>
+
+
+    <androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/white">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            style="@style/MyTabTextAppearance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabTextAppearance="@style/MyTabTextAppearance"
+            android:elevation="@dimen/dp2"
+            app:tabIndicatorHeight="5dp"
+            app:tabMode="fixed"
+            app:tabBackground="@android:color/white"/>
+</androidx.cardview.widget.CardView>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.viewpager.widget.ViewPager>
+
+
+</LinearLayout>

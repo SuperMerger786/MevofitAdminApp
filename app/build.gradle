@@ -1,3 +1,14 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven { url 'https://maven.fabric.io/public' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
@@ -5,6 +16,7 @@ apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 30
     buildToolsVersion "29.0.3"
+    useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
         applicationId "com.app.newuidashboardadmin"
@@ -48,8 +60,13 @@ android {
             signingConfig fmevofitflavor
         }
     }
+    dexOptions {
+//        incremental true
+        jumboMode = true
+        javaMaxHeapSize "4g"
+    }
 }
-
+//apply plugin: 'com.google.gms.google-services'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -90,30 +107,51 @@ dependencies {
 //    implementation 'com.google.firebase:firebase-messaging:12.0.0'
 //    implementation 'com.google.firebase:firebase-storage:12.0.0'
     def playserviceVersion = '12.0.1'
-//    implementation fileTree(include: '*.jar', dir: 'libs')
-//    implementation "com.google.android.gms:play-services-fitness:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-ads:${playserviceVersion}"
+    implementation fileTree(include: '*.jar', dir: 'libs')
+    implementation "com.google.android.gms:play-services-fitness:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-ads:${playserviceVersion}"
     implementation "com.google.android.gms:play-services-base:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-analytics:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-plus:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-gcm:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-auth:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-basement:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-maps:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-location:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-places:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-analytics:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-plus:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-gcm:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-auth:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-basement:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-maps:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-location:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-places:${playserviceVersion}"
 //    implementation 'com.opentok.android:opentok-android-sdk:2.16.+'
-//    implementation 'com.google.firebase:firebase-storage:16.0.1'
+
+//    implementation "com.google.firebase:firebase-storage:${playserviceVersion}"
+
+
+    /*implementation("com.google.android.gms:play-services-gcm:12.0.1") {
+        exclude group: "com.google.android.gms"
+    }*/
+    implementation 'com.wang.avi:library:1.0.5'
+
     implementation project(':MegoUser-release')
     implementation project(':mego-event-1.1.0')
     implementation project(':FacebookLib')
-    implementation project(':digiproducthelper-release')
     implementation 'com.android.support:multidex:1.0.0'
-    implementation 'com.wang.avi:library:1.0.3'
-    implementation project(':MigCart-release')
-    implementation 'com.squareup.picasso:picasso:2.5.2'
+//    implementation 'com.google.firebase:firebase-database:12.0.0'
+//    implementation 'com.google.firebase:firebase-messaging:12.0.0'
+//    implementation 'com.google.firebase:firebase-storage:12.0.0'
 
+
+  implementation 'com.google.firebase:firebase-messaging:12.0.0'
+//    implementation 'com.google.firebase:firebase-database:12.0.0'
+    implementation 'com.google.firebase:firebase-database:12.0.1'
+    implementation 'com.google.firebase:firebase-core:12.0.1'
+     implementation 'com.google.firebase:firebase-storage:12.0.1'
+
+
+    implementation 'com.opentok.android:opentok-android-sdk:2.16.+'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.0.2'
+    implementation project(':digiproducthelper-release')
 }
-repositories {
-    mavenCentral()
-}
+
+//repositories {
+//    mavenCentral()
+//}
+//apply plugin: 'com.google.gms.google-services'
