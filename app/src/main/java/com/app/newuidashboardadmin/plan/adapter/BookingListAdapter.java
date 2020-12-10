@@ -92,7 +92,6 @@ public class BookingListAdapter extends RecyclerView.Adapter<BookingListViewHold
 //                    context.startActivity(intent);
                 }
             });
-
             holder.bookbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -109,7 +108,6 @@ public class BookingListAdapter extends RecyclerView.Adapter<BookingListViewHold
                     context.startActivity(intent);
                 }
             });
-
         }
 
         if(slotDataArrayList.get(position).plan_session_type.equalsIgnoreCase("group_session")){

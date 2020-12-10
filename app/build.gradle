@@ -91,17 +91,20 @@ dependencies {
 //    implementation 'com.google.firebase:firebase-storage:12.0.0'
     def playserviceVersion = '12.0.1'
 //    implementation fileTree(include: '*.jar', dir: 'libs')
-//    implementation "com.google.android.gms:play-services-fitness:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-ads:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-fitness:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-ads:${playserviceVersion}"
     implementation "com.google.android.gms:play-services-base:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-analytics:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-plus:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-gcm:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-auth:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-basement:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-maps:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-location:${playserviceVersion}"
-//    implementation "com.google.android.gms:play-services-places:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-analytics:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-plus:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-gcm:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-auth:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-basement:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-maps:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-location:${playserviceVersion}"
+    implementation "com.google.android.gms:play-services-places:${playserviceVersion}"
+    implementation "com.google.firebase:firebase-database:${playserviceVersion}"
+    implementation "com.google.firebase:firebase-core:${playserviceVersion}"
+    implementation "com.google.firebase:firebase-storage:${playserviceVersion}"
 //    implementation 'com.opentok.android:opentok-android-sdk:2.16.+'
 //    implementation 'com.google.firebase:firebase-storage:16.0.1'
     implementation project(':MegoUser-release')
@@ -111,8 +114,9 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.0'
     implementation 'com.wang.avi:library:1.0.3'
     implementation project(':MigCart-release')
+    implementation 'com.opentok.android:opentok-android-sdk:2.16.+'
     implementation 'com.squareup.picasso:picasso:2.5.2'
-
+    implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.0.2'
 }
 repositories {
     mavenCentral()

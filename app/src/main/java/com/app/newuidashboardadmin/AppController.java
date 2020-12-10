@@ -10,7 +10,6 @@ import androidx.multidex.MultiDex;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.firebase.FirebaseApp;
 
 //@ReportsCrashes(mailTo = "anilvns09@gmail.com", customReportContent = {
 //        ReportField.APP_VERSION_CODE, ReportField.APP_VERSION_NAME,

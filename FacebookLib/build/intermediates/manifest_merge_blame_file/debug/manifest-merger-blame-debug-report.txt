@@ -23,11 +23,11 @@
 23
 24    <uses-sdk
 25        android:minSdkVersion="14"
-25-->F:\MarketPlaceWithAdminApp9nov20\FacebookLib\AndroidManifest.xml
+25-->D:\MevofitAdminApp\FacebookLib\AndroidManifest.xml
 26        android:targetSdkVersion="22" />
-26-->F:\MarketPlaceWithAdminApp9nov20\FacebookLib\AndroidManifest.xml
+26-->D:\MevofitAdminApp\FacebookLib\AndroidManifest.xml
 27
 28    <application />
-28-->F:\MarketPlaceWithAdminApp9nov20\FacebookLib\AndroidManifest.xml:25:5-19
+28-->D:\MevofitAdminApp\FacebookLib\AndroidManifest.xml:25:5-19
 29
 30</manifest>
