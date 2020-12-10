@@ -1,14 +1,3 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        maven { url "https://jitpack.io" }
-        maven { url 'https://maven.fabric.io/public' }
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
-        classpath 'io.fabric.tools:gradle:1.+'
-    }
-}
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
@@ -118,7 +107,12 @@ dependencies {
     implementation project(':MegoUser-release')
     implementation project(':mego-event-1.1.0')
     implementation project(':FacebookLib')
+    implementation project(':digiproducthelper-release')
     implementation 'com.android.support:multidex:1.0.0'
+    implementation 'com.wang.avi:library:1.0.3'
+    implementation project(':MigCart-release')
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
 }
 repositories {
     mavenCentral()
