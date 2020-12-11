@@ -3,6 +3,7 @@ package com.app.newuidashboardadmin;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -51,6 +52,7 @@ import com.megogrid.megoeventbuilder.bean.Events;
 import com.megogrid.megoeventpersistence.MewardDbHandler;
 import com.megogrid.megoeventssdkhandler.ActionPerformer;
 import com.megogrid.megouser.MegoUser;
+import com.migital.digiproducthelper.extraui.NotificatinSetingactivity;
 
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -158,6 +160,13 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             @Override
             public void onClick(View v) {
 //                showDialog();
+            }
+        });
+        iv_pre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), NotificatinSetingactivity.class);
+                startActivity(intent);
             }
         });
         hithome();

@@ -66,7 +66,7 @@ android {
         javaMaxHeapSize "4g"
     }
 }
-//apply plugin: 'com.google.gms.google-services'
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -146,12 +146,14 @@ dependencies {
 
 
     implementation 'com.opentok.android:opentok-android-sdk:2.16.+'
+    implementation 'com.wang.avi:library:1.0.3'
+    implementation project(':MigCart-release')
+    implementation 'com.opentok.android:opentok-android-sdk:2.16.+'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.0.2'
     implementation project(':digiproducthelper-release')
+    implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.0.2'
 }
-
-//repositories {
-//    mavenCentral()
-//}
-//apply plugin: 'com.google.gms.google-services'
+repositories {
+    mavenCentral()
+}
