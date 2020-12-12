@@ -3,6 +3,7 @@ package com.app.newuidashboardadmin.clienttab.activity;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -18,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.app.newuidashboardadmin.MyLogger;
 import com.app.newuidashboardadmin.R;
 import com.app.newuidashboardadmin.Utility.AppPrefernce;
 import com.app.newuidashboardadmin.clienttab.adapter.ClientAdapter;
@@ -27,6 +29,7 @@ import com.app.newuidashboardadmin.clienttab.sevices.GetUserListRequest;
 import com.app.newuidashboardadmin.clienttab.sevices.GetUserListResponse;
 import com.app.newuidashboardadmin.clienttab.sevices.ProfileSetUpResponse;
 import com.app.newuidashboardadmin.clienttab.sevices.ProfileSetupRequest;
+import com.app.newuidashboardadmin.plan.bean.request.GetSellerBookingSlotsRequest;
 import com.app.newuidashboardadmin.services.Response;
 import com.app.newuidashboardadmin.services.RestApiController;
 import com.google.gson.Gson;
@@ -49,7 +52,7 @@ public class AddUserActivity extends AppCompatActivity implements Response, Sele
     ClientAdapter listAdapter;
     String boxid;
     ArrayList<ClientList> allUserList=new ArrayList<>();
-    GetUserListRequest request;
+    GetSellerBookingSlotsRequest request;
     int page=1,currentList;
     boolean loading;
     RestApiController controller;
@@ -105,7 +108,7 @@ public class AddUserActivity extends AppCompatActivity implements Response, Sele
                 ClientList clientList=allUserList.get(selectedposition);
                 digiHelperPreference.setBoolean(DigiHelperPreference.ISADMIN, true);
                 digiHelperPreference.setString(DigiHelperPreference.TokenKey, clientList.user_tk);
-                digiHelperPreference.setString(DigiHelperPreference.MewardID, "G8TFQ6MU01585570555");
+                digiHelperPreference.setString(DigiHelperPreference.MewardID, clientList.user_meward_id);
 
                 Intent intent = new Intent(this, MevoSellerDetailsActivity.class);
                 intent.putExtra("instance_id", appPrefernce.getInstanceBoxid());
@@ -148,16 +151,19 @@ public class AddUserActivity extends AppCompatActivity implements Response, Sele
 
             }
         });
-       isnewUser= getIntent().getBooleanExtra("newUser",false);
-                if(isnewUser) {
+        isnewUser= getIntent().getBooleanExtra("newUser",false);
+        TextView toolTitle =findViewById(R.id.tool_title);
+        if(isnewUser) {
 
-                    newUser.setVisibility(View.VISIBLE);
-                    existingUser.setVisibility(View.GONE);
-                }
-                else {
-                    newUser.setVisibility(View.GONE);
-                    existingUser.setVisibility(View.VISIBLE);
-                }
+            toolTitle.setText("Add New Client");
+            newUser.setVisibility(View.VISIBLE);
+            existingUser.setVisibility(View.GONE);
+        }
+        else {
+            toolTitle.setText("Choose Clients");
+            newUser.setVisibility(View.GONE);
+            existingUser.setVisibility(View.VISIBLE);
+        }
 
         searchText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -202,9 +208,10 @@ public class AddUserActivity extends AppCompatActivity implements Response, Sele
             }
         });
 
-
+        GradientDrawable drawable= (GradientDrawable) confirmNewUser.getBackground();
+        drawable.setColor(Color.parseColor(new AuthorisedPreference(this).getThemeColor()));
         controller=new RestApiController(this,this,RestApiController.GETUSERS);
-        request=new GetUserListRequest("GetBookedUsers",this);
+        request=new GetSellerBookingSlotsRequest("GetBookedUsers",this);
         setRequest("");
     }
 
@@ -212,13 +219,14 @@ public class AddUserActivity extends AppCompatActivity implements Response, Sele
     {
         page = 1;
         request.setPaginationID(String.valueOf(page++));
-        request.keyword = s;
+        request.name = s;
         loading = true;
 
 
         RestApiController controller = new RestApiController(AddUserActivity.this, new Response() {
             @Override
             public void onResponseObtained(Object response, int responseType, boolean isCachedData) {
+                MyLogger.println("AdduserActivity "+response.toString());
                 loading = false;
                 GetUserListResponse userList = new Gson().fromJson(response.toString(), GetUserListResponse.class);
                 allUserList.clear();
@@ -232,6 +240,8 @@ public class AddUserActivity extends AppCompatActivity implements Response, Sele
 
             @Override
             public void onErrorObtained(String errormsg, int responseType) {
+                MyLogger.println("AdduserActivity "+errormsg);
+
                 loading = false;
                 currentList = 0;
                 allUserList.clear();

@@ -40,10 +40,10 @@ public class AppPrefernce {
     public void setUtilityPermission(boolean reminder) {
         sharedPreferences.edit().putBoolean("remindMe", reminder).commit();
     }
+
     public boolean getUtilityPermission() {
         return sharedPreferences.getBoolean("remindMe", true);
     }
-
 
 
     public void setBatteryPromptShow(int waterglass) {
@@ -56,12 +56,8 @@ public class AppPrefernce {
     }
 
 
-
-
-
-
     public void remove(String key) {
-        if(getString(key)!=null)
+        if (getString(key) != null)
             sharedPreferences.edit().remove(key).commit();
     }
 
@@ -74,35 +70,53 @@ public class AppPrefernce {
 
     ///// Get Table
 
-    public void setTableClickIsFirstTime(boolean isFirst){
+    public void setTableClickIsFirstTime(boolean isFirst) {
         sharedPreferences.edit().putBoolean("isFirstt", isFirst).commit();
     }
 
-    public boolean getTableClickIsFirstTime(){
+    public boolean getTableClickIsFirstTime() {
         return sharedPreferences.getBoolean("isFirstt", false);
     }
 
 
-    public void setGetTableId(String tableId){
+    public void setGetTableId(String tableId) {
         sharedPreferences.edit().putString("tableIDD", tableId).commit();
     }
 
-    public String getGetTableId(){
-        return  sharedPreferences.getString("tableIDD", "na");
+    public String getGetTableId() {
+        return sharedPreferences.getString("tableIDD", "na");
     }
 
-    public void setProfilePic(String profilepic){
+    public void setProfilePic(String profilepic) {
         sharedPreferences.edit().putString("ProfilePic", profilepic).commit();
     }
 
-    public String getProfilePic(){
-        return  sharedPreferences.getString("ProfilePic", "http://alphaservices13.migital.net/webroot/profilepic/d3ec1951-abcf-4354-9c90-5d776e1d1126/TG5PJUQA81568883182_d3ec1951-abcf-4354-9c90-5d776e1d1126_ShOZpXKHR_bpSa25QWk_1594121744.jpg");
+    public String getProfilePic() {
+        return sharedPreferences.getString("ProfilePic", "http://alphaservices13.migital.net/webroot/profilepic/d3ec1951-abcf-4354-9c90-5d776e1d1126/TG5PJUQA81568883182_d3ec1951-abcf-4354-9c90-5d776e1d1126_ShOZpXKHR_bpSa25QWk_1594121744.jpg");
     }
-    public void setInstanceBoxid(String profilepic){
+
+    public void setInstanceBoxid(String profilepic) {
         sharedPreferences.edit().putString("InstanceBoxid", profilepic).commit();
     }
 
-    public String getInstanceBoxid(){
-        return  sharedPreferences.getString("InstanceBoxid", "NA");
+    public String getInstanceBoxid() {
+        return sharedPreferences.getString("InstanceBoxid", "NA");
+    }
+
+
+    //emailpass
+    public void setEmailId(String email) {
+        sharedPreferences.edit().putString("EmailId", email).commit();
+    }
+
+    public String getEmailId() {
+        return sharedPreferences.getString("EmailId", "NA");
+    }
+    public void setEPassword(String email) {
+        sharedPreferences.edit().putString("Password", email).commit();
+    }
+
+    public String getEPassword() {
+        return sharedPreferences.getString("Password", "NA");
     }
 }

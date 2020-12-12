@@ -23,6 +23,7 @@ import com.app.newuidashboardadmin.clienttab.adapter.ClientAdapter;
 import com.app.newuidashboardadmin.clienttab.sevices.BookingSummaryResponse;
 import com.app.newuidashboardadmin.clienttab.sevices.ClientList;
 import com.app.newuidashboardadmin.clienttab.sevices.GetUserListRequest;
+import com.app.newuidashboardadmin.plan.bean.request.GetSellerBookingSlotsRequest;
 import com.app.newuidashboardadmin.services.Response;
 import com.app.newuidashboardadmin.services.RestApiController;
 import com.google.gson.Gson;
@@ -35,7 +36,7 @@ public class ClientFragment extends Fragment implements Response
     Boolean loading = false;
     int TotalSize;
     RestApiController controller;
-    GetUserListRequest req;
+    GetSellerBookingSlotsRequest req;
     ProgressBar progressBar;
     RelativeLayout noOrder;
     int i ;
@@ -145,7 +146,7 @@ public class ClientFragment extends Fragment implements Response
             ordersummaryList.clear();
             listAdapter.notifyDataSetChanged();
             controller = new RestApiController(getContext(), this, 5);
-            req=new GetUserListRequest(requestType,context);
+            req=new GetSellerBookingSlotsRequest(requestType,context);
             req.setPaginationID(null);
             loading = true;
 
@@ -156,31 +157,31 @@ public class ClientFragment extends Fragment implements Response
     }
     private void setClientList()
     {
-       listAdapter = new ClientAdapter(getContext());
+        listAdapter = new ClientAdapter(getContext());
 
         final LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         orderlist_recycler.setLayoutManager(manager);
         orderlist_recycler.setAdapter(listAdapter);
         orderlist_recycler.addOnScrollListener(new RecyclerView.OnScrollListener()
-                                         {
-                                             @Override
-                                             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                                                 super.onScrolled(recyclerView, dx, dy);
+                                               {
+                                                   @Override
+                                                   public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                                                       super.onScrolled(recyclerView, dx, dy);
 
-                                                 int latVisibleItem = manager.findLastCompletelyVisibleItemPosition();
+                                                       int latVisibleItem = manager.findLastCompletelyVisibleItemPosition();
 
-                                                 if (!loading && (TotalSize-1==latVisibleItem)&& currentList == 12)
-                                                 {
-                                                     loading = true;
-                                                     System.out.println("OrdersFragment.onScrolled ------1");
-                                                     progressBar.setVisibility(View.VISIBLE);
-                                                      req.setPaginationID(String.valueOf(i));
-                                                     ++i;
-                                                     controller.makemebasedRequest(req,false);
+                                                       if (!loading && (TotalSize-1==latVisibleItem)&& currentList == 12)
+                                                       {
+                                                           loading = true;
+                                                           System.out.println("OrdersFragment.onScrolled ------1");
+                                                           progressBar.setVisibility(View.VISIBLE);
+                                                           req.setPaginationID(String.valueOf(i));
+                                                           ++i;
+                                                           controller.makemebasedRequest(req,false);
 
-                                                 }
-                                             }
-                                         }
+                                                       }
+                                                   }
+                                               }
 
         );
     }
@@ -196,20 +197,20 @@ public class ClientFragment extends Fragment implements Response
         isRequested=false;
         int previousSize=ordersummaryList.size();
 
-            for (ClientList clientList : response1.bookedList)
-            {
-                ordersummaryList.add(clientList);
+        for (ClientList clientList : response1.bookedList)
+        {
+            ordersummaryList.add(clientList);
 
-            }
-            System.out.println("StandAlone.onscroll total="+TotalSize);
-            currentList=response1.bookedList.size();
-            TotalSize = TotalSize + currentList ;
-            response1.bookedList=ordersummaryList;
-            listAdapter.setClientList(ordersummaryList);
-            listAdapter.notifyItemRangeChanged(previousSize, currentList);
+        }
+        System.out.println("StandAlone.onscroll total="+TotalSize);
+        currentList=response1.bookedList.size();
+        TotalSize = TotalSize + currentList ;
+        response1.bookedList=ordersummaryList;
+        listAdapter.setClientList(ordersummaryList);
+        listAdapter.notifyItemRangeChanged(previousSize, currentList);
 
-            progressBar.setVisibility(View.GONE);
-            loading = false;
+        progressBar.setVisibility(View.GONE);
+        loading = false;
 
 
         swipeToRefresh.setRefreshing(false);
@@ -226,11 +227,11 @@ public class ClientFragment extends Fragment implements Response
         if(i==1) {
             noOrder.setVisibility(View.VISIBLE);
             notask.setVisibility(View.VISIBLE);
-          //  notask.setText(R.string.no_booking_task);
+            //  notask.setText(R.string.no_booking_task);
 
 
             ordersummaryList.clear();
-           // listAdapter.setlist(new BookingSummaryResponse());
+            // listAdapter.setlist(new BookingSummaryResponse());
             listAdapter.notifyDataSetChanged();
             progressBar.setVisibility(View.GONE);
             isRequested=false;

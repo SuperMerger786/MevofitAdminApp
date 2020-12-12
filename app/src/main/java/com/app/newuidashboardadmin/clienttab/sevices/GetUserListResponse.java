@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 public class GetUserListResponse {
-    @SerializedName("data")
+    @SerializedName("bookedList")
     @Expose
     public ArrayList<ClientList> data;
 

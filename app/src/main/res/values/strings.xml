@@ -2851,7 +2851,7 @@ Note: Wear the band while you sleep and sync data to view the same</string>
 </resources>
 -->
 <resources>
-    <string name="app_name">NewUIDashBoardAdmin</string>
+    <string name="app_name">Mevo Admin app</string>
     <string name="app_name_1">IWBle</string>
     <string name="view_title">BLE-APP</string>
     <string name="unknown_device">Unknown device</string>

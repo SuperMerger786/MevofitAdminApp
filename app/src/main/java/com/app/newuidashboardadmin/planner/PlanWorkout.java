@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.newuidashboardadmin.MyLogger;
 import com.app.newuidashboardadmin.R;
+import com.app.newuidashboardadmin.Utility.AppPrefernce;
 import com.google.gson.Gson;
 
 import org.apache.http.util.EncodingUtils;
@@ -34,6 +37,7 @@ public class PlanWorkout extends Fragment {
     RecyclerView excercise_list, excercise_list2, excercise_list3, excercise_list4, excercise_list5;
     ArrayList<String> strlist = new ArrayList<>();
     WebView web_id;
+    AppPrefernce appPrefernce;
     private static String postUrl = "http://shopping.migital.net/webroot/marketplace_v1/user_management/Users/loginWithAjax";
 
     @Override
@@ -47,7 +51,7 @@ public class PlanWorkout extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         gson = new Gson();
-
+        appPrefernce = new AppPrefernce(mContext.get());
     }
 
     @Override
@@ -261,22 +265,22 @@ public class PlanWorkout extends Fragment {
             //Show loader on url load
             public void onLoadResource(WebView view, String url) {
                 MyLogger.println("webview>>>>>>>>values>>");
-                if (progressDialog == null) {
+               /* if (progressDialog == null) {
                     progressDialog = new ProgressDialog(getActivity());
                     progressDialog.setMessage("Loading...");
                     progressDialog.show();
-                }
+                }*/
             }
 
             public void onPageFinished(WebView view, String url) {
-                try {
+                /*try {
                     if (progressDialog.isShowing()) {
                         progressDialog.dismiss();
                         progressDialog = null;
                     }
                 } catch (Exception exception) {
                     exception.printStackTrace();
-                }
+                }*/
             }
 
         });
@@ -305,9 +309,23 @@ public class PlanWorkout extends Fragment {
     }
 
     private void setPost() {
-        String postData ="email=vaibhav@migital.com&password=Migital@123";
+        String email = appPrefernce.getEmailId();//"vaibhav@migital.com";
+        String password = appPrefernce.getEPassword();//"Migital@123";
+//        String seller_id = "740bb9c3-17ff-4ef8-8922-9de82a9a2471";
+        String postData1 = "email=" + email + "&password=" + password;
+
+
+        String postData = ""+postData1;//"email=vaibhav@migital.com&password=Migital@123";
+        MyLogger.println("check values>>>>>>>postweb>>>" + postData);
         web_id.postUrl(
                 postUrl,
                 EncodingUtils.getBytes(postData, "BASE64"));
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getExpandableList();
+            }
+        },2000);
+//
     }
 }

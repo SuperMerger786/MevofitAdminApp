@@ -83,4 +83,6 @@ public class ClientList implements Serializable {
         @Expose
         public String reg_user_type;
 
+        public String currency_symbol, variant_discounted_price;
+
 }

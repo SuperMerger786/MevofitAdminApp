@@ -96,10 +96,10 @@ public class RestApiController implements Response {
         client.Communicate(baseUrl, request, responseType);
     }
 
-    public void makemebasedRequest(GetUserListRequest request, boolean b) {
+    public void makemebasedRequest(GetSellerBookingSlotsRequest request, boolean b) {
         if(b)
             startDialog();
-        client.Communicate(urlAplha, request, responseType);
+        client.Communicate(bookingUrl, request, responseType);
 
     }
 
@@ -120,6 +120,7 @@ public class RestApiController implements Response {
         progressdialog = new SpotsDialog(mContext, "loading");
         progressdialog.setCancelable(true);
         progressdialog.setCanceledOnTouchOutside(true);
+        progressdialog.show();
     }
     public void stopDialog() {
         if(progressdialog!=null){

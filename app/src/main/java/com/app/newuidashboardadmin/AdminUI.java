@@ -76,7 +76,7 @@ public class AdminUI extends AppCompatActivity {
 //                stopTimerSync();
                 pager.setCurrentItem(4);
                 if (planWorkout != null) {
-                    planWorkout.getExpandableList();
+//                    planWorkout.getExpandableList();
                 }
             }
         });
@@ -178,7 +178,8 @@ public class AdminUI extends AppCompatActivity {
             if (position == 0) {
                 return tabListFragment;
             } else if (position == 2) {
-                return new InstanceListFragment();
+                planWorkout = new PlanWorkout();
+                return planWorkout;
             } else if (position == 1) {
                 return new BookingListFragment();
             } else if (position == 4) {

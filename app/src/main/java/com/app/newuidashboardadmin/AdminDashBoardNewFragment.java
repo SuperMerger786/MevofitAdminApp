@@ -550,6 +550,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             jsonObj.put("requestTime", System.currentTimeMillis());
             jsonObj.put("seller_uid", authorisedPreference.getString("app_sellerrid"));
             jsonObj.put("isadmin", "1");
+            jsonObj.put("instance_boxid", appPrefernce.getInstanceBoxid());
             jsonObj.put("store_id", "");
             jsonObj.put("has_seller", "true");
             jsonObj.put("encryption_status", "0");
@@ -879,7 +880,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
             for (int i = 0; i < bookingList.size(); i++) {
                 System.out.println("MainWristActivity.callBoking <<<<<list1>" + bookingList.size() + "====" + getMilliFromDate(bookingList.get(i).getStartTime()) + "===" + (getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) + "=minute=" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) / 60) + "==seconds==" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) % 60) + "===hour=" + (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600));
-                if ((getMilliFromDate(bookingList.get(i).getStartTime()) > System.currentTimeMillis())) {
+                if ((getMilliFromDate(bookingList.get(i).getStartTime()) > System.currentTimeMillis()) && (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600)<=1) {
                     int hour = (int) (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600);
                     String minute = "" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) / 60);
                     String seconds = "" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) % 60);
@@ -921,4 +922,62 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         }
 
     }
+    private JSONObject getVideoStatus() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        authorisedPreference = new AuthorisedPreference(mContext);
+        JSONObject jsonObj = null;
+        jsonObj = new JSONObject();
+        try {
+          /*  jsonObj.put("action", "ChangeCallStatus");
+            jsonObj.put("mewardid", authorisedPreference.getMewardId());
+            jsonObj.put("tokenkey", authorisedPreference.getTokenKey());
+            jsonObj.put("user_type", "selleradmin");
+            jsonObj.put("has_seller", "true");
+            jsonObj.put("encryption_status", "0");
+            jsonObj.put("seller_uid", authorisedPreference.getString("app_sellerrid"));
+
+            jsonObj.put("start_date", "" + year);
+            jsonObj.put("start_time", );
+            jsonObj.put("booking_version", );
+            jsonObj.put("type", "");
+            jsonObj.put("BookingId", );
+            jsonObj.put("callStatus", "");
+            jsonObj.put("call_failed_reason", "");*/
+
+            return jsonObj;
+        } catch (Exception e) {
+            return jsonObj;
+        }
+       /* {
+            "action": "ChangeCallStatus",
+             "mewardid": "74PFT15YQ1602148478",
+                "tokenkey": "Y5OVS2AC81602588317_d3ec1951-abcf-4354-9c90-5d776e1d1126_ShOZpXKHR_bpSa25QWk",
+                 "user_type": "selleradmin",
+                "seller_uid": "740bb9c3-17ff-4ef8-8922-9de82a9a2471",
+                "encryption_status": "0"
+
+                "start_date":"2020-10-13",
+                "start_time":"18:40",
+                "booking_version":"4",
+                "type": "booking",
+                 "BookingId": "U5BY7IT9QW",
+
+                "callStatus": "Failed",
+                "call_failed_reason": "Network Connection",
+
+        }
+        {
+            "customername": "Yash",
+                "customerAge": "35",
+                "customerGender": "Male",
+                "customerProfilepic": "",
+                "start_time": "14:00",
+                "end_time": "14:30",
+                "BookingId": "NRX7HEMIQG",
+                "ItemBoxId": "61GYZDHUC",
+                "seller_uid": "740bb9c3-17ff-4ef8-8922-9de82a9a2471"
+        },*/
+    }
+
 }
