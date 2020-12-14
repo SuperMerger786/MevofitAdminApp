@@ -14,9 +14,13 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.app.newuidashboardadmin.clienttab.activity.ClientPagerFragment;
+import com.app.newuidashboardadmin.firebase.SetDeviceRequest;
 import com.app.newuidashboardadmin.plan.BookingListFragment;
 import com.app.newuidashboardadmin.plan.InstanceListFragment;
 import com.app.newuidashboardadmin.planner.PlanWorkout;
+import com.app.newuidashboardadmin.services.Response;
+import com.app.newuidashboardadmin.services.RestApiController;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 
 public class AdminUI extends AppCompatActivity {
@@ -89,6 +93,10 @@ public class AdminUI extends AppCompatActivity {
             }
         });
         setInItPager("oncreate");
+        if (!isSetDeviceHit) {
+            MyLogger.println("check>>>>>>>>>>>>>FirebaseInstanceId>>1>" + FirebaseInstanceId.getInstance().getToken());
+            sendRegistrationToServer(FirebaseInstanceId.getInstance().getToken());
+        }
     }
 
 
@@ -196,5 +204,21 @@ public class AdminUI extends AppCompatActivity {
             tabListFragment = null;
         }
     }
+    private static boolean isSetDeviceHit = false;
+    public void sendRegistrationToServer(String deviceid) {
+        final SetDeviceRequest request = new SetDeviceRequest(AdminUI.this, deviceid);
+        RestApiController controller = new RestApiController(AdminUI.this, new Response() {
+            @Override
+            public void onResponseObtained(Object response, int responseType, boolean isCachedData) {
+                System.out.println("MyFirebaseInstanceIDService.onResponseObtained resonse " + response.toString() + "====" + responseType + "====" + isCachedData);
+                isSetDeviceHit = true;
+            }
 
+            @Override
+            public void onErrorObtained(String errormsg, int responseType) {
+                System.out.println("MyFirebaseInstanceIDService.onErrorObtained error " + errormsg);
+            }
+        }, 5);
+        controller.setDeviceIdRequest(request);
+    }
 }

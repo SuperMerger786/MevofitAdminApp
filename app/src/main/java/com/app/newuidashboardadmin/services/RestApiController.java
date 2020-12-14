@@ -3,6 +3,7 @@ package com.app.newuidashboardadmin.services;
 import android.content.Context;
 
 import com.app.newuidashboardadmin.clienttab.sevices.GetUserListRequest;
+import com.app.newuidashboardadmin.firebase.SetDeviceRequest;
 import com.app.newuidashboardadmin.plan.bean.request.GetSellerBookingSlotsRequest;
 import com.app.newuidashboardadmin.plan.bean.request.GetSellerInstancesRequest;
 import com.app.newuidashboardadmin.plan.bean.request.GetStandardPlan;
@@ -136,6 +137,10 @@ public class RestApiController implements Response {
             client.Communicate(push_url, request, responseType);
 
     }*/
+    public void setDeviceIdRequest(SetDeviceRequest request) {
+        client.Communicate(push_url, request, responseType);
+
+    }
 }
 
 

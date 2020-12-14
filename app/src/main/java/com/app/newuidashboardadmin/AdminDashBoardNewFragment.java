@@ -162,13 +162,6 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 //                showDialog();
             }
         });
-        iv_pre.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), NotificatinSetingactivity.class);
-                startActivity(intent);
-            }
-        });
         hithome();
 
         return view;

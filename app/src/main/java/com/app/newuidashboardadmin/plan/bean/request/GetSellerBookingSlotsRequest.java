@@ -30,7 +30,7 @@ public class GetSellerBookingSlotsRequest{
     @Expose
     public String paginationID;
 
-    @SerializedName("name")
+    @SerializedName("userSearchKeyword")
     @Expose
     public String name;
 
