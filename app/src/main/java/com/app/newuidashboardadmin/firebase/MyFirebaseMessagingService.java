@@ -17,6 +17,7 @@ import android.speech.tts.TextToSpeech;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
+import com.app.newuidashboardadmin.AdminUI;
 import com.app.newuidashboardadmin.R;
 import com.app.newuidashboardadmin.Utility.AppPrefernce;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -141,14 +142,19 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
 
 
             }
-            sendMyNotification(messageBody);
+
+//            sendMyNotification(messageBody);
             //sendSpeechNotificationText(messageBody);
             System.out.println("MyFirebaseMessagingService.onMessageReceived message message === " + messageBody);
             System.out.println("MyFirebaseMessagingService.onMessageReceived messgaebody=== " + jsonObj.toString());
         } catch (Exception e) {
             System.out.println("MyFirebaseMessagingService.onMessageReceived " + e);
         }
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) {
+            sendMyNotification();
+        } else {
+                sendMyNotificationBelow(messageBody);
+        }
 
     }
 
@@ -188,65 +194,100 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
        }*/
     String orderid = "";
 
-    private void sendMyNotification(String body) {
-
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT_WATCH)
+    private void sendMyNotification() {
+        String CHANNEL_ID = "my_channel_02";// The id of the channel.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            channelcreate(CHANNEL_ID);
+        }
         Intent intent = null;
-        /*if (id == 3) {
-            intent = new Intent(this, UserListActivity.class);
-            intent.putExtra("title", "Chat with user");
-        } else if (id == 4) {
-            intent = new Intent(this, MainActivity.class);
-            StatusHandler statusHandler = StatusHandler.getInstance(this);
-            statusHandler.setAlertIfNotResponded("Booking");
-            //refreshBookingList();
-        } else if (id == 6) {
-            intent = new Intent(this, MainActivity.class);
+        intent = new Intent(this, AdminUI.class);
+        /*if (type.equalsIgnoreCase("order")) {
+//            intent = new Intent(this, TrackOrderActivity.class);
+//            intent.putExtra("title", "Track Order");
+//            intent.putExtra("order_id", type_id);
+        } else {
+            if (isNotificationCallType == 1) {
+//                intent = new Intent(this, ChatMainActivity.class);
+//                intent.putExtra("bookingId", type_id);
+//                intent.putExtra("isfromPush", true);
+            } else {
 
-        }
-
-//        else if(id==7){
-//            intent = new Intent(this, BookingActivity.class);
+               *//* intent = new Intent(this, BookingHistoryActivityNew.class);
+                if (booking_for.equalsIgnoreCase("chat")) {
+                    intent.putExtra("bookingId", type_id);
+                    intent.putExtra("isfromPush", true);
+                }*//*
+            }
+        }*/
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        Notification.Builder notificationBuilder = new Notification.Builder(this)
+//                .setContentTitle(getResources().getString(R.string.app_name))
+                .setContentTitle(header)
+//                .setContentText(messageBody)
+                .setAutoCancel(true)
+                .setSound(soundUri)
+                .setContentIntent(pendingIntent)
+                .setGroup(GROUP_KEY_WORK_MONK)
+                .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.app_icon))
+                .setLights(Color.RED, 3000, 3000);
+//        if (isgroup) {
+//            Notification.InboxStyle inboxStyle = new Notification.InboxStyle();
+//            inboxStyle.setBigContentTitle("You have " + value + " new Message");
+//            inboxStyle.addLine(headerText + ": " + messageBody);
+//            notificationBuilder.setStyle(inboxStyle);
+//        } else {
+        Notification.BigTextStyle bigText = new Notification.BigTextStyle();
+        bigText.bigText(messageBody);
+//        bigText.setSummaryText(" Power By: Marketplace");
+        notificationBuilder.setStyle(bigText);
 //        }
-
-        else if (id == 1) {
-            intent = new Intent(this, MainActivity.class);
-            StatusHandler statusHandler = StatusHandler.getInstance(this);
-            statusHandler.setAlertIfNotResponded("Order");
-            //refreshOrderList();
-        } else*/ if (id == 8) {
-//            intent = new Intent(this, MainActivity.class);
-        } else if (id == 9) {
-            intent = new Intent(this, OrderSummary.class);
-            intent.putExtra("typee", "schdule_app");
-            intent.putExtra("orderId", orderid);
-            intent.putExtra("decimalPlaces", 2);
-            intent.putExtra("priceShow", 1);
+        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        notificationBuilder.setSound(alarmSound);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            notificationBuilder.setSmallIcon(R.drawable.notification);
+            notificationBuilder.setColor(Color.parseColor(new AuthorisedPreference(this).getThemeColor()));
+        } else {
+            notificationBuilder.setSmallIcon(R.drawable.app_icon);
         }
-
-
-//        Notification.Builder builder = new Notification.Builder(this, intent, body, header);
-//        Notification.Builder builder = new NotifyBuilder().getBuilder(this, intent, body, header);
-//        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//        notificationManager.notify((type_status+orderid).trim().hashCode(), builder.build());
-        sendMyNotificationBelow(header);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        startActivity(intent);
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationBuilder.setChannelId(CHANNEL_ID);
+        }
+        Random r = new Random();
+        int iidd;
+        iidd = r.nextInt(500 - 0) + 0;
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(iidd, notificationBuilder.build());
     }
+
+
     @SuppressLint("WrongConstant")
     private void sendMyNotificationBelow(String body) {
 
-        String CHANNEL_ID = "my_channel_02";// The id of the channel.
+        // The id of the channel.
         int SUMMARY_ID = 0;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             channelcreate(CHANNEL_ID);
         }
 
-//        Intent intent = null;
-//        intent = new Intent(this, PeriodTrackNewActivity.class);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        Intent intent = null;
+//        if (type.equalsIgnoreCase("order")) {
+            intent = new Intent(this, AdminUI.class);
+//            intent.putExtra("title", "Track Order");
+//            intent.putExtra("order_id", type_id);
+//        } else {
+//            intent = new Intent(this, BookingHistoryActivityNew.class);
+//            if (booking_for.equalsIgnoreCase("chat")) {
+//                intent.putExtra("bookingId", type_id);
+//                intent.putExtra("isfromPush", true);
+//            }
+//        }
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
         Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
@@ -254,11 +295,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
         bigText.bigText(messageBody);
 
         Notification.Builder notificationBuilder = new Notification.Builder(this)
-                .setContentTitle(getResources().getString(R.string.app_name))
-                .setContentTitle(messageBody)
+                .setContentTitle(header)
+//                .setContentText(messageBody)
                 .setAutoCancel(true)
                 .setSound(soundUri)
-//                .setContentIntent(pendingIntent)
+                .setContentIntent(pendingIntent)
                 .setStyle(bigText)
                 .setOngoing(true)
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
@@ -268,7 +309,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         notificationBuilder.setSound(alarmSound);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            notificationBuilder.setSmallIcon(R.drawable.app_icon);
+            notificationBuilder.setSmallIcon(R.drawable.notification);
             notificationBuilder.setColor(Color.parseColor(new AuthorisedPreference(this).getThemeColor()));
 
             notificationBuilder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
@@ -280,20 +321,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             notificationBuilder.setChannelId(CHANNEL_ID);
         }
-        // notify by ring
-//        try {
-//            Uri ring_uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-//            Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), ring_uri);
-//            r.play();
-//        } catch (Exception e) {
-//             Error playing sound
-//        }
         Random r = new Random();
         int iidd = r.nextInt(500 - 0) + 0;
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(iidd, notificationBuilder.build());
     }
-
+    String CHANNEL_ID = "my_channel_02";
+    String GROUP_KEY_WORK_MONK = "other";
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void channelcreate(String CHANNEL_ID) {
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -303,5 +337,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
         mChannel.enableLights(true);
         mNotificationManager.createNotificationChannel(mChannel);
     }
+
 
 }

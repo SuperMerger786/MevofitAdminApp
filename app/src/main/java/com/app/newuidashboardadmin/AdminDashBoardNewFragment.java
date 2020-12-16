@@ -1,18 +1,18 @@
 package com.app.newuidashboardadmin;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -45,7 +45,9 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.utils.Utils;
 import com.google.gson.Gson;
+import com.megogrid.ImageLoader.FileReadWrite;
 import com.megogrid.activities.MeUserSDKMevo;
 import com.megogrid.megoauth.AuthorisedPreference;
 import com.megogrid.megoeventbuilder.bean.Events;
@@ -54,6 +56,7 @@ import com.megogrid.megoeventssdkhandler.ActionPerformer;
 import com.megogrid.megouser.MegoUser;
 import com.migital.digiproducthelper.extraui.NotificatinSetingactivity;
 
+import java.io.File;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -62,11 +65,14 @@ import java.util.Currency;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 import android.view.View.MeasureSpec;
 import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
+import androidx.core.content.FileProvider;
+import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -113,6 +119,8 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
     AppPrefernce appPrefernce;
     TextView id_date, id_time, id_timetwo, id_minone, id_mintwo;
     LinearLayout booking_id;
+    EditText ed_referencecode;
+    TextView txt_share;//,txtcoundown;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.admin_home_new, container, false);
@@ -127,13 +135,16 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         total_avrrate = (TextView) view.findViewById(R.id.total_avrrate);
         booking_tab = (TextView) view.findViewById(R.id.booking_tab);
         payment_tab = (TextView) view.findViewById(R.id.payment_tab);
+        ed_referencecode = (EditText) view.findViewById(R.id.ed_referencecode);
+        txt_share  = (TextView) view.findViewById(R.id.txt_share);
+//        txtcoundown  = (TextView) view.findViewById(R.id.txtcoundown);
 
         //booking counter
 
         id_time = (TextView) view.findViewById(R.id.id_time);
         id_timetwo = (TextView) view.findViewById(R.id.id_timetwo);
         id_minone = (TextView) view.findViewById(R.id.id_minone);
-        id_mintwo = (TextView) view.findViewById(R.id.id_minone);
+        id_mintwo = (TextView) view.findViewById(R.id.id_mintwo);
         booking_id = (LinearLayout) view.findViewById(R.id.booking_id);
 
         chart = (LineChart) view.findViewById(R.id.chart);
@@ -160,13 +171,38 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             @Override
             public void onClick(View v) {
 //                showDialog();
+                ((AdminUI)mContext).getmDrawerLayout().openDrawer(GravityCompat.START);
+            }
+        });
+        iv_pre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), NotificatinSetingactivity.class);
+                startActivity(intent);
+            }
+        });
+        txt_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkReferencetext(ed_referencecode.getText().toString(),ed_referencecode)){
+                    shareReferencePost(ed_referencecode.getText().toString());
+                }
             }
         });
         hithome();
 
         return view;
     }
-
+    private boolean checkReferencetext(String Name, EditText NameEditText) {
+        boolean istrue = false;
+        if (Name.length() == 0) {
+            NameEditText.requestFocus();
+            NameEditText.setError("FIELD CANNOT BE EMPTY");
+            return false;
+        }  else {
+            return true;
+        }
+    }
     private void hithome() {
         progressdialog = startProgressDialog(mContext, "Loading.....");
         progressdialog.show();
@@ -873,40 +909,68 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
             for (int i = 0; i < bookingList.size(); i++) {
                 System.out.println("MainWristActivity.callBoking <<<<<list1>" + bookingList.size() + "====" + getMilliFromDate(bookingList.get(i).getStartTime()) + "===" + (getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) + "=minute=" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) / 60) + "==seconds==" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) % 60) + "===hour=" + (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600));
-                if ((getMilliFromDate(bookingList.get(i).getStartTime()) > System.currentTimeMillis()) && (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600)<=1) {
+                /*if((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis())>0) {
+                    startTimer(Integer.parseInt((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) + ""));
+                }*/
+                if ((getMilliFromDate(bookingList.get(i).getStartTime()) > System.currentTimeMillis()) && (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600) < 1) {
                     int hour = (int) (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600);
-                    String minute = "" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) / 60);
-                    String seconds = "" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) % 60);
-                    int[] minutearr = setIntArray(minute);
-                    int[] secondarr = setIntArray(seconds);
-//                    System.out.println("MainWristActivity.callBoking <<<<<list2>" + bookingList.size() + "====" + minutearr.length + "====" + minute + "====" + secondarr.length + "====" + seconds);
-                    if (hour == 0) {
-                        if (Integer.parseInt(minute) >= 0) {
-                            if (minutearr.length > 1) {
-                                id_time.setText("" + minutearr[0]);
-                                id_timetwo.setText("" + minutearr[1]);
+                    long milisecondtime =(getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis());
+//                    String minute = "" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) / 60);
+//                    String seconds = "" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) % 60);
+//                    int[] minutearr = setIntArray(minute);
+//                    int[] secondarr = setIntArray(seconds);
+                    CountDownTimer countDownTimer = new CountDownTimer(milisecondtime, 1000) {
+                        public void onTick(long millisUntilFinished) {
+                            long millis = millisUntilFinished;
+                            //Convert milliseconds into hour,minute and seconds
+                            String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis), TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)), TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
+                            String[] hmsvalue =hms.split(":");
+                            int[] minutearr = setIntArray(hmsvalue[1]);
+                            int[] secondarr = setIntArray(hmsvalue[2]);
+//                            txtcoundown.setText(hmsvalue[1]+":"+hmsvalue[2]);//set text
+//                            txtcoundown.setText(hour+" "+secondarr[0]+":"+secondarr[1]+"====="+hms);
+                            if (hour == 0) {
+                                if (Integer.parseInt(hmsvalue[1]) >= 0) {
+                                    if (minutearr.length > 1) {
+                                        id_time.setText("" + minutearr[0]);
+                                        id_timetwo.setText("" + minutearr[1]);
+                                    } else {
+//                                        id_time.setText("0");
+//                                        id_timetwo.setText("" + minutearr[0]);
+                                        id_time.setText("" + minutearr[0]);
+                                        id_timetwo.setText("" + minutearr[1]);
+                                    }
+                                } else {
+                                    id_time.setText("0");
+                                    id_timetwo.setText("0");
+                                }
+                                if (secondarr.length > 1) {
+                                    id_minone.setText("" + secondarr[0]);
+                                    id_mintwo.setText("" + secondarr[1]);
+
+                                } else {
+                                    id_minone.setText("" + secondarr[0]);
+                                    id_mintwo.setText("" + secondarr[1]);
+//                                    id_minone.setText("0");
+//                                    id_mintwo.setText("" + secondarr[0]);
+                                }
                             } else {
                                 id_time.setText("0");
-                                id_timetwo.setText("" + minutearr[0]);
+                                id_timetwo.setText("0");
+                                id_minone.setText("0");
+                                id_mintwo.setText("0");
                             }
-                        } else {
+                        }
+                        public void onFinish() {
                             id_time.setText("0");
                             id_timetwo.setText("0");
-                        }
-                        if (secondarr.length > 1) {
-                            id_minone.setText("" + secondarr[0]);
-                            id_mintwo.setText("" + secondarr[1]);
-
-                        } else {
                             id_minone.setText("0");
-                            id_mintwo.setText("" + secondarr[0]);
+                            id_mintwo.setText("0");
+                            //txtcoundown.setText("TIME'S UP!!"); //On finish change timer text
                         }
-                    } else {
-                        id_time.setText("0");
-                        id_timetwo.setText("0");
-                        id_minone.setText("0");
-                        id_mintwo.setText("0");
-                    }
+                    }.start();
+//                    System.out.println("MainWristActivity.callBoking <<<<<list2>" + bookingList.size() + "====" + minutearr.length + "====" + minute + "====" + secondarr.length + "====" + seconds);
+
                     break;
                 }
             }
@@ -915,6 +979,21 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         }
 
     }
+    /*private void startTimer(int noOfMinutes) {
+        CountDownTimer countDownTimer = new CountDownTimer(noOfMinutes, 1000) {
+            public void onTick(long millisUntilFinished) {
+                long millis = millisUntilFinished;
+                //Convert milliseconds into hour,minute and seconds
+                String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis), TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)), TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
+                 String[] hmsvalue =hms.split(":");
+                txtcoundown.setText(hmsvalue[1]+":"+hmsvalue[2]);//set text
+            }
+            public void onFinish() {
+                txtcoundown.setText("TIME'S UP!!"); //On finish change timer text
+            }
+        }.start();
+
+    }*/
     private JSONObject getVideoStatus() {
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
@@ -973,4 +1052,15 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         },*/
     }
 
+    public void shareReferencePost(String refrenceCode) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Recipes");
+        intent.putExtra(Intent.EXTRA_TEXT, refrenceCode);
+
+        intent.putExtra("Module", "ReferenceCode");
+        intent.setType("text/plain");
+        mContext.startActivity(Intent.createChooser(intent, "ReferenceCode"));
+
+    }
 }

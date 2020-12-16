@@ -6,8 +6,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -28,12 +31,17 @@ public class AdminUI extends AppCompatActivity {
     RelativeLayout llStats, llDevice, tabLayout4, tabLayout2, tabLayout6;
     TextView tab_text4, tab_text6, tab_text3, tab_text2, tab_text1;
     public ViewPager pager;
-
+    DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.newui_test);
+        setContentView(R.layout.acivity_main_navigation);
+
+        drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.setDrawerListener(toggle);
+//        toggle.syncState();
         pager = (ViewPager) findViewById(R.id.pager);
         llStats = (RelativeLayout) findViewById(R.id.llStats);
         llDevice = (RelativeLayout) findViewById(R.id.tabLayout3);
@@ -93,12 +101,19 @@ public class AdminUI extends AppCompatActivity {
             }
         });
         setInItPager("oncreate");
-        if (!isSetDeviceHit) {
-            MyLogger.println("check>>>>>>>>>>>>>FirebaseInstanceId>>1>" + FirebaseInstanceId.getInstance().getToken());
-            sendRegistrationToServer(FirebaseInstanceId.getInstance().getToken());
-        }
+//        if (!isSetDeviceHit) {
+        MyLogger.println("check>>>>>>>>>>>>>FirebaseInstanceId>>1>" + FirebaseInstanceId.getInstance().getToken());
+        sendRegistrationToServer(FirebaseInstanceId.getInstance().getToken());
+//        }
     }
 
+    private void initNavigationDrawer() {
+
+    }
+
+    public DrawerLayout getmDrawerLayout() {
+        return drawer;
+    }
 
     private void setInItPager(String from) {
         BootstrapPagerAdapter pagerAdapter = new BootstrapPagerAdapter(getSupportFragmentManager());
@@ -204,7 +219,9 @@ public class AdminUI extends AppCompatActivity {
             tabListFragment = null;
         }
     }
+
     private static boolean isSetDeviceHit = false;
+
     public void sendRegistrationToServer(String deviceid) {
         final SetDeviceRequest request = new SetDeviceRequest(AdminUI.this, deviceid);
         RestApiController controller = new RestApiController(AdminUI.this, new Response() {

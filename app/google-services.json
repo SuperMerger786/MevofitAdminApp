@@ -1,0 +1,143 @@
+{
+  "project_info": {
+    "project_number": "844318244895",
+    "firebase_url": "https://testproject-b2393.firebaseio.com",
+    "project_id": "mevofit-fitness-tracker",
+    "storage_bucket": "mevofit-fitness-tracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844318244895:android:1dc6074818b740fea9952a",
+        "android_client_info": {
+          "package_name": "com.app.newuidashboardadmin.fitness.mevofit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844318244895-fehbbjk9quemm47iqnb4ccejtmab4oh5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.newuidashboardadmin.fitness.mevofit",
+            "certificate_hash": "81d07147a4737691657d946295734870ae7ceb45"
+          }
+        },
+        {
+          "client_id": "844318244895-0vrakp7krqtv0e9shrn4o7hloc3hj2oi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCTpBtt4zggf1VB8IPawaaZ9lC7vbNcPI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844318244895-0vrakp7krqtv0e9shrn4o7hloc3hj2oi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "844318244895-bju4ssl7lpcbbho44aj5pf3gccfcaila.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "fitness.mevofit.fitnesstracker.bestfitnessbands.fitnesstrackerforwalkingandjogging"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844318244895:android:ee9c7b87b421e434",
+        "android_client_info": {
+          "package_name": "fitness.mevofit.fitnesstracker.bestfitnessbands.fitnesstrackerforwalkingandjogging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844318244895-l8l9rc2nk5cpl4cb05js8qp6rlc6unm7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fitness.mevofit.fitnesstracker.bestfitnessbands.fitnesstrackerforwalkingandjogging",
+            "certificate_hash": "81d07147a4737691657d946295734870ae7ceb45"
+          }
+        },
+        {
+          "client_id": "844318244895-0vrakp7krqtv0e9shrn4o7hloc3hj2oi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCTpBtt4zggf1VB8IPawaaZ9lC7vbNcPI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844318244895-0vrakp7krqtv0e9shrn4o7hloc3hj2oi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "844318244895-bju4ssl7lpcbbho44aj5pf3gccfcaila.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "fitness.mevofit.fitnesstracker.bestfitnessbands.fitnesstrackerforwalkingandjogging"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844318244895:android:dd38de8212e26f80a9952a",
+        "android_client_info": {
+          "package_name": "fitness.mevofit.fitnesstracker.bestfitnessbands.marketplace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844318244895-3vqlk04ehcontfbro7kur91pag39ktav.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fitness.mevofit.fitnesstracker.bestfitnessbands.marketplace",
+            "certificate_hash": "81d07147a4737691657d946295734870ae7ceb45"
+          }
+        },
+        {
+          "client_id": "844318244895-0vrakp7krqtv0e9shrn4o7hloc3hj2oi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCTpBtt4zggf1VB8IPawaaZ9lC7vbNcPI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844318244895-0vrakp7krqtv0e9shrn4o7hloc3hj2oi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "844318244895-bju4ssl7lpcbbho44aj5pf3gccfcaila.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "fitness.mevofit.fitnesstracker.bestfitnessbands.fitnesstrackerforwalkingandjogging"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

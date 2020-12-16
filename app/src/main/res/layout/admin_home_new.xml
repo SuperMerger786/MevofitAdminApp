@@ -111,6 +111,15 @@
                             android:layout_marginRight="@dimen/dp10"
                             android:visibility="gone"
                             android:src="@drawable/newui_ordercale" />
+                        <!--<com.app.newuidashboardadmin.font.LatoBoldTextView
+                            android:id="@+id/txtcoundown"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="hello"
+                            android:textColor="@color/black"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="@dimen/dp10"
+                            android:layout_marginRight="@dimen/dp10"/>-->
                     </RelativeLayout>
 
                     <LinearLayout
@@ -554,6 +563,7 @@
                         android:orientation="horizontal">
 
                         <EditText
+                            android:id="@+id/ed_referencecode"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/dp35"
                             android:layout_below="@+id/text_connectNow"
@@ -569,6 +579,7 @@
                             android:textSize="@dimen/sp14" />
 
                         <com.app.newuidashboardadmin.font.LatoSemiBoldTextView
+                            android:id="@+id/txt_share"
                             android:layout_width="@dimen/dp80"
                             android:layout_height="@dimen/dp35"
                             android:layout_below="@+id/text_connectNow"

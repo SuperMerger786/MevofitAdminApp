@@ -47,12 +47,20 @@ android {
         }
 
     }
+    signingConfigs {
+        debug {
+            storeFile file("C:\\Users\\Anil\\Desktop\\new_release_migital.jks")
+            storePassword "migital123"
+            keyAlias "new_alias_name"
+            keyPassword "Kaushik"
+        }
+    }
     flavorDimensions 'Admin App'
     productFlavors {
         def fmevofitflavor = signingConfigs.debug
         admindevice {
 //            applicationId 'com.fitness.ido'
-            applicationId 'fitness.mevofit.fitnesstracker'
+            applicationId 'com.app.newuidashboardadmin.fitness.mevofit'
             versionCode 1//lastupdate 45 for link46
             versionName "1.0"//4.7   for link4.8
 
@@ -138,13 +146,13 @@ dependencies {
 //    implementation 'com.google.firebase:firebase-storage:12.0.0'
 
 
-  implementation 'com.google.firebase:firebase-messaging:12.0.0'
+  implementation 'com.google.firebase:firebase-messaging:12.0.1'
 //    implementation 'com.google.firebase:firebase-database:12.0.0'
     implementation 'com.google.firebase:firebase-database:12.0.1'
     implementation 'com.google.firebase:firebase-core:12.0.1'
      implementation 'com.google.firebase:firebase-storage:12.0.1'
 
-
+//    implementation 'com.google.firebase:firebase-crash:12.0.1'
     implementation 'com.opentok.android:opentok-android-sdk:2.16.+'
     implementation 'com.wang.avi:library:1.0.3'
     implementation project(':MigCart-release')
@@ -157,3 +165,4 @@ dependencies {
 repositories {
     mavenCentral()
 }
+apply plugin: 'com.google.gms.google-services'
