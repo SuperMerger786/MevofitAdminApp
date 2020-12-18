@@ -9,8 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:background="@drawable/btn_grey_light"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
         android:layout_marginTop="@dimen/dp10"
-        android:layout_marginBottom="@dimen/dp10"
         android:orientation="horizontal">
 
         <com.app.newuidashboardadmin.CircularImageView
@@ -46,7 +48,7 @@
                 android:layout_marginLeft="@dimen/dp10"
                 android:text="User Name"
                 android:textColor="@color/black"
-                android:textSize="@dimen/sp17" />
+                android:textSize="@dimen/sp14" />
 
             <com.app.newuidashboardadmin.font.LatoMediumTextView
                 android:id="@+id/tv_male"
@@ -54,8 +56,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp10"
                 android:text="male"
-                android:textColor="#949494"
+                android:textColor="#6a727b"
                 android:textSize="@dimen/sp10" />
+            <com.app.newuidashboardadmin.font.LatoSemiBoldTextView
+                android:id="@+id/tv_session"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:textSize="@dimen/sp14" />
 
         </LinearLayout>
 
@@ -71,16 +79,16 @@
                 android:layout_height="wrap_content"
                 android:text="8:30-9:00 AM"
                 android:layout_weight="1"
-                android:textColor="@color/black"
+                android:textColor="#2e3955"
                 android:layout_gravity="bottom|right"
                 android:layout_marginRight="@dimen/dp15"
                 android:layout_marginTop="@dimen/dp5"
-                android:textSize="@dimen/sp17" />
+                android:textSize="@dimen/sp14" />
 
             <com.app.newuidashboardadmin.font.LatoMediumTextView
                 android:id="@+id/btn_starte"
                 android:layout_width="@dimen/dp80"
-                android:layout_height="@dimen/dp20"
+                android:layout_height="@dimen/dp15"
                 android:text="Start"
                 android:gravity="center"
                 android:layout_weight="1"
@@ -90,7 +98,7 @@
                 android:layout_gravity="bottom|right"
                 android:layout_marginRight="@dimen/dp15"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/sp14" />
+                android:textSize="@dimen/sp12" />
 
 
         </LinearLayout>
@@ -99,5 +107,6 @@
         android:id="@+id/id_border"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp1"
+        android:visibility="gone"
         android:background="@color/grey_light"/>
 </LinearLayout>

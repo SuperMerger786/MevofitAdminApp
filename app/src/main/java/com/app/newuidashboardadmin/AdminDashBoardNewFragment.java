@@ -1,23 +1,36 @@
 package com.app.newuidashboardadmin;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
+import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.app.newuidashboardadmin.Utility.AppPrefernce;
@@ -27,12 +40,15 @@ import com.app.newuidashboardadmin.newadmin.BookedList;
 import com.app.newuidashboardadmin.newadmin.BookingPerformance;
 import com.app.newuidashboardadmin.newadmin.NewDashboardEntity;
 import com.app.newuidashboardadmin.newadmin.TodayBooking;
+import com.app.newuidashboardadmin.plan.UserDetailsActivity;
+import com.app.newuidashboardadmin.plan.bean.SlotData;
 import com.app.newuidashboardadmin.services.Response;
 import com.app.newuidashboardadmin.services.RestApiController;
 import com.app.newuidashboardadmin.services.VolleyClient;
 import com.app.newuidashboardadmin.services.WebServicesUrl;
 import com.app.newuidashboardadmin.todaysbooking.BookingTokSIDRequest;
 import com.app.newuidashboardadmin.todaysbooking.BookingTokSIDResponse;
+import com.app.newuidashboardadmin.view.BookingAdapterRecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.util.Util;
 import com.contact.util.CallUtility;
@@ -54,13 +70,20 @@ import com.megogrid.megoeventbuilder.bean.Events;
 import com.megogrid.megoeventpersistence.MewardDbHandler;
 import com.megogrid.megoeventssdkhandler.ActionPerformer;
 import com.megogrid.megouser.MegoUser;
+import com.migital.digiproducthelper.BookingHistoryDigital;
+import com.migital.digiproducthelper.FavoriteActivity;
+import com.migital.digiproducthelper.bean.request.UpdateBookingStatusRequest;
 import com.migital.digiproducthelper.extraui.NotificatinSetingactivity;
+import com.migital.digiproducthelper.processui.TrackerAppListActivity;
 
 import java.io.File;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Currency;
 import java.util.Date;
 import java.util.List;
@@ -70,6 +93,7 @@ import java.util.concurrent.TimeUnit;
 import android.view.View.MeasureSpec;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.FileProvider;
 import androidx.core.view.GravityCompat;
@@ -82,7 +106,7 @@ import org.json.JSONObject;
 import dmax.dialog.SpotsDialog;
 import newui_food.foodnewui.MyUpCommingClassAdminAdapter;
 
-public class AdminDashBoardNewFragment extends Fragment implements IResponseUpdater {
+public class AdminDashBoardNewFragment extends Fragment implements IResponseUpdater, DatePickerDialog.OnDateSetListener {
     //declaring objects
     RecyclerView recycerView_upcomming;
     Gson gson;
@@ -96,6 +120,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
     //    bookingperformance
     TextView total_booking, total_earn, total_avrrate;
+    ImageView set_calender;
 
     @Override
     public void onAttach(Context context) {
@@ -113,11 +138,11 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
     ImageView iv_pre;
 
     SpotsDialog progressdialog;
-    ListView booking_list;
+    RecyclerView booking_list;
     LineChart chart;
     LinearLayout add_entry;
     AppPrefernce appPrefernce;
-    TextView id_date, id_time, id_timetwo, id_minone, id_mintwo;
+    TextView id_date, id_time, id_timetwo, id_minone, id_mintwo, id_hourone, id_hourtwo;
     LinearLayout booking_id;
     EditText ed_referencecode;
     TextView txt_share;//,txtcoundown;
@@ -126,7 +151,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         View view = inflater.inflate(R.layout.admin_home_new, container, false);
         recycerView_upcomming = (RecyclerView) view.findViewById(R.id.recycerView_upcomming);
         ln_upcomming_class = (FrameLayout) view.findViewById(R.id.ln_upcomming_class);
-        booking_list = (ListView) view.findViewById(R.id.booking_list);
+        booking_list = (RecyclerView) view.findViewById(R.id.booking_list);
         iv_pre = (ImageView) view.findViewById(R.id.iv_pre);
         booking_status = (CardView) view.findViewById(R.id.booking_status);
         book_count = (TextView) view.findViewById(R.id.book_count);
@@ -136,11 +161,13 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         booking_tab = (TextView) view.findViewById(R.id.booking_tab);
         payment_tab = (TextView) view.findViewById(R.id.payment_tab);
         ed_referencecode = (EditText) view.findViewById(R.id.ed_referencecode);
-        txt_share  = (TextView) view.findViewById(R.id.txt_share);
+        txt_share = (TextView) view.findViewById(R.id.txt_share);
+        set_calender = (ImageView) view.findViewById(R.id.set_calender);
 //        txtcoundown  = (TextView) view.findViewById(R.id.txtcoundown);
 
         //booking counter
-
+        id_hourone = (TextView) view.findViewById(R.id.id_hourone);
+        id_hourtwo = (TextView) view.findViewById(R.id.id_hourtwo);
         id_time = (TextView) view.findViewById(R.id.id_time);
         id_timetwo = (TextView) view.findViewById(R.id.id_timetwo);
         id_minone = (TextView) view.findViewById(R.id.id_minone);
@@ -170,8 +197,8 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         frag_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                showDialog();
-                ((AdminUI)mContext).getmDrawerLayout().openDrawer(GravityCompat.START);
+                showDialog();
+//                ((AdminUI)mContext).getmDrawerLayout().openDrawer(GravityCompat.START);
             }
         });
         iv_pre.setOnClickListener(new View.OnClickListener() {
@@ -184,29 +211,38 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         txt_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(checkReferencetext(ed_referencecode.getText().toString(),ed_referencecode)){
+                if (checkReferencetext(ed_referencecode.getText().toString(), ed_referencecode)) {
                     shareReferencePost(ed_referencecode.getText().toString());
                 }
             }
         });
-        hithome();
-
+        set_calender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setDateHere();
+            }
+        });
+        Date date = dateCalendar.getTime();
+        String strdate = new SimpleDateFormat("yyyy-MM-dd").format(date);
+        hithome(strdate);
         return view;
     }
+
     private boolean checkReferencetext(String Name, EditText NameEditText) {
         boolean istrue = false;
         if (Name.length() == 0) {
             NameEditText.requestFocus();
             NameEditText.setError("FIELD CANNOT BE EMPTY");
             return false;
-        }  else {
+        } else {
             return true;
         }
     }
-    private void hithome() {
+
+    private void hithome(String timedate) {
         progressdialog = startProgressDialog(mContext, "Loading.....");
         progressdialog.show();
-        volleyClient.makeRequest(WebServicesUrl.Categaries, getHome().toString(), "Adminhome");
+        volleyClient.makeRequest(WebServicesUrl.Categaries, getHome(timedate).toString(), "Adminhome");
     }
 
     private void hitGraphValues() {
@@ -224,8 +260,27 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         MyLogger.println("todays>>>>>booking>>>" + adminDashboard.getData().getTodayBookings().size());
         if (adminDashboard.getData().getTodayBookings() != null && adminDashboard.getData().getTodayBookings().size() > 0) {
             booking_status.setVisibility(View.VISIBLE);
-            booking_list.setAdapter(new BookingTodaysItemAdapter((ArrayList<TodayBooking>) adminDashboard.getData().getTodayBookings()));
-            setListHeight(booking_list);
+            ArrayList<TodayBooking> todaylist = (ArrayList<TodayBooking>) adminDashboard.getData().getTodayBookings();
+            Collections.sort(todaylist, new Comparator<TodayBooking>() {
+
+                @Override
+                public int compare(TodayBooking lhs, TodayBooking rhs) {
+                    try {
+                        return lhs.getStartTime().compareTo(rhs.getStartTime());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+//                    return lhs.getKey().compareTo(rhs.getKey());
+                    return 0;
+                }
+            });
+            /*booking_list.setAdapter(new BookingTodaysItemAdapter(todaylist));
+            setListHeight(booking_list);*/
+            BookingAdapterRecyclerView bookingAdapterRecyclerView = new BookingAdapterRecyclerView(todaylist,mContext);
+            final LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+            booking_list.setLayoutManager(manager);
+            booking_list.setAdapter(bookingAdapterRecyclerView);
+//            setListHeight(booking_list);
             book_count.setText("" + adminDashboard.getData().getTodayBookings().size());
             SetCounter(adminDashboard.getData().getTodayBookings());
         } else {
@@ -288,6 +343,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
     @Override
     public void onServerResponseSuccess(String reqTag, final String response) throws Exception {
+        MyLogger.println("GetHomePublishData>>>check>>>>>1>>>>>>22222>" + reqTag + "====" + response);
         if (response != null && reqTag.equalsIgnoreCase("Adminhome")) {
 //            imagelayout.stopShimmer();
 //            imagelayout.setVisibility(View.VISIBLE);
@@ -301,7 +357,10 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
                     listenerSet(response);
                 }
             }, 2000);
-            MyLogger.println("GetHomePublishData>>>check>>>>>1>>>>>>22222>" + reqTag);
+
+        } else if (response != null && reqTag.equalsIgnoreCase("VideoStatus")) {
+            if (progressdialog != null && progressdialog.isShowing())
+                progressdialog.dismiss();
         } else {
             if (progressdialog != null && progressdialog.isShowing())
                 progressdialog.dismiss();
@@ -477,7 +536,17 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
     TodayBooking todaylistnew;
 
-    class BookingTodaysItemAdapter extends BaseAdapter {
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        dateCalendar.set(Calendar.YEAR, year);
+        dateCalendar.set(Calendar.MONTH, month);
+        dateCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        Date date = dateCalendar.getTime();
+        String strdate = new SimpleDateFormat("yyyy-MM-dd").format(date);
+        hithome(strdate);
+    }
+
+  /*  class BookingTodaysItemAdapter extends BaseAdapter {
 
         ArrayList<TodayBooking> todaylist;
         LayoutInflater inflater;
@@ -511,10 +580,13 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             View view = inflater.inflate(R.layout.admin_todaysbooking_status, parent, false);
             TextView name = (TextView) view.findViewById(R.id.tv_name);
             TextView tv_male = (TextView) view.findViewById(R.id.tv_male);
+            TextView tv_session = (TextView) view.findViewById(R.id.tv_session);
             CircularImageView imgview = (CircularImageView) view.findViewById(R.id.iv_profile_dummy);
             TextView start_endtime = (TextView) view.findViewById(R.id.start_endtime);
             TextView btn_starte = (TextView) view.findViewById(R.id.btn_starte);
-            name.setText(todaylist.get(position).getCustomername());
+            String name1 = todaylist.get(position).getCustomername();
+            String name2 = name1.replace("#NA", " ");
+            name.setText(name2);
             tv_male.setText(todaylist.get(position).getCustomerAge() + "," + todaylist.get(position).getCustomerGender());
             MyLogger.println("image>>>>>" + todaylist.get(position).getCustomerProfilepic());
             Glide.with(mContext)
@@ -522,16 +594,153 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
                     .error(Glide.with(imgview).load(R.drawable.profile))
                     .into(imgview);
             start_endtime.setText(todaylist.get(position).getStartTime() + "-" + todaylist.get(position).getEndTime());
-            btn_starte.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    todaylistnew = todaylist.get(position);
-                    makeSessionRequest(todaylist.get(position).getItemBoxId(), todaylist.get(position).getBookingId(), todaylist.get(position).getStartTime());
-                }
-            });
+            if (todaylist.get(position).getCallStatus().equalsIgnoreCase("Completed")) {
+                btn_starte.setText("View");
+                btn_starte.setTextColor(getResources().getColor(R.color.colorPrimary));
+                btn_starte.setBackground(getResources().getDrawable(R.drawable.newui_btn_blue_outline));
+            } else {
+                btn_starte.setText("start");
+                btn_starte.setTextColor(getResources().getColor(R.color.deep_white));
+                btn_starte.setBackground(getResources().getDrawable(R.drawable.background_start));
+            }
+            if (todaylist.get(position).getPlan_session_type().equalsIgnoreCase("group_session")) {
+                tv_session.setText("Group");
+                tv_session.setTextColor(getResources().getColor(R.color.group_color));
+            } else {
+                tv_session.setText("Personal");
+                tv_session.setTextColor(getResources().getColor(R.color.colorPrimary));
+            }
+            if (btn_starte.getText().toString().equalsIgnoreCase("start")) {
+                btn_starte.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        todaylistnew = todaylist.get(position);
+                        makeSessionRequest(todaylist.get(position).getItemBoxId(), todaylist.get(position).getBookingId(), todaylist.get(position).getStartTime());
+                    }
+                });
+            } else {
+                btn_starte.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        todaylistnew = todaylist.get(position);
+                        SlotData slotData  = new SlotData();
+                        slotData.user_name = name2;
+                        slotData.user_profilepic = todaylistnew.getCustomerProfilepic();
+                        slotData.user_gender = todaylistnew.getCustomerGender();
+                        slotData.user_age = todaylistnew.getCustomerAge();
+                        slotData.user_city = "NA";
+                        slotData.user_country = "NA";
+
+                        Intent intent = new Intent(mContext, UserDetailsActivity.class);
+                        intent.putExtra("data", slotData);
+                        startActivity(intent);
+                        // makeSessionRequest(todaylist.get(position).getItemBoxId(), todaylist.get(position).getBookingId(), todaylist.get(position).getStartTime());
+                    }
+                });
+            }
             return view;
         }
-    }
+    }*/
+  public class BookingAdapterRecyclerView extends RecyclerView.Adapter<BookingAdapterRecyclerView.BookingLwHolder> {
+      ArrayList<TodayBooking> todaylist;
+      Context mContext;
+
+
+
+      public BookingAdapterRecyclerView(ArrayList<TodayBooking> todaylist, Context context) {
+          this.todaylist = todaylist;
+          this.mContext = context;
+      }
+
+      @NonNull
+      @Override
+      public BookingAdapterRecyclerView.BookingLwHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+          LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+          View view = inflater.inflate(R.layout.admin_todaysbooking_status, parent, false);
+          return new BookingAdapterRecyclerView.BookingLwHolder(view);
+      }
+//      TodayBooking todaylistnew;
+      @Override
+      public void onBindViewHolder(@NonNull BookingAdapterRecyclerView.BookingLwHolder holder, int position) {
+
+          String name1 = todaylist.get(position).getCustomername();
+          String name2 = name1.replace("#NA", " ");
+          holder.name.setText(name2);
+          holder.tv_male.setText(todaylist.get(position).getCustomerAge() + "," + todaylist.get(position).getCustomerGender());
+          MyLogger.println("image>>>>>" + todaylist.get(position).getCustomerProfilepic());
+          Glide.with(mContext)
+                  .load(todaylist.get(position).getCustomerProfilepic())
+                  .error(Glide.with(holder.imgview).load(R.drawable.profile))
+                  .into(holder.imgview);
+          holder.start_endtime.setText(todaylist.get(position).getStartTime() + "-" + todaylist.get(position).getEndTime());
+          if (todaylist.get(position).getCallStatus().equalsIgnoreCase("Completed")) {
+              holder.btn_starte.setText("View");
+              holder.btn_starte.setTextColor(mContext.getResources().getColor(R.color.colorPrimary));
+              holder.btn_starte.setBackground(mContext.getResources().getDrawable(R.drawable.newui_btn_blue_outline));
+          } else {
+              holder.btn_starte.setText("start");
+              holder.btn_starte.setTextColor(mContext.getResources().getColor(R.color.deep_white));
+              holder.btn_starte.setBackground(mContext.getResources().getDrawable(R.drawable.background_start));
+          }
+          if (todaylist.get(position).getPlan_session_type().equalsIgnoreCase("group_session")) {
+              holder.tv_session.setText("Group");
+              holder.tv_session.setTextColor(mContext.getResources().getColor(R.color.group_color));
+          } else {
+              holder.tv_session.setText("Personal");
+              holder.tv_session.setTextColor(mContext.getResources().getColor(R.color.colorPrimary));
+          }
+          if (holder.btn_starte.getText().toString().equalsIgnoreCase("start")) {
+              holder.btn_starte.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View view) {
+                      todaylistnew = todaylist.get(position);
+                   makeSessionRequest(todaylist.get(position).getItemBoxId(), todaylist.get(position).getBookingId(), todaylist.get(position).getStartTime());
+                  }
+              });
+          } else {
+              holder.btn_starte.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View view) {
+                      todaylistnew = todaylist.get(position);
+                      SlotData slotData = new SlotData();
+                      slotData.user_name = name2;
+                      slotData.user_profilepic = todaylistnew.getCustomerProfilepic();
+                      slotData.user_gender = todaylistnew.getCustomerGender();
+                      slotData.user_age = todaylistnew.getCustomerAge();
+                      slotData.user_city = "NA";
+                      slotData.user_country = "NA";
+
+                      Intent intent = new Intent(mContext, UserDetailsActivity.class);
+                      intent.putExtra("data", slotData);
+                      mContext.startActivity(intent);
+                       makeSessionRequest(todaylist.get(position).getItemBoxId(), todaylist.get(position).getBookingId(), todaylist.get(position).getStartTime());
+                  }
+              });
+          }
+
+      }
+
+
+      @Override
+      public int getItemCount() {
+          return todaylist.size();
+      }
+      class BookingLwHolder extends RecyclerView.ViewHolder {
+          TextView name, tv_male, tv_session, start_endtime, btn_starte;
+          CircularImageView imgview;
+
+
+          public BookingLwHolder(@NonNull View view) {
+              super(view);
+              name = (TextView) view.findViewById(R.id.tv_name);
+              tv_male = (TextView) view.findViewById(R.id.tv_male);
+              tv_session = (TextView) view.findViewById(R.id.tv_session);
+              imgview = (CircularImageView) view.findViewById(R.id.iv_profile_dummy);
+              start_endtime = (TextView) view.findViewById(R.id.start_endtime);
+              btn_starte = (TextView) view.findViewById(R.id.btn_starte);
+          }
+      }
+  }
 
     private void setListHeight(ListView listView) {
         ListAdapter mAdapter = listView.getAdapter();
@@ -563,7 +772,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
     AuthorisedPreference authorisedPreference;
 
-    private JSONObject getHome() {
+    private JSONObject getHome(String datetime) {
         authorisedPreference = new AuthorisedPreference(mContext);
         MyLogger.println("seller_id>>>>>>>>>0> " + authorisedPreference.getString("app_sellerrid"));
 //        authorisedPreference.setSellerId("740bb9c3-17ff-4ef8-8922-9de82a9a2471");
@@ -579,6 +788,8 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             jsonObj.put("requestTime", System.currentTimeMillis());
             jsonObj.put("seller_uid", authorisedPreference.getString("app_sellerrid"));
             jsonObj.put("isadmin", "1");
+            jsonObj.put("bookedSlotDate", datetime);//2020-12-17"
+
             jsonObj.put("instance_boxid", appPrefernce.getInstanceBoxid());
             jsonObj.put("store_id", "");
             jsonObj.put("has_seller", "true");
@@ -601,8 +812,12 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             "isadmin": "1"
     }
 */
+    String starttime = "NA";
+    String bookingId = "NA";
 
-    private void makeSessionRequest(String itemBoxId, String bookedboxId, String start_time) {
+    public void makeSessionRequest(String itemBoxId, String bookedboxId, String start_time) {
+        starttime = start_time;
+        bookingId = bookedboxId;
         BookingTokSIDRequest request = new BookingTokSIDRequest(mContext, itemBoxId, bookedboxId, start_time);
 //        VolleyClient controller = new RestApiController(this, this, 0);
         progressdialog = startProgressDialog(mContext, "Loading.....");
@@ -619,6 +834,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
                 ContactSdk.PublisherVideoCall(mContext, "30",
                         todaylistnew.getCustomername(), appPrefernce.getProfilePic(), todaylistnew.getCustomerProfilepic(),
                         sidResponse.TokBoxTokenID, sidResponse.TokBoxSID, sidResponse.TokApiKey, "11");
+                contacted = true;
                 /*ContactSdk.PublisherVideoCall(this, bookSummary.BookingDuration.split("")[0],
                         bookSummary.customername, bookSummary.ImageUrl,bookSummary.profilepic,
                         sidResponse.TokBoxTokenID, sidResponse.TokBoxSID,sidResponse.TokApiKey,bookSummary.messenger_type_val);*/
@@ -912,9 +1128,10 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
                 /*if((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis())>0) {
                     startTimer(Integer.parseInt((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) + ""));
                 }*/
-                if ((getMilliFromDate(bookingList.get(i).getStartTime()) > System.currentTimeMillis()) && (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600) < 1) {
+                if ((getMilliFromDate(bookingList.get(i).getStartTime()) > System.currentTimeMillis()) //&& (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600) < 1
+                ) {
                     int hour = (int) (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600);
-                    long milisecondtime =(getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis());
+                    long milisecondtime = (getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis());
 //                    String minute = "" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) / 60);
 //                    String seconds = "" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) % 60);
 //                    int[] minutearr = setIntArray(minute);
@@ -924,43 +1141,57 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
                             long millis = millisUntilFinished;
                             //Convert milliseconds into hour,minute and seconds
                             String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis), TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)), TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
-                            String[] hmsvalue =hms.split(":");
+                            String[] hmsvalue = hms.split(":");
+                            int[] hourarr = setIntArray(hmsvalue[0]);
                             int[] minutearr = setIntArray(hmsvalue[1]);
                             int[] secondarr = setIntArray(hmsvalue[2]);
 //                            txtcoundown.setText(hmsvalue[1]+":"+hmsvalue[2]);//set text
 //                            txtcoundown.setText(hour+" "+secondarr[0]+":"+secondarr[1]+"====="+hms);
-                            if (hour == 0) {
-                                if (Integer.parseInt(hmsvalue[1]) >= 0) {
-                                    if (minutearr.length > 1) {
-                                        id_time.setText("" + minutearr[0]);
-                                        id_timetwo.setText("" + minutearr[1]);
-                                    } else {
-//                                        id_time.setText("0");
-//                                        id_timetwo.setText("" + minutearr[0]);
-                                        id_time.setText("" + minutearr[0]);
-                                        id_timetwo.setText("" + minutearr[1]);
-                                    }
-                                } else {
-                                    id_time.setText("0");
-                                    id_timetwo.setText("0");
-                                }
-                                if (secondarr.length > 1) {
-                                    id_minone.setText("" + secondarr[0]);
-                                    id_mintwo.setText("" + secondarr[1]);
+//                            if (hour == 0) {
 
-                                } else {
-                                    id_minone.setText("" + secondarr[0]);
-                                    id_mintwo.setText("" + secondarr[1]);
+                            if (hourarr.length > 1) {
+                                id_hourone.setText("" + hourarr[0]);
+                                id_hourtwo.setText("" + hourarr[1]);
+
+                            } else {
+                                id_hourone.setText("" + hourarr[0]);
+                                id_hourtwo.setText("" + hourarr[1]);
 //                                    id_minone.setText("0");
 //                                    id_mintwo.setText("" + secondarr[0]);
+                            }
+                            if (Integer.parseInt(hmsvalue[1]) >= 0) {
+                                if (minutearr.length > 1) {
+                                    id_time.setText("" + minutearr[0]);
+                                    id_timetwo.setText("" + minutearr[1]);
+                                } else {
+//                                        id_time.setText("0");
+//                                        id_timetwo.setText("" + minutearr[0]);
+                                    id_time.setText("" + minutearr[0]);
+                                    id_timetwo.setText("" + minutearr[1]);
                                 }
                             } else {
                                 id_time.setText("0");
                                 id_timetwo.setText("0");
+                            }
+                            if (secondarr.length > 1) {
+                                id_minone.setText("" + secondarr[0]);
+                                id_mintwo.setText("" + secondarr[1]);
+
+                            } else {
+                                id_minone.setText("" + secondarr[0]);
+                                id_mintwo.setText("" + secondarr[1]);
+//                                    id_minone.setText("0");
+//                                    id_mintwo.setText("" + secondarr[0]);
+                            }
+
+                            /*} else {
+                                id_time.setText("0");
+                                id_timetwo.setText("0");
                                 id_minone.setText("0");
                                 id_mintwo.setText("0");
-                            }
+                            }*/
                         }
+
                         public void onFinish() {
                             id_time.setText("0");
                             id_timetwo.setText("0");
@@ -994,14 +1225,190 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         }.start();
 
     }*/
-    private JSONObject getVideoStatus() {
+
+
+    public void shareReferencePost(String refrenceCode) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Recipes");
+        intent.putExtra(Intent.EXTRA_TEXT, refrenceCode);
+
+        intent.putExtra("Module", "ReferenceCode");
+        intent.setType("text/plain");
+        mContext.startActivity(Intent.createChooser(intent, "ReferenceCode"));
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (contacted) {
+            confirmCallCompletedOrConfirmtoCall("Conversation Status");
+        }
+    }
+
+    boolean contacted;
+
+    public void confirmCallCompletedOrConfirmtoCall(String title) {
+
+        contacted = false;
+        final Dialog dialog = new Dialog(mContext, R.style.MaterialDialogSheet);
+        dialog.setContentView(R.layout.dialog_open_restaurant);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.setTitle(" ");
+        dialog.show();
+
+        LinearLayout layout_cancle = (LinearLayout) dialog.findViewById(R.id.layout_cancle);
+        TextView titleOpenNCloserestunt = (TextView) dialog.findViewById(R.id.titleOpenNCloserestunt);
+        TextView subtitleOpenNCloserestunt = (TextView) dialog.findViewById(R.id.subtitleOpenNCloserestunt);
+        final TextView cancleBtn = (TextView) dialog.findViewById(R.id.cancleBtn);
+        TextView openRestaurantBtn = (TextView) dialog.findViewById(R.id.openRestaurantBtn);
+        dialog.findViewById(R.id.store_detail).setVisibility(View.GONE);
+        titleOpenNCloserestunt.setText(title);
+
+
+        subtitleOpenNCloserestunt.setText("Your conversation is intrupted or You completed your conversation.");
+        cancleBtn.setText("Failed");
+        openRestaurantBtn.setText("Completed");
+        openRestaurantBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                updateCallStatus("Completed", null);
+
+            }
+        });
+        cancleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.dismiss();
+                onCallFailed();
+            }
+        });
+
+        layout_cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "Please confirm your status for conversation", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    public void onCallFailed() {
+
+        final Dialog dialog = new Dialog(mContext, R.style.MaterialDialogSheet);
+        dialog.setContentView(R.layout.dialog_order_reason_tablemonk_admin);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.setTitle(" ");
+        dialog.show();
+
+        LinearLayout layout_cancle = (LinearLayout) dialog.findViewById(R.id.layout_cancle);
+        final TextView submitBtn = (TextView) dialog.findViewById(R.id.submitBtn);
+        final RadioGroup radioGroup = (RadioGroup) dialog.findViewById(R.id.radioGroup);
+        final EditText edSugesstionText = (EditText) dialog.findViewById(R.id.edSugesstionText);
+        final TextView title = (TextView) dialog.findViewById(R.id.txtDeclineOrder);
+
+        title.setText("Call Failed Reason");
+        final ArrayList<String> declineReasons = new ArrayList<>();
+        declineReasons.add("Phone not reachable");
+        declineReasons.add("Due to some issue, I am unable to call today.");
+        declineReasons.add("I will call you after 10 to 15 min");
+        declineReasons.add("Others(Please specify reason)");
+
+
+        int i = 1;
+
+        final String[] reasonString = {""};
+        for (String r : declineReasons) {
+            final RadioButton rdbtn = new RadioButton(mContext);
+            rdbtn.setText("   " + r);
+            rdbtn.setButtonDrawable(R.drawable.radio_selector);
+            rdbtn.setTextColor(Color.parseColor("#706e6f"));
+
+            rdbtn.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.sp12));
+            //  rdbtn.setTextSize(16);
+
+            rdbtn.setId(i);
+            i++;
+            rdbtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                                 @Override
+                                                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                                                     if (b) {
+                                                         reasonString[0] = compoundButton.getText().toString().substring(3);
+                                                     }
+                                                 }
+
+                                             }
+
+            );
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            layoutParams.setMargins(0, 7, 0, 7);
+            radioGroup.addView(rdbtn, layoutParams);
+        }
+
+        edSugesstionText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((RadioButton) radioGroup.getChildAt(declineReasons.size() - 1)).setChecked(true);
+
+            }
+        });
+
+
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                String other = edSugesstionText.getText().toString();
+                if (reasonString[0].equalsIgnoreCase("Others(Please specify reason)"))
+                    reasonString[0] = other;
+
+                if (reasonString[0].equalsIgnoreCase(""))
+                    Toast.makeText(mContext, "Please enter reason", Toast.LENGTH_LONG).show();
+                else {
+                    updateCallStatus("Failed", reasonString[0]);
+                    dialog.dismiss();
+                }
+
+            }
+        });
+
+
+        layout_cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.dismiss();
+                confirmCallCompletedOrConfirmtoCall("Conversation Status");
+            }
+        });
+
+
+    }
+
+    private void updateCallStatus(String call_status, String reason) {
+//        UpdateBookingStatusRequest request = new UpdateBookingStatusRequest(reason,this, call_status, bookSummary.BookingId);
+//        RestApiController restApiController = new RestApiController(this, this, RestApiController.UPDATECALLSTATUS);
+//        restApiController.makemebasedRequest(request, show);
+        progressdialog = startProgressDialog(mContext, "Loading.....");
+        progressdialog.show();
+        volleyClient.makeRequest(WebServicesUrl.CategariesBooking, getVideoStatus(call_status, reason).toString(), "VideoStatus");
+    }
+
+    private JSONObject getVideoStatus(String callStatus, String call_fail_reason) {
         Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
+        Date date = calendar.getTime();
+        String strdate = new SimpleDateFormat("yyyy-MM-dd").format(date);
         authorisedPreference = new AuthorisedPreference(mContext);
         JSONObject jsonObj = null;
         jsonObj = new JSONObject();
         try {
-          /*  jsonObj.put("action", "ChangeCallStatus");
+            jsonObj.put("action", "ChangeCallStatus");
             jsonObj.put("mewardid", authorisedPreference.getMewardId());
             jsonObj.put("tokenkey", authorisedPreference.getTokenKey());
             jsonObj.put("user_type", "selleradmin");
@@ -1009,13 +1416,13 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             jsonObj.put("encryption_status", "0");
             jsonObj.put("seller_uid", authorisedPreference.getString("app_sellerrid"));
 
-            jsonObj.put("start_date", "" + year);
-            jsonObj.put("start_time", );
-            jsonObj.put("booking_version", );
-            jsonObj.put("type", "");
-            jsonObj.put("BookingId", );
-            jsonObj.put("callStatus", "");
-            jsonObj.put("call_failed_reason", "");*/
+            jsonObj.put("start_date", strdate);
+            jsonObj.put("start_time", starttime);
+            jsonObj.put("booking_version", "4");
+            jsonObj.put("type", "booking");
+            jsonObj.put("BookingId", bookingId);
+            jsonObj.put("callStatus", callStatus);
+            jsonObj.put("call_failed_reason", call_fail_reason);
 
             return jsonObj;
         } catch (Exception e) {
@@ -1052,15 +1459,80 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         },*/
     }
 
-    public void shareReferencePost(String refrenceCode) {
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Recipes");
-        intent.putExtra(Intent.EXTRA_TEXT, refrenceCode);
+    public void setDateHere() {
+        int year = dateCalendar.get(Calendar.YEAR);
+        int month = dateCalendar.get(Calendar.MONTH);
+        int day = dateCalendar.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(mContext, R.style.DialogTheme, this, year, month, day);
+        try {
+            datePickerDialog.show();
+        } catch (Exception e) {
+        }
+    }
+    public void showDialog() {
+        final Dialog dialog = new Dialog(mContext);
+        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.newui_dialog_dashboard);
+        dialog.setTitle("");
 
-        intent.putExtra("Module", "ReferenceCode");
-        intent.setType("text/plain");
-        mContext.startActivity(Intent.createChooser(intent, "ReferenceCode"));
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.gravity = Gravity.LEFT | Gravity.TOP;
+        dialog.getWindow().setAttributes(lp);
 
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        LinearLayout order_user = (LinearLayout) dialog.findViewById(R.id.order_user);
+        LinearLayout expertuser = (LinearLayout) dialog.findViewById(R.id.expert_user);
+        LinearLayout tracker_user = (LinearLayout) dialog.findViewById(R.id.tracker_user);
+        LinearLayout txt_timeline = (LinearLayout) dialog.findViewById(R.id.txt_timeline);
+        LinearLayout id_follow_ups = (LinearLayout) dialog.findViewById(R.id.id_follow_ups);
+        txt_timeline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        order_user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intentq = new Intent(getActivity(), OrderMarket.class);
+//                startActivity(intentq);
+            }
+        });
+        expertuser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, BookingHistoryDigital.class);
+                startActivity(intent);
+                dialog.dismiss();
+            }
+        });
+        tracker_user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*Intent currentIntent = new Intent(mContext.get(), FoodWorkoutUpcommingSesion.class);
+                startActivity(currentIntent);*/
+                Intent currentIntent = new Intent(mContext, TrackerAppListActivity.class);
+                startActivity(currentIntent);
+            }
+        });
+        id_follow_ups.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, FavoriteActivity.class);
+                startActivity(intent);
+                dialog.dismiss();
+            }
+        });
+
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialogInterface) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }

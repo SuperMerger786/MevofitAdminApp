@@ -59,5 +59,7 @@
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowSoftInputMode">stateHidden|stateUnchanged</item>
     </style>
-
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+    <item name="colorAccent">@color/yellowbackground</item>
+    </style>
 </resources>

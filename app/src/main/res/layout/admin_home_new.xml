@@ -98,19 +98,20 @@
                             android:layout_marginTop="@dimen/dp10"
                             android:drawableLeft="@drawable/newui_bullet"
                             android:drawablePadding="@dimen/dp5"
-                            android:text="TOTAL PERFORMANCE"
+                            android:text="PERFORMANCE"
                             android:textAllCaps="true"
                             android:textColor="@color/black"
                             android:textSize="@dimen/dp14" />
 
                         <ImageView
+                            android:id="@+id/set_calender"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginTop="@dimen/dp10"
                             android:layout_marginRight="@dimen/dp10"
-                            android:visibility="gone"
-                            android:src="@drawable/newui_ordercale" />
+                            android:src="@drawable/newui_ordercale"
+                            android:visibility="visible" />
                         <!--<com.app.newuidashboardadmin.font.LatoBoldTextView
                             android:id="@+id/txtcoundown"
                             android:layout_width="wrap_content"
@@ -143,8 +144,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:padding="@dimen/dp5"
-                                android:text="Booking"
-                                android:textColor="@color/black"
+                                android:text="Bookings"
+                                android:textColor="@color/font_color"
                                 android:textSize="@dimen/sp13" />
 
                             <com.app.newuidashboardadmin.font.FiraSansRegularTextView
@@ -152,7 +153,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
-                                android:textColor="@color/black"
+                                android:textColor="@color/font_color"
                                 android:textSize="@dimen/sp13" />
 
 
@@ -170,8 +171,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:padding="@dimen/dp5"
-                                android:text="Earning"
-                                android:textColor="@color/black"
+                                android:text="Earnings"
+                                android:textColor="@color/font_color"
                                 android:textSize="@dimen/sp13" />
 
                             <com.app.newuidashboardadmin.font.FiraSansRegularTextView
@@ -179,7 +180,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
-                                android:textColor="@color/black"
+                                android:textColor="@color/font_color"
                                 android:textSize="@dimen/sp13" />
 
 
@@ -198,8 +199,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:padding="@dimen/dp5"
-                                android:text="Rating"
-                                android:textColor="@color/black"
+                                android:text="Ratings"
+                                android:textColor="@color/font_color"
                                 android:textSize="@dimen/sp13" />
 
                             <com.app.newuidashboardadmin.font.FiraSansRegularTextView
@@ -207,8 +208,24 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
-                                android:textColor="@color/black"
+                                android:textColor="@color/font_color"
                                 android:textSize="@dimen/sp13" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|bottom"
+                            android:layout_weight="1.4"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:src="@drawable/newuiback_dashboard" />
+
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -238,31 +255,47 @@
                         <com.app.newuidashboardadmin.font.LatoSemiBoldTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
                             android:layout_marginLeft="@dimen/dp10"
                             android:layout_marginTop="@dimen/dp10"
                             android:layout_marginBottom="@dimen/dp10"
                             android:drawableLeft="@drawable/newui_bullet"
                             android:drawablePadding="@dimen/dp5"
-                            android:text="TODAY'S BOOKING"
+                            android:text="BOOKING"
                             android:textAllCaps="true"
                             android:textColor="@color/black"
                             android:textSize="@dimen/dp14" />
 
-                        <com.app.newuidashboardadmin.font.LatoSemiBoldTextView
-                            android:id="@+id/book_count"
-                            android:layout_width="@dimen/dp30"
-                            android:layout_height="@dimen/dp30"
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:layout_marginTop="@dimen/dp10"
-                            android:layout_marginRight="@dimen/dp10"
-                            android:layout_marginBottom="@dimen/dp10"
-                            android:background="@drawable/circular_image_stroke"
-                            android:gravity="center"
-                            android:padding="@dimen/dp5"
-                            android:text=""
-                            android:textAllCaps="true"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/dp12" />
+                            android:layout_marginRight="@dimen/dp20"
+                            android:orientation="horizontal">
+
+                            <com.app.newuidashboardadmin.font.LatoSemiBoldTextView
+                                android:id="@+id/book_count"
+                                android:layout_width="@dimen/dp30"
+                                android:layout_height="@dimen/dp30"
+                                android:layout_marginTop="@dimen/dp10"
+                                android:layout_marginRight="@dimen/dp20"
+                                android:layout_marginBottom="@dimen/dp10"
+                                android:background="@drawable/circular_image_stroke"
+                                android:gravity="center"
+                                android:padding="@dimen/dp5"
+                                android:text=""
+                                android:textAllCaps="true"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dp12" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_toRightOf="@+id/book_count"
+                                android:src="@drawable/newuiback_dashboard" />
+                        </LinearLayout>
                     </RelativeLayout>
 
                     <View
@@ -270,10 +303,10 @@
                         android:layout_height="@dimen/dp1"
                         android:background="@color/grey_light" />
 
-                    <ListView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/booking_list"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="@dimen/dp230" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -602,10 +635,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp10"
-                android:paddingBottom="@dimen/dp10"
-                android:background="#6cc374"
+                android:background="#67be6e"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:paddingBottom="@dimen/dp10"
+                android:visibility="visible">
 
 
                 <LinearLayout
@@ -639,7 +672,7 @@
                         android:orientation="horizontal">
 
                         <com.app.newuidashboardadmin.font.LatoBoldTextView
-                             android:layout_width="wrap_content"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginRight="@dimen/dp10"
@@ -660,6 +693,68 @@
                         android:layout_marginBottom="@dimen/dp20"
                         android:background="@color/deep_white"
                         android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.app.newuidashboardadmin.font.LatoSemiBoldTextView
+                                android:id="@+id/id_hourone"
+                                android:layout_width="@dimen/dp20"
+                                android:layout_height="@dimen/dp35"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="@dimen/dp5"
+                                android:background="@drawable/round_corners_new"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="@color/profile_slider_target"
+                                android:textSize="@dimen/dp16" />
+
+                            <com.app.newuidashboardadmin.font.LatoSemiBoldTextView
+                                android:id="@+id/id_hourtwo"
+                                android:layout_width="@dimen/dp20"
+                                android:layout_height="@dimen/dp35"
+                                android:layout_gravity="center"
+                                android:background="@drawable/round_corners_new"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="@color/profile_slider_target"
+                                android:textSize="@dimen/dp16" />
+                        </LinearLayout>
+
+                        <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/dp4"
+                            android:gravity="center"
+                            android:text="HOUR"
+                            android:textColor="@color/deep_white"
+                            android:textSize="@dimen/dp12" />
+                    </LinearLayout>
+
+                    <!--<TextView
+                        android:layout_width="@dimen/dp1"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp5"
+                        android:layout_marginRight="@dimen/dp8"
+                        android:layout_marginBottom="@dimen/dp20"
+                        android:background="@drawable/menu_overflow"/>-->
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp5"
+                        android:layout_marginRight="@dimen/dp8"
+                        android:layout_marginBottom="@dimen/dp15"
+                        android:src="@drawable/menu_overflow"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -706,22 +801,30 @@
                             android:textSize="@dimen/dp12" />
                     </LinearLayout>
 
-                  <!--  <View
+                    <!--  <View
+                          android:layout_width="@dimen/dp1"
+                          android:layout_height="match_parent"
+                          android:layout_marginLeft="@dimen/dp8"
+                          android:layout_marginTop="@dimen/dp5"
+                          android:layout_marginRight="@dimen/dp8"
+                          android:layout_marginBottom="@dimen/dp20"
+                          android:background="@color/deep_white" />-->
+                    <!--<TextView
                         android:layout_width="@dimen/dp1"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/dp8"
                         android:layout_marginTop="@dimen/dp5"
                         android:layout_marginRight="@dimen/dp8"
                         android:layout_marginBottom="@dimen/dp20"
-                        android:background="@color/deep_white" />-->
-                    <TextView
-                        android:layout_width="@dimen/dp1"
-                        android:layout_height="match_parent"
+                        android:background="@drawable/menu_overflow" />-->
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/dp8"
                         android:layout_marginTop="@dimen/dp5"
                         android:layout_marginRight="@dimen/dp8"
-                        android:layout_marginBottom="@dimen/dp20"
-                        android:text=":" />
+                        android:layout_marginBottom="@dimen/dp15"
+                        android:src="@drawable/menu_overflow"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"

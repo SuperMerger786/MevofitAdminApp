@@ -19,10 +19,10 @@ public class TodayBooking {
     @SerializedName("user_profilepic")
     @Expose
     private String customerProfilepic;
-    @SerializedName("start_time")
+    @SerializedName("user_slot_start_time")
     @Expose
     private String startTime;
-    @SerializedName("end_time")
+    @SerializedName("user_slot_end_time")
     @Expose
     private String endTime;
 
@@ -36,7 +36,7 @@ public class TodayBooking {
              "BookingId": "JI103NVLXA",
              "ItemBoxId": "61GYZDHUC",
              "seller_uid": "740bb9c3-17ff-4ef8-8922-9de82a9a2471"*/
-    @SerializedName("callStatus")
+    @SerializedName("user_slot_call_status")
     @Expose
     private String callStatus;
 
@@ -51,6 +51,18 @@ public class TodayBooking {
     @SerializedName("seller_uid")
     @Expose
     private String seller_uid;
+
+    @SerializedName("plan_session_type")
+    @Expose
+    private String plan_session_type;
+
+    public String getPlan_session_type() {
+        return plan_session_type;
+    }
+
+    public void setPlan_session_type(String plan_session_type) {
+        this.plan_session_type = plan_session_type;
+    }
 
     public String getCallStatus() {
         return callStatus;
