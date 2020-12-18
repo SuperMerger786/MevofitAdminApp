@@ -29,23 +29,23 @@ import com.megogrid.megouser.sdkinterfaces.IAdvanceHandler;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LogInpage extends AppCompatActivity implements View.OnClickListener,IAdvanceHandler {
+public class LogInpage extends AppCompatActivity implements View.OnClickListener, IAdvanceHandler {
     private EditText emailId, passwordetx;
-    private TextView showpass,forgotPwd,login;
+    private TextView showpass, forgotPwd, login;
     LinearLayout layout_toolbar;
     private AuthorisedPreference authorisedPreference;
     EditText ed_sellerId;
+    AppPrefernce appPrefernce;
+    String password, email, sellerIDShort;
 
-    String password,email,sellerIDShort;
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newui_signlogin);
         authorisedPreference = new AuthorisedPreference(this);
+        appPrefernce = new AppPrefernce(this);
         //AuthUtility.setThemeColorInStatusBar(this);
-        if (Build.VERSION.SDK_INT >= 21)
-        {
+        if (Build.VERSION.SDK_INT >= 21) {
             getWindow().setStatusBarColor(AuthUtility.getDarkColor(Color.parseColor("#00A6bc")));
         }
         setUpViews();
@@ -53,8 +53,7 @@ public class LogInpage extends AppCompatActivity implements View.OnClickListener
 
     }
 
-    private void setUpViews()
-    {
+    private void setUpViews() {
         //layout_toolbar = (LinearLayout) findViewById(R.id.layout_toolbar);
         //layout_toolbar.setBackgroundColor(Color.parseColor(authorisedPreference.getThemeColor()));
         ed_sellerId = (EditText) findViewById(R.id.ed_sellerId);
@@ -66,10 +65,11 @@ public class LogInpage extends AppCompatActivity implements View.OnClickListener
         //login.setBackgroundColor(Color.parseColor(authorisedPreference.getThemeColor()));
 
 
-        sellerIDShort=getIntent().getStringExtra("sellerIDShort");
-        password=getIntent().getStringExtra("password");
-        email=getIntent().getStringExtra("email");
-
+        sellerIDShort = getIntent().getStringExtra("sellerIDShort");
+        password = getIntent().getStringExtra("password");
+        email = getIntent().getStringExtra("email");
+        appPrefernce.setEmailId(email);
+        appPrefernce.setEPassword(password);
         ed_sellerId.setText(sellerIDShort);
         ed_sellerId.setEnabled(false);
         ed_sellerId.setFocusable(false);
@@ -83,8 +83,7 @@ public class LogInpage extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        switch (v.getId())
-        {
+        switch (v.getId()) {
 //            case R.id.show:
 //                if (showpass.getText().toString().equalsIgnoreCase("show"))
 //                {
@@ -104,17 +103,14 @@ public class LogInpage extends AppCompatActivity implements View.OnClickListener
                 email = emailId.getText().toString();
                 if (!isValid(email)) {
                     emailId.startAnimation(AnimationUtils.loadAnimation(LogInpage.this, R.anim.shake));
-                    Toast.makeText(LogInpage.this,"Please enter your email id", Toast.LENGTH_SHORT).show();
-                }
-                else if(!emailValidator(email)){
+                    Toast.makeText(LogInpage.this, "Please enter your email id", Toast.LENGTH_SHORT).show();
+                } else if (!emailValidator(email)) {
                     Toast.makeText(this, "Enter valid email address", Toast.LENGTH_SHORT).show();
-                }
-                else if (!isValid(password)) {
+                } else if (!isValid(password)) {
                     passwordetx.startAnimation(AnimationUtils.loadAnimation(LogInpage.this, R.anim.shake));
-                    Toast.makeText(LogInpage.this,"Please enter your password", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                        startLogin();
+                    Toast.makeText(LogInpage.this, "Please enter your password", Toast.LENGTH_SHORT).show();
+                } else {
+                    startLogin();
                 }
                 break;
 
@@ -130,15 +126,14 @@ public class LogInpage extends AppCompatActivity implements View.OnClickListener
 
         MegoUserSDK sdk = MegoUserSDK.getInstance(this, this);
         try {
-            sdk.initialize(MegoUserSDK.MegoUserType.EMAIL_LOGIN,email, password);
+            sdk.initialize(MegoUserSDK.MegoUserType.EMAIL_LOGIN, email, password);
 
         } catch (MegoUserException e) {
             e.printStackTrace();
         }
     }
 
-    public boolean emailValidator(String email)
-    {
+    public boolean emailValidator(String email) {
         Pattern pattern;
         Matcher matcher;
         final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
@@ -201,18 +196,17 @@ public class LogInpage extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onResponse(MegoUserSDK.MegoUserType megoUserType, MegoUserException e, ProfileDetailsResponse profileDetailsResponse) {
 
-        System.out.println("LogInpage.onResponse exception =======  "+e + "   "+ megoUserType);
-        if(e==null) {
-            AppPrefernce prefernce=new AppPrefernce(this);
-            switch (megoUserType)
-            {
+        System.out.println("LogInpage.onResponse exception =======  " + e + "   " + megoUserType);
+        if (e == null) {
+            AppPrefernce prefernce = new AppPrefernce(this);
+            switch (megoUserType) {
                 case EMAIL_LOGIN:
 
-                    MyLogger.println("LogInpage.onRespon>>>>>makeSessionRequest>>0>>>>>> "+profileDetailsResponse.profilepic);
-                            prefernce.setProfilePic(profileDetailsResponse.profilepic);
-                    prefernce.setString("logIn","LoggedIn");
-                    prefernce.setString("userName",email);
-                    prefernce.setString("password",password);
+                    MyLogger.println("LogInpage.onRespon>>>>>makeSessionRequest>>0>>>>>> " + profileDetailsResponse.profilepic);
+                    prefernce.setProfilePic(profileDetailsResponse.profilepic);
+                    prefernce.setString("logIn", "LoggedIn");
+                    prefernce.setString("userName", email);
+                    prefernce.setString("password", password);
 
 
                     Intent intent = new Intent(this, InstanceListActivity.class);
@@ -223,7 +217,7 @@ public class LogInpage extends AppCompatActivity implements View.OnClickListener
                     break;
 
                 case FORGOT_PASW:
-                    ModuleHandler.logEvent(this,ModuleHandler.EVENT_FORGET_PASSWORD);
+                    ModuleHandler.logEvent(this, ModuleHandler.EVENT_FORGET_PASSWORD);
                     break;
             }
         }

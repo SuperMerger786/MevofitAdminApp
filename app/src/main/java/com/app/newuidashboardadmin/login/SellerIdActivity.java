@@ -9,6 +9,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -55,23 +57,10 @@ public class SellerIdActivity extends AppCompatActivity implements IAuthorized, 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.newui_signlogin);
+        setContentView(R.layout.loading_trans);
         initiate();
 
     }
-
-
-//    private void redirectUser() {
-//        String messageBody = (String) getIntent().getExtras().get("message");
-//        Intent intent = AdminUtil.getIntent(this, messageBody);
-//        if (intent != null) {
-//            startActivity(intent);
-//            finish();
-//        } else
-//            initiate();
-//
-//
-//    }
 
     protected void initiate() {
         //Fabric.with(this, new Crashlytics());
@@ -91,11 +80,29 @@ public class SellerIdActivity extends AppCompatActivity implements IAuthorized, 
             }
         });
         runtimePermission.requestPermission(perms);
-
-        initViews();
+        AppPrefernce prefernce = new AppPrefernce(this);
+        /*new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {*/
+                if (prefernce.getString("logIn") == null) {
+                    setContentView(R.layout.newui_signlogin);
+                    AuthorisedPreference authorisedPreferencee = new AuthorisedPreference(SellerIdActivity.this);
+                    authorisedPreferencee.setString(AuthorisedPreference.APP_SELLER_ID, "");
+                    authorisedPreferencee.setTokenKey("NA");
+                    authorisedPreferencee.setMewardId("NA");
+                    initViews();
+                } else if (prefernce.getString("logIn") != null) {
+                    Intent in = new Intent(SellerIdActivity.this, Admin.class);
+                    in.putExtra("from", "Loading");
+                    startActivity(in);
+                    finish();
+                }
+           /* }
+        }, 100);*/
     }
 
     public void initViews() {
+
         ed_sellerId = (EditText) findViewById(R.id.ed_sellerId);
         btnSubmitSellerId = (TextView) findViewById(R.id.tv_next);
         emailId = (EditText) findViewById(R.id.email);
@@ -108,37 +115,9 @@ public class SellerIdActivity extends AppCompatActivity implements IAuthorized, 
         }
 
 
-        AppPrefernce prefernce = new AppPrefernce(this);
-
-        if (prefernce.getString("logIn") == null) {
-            AuthorisedPreference authorisedPreferencee = new AuthorisedPreference(this);
-            authorisedPreferencee.setString(AuthorisedPreference.APP_SELLER_ID, "");
-            authorisedPreferencee.setTokenKey("NA");
-            authorisedPreferencee.setMewardId("NA");
-        } else if (prefernce.getString("logIn") != null) {
-//            Intent intent2 = new Intent(this, FetchNewOrderService.class);
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                startForegroundService(intent2);
-//            }
-//            else {
-//                startService(intent2);
-//            }
-//
-//            if (AdminUtil.isValid(prefernce.getString("app_instance_behaviour")))
-//                startActivity(new Intent(this, MainActivity.class));
-//            else
-//                startActivity(new Intent(this, StoreWiseOrderActivity.class));
-//
-//            finish();
-            Intent in = new Intent(this, Admin.class);
-            in.putExtra("from", "Loading");
-            startActivity(in);
-            finish();
-        }
-
     }
 
-    String password,email;
+    String password, email;
 
     @Override
     public void onClick(View v) {
@@ -154,8 +133,7 @@ public class SellerIdActivity extends AppCompatActivity implements IAuthorized, 
                         stopDialog();
                         ed_sellerId.startAnimation(AnimationUtils.loadAnimation(SellerIdActivity.this, R.anim.shake));
                         Toast.makeText(SellerIdActivity.this, "Please enter your correct Customer ID", Toast.LENGTH_LONG).show();
-                    }
-                    else {
+                    } else {
                         password = passwordetx.getText().toString();
                         email = emailId.getText().toString();
                         if (!isValid(email)) {
@@ -182,8 +160,8 @@ public class SellerIdActivity extends AppCompatActivity implements IAuthorized, 
                 break;
         }
     }
-    public boolean emailValidator(String email)
-    {
+
+    public boolean emailValidator(String email) {
         Pattern pattern;
         Matcher matcher;
         final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
@@ -260,9 +238,9 @@ public class SellerIdActivity extends AppCompatActivity implements IAuthorized, 
             System.out.println("<<<<<<<<<<APP_SELLER_ID =======   " + authorisedPreferencee.getString(AuthorisedPreference.APP_SELLER_ID));
 
             Intent intent = new Intent(SellerIdActivity.this, Admin.class);
-            intent.putExtra("sellerIDShort",sellerIDShort);
-            intent.putExtra("password",password);
-            intent.putExtra("email",email);
+            intent.putExtra("sellerIDShort", sellerIDShort);
+            intent.putExtra("password", password);
+            intent.putExtra("email", email);
             startActivity(intent);
             finish();
 
@@ -293,8 +271,6 @@ public class SellerIdActivity extends AppCompatActivity implements IAuthorized, 
         System.out.println("<<<<<<<<  onFailureAuthorization ====== ");
 
     }
-
-
 
 
     private void stopDialog() {

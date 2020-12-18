@@ -2,6 +2,8 @@ package com.app.newuidashboardadmin.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -27,17 +29,18 @@ public class Admin extends AppCompatActivity {
 //    boolean is_true = true;
 //    private static final int SYSTEM_ALERT_WINDOW_PERMISSION = 2084;
 
+    AppPrefernce prefernce;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.new_loading_screen);
         initHeader();
         initMegoEvent();
-
+        prefernce = new AppPrefernce(this);
 
         FirebaseOptions firebaseOptions = new FirebaseOptions.Builder()
                 .setGcmSenderId("928900584668")
@@ -48,8 +51,8 @@ public class Admin extends AppCompatActivity {
                 .setStorageBucket("testproject-b2393.appspot.com")
                 .build();
 
-        MyLogger.println("check>>>>>makeSessionRequest>>Admin"+(FirebaseApp.getApps(Admin.this).isEmpty()));
-        if(FirebaseApp.getApps(Admin.this).isEmpty())
+        MyLogger.println("check>>>>>makeSessionRequest>>Admin" + (FirebaseApp.getApps(Admin.this).isEmpty()));
+        if (FirebaseApp.getApps(Admin.this).isEmpty())
             FirebaseApp.initializeApp(getApplicationContext(), firebaseOptions);
 
 
@@ -62,29 +65,25 @@ public class Admin extends AppCompatActivity {
             }
         });
 
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
 
-        AppPrefernce prefernce = new AppPrefernce(this);
-        if (prefernce.getString("logIn") == null) {
-            Intent intent = new Intent(this, LogInpage.class);
-            intent.putExtra("sellerIDShort",getIntent().getStringExtra("sellerIDShort"));
-            intent.putExtra("password",getIntent().getStringExtra("password"));
-            intent.putExtra("email",getIntent().getStringExtra("email"));
+                if (prefernce.getString("logIn") == null) {
+                    Intent intent = new Intent(Admin.this, LogInpage.class);
+                    intent.putExtra("sellerIDShort", getIntent().getStringExtra("sellerIDShort"));
+                    intent.putExtra("password", getIntent().getStringExtra("password"));
+                    intent.putExtra("email", getIntent().getStringExtra("email"));
+                    startActivity(intent);
+                    finish();
+                } else {
 
-            startActivity(intent);
-            finish();
-        }
-        else {
-//            Intent intent2 = new Intent(this, FetchNewOrderService.class);
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                startForegroundService(intent2);
-//            } else {
-//                startService(intent2);
-//            }
-
-            Intent intent = new Intent(this, AdminUI.class);
-            startActivity(intent);
-            finish();
-        }
+                    Intent intent = new Intent(Admin.this, AdminUI.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        }, 2000);
 
     }
 

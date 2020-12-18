@@ -1,2 +1,2 @@
 rootProject.name='NewUIDashBoardAdmin'
-include ':app', ':mego-dmaxloader-1.0.0', ':MPAndroidChartLibrary', ':videochat-release', ':mego-auth-1.1.0', ':volley-master-release', ':MegoUser-release', ':mego-event-1.1.0', ':FacebookLib', ':digiproducthelper-release', ':MigCart-release'
+include ':app', ':mego-dmaxloader-1.0.0', ':MPAndroidChartLibrary', ':videochat-release', ':mego-auth-1.1.0', ':volley-master-release', ':MegoUser-release', ':mego-event-1.1.0', ':FacebookLib', ':digiproducthelper-release','MigCart-release'

@@ -6,16 +6,17 @@ import com.google.gson.annotations.SerializedName;
 
 public class TodayBooking {
 
-    @SerializedName("customername")
+
+    @SerializedName("user_name")
     @Expose
     private String customername;
-    @SerializedName("customerAge")
+    @SerializedName("user_age")
     @Expose
     private String customerAge;
-    @SerializedName("customerGender")
+    @SerializedName("user_gender")
     @Expose
     private String customerGender;
-    @SerializedName("customerProfilepic")
+    @SerializedName("user_profilepic")
     @Expose
     private String customerProfilepic;
     @SerializedName("start_time")
@@ -29,6 +30,15 @@ public class TodayBooking {
          "ItemBoxId": "61GYZDHUC",
          "seller_uid": "740bb9c3-17ff-4ef8-8922-9de82a9a2471"*/
 
+    /*
+             "callStatus": "pending",
+             "customername": "NA",
+             "BookingId": "JI103NVLXA",
+             "ItemBoxId": "61GYZDHUC",
+             "seller_uid": "740bb9c3-17ff-4ef8-8922-9de82a9a2471"*/
+    @SerializedName("callStatus")
+    @Expose
+    private String callStatus;
 
     @SerializedName("BookingId")
     @Expose
@@ -41,6 +51,14 @@ public class TodayBooking {
     @SerializedName("seller_uid")
     @Expose
     private String seller_uid;
+
+    public String getCallStatus() {
+        return callStatus;
+    }
+
+    public void setCallStatus(String callStatus) {
+        this.callStatus = callStatus;
+    }
 
     public String getBookingId() {
         return BookingId;

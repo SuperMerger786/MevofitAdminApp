@@ -83,6 +83,7 @@
         </LinearLayout>
 
         <com.app.newuidashboardadmin.font.FiraSansMediumTextView
+            android:id="@+id/id_view"
             android:layout_width="@dimen/dp100"
             android:layout_height="@dimen/dp35"
             android:layout_gravity="bottom|right"

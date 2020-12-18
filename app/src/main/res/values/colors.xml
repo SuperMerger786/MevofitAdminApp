@@ -43,4 +43,5 @@
     <color name="bottom_tab_color">#2e3955</color>
     <color name="Graph_tab_color">#76aaff</color>
     <color name="Graph_tab_color_shadow">#f4f8ff</color>
+    <color name="profile_slider_target">#f05563</color>
 </resources>
