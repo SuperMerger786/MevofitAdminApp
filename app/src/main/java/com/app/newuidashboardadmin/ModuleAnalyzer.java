@@ -22,6 +22,7 @@ public class ModuleAnalyzer {
 
     public enum ModuleAnalyze {
         Calories
+
     }
 
     public class AnalyzeEntity {

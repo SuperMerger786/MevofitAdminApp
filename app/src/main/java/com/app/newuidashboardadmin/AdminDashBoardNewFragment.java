@@ -104,7 +104,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
     Calendar dateCalendar;
     ImageView iv_pre;
-
+TextView count;
     SpotsDialog progressdialog;
     ListView booking_list;
     LineChart chart;
@@ -117,6 +117,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         ln_upcomming_class = (FrameLayout) view.findViewById(R.id.ln_upcomming_class);
         booking_list = (ListView) view.findViewById(R.id.booking_list);
         iv_pre = (ImageView) view.findViewById(R.id.iv_pre);
+        count =  (TextView) view.findViewById(R.id.count);
         booking_status = (CardView) view.findViewById(R.id.booking_status);
         book_count = (TextView) view.findViewById(R.id.book_count);
         total_booking = (TextView) view.findViewById(R.id.total_booking);
@@ -182,6 +183,20 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
         setBookingPerFormance(adminDashboard.getData().getBookingPerformance());
         MyLogger.println("todays>>>>>booking>>>" + adminDashboard.getData().getTodayBookings().size());
+        if(adminDashboard!=null && adminDashboard.getData()!=null && adminDashboard.getData().userNotification!=null   && adminDashboard.getData().userNotification.totalUnreadNotification!=null){
+            System.out.println("AdminDashBoardNewFragment.listenerSet no data is null data "+adminDashboard.getData().userNotification.totalUnreadNotification);
+            if(adminDashboard.getData().userNotification.totalUnreadNotification.equalsIgnoreCase("0")){
+                count.setVisibility(View.GONE);
+                System.out.println("AdminDashBoardNewFragment.listenerSet data not set");
+            }else {
+                System.out.println("AdminDashBoardNewFragment.listenerSet data set "+adminDashboard.getData().userNotification.totalUnreadNotification);
+                count.setVisibility(View.VISIBLE);
+                count.setText(adminDashboard.getData().userNotification.totalUnreadNotification);
+            }
+        }else {
+            System.out.println("AdminDashBoardNewFragment.listenerSet some data is null");
+        }
+
         if (adminDashboard.getData().getTodayBookings() != null && adminDashboard.getData().getTodayBookings().size() > 0) {
             booking_status.setVisibility(View.VISIBLE);
             booking_list.setAdapter(new BookingTodaysItemAdapter((ArrayList<TodayBooking>) adminDashboard.getData().getTodayBookings()));
@@ -191,6 +206,8 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         } else {
             booking_status.setVisibility(View.GONE);
         }
+
+
         MyLogger.println("todays>>>>>booking>>2>" + adminDashboard.getData().getUpcomingBookings().getBookedList());
         if (adminDashboard.getData().getUpcomingBookings().getBookedList() != null) {
             ln_upcomming_class.setVisibility(View.VISIBLE);
