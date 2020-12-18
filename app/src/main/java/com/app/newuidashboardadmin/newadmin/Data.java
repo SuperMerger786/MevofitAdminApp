@@ -10,6 +10,11 @@ public class Data {
     @SerializedName("BookingPerformance")
     @Expose
     private BookingPerformance bookingPerformance;
+
+    @SerializedName("UserNotification")
+    @Expose
+    public UserNotification userNotification;
+
     @SerializedName("TodayBookings")
     @Expose
     private List<TodayBooking> todayBookings = null;
@@ -40,5 +45,6 @@ public class Data {
     public void setUpcomingBookings(UpcomingBookings upcomingBookings) {
         this.upcomingBookings = upcomingBookings;
     }
+
 
 }

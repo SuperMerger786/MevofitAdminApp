@@ -73,7 +73,6 @@ public class BookingListAdapter extends RecyclerView.Adapter<BookingListViewHold
                     Intent intent = new Intent(context, UserDetailsActivity.class);
                     intent.putExtra("data", slotDataArrayList.get(position));
                     context.startActivity(intent);
-
                 }
             });
         } else {
