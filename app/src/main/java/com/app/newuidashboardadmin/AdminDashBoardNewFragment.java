@@ -21,6 +21,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.app.newuidashboardadmin.Utility.AppPrefernce;
+import com.app.newuidashboardadmin.Utility.VersionShowPropmt;
 import com.app.newuidashboardadmin.admingraph.GraphDatum;
 import com.app.newuidashboardadmin.admingraph.GraphValues;
 import com.app.newuidashboardadmin.newadmin.BookedList;
@@ -111,7 +112,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
     Calendar dateCalendar;
     ImageView iv_pre;
-TextView count;
+    TextView count;
     SpotsDialog progressdialog;
     ListView booking_list;
     LineChart chart;
@@ -128,7 +129,7 @@ TextView count;
         ln_upcomming_class = (FrameLayout) view.findViewById(R.id.ln_upcomming_class);
         booking_list = (ListView) view.findViewById(R.id.booking_list);
         iv_pre = (ImageView) view.findViewById(R.id.iv_pre);
-        count =  (TextView) view.findViewById(R.id.count);
+        count = (TextView) view.findViewById(R.id.count);
         booking_status = (CardView) view.findViewById(R.id.booking_status);
         book_count = (TextView) view.findViewById(R.id.book_count);
         total_booking = (TextView) view.findViewById(R.id.total_booking);
@@ -137,7 +138,7 @@ TextView count;
         booking_tab = (TextView) view.findViewById(R.id.booking_tab);
         payment_tab = (TextView) view.findViewById(R.id.payment_tab);
         ed_referencecode = (EditText) view.findViewById(R.id.ed_referencecode);
-        txt_share  = (TextView) view.findViewById(R.id.txt_share);
+        txt_share = (TextView) view.findViewById(R.id.txt_share);
 //        txtcoundown  = (TextView) view.findViewById(R.id.txtcoundown);
 
         //booking counter
@@ -172,7 +173,15 @@ TextView count;
             @Override
             public void onClick(View v) {
 //                showDialog();
-                ((AdminUI)mContext).getmDrawerLayout().openDrawer(GravityCompat.START);
+                ((AdminUI) mContext).getmDrawerLayout().openDrawer(GravityCompat.START);
+            }
+        });
+        iv_pre.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                VersionShowPropmt versionShowPropmt = new VersionShowPropmt();
+                versionShowPropmt.showDialog(getContext());
+                return true;
             }
         });
         iv_pre.setOnClickListener(new View.OnClickListener() {
@@ -185,7 +194,7 @@ TextView count;
         txt_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(checkReferencetext(ed_referencecode.getText().toString(),ed_referencecode)){
+                if (checkReferencetext(ed_referencecode.getText().toString(), ed_referencecode)) {
                     shareReferencePost(ed_referencecode.getText().toString());
                 }
             }
@@ -194,16 +203,18 @@ TextView count;
 
         return view;
     }
+
     private boolean checkReferencetext(String Name, EditText NameEditText) {
         boolean istrue = false;
         if (Name.length() == 0) {
             NameEditText.requestFocus();
             NameEditText.setError("FIELD CANNOT BE EMPTY");
             return false;
-        }  else {
+        } else {
             return true;
         }
     }
+
     private void hithome() {
         progressdialog = startProgressDialog(mContext, "Loading.....");
         progressdialog.show();
@@ -223,17 +234,17 @@ TextView count;
 
         setBookingPerFormance(adminDashboard.getData().getBookingPerformance());
         MyLogger.println("todays>>>>>booking>>>" + adminDashboard.getData().getTodayBookings().size());
-        if(adminDashboard!=null && adminDashboard.getData()!=null && adminDashboard.getData().userNotification!=null   && adminDashboard.getData().userNotification.totalUnreadNotification!=null){
-            System.out.println("AdminDashBoardNewFragment.listenerSet no data is null data "+adminDashboard.getData().userNotification.totalUnreadNotification);
-            if(adminDashboard.getData().userNotification.totalUnreadNotification.equalsIgnoreCase("0")){
+        if (adminDashboard != null && adminDashboard.getData() != null && adminDashboard.getData().userNotification != null && adminDashboard.getData().userNotification.totalUnreadNotification != null) {
+            System.out.println("AdminDashBoardNewFragment.listenerSet no data is null data " + adminDashboard.getData().userNotification.totalUnreadNotification);
+            if (adminDashboard.getData().userNotification.totalUnreadNotification.equalsIgnoreCase("0")) {
                 count.setVisibility(View.GONE);
                 System.out.println("AdminDashBoardNewFragment.listenerSet data not set");
-            }else {
-                System.out.println("AdminDashBoardNewFragment.listenerSet data set "+adminDashboard.getData().userNotification.totalUnreadNotification);
+            } else {
+                System.out.println("AdminDashBoardNewFragment.listenerSet data set " + adminDashboard.getData().userNotification.totalUnreadNotification);
                 count.setVisibility(View.VISIBLE);
                 count.setText(adminDashboard.getData().userNotification.totalUnreadNotification);
             }
-        }else {
+        } else {
             System.out.println("AdminDashBoardNewFragment.listenerSet some data is null");
         }
 
@@ -925,69 +936,71 @@ TextView count;
                                     .into(book_img);*/
 
             for (int i = 0; i < bookingList.size(); i++) {
-                System.out.println("MainWristActivity.callBoking <<<<<list1>" + bookingList.size() + "====" + getMilliFromDate(bookingList.get(i).getStartTime()) + "===" + (getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) + "=minute=" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) / 60) + "==seconds==" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) % 60) + "===hour=" + (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600));
+//                System.out.println("MainWristActivity.callBoking <<<<<list1>" + bookingList.size() + "====" + getMilliFromDate(bookingList.get(i).getStartTime()) + "===" + (getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) + "=minute=" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) / 60) + "==seconds==" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) % 60) + "===hour=" + (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600));
                 /*if((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis())>0) {
                     startTimer(Integer.parseInt((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) + ""));
                 }*/
                 if ((getMilliFromDate(bookingList.get(i).getStartTime()) > System.currentTimeMillis()) && (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600) < 1) {
-                    int hour = (int) (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600);
-                    long milisecondtime =(getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis());
+                    if (!bookingList.get(i).getStartTime().equalsIgnoreCase("NA")) {
+                        int hour = (int) (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600);
+                        long milisecondtime = (getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis());
 //                    String minute = "" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) / 60);
 //                    String seconds = "" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) % 60);
 //                    int[] minutearr = setIntArray(minute);
 //                    int[] secondarr = setIntArray(seconds);
-                    CountDownTimer countDownTimer = new CountDownTimer(milisecondtime, 1000) {
-                        public void onTick(long millisUntilFinished) {
-                            long millis = millisUntilFinished;
-                            //Convert milliseconds into hour,minute and seconds
-                            String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis), TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)), TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
-                            String[] hmsvalue =hms.split(":");
-                            int[] minutearr = setIntArray(hmsvalue[1]);
-                            int[] secondarr = setIntArray(hmsvalue[2]);
+                        CountDownTimer countDownTimer = new CountDownTimer(milisecondtime, 1000) {
+                            public void onTick(long millisUntilFinished) {
+                                long millis = millisUntilFinished;
+                                //Convert milliseconds into hour,minute and seconds
+                                String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis), TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)), TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
+                                String[] hmsvalue = hms.split(":");
+                                int[] minutearr = setIntArray(hmsvalue[1]);
+                                int[] secondarr = setIntArray(hmsvalue[2]);
 //                            txtcoundown.setText(hmsvalue[1]+":"+hmsvalue[2]);//set text
 //                            txtcoundown.setText(hour+" "+secondarr[0]+":"+secondarr[1]+"====="+hms);
-                            if (hour == 0) {
-                                if (Integer.parseInt(hmsvalue[1]) >= 0) {
-                                    if (minutearr.length > 1) {
-                                        id_time.setText("" + minutearr[0]);
-                                        id_timetwo.setText("" + minutearr[1]);
-                                    } else {
+                                if (hour == 0) {
+                                    if (Integer.parseInt(hmsvalue[1]) >= 0) {
+                                        if (minutearr.length > 1) {
+                                            id_time.setText("" + minutearr[0]);
+                                            id_timetwo.setText("" + minutearr[1]);
+                                        } else {
 //                                        id_time.setText("0");
 //                                        id_timetwo.setText("" + minutearr[0]);
-                                        id_time.setText("" + minutearr[0]);
-                                        id_timetwo.setText("" + minutearr[1]);
+                                            id_time.setText("" + minutearr[0]);
+                                            id_timetwo.setText("" + minutearr[1]);
+                                        }
+                                    } else {
+                                        id_time.setText("0");
+                                        id_timetwo.setText("0");
+                                    }
+                                    if (secondarr.length > 1) {
+                                        id_minone.setText("" + secondarr[0]);
+                                        id_mintwo.setText("" + secondarr[1]);
+
+                                    } else {
+                                        id_minone.setText("" + secondarr[0]);
+                                        id_mintwo.setText("" + secondarr[1]);
+//                                    id_minone.setText("0");
+//                                    id_mintwo.setText("" + secondarr[0]);
                                     }
                                 } else {
                                     id_time.setText("0");
                                     id_timetwo.setText("0");
+                                    id_minone.setText("0");
+                                    id_mintwo.setText("0");
                                 }
-                                if (secondarr.length > 1) {
-                                    id_minone.setText("" + secondarr[0]);
-                                    id_mintwo.setText("" + secondarr[1]);
+                            }
 
-                                } else {
-                                    id_minone.setText("" + secondarr[0]);
-                                    id_mintwo.setText("" + secondarr[1]);
-//                                    id_minone.setText("0");
-//                                    id_mintwo.setText("" + secondarr[0]);
-                                }
-                            } else {
+                            public void onFinish() {
                                 id_time.setText("0");
                                 id_timetwo.setText("0");
                                 id_minone.setText("0");
                                 id_mintwo.setText("0");
+                                //txtcoundown.setText("TIME'S UP!!"); //On finish change timer text
                             }
-                        }
-                        public void onFinish() {
-                            id_time.setText("0");
-                            id_timetwo.setText("0");
-                            id_minone.setText("0");
-                            id_mintwo.setText("0");
-                            //txtcoundown.setText("TIME'S UP!!"); //On finish change timer text
-                        }
-                    }.start();
+                        }.start();
 //                    System.out.println("MainWristActivity.callBoking <<<<<list2>" + bookingList.size() + "====" + minutearr.length + "====" + minute + "====" + secondarr.length + "====" + seconds);
-
+                    }
                     break;
                 }
             }
@@ -996,6 +1009,7 @@ TextView count;
         }
 
     }
+
     /*private void startTimer(int noOfMinutes) {
         CountDownTimer countDownTimer = new CountDownTimer(noOfMinutes, 1000) {
             public void onTick(long millisUntilFinished) {
