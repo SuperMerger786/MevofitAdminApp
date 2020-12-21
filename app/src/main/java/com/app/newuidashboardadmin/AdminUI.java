@@ -1,6 +1,7 @@
 package com.app.newuidashboardadmin;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -16,6 +18,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.app.newuidashboardadmin.clienttab.activity.ClientPagerFragment;
 import com.app.newuidashboardadmin.firebase.SetDeviceRequest;
 import com.app.newuidashboardadmin.plan.BookingListFragment;
@@ -237,5 +241,47 @@ public class AdminUI extends AppCompatActivity {
             }
         }, 5);
         controller.setDeviceIdRequest(request);
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        /*if (is_prompt_cancel) {
+            if (dialogUpdate != null) {
+                dialogUpdate.dismiss();
+                return;
+            }
+        }
+        if (getInstanceLatest() != null) {
+            getInstanceLatest().setPullToRefresh(false);
+        }*/
+        MyLogger.println("<<<< shouldonBackPressed======== : ");
+        /*if (getInstanceTabListFragment() != null && getInstanceTabListFragment().isSliderOpen()) {
+            getInstanceTabListFragment().closeView();
+        } else*/
+        if (pager.getCurrentItem() != 0 //&& isSliderOpen()
+        ) {
+            pager.setCurrentItem(0);
+            /*if (isSliderOpen()) {
+                closeView();
+            }*/
+       /* } else if (TabListFragment.viewPager != null && TabListFragment.viewPager.getCurrentItem() != 0) {
+            pager.setCurrentItem(0);*/
+        } else {
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+//                    .setTitle(Util.getBandFullName(this))
+                    .setMessage("Are you sure you want to exit?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+//        BleApplication.getInstance().unbindServiCeconnection();
+        }
     }
 }

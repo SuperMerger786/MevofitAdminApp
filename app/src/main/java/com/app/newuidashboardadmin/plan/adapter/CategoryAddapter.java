@@ -49,14 +49,14 @@ public class CategoryAddapter extends RecyclerView.Adapter<CategoryViewHolder> {
             holder.complete.setVisibility(View.GONE);
             holder.setup.setVisibility(View.VISIBLE);
         }
-        holder.background.setOnClickListener(new View.OnClickListener() {
+       /* holder.background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, PlanConfigureActivity.class);
                 intent.putExtra("instanceId",categoryDataArrayList.get(position).instance_boxid);
                 context.startActivity(intent);
             }
-        });
+        });*/
 
 
     }

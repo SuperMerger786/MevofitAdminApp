@@ -309,8 +309,10 @@ public class PlanWorkout extends Fragment {
     }
 
     private void setPost() {
-        String email = appPrefernce.getEmailId();//"vaibhav@migital.com";
-        String password = appPrefernce.getEPassword();//"Migital@123";
+//        String email = appPrefernce.getEmailId();//"vaibhav@migital.com";
+//        String password = appPrefernce.getEPassword();//"Migital@123";
+        String email = appPrefernce.getString("userName");//"vaibhav@migital.com";
+        String password = appPrefernce.getString("password");//"Migital@123";
 //        String seller_id = "740bb9c3-17ff-4ef8-8922-9de82a9a2471";
         String postData1 = "email=" + email + "&password=" + password;
 

@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class BookingPerformance {
 
-    @SerializedName("totalSlotBookings")
+    @SerializedName("totalBookings")
     @Expose
     private String totalBookings;
     @SerializedName("totalEarnings")

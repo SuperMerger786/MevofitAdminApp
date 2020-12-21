@@ -42,14 +42,32 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/dp5"
-                        android:layout_marginBottom="@dimen/dp5"
-                        android:text="Upcoming Classes"
+                        android:text=""
                         android:textAllCaps="true"
+                        android:visibility="invisible"
                         android:textColor="@color/textlight"
                         android:textSize="@dimen/sp14" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="@dimen/dp4"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/newui_bullet"/>
 
-                    <com.app.newuidashboardadmin.font.FiraSansMediumTextView
+                        <com.app.newuidashboardadmin.font.FiraSansMediumTextView
+                            android:id="@+id/tv_title_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:maxLines="2"
+                            android:text="Mediation|HR"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/sp16" />
+                    </LinearLayout>
+                   <!-- <com.app.newuidashboardadmin.font.FiraSansMediumTextView
                         android:id="@+id/tv_title_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -58,7 +76,7 @@
                         android:text="Mediation|HR"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/sp16" />
+                        android:textSize="@dimen/sp16" />-->
 
                     <com.app.newuidashboardadmin.font.FiraSansRegularTextView
                         android:id="@+id/tv_upcome_duration"
