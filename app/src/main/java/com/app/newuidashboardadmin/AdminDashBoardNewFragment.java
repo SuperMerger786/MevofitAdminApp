@@ -31,9 +31,11 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.app.newuidashboardadmin.Utility.AppPrefernce;
+import com.app.newuidashboardadmin.Utility.VersionShowPropmt;
 import com.app.newuidashboardadmin.admingraph.GraphDatum;
 import com.app.newuidashboardadmin.admingraph.GraphValues;
 import com.app.newuidashboardadmin.newadmin.BookedList;
@@ -48,9 +50,9 @@ import com.app.newuidashboardadmin.services.VolleyClient;
 import com.app.newuidashboardadmin.services.WebServicesUrl;
 import com.app.newuidashboardadmin.todaysbooking.BookingTokSIDRequest;
 import com.app.newuidashboardadmin.todaysbooking.BookingTokSIDResponse;
-import com.app.newuidashboardadmin.view.BookingAdapterRecyclerView;
+import com.app.newuidashboardadmin.view.SetDeviceDetail;
+import com.app.newuidashboardadmin.view.Utils;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.util.Util;
 import com.contact.util.CallUtility;
 import com.contact.util.ContactSdk;
 import com.github.mikephil.charting.charts.LineChart;
@@ -61,22 +63,16 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.github.mikephil.charting.utils.Utils;
 import com.google.gson.Gson;
-import com.megogrid.ImageLoader.FileReadWrite;
-import com.megogrid.activities.MeUserSDKMevo;
 import com.megogrid.megoauth.AuthorisedPreference;
 import com.megogrid.megoeventbuilder.bean.Events;
 import com.megogrid.megoeventpersistence.MewardDbHandler;
 import com.megogrid.megoeventssdkhandler.ActionPerformer;
-import com.megogrid.megouser.MegoUser;
 import com.migital.digiproducthelper.BookingHistoryDigital;
 import com.migital.digiproducthelper.FavoriteActivity;
-import com.migital.digiproducthelper.bean.request.UpdateBookingStatusRequest;
 import com.migital.digiproducthelper.extraui.NotificatinSetingactivity;
 import com.migital.digiproducthelper.processui.TrackerAppListActivity;
 
-import java.io.File;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -84,7 +80,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Currency;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -95,8 +90,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.FileProvider;
-import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -136,16 +129,17 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
     Calendar dateCalendar;
     ImageView iv_pre;
-TextView count;
+    TextView count;
     SpotsDialog progressdialog;
     RecyclerView booking_list;
     LineChart chart;
     LinearLayout add_entry;
     AppPrefernce appPrefernce;
     TextView id_date, id_time, id_timetwo, id_minone, id_mintwo, id_hourone, id_hourtwo;
-    LinearLayout booking_id;
+    LinearLayout booking_id, rl_challengeHeaderLayout;
     EditText ed_referencecode;
     TextView txt_share;//,txtcoundown;
+    Date date;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.admin_home_new, container, false);
@@ -153,7 +147,7 @@ TextView count;
         ln_upcomming_class = (FrameLayout) view.findViewById(R.id.ln_upcomming_class);
         booking_list = (RecyclerView) view.findViewById(R.id.booking_list);
         iv_pre = (ImageView) view.findViewById(R.id.iv_pre);
-        count =  (TextView) view.findViewById(R.id.count);
+        count = (TextView) view.findViewById(R.id.count);
         booking_status = (CardView) view.findViewById(R.id.booking_status);
         book_count = (TextView) view.findViewById(R.id.book_count);
         total_booking = (TextView) view.findViewById(R.id.total_booking);
@@ -174,6 +168,8 @@ TextView count;
         id_minone = (TextView) view.findViewById(R.id.id_minone);
         id_mintwo = (TextView) view.findViewById(R.id.id_mintwo);
         booking_id = (LinearLayout) view.findViewById(R.id.booking_id);
+
+        rl_challengeHeaderLayout = (LinearLayout) view.findViewById(R.id.rl_challengeHeaderLayout);
 
         chart = (LineChart) view.findViewById(R.id.chart);
         add_entry = (LinearLayout) view.findViewById(R.id.add_entry);
@@ -209,6 +205,22 @@ TextView count;
                 startActivity(intent);
             }
         });
+        iv_pre.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                VersionShowPropmt versionShowPropmt = new VersionShowPropmt();
+                versionShowPropmt.showDialog(getContext());
+                return true;
+            }
+        });
+        rl_challengeHeaderLayout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Intent intent = new Intent(getActivity(), SetDeviceDetail.class);
+                startActivity(intent);
+                return true;
+            }
+        });
         txt_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -223,9 +235,8 @@ TextView count;
                 setDateHere();
             }
         });
-        Date date = dateCalendar.getTime();
-        String strdate = new SimpleDateFormat("yyyy-MM-dd").format(date);
-        hithome(strdate);
+        date = dateCalendar.getTime();
+
         return view;
     }
 
@@ -241,15 +252,23 @@ TextView count;
     }
 
     private void hithome(String timedate) {
-        progressdialog = startProgressDialog(mContext, "Loading.....");
-        progressdialog.show();
-        volleyClient.makeRequest(WebServicesUrl.Categaries, getHome(timedate).toString(), "Adminhome");
+        if (Utils.isNetworkAvailable(mContext)) {
+            progressdialog = startProgressDialog(mContext, "Loading.....");
+            progressdialog.show();
+            volleyClient.makeRequest(WebServicesUrl.Categaries, getHome(timedate).toString(), "Adminhome");
+        } else {
+            Toast.makeText(mContext, "No Internet connection!", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void hitGraphValues() {
-        progressdialog = startProgressDialog(mContext, "Loading.....");
-        progressdialog.show();
-        volleyClient.makeRequest(WebServicesUrl.CategariesBooking, getGraphValues().toString(), "GraphValues");
+        if (Utils.isNetworkAvailable(mContext)) {
+            progressdialog = startProgressDialog(mContext, "Loading.....");
+            progressdialog.show();
+            volleyClient.makeRequest(WebServicesUrl.CategariesBooking, getGraphValues().toString(), "GraphValues");
+        } else {
+            Toast.makeText(mContext, "No Internet connection!", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void listenerSet(String response) {
@@ -259,17 +278,17 @@ TextView count;
 
         setBookingPerFormance(adminDashboard.getData().getBookingPerformance());
         MyLogger.println("todays>>>>>booking>>>" + adminDashboard.getData().getTodayBookings().size());
-        if(adminDashboard!=null && adminDashboard.getData()!=null && adminDashboard.getData().userNotification!=null   && adminDashboard.getData().userNotification.totalUnreadNotification!=null){
-            System.out.println("AdminDashBoardNewFragment.listenerSet no data is null data "+adminDashboard.getData().userNotification.totalUnreadNotification);
-            if(adminDashboard.getData().userNotification.totalUnreadNotification.equalsIgnoreCase("0")){
+        if (adminDashboard != null && adminDashboard.getData() != null && adminDashboard.getData().userNotification != null && adminDashboard.getData().userNotification.totalUnreadNotification != null) {
+            System.out.println("AdminDashBoardNewFragment.listenerSet no data is null data " + adminDashboard.getData().userNotification.totalUnreadNotification);
+            if (adminDashboard.getData().userNotification.totalUnreadNotification.equalsIgnoreCase("0")) {
                 count.setVisibility(View.GONE);
                 System.out.println("AdminDashBoardNewFragment.listenerSet data not set");
-            }else {
-                System.out.println("AdminDashBoardNewFragment.listenerSet data set "+adminDashboard.getData().userNotification.totalUnreadNotification);
+            } else {
+                System.out.println("AdminDashBoardNewFragment.listenerSet data set " + adminDashboard.getData().userNotification.totalUnreadNotification);
                 count.setVisibility(View.VISIBLE);
                 count.setText(adminDashboard.getData().userNotification.totalUnreadNotification);
             }
-        }else {
+        } else {
             System.out.println("AdminDashBoardNewFragment.listenerSet some data is null");
         }
 
@@ -291,7 +310,7 @@ TextView count;
             });
             /*booking_list.setAdapter(new BookingTodaysItemAdapter(todaylist));
             setListHeight(booking_list);*/
-            BookingAdapterRecyclerView bookingAdapterRecyclerView = new BookingAdapterRecyclerView(todaylist,mContext);
+            BookingAdapterRecyclerView bookingAdapterRecyclerView = new BookingAdapterRecyclerView(todaylist, mContext);
             final LinearLayoutManager manager = new LinearLayoutManager(getActivity());
             booking_list.setLayoutManager(manager);
             booking_list.setAdapter(bookingAdapterRecyclerView);
@@ -361,11 +380,13 @@ TextView count;
     @Override
     public void onServerResponseSuccess(String reqTag, final String response) throws Exception {
         MyLogger.println("GetHomePublishData>>>check>>>>>1>>>>>>22222>" + reqTag + "====" + response);
+        if (progressdialog != null && progressdialog.isShowing())
+            progressdialog.dismiss();
         if (response != null && reqTag.equalsIgnoreCase("Adminhome")) {
 //            imagelayout.stopShimmer();
 //            imagelayout.setVisibility(View.VISIBLE);
-            if (progressdialog != null && progressdialog.isShowing())
-                progressdialog.dismiss();
+//            if (progressdialog != null && progressdialog.isShowing())
+//                progressdialog.dismiss();
             MyLogger.println("GetHomePublishData>>>check>>>>>1>>>>>>>" + reqTag + "===========" + response);
             hitGraphValues();
             new Handler().postDelayed(new Runnable() {
@@ -376,11 +397,11 @@ TextView count;
             }, 2000);
 
         } else if (response != null && reqTag.equalsIgnoreCase("VideoStatus")) {
-            if (progressdialog != null && progressdialog.isShowing())
-                progressdialog.dismiss();
+//            if (progressdialog != null && progressdialog.isShowing())
+//                progressdialog.dismiss();
         } else {
-            if (progressdialog != null && progressdialog.isShowing())
-                progressdialog.dismiss();
+//            if (progressdialog != null && progressdialog.isShowing())
+//                progressdialog.dismiss();
             adminDashboard = gson.fromJson(response, GraphValues.class);
             initializeChart(chart, "booking");
         }
@@ -391,7 +412,8 @@ TextView count;
 
     @Override
     public void onServerResponseError(String reqTag, String errorMessage) {
-
+        if (progressdialog != null && progressdialog.isShowing())
+            progressdialog.dismiss();
     }
 
 
@@ -558,77 +580,156 @@ TextView count;
         dateCalendar.set(Calendar.YEAR, year);
         dateCalendar.set(Calendar.MONTH, month);
         dateCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        Date date = dateCalendar.getTime();
+        date = dateCalendar.getTime();
         String strdate = new SimpleDateFormat("yyyy-MM-dd").format(date);
         hithome(strdate);
     }
 
-  /*  class BookingTodaysItemAdapter extends BaseAdapter {
+    /*  class BookingTodaysItemAdapter extends BaseAdapter {
 
+          ArrayList<TodayBooking> todaylist;
+          LayoutInflater inflater;
+
+          public BookingTodaysItemAdapter(ArrayList<TodayBooking> todaylist) {
+              this.todaylist = todaylist;
+              inflater = getActivity().getLayoutInflater();
+          }
+
+          @Override
+          public int getCount() {
+              if (todaylist != null) {
+                  MyLogger.println("list size = " + todaylist.size());
+                  return todaylist.size();
+              } else
+                  return 0;
+          }
+
+          @Override
+          public Object getItem(int position) {
+              return null;
+          }
+
+          @Override
+          public long getItemId(int position) {
+              return 0;
+          }
+
+          @Override
+          public View getView(final int position, View convertView, ViewGroup parent) {
+              View view = inflater.inflate(R.layout.admin_todaysbooking_status, parent, false);
+              TextView name = (TextView) view.findViewById(R.id.tv_name);
+              TextView tv_male = (TextView) view.findViewById(R.id.tv_male);
+              TextView tv_session = (TextView) view.findViewById(R.id.tv_session);
+              CircularImageView imgview = (CircularImageView) view.findViewById(R.id.iv_profile_dummy);
+              TextView start_endtime = (TextView) view.findViewById(R.id.start_endtime);
+              TextView btn_starte = (TextView) view.findViewById(R.id.btn_starte);
+              String name1 = todaylist.get(position).getCustomername();
+              String name2 = name1.replace("#NA", " ");
+              name.setText(name2);
+              tv_male.setText(todaylist.get(position).getCustomerAge() + "," + todaylist.get(position).getCustomerGender());
+              MyLogger.println("image>>>>>" + todaylist.get(position).getCustomerProfilepic());
+              Glide.with(mContext)
+                      .load(todaylist.get(position).getCustomerProfilepic())
+                      .error(Glide.with(imgview).load(R.drawable.profile))
+                      .into(imgview);
+              start_endtime.setText(todaylist.get(position).getStartTime() + "-" + todaylist.get(position).getEndTime());
+              if (todaylist.get(position).getCallStatus().equalsIgnoreCase("Completed")) {
+                  btn_starte.setText("View");
+                  btn_starte.setTextColor(getResources().getColor(R.color.colorPrimary));
+                  btn_starte.setBackground(getResources().getDrawable(R.drawable.newui_btn_blue_outline));
+              } else {
+                  btn_starte.setText("start");
+                  btn_starte.setTextColor(getResources().getColor(R.color.deep_white));
+                  btn_starte.setBackground(getResources().getDrawable(R.drawable.background_start));
+              }
+              if (todaylist.get(position).getPlan_session_type().equalsIgnoreCase("group_session")) {
+                  tv_session.setText("Group");
+                  tv_session.setTextColor(getResources().getColor(R.color.group_color));
+              } else {
+                  tv_session.setText("Personal");
+                  tv_session.setTextColor(getResources().getColor(R.color.colorPrimary));
+              }
+              if (btn_starte.getText().toString().equalsIgnoreCase("start")) {
+                  btn_starte.setOnClickListener(new View.OnClickListener() {
+                      @Override
+                      public void onClick(View view) {
+                          todaylistnew = todaylist.get(position);
+                          makeSessionRequest(todaylist.get(position).getItemBoxId(), todaylist.get(position).getBookingId(), todaylist.get(position).getStartTime());
+                      }
+                  });
+              } else {
+                  btn_starte.setOnClickListener(new View.OnClickListener() {
+                      @Override
+                      public void onClick(View view) {
+                          todaylistnew = todaylist.get(position);
+                          SlotData slotData  = new SlotData();
+                          slotData.user_name = name2;
+                          slotData.user_profilepic = todaylistnew.getCustomerProfilepic();
+                          slotData.user_gender = todaylistnew.getCustomerGender();
+                          slotData.user_age = todaylistnew.getCustomerAge();
+                          slotData.user_city = "NA";
+                          slotData.user_country = "NA";
+
+                          Intent intent = new Intent(mContext, UserDetailsActivity.class);
+                          intent.putExtra("data", slotData);
+                          startActivity(intent);
+                          // makeSessionRequest(todaylist.get(position).getItemBoxId(), todaylist.get(position).getBookingId(), todaylist.get(position).getStartTime());
+                      }
+                  });
+              }
+              return view;
+          }
+      }*/
+    public class BookingAdapterRecyclerView extends RecyclerView.Adapter<BookingAdapterRecyclerView.BookingLwHolder> {
         ArrayList<TodayBooking> todaylist;
-        LayoutInflater inflater;
+        Context mContext;
 
-        public BookingTodaysItemAdapter(ArrayList<TodayBooking> todaylist) {
+
+        public BookingAdapterRecyclerView(ArrayList<TodayBooking> todaylist, Context context) {
             this.todaylist = todaylist;
-            inflater = getActivity().getLayoutInflater();
+            this.mContext = context;
         }
 
+        @NonNull
         @Override
-        public int getCount() {
-            if (todaylist != null) {
-                MyLogger.println("list size = " + todaylist.size());
-                return todaylist.size();
-            } else
-                return 0;
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
+        public BookingAdapterRecyclerView.BookingLwHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
             View view = inflater.inflate(R.layout.admin_todaysbooking_status, parent, false);
-            TextView name = (TextView) view.findViewById(R.id.tv_name);
-            TextView tv_male = (TextView) view.findViewById(R.id.tv_male);
-            TextView tv_session = (TextView) view.findViewById(R.id.tv_session);
-            CircularImageView imgview = (CircularImageView) view.findViewById(R.id.iv_profile_dummy);
-            TextView start_endtime = (TextView) view.findViewById(R.id.start_endtime);
-            TextView btn_starte = (TextView) view.findViewById(R.id.btn_starte);
+            return new BookingAdapterRecyclerView.BookingLwHolder(view);
+        }
+
+        //      TodayBooking todaylistnew;
+        @Override
+        public void onBindViewHolder(@NonNull BookingAdapterRecyclerView.BookingLwHolder holder, int position) {
+
             String name1 = todaylist.get(position).getCustomername();
             String name2 = name1.replace("#NA", " ");
-            name.setText(name2);
-            tv_male.setText(todaylist.get(position).getCustomerAge() + "," + todaylist.get(position).getCustomerGender());
+            holder.name.setText(name2);
+            holder.tv_male.setText(todaylist.get(position).getCustomerAge() + "," + todaylist.get(position).getCustomerGender());
             MyLogger.println("image>>>>>" + todaylist.get(position).getCustomerProfilepic());
             Glide.with(mContext)
                     .load(todaylist.get(position).getCustomerProfilepic())
-                    .error(Glide.with(imgview).load(R.drawable.profile))
-                    .into(imgview);
-            start_endtime.setText(todaylist.get(position).getStartTime() + "-" + todaylist.get(position).getEndTime());
+                    .error(Glide.with(holder.imgview).load(R.drawable.profile))
+                    .into(holder.imgview);
+            holder.start_endtime.setText(getStartTime(todaylist.get(position).getStartTime()) + "-" + getEndTime(todaylist.get(position).getEndTime()));
             if (todaylist.get(position).getCallStatus().equalsIgnoreCase("Completed")) {
-                btn_starte.setText("View");
-                btn_starte.setTextColor(getResources().getColor(R.color.colorPrimary));
-                btn_starte.setBackground(getResources().getDrawable(R.drawable.newui_btn_blue_outline));
+                holder.btn_starte.setText("View");
+                holder.btn_starte.setTextColor(mContext.getResources().getColor(R.color.colorPrimary));
+                holder.btn_starte.setBackground(mContext.getResources().getDrawable(R.drawable.newui_btn_blue_outline));
             } else {
-                btn_starte.setText("start");
-                btn_starte.setTextColor(getResources().getColor(R.color.deep_white));
-                btn_starte.setBackground(getResources().getDrawable(R.drawable.background_start));
+                holder.btn_starte.setText("start");
+                holder.btn_starte.setTextColor(mContext.getResources().getColor(R.color.deep_white));
+                holder.btn_starte.setBackground(mContext.getResources().getDrawable(R.drawable.background_start));
             }
             if (todaylist.get(position).getPlan_session_type().equalsIgnoreCase("group_session")) {
-                tv_session.setText("Group");
-                tv_session.setTextColor(getResources().getColor(R.color.group_color));
+                holder.tv_session.setText("Group");
+                holder.tv_session.setTextColor(mContext.getResources().getColor(R.color.group_color));
             } else {
-                tv_session.setText("Personal");
-                tv_session.setTextColor(getResources().getColor(R.color.colorPrimary));
+                holder.tv_session.setText("Personal");
+                holder.tv_session.setTextColor(mContext.getResources().getColor(R.color.colorPrimary));
             }
-            if (btn_starte.getText().toString().equalsIgnoreCase("start")) {
-                btn_starte.setOnClickListener(new View.OnClickListener() {
+            if (holder.btn_starte.getText().toString().equalsIgnoreCase("start")) {
+                holder.btn_starte.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         todaylistnew = todaylist.get(position);
@@ -636,11 +737,11 @@ TextView count;
                     }
                 });
             } else {
-                btn_starte.setOnClickListener(new View.OnClickListener() {
+                holder.btn_starte.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         todaylistnew = todaylist.get(position);
-                        SlotData slotData  = new SlotData();
+                        SlotData slotData = new SlotData();
                         slotData.user_name = name2;
                         slotData.user_profilepic = todaylistnew.getCustomerProfilepic();
                         slotData.user_gender = todaylistnew.getCustomerGender();
@@ -650,114 +751,64 @@ TextView count;
 
                         Intent intent = new Intent(mContext, UserDetailsActivity.class);
                         intent.putExtra("data", slotData);
-                        startActivity(intent);
-                        // makeSessionRequest(todaylist.get(position).getItemBoxId(), todaylist.get(position).getBookingId(), todaylist.get(position).getStartTime());
+                        mContext.startActivity(intent);
+                        makeSessionRequest(todaylist.get(position).getItemBoxId(), todaylist.get(position).getBookingId(), todaylist.get(position).getStartTime());
                     }
                 });
             }
-            return view;
+
         }
-    }*/
-  public class BookingAdapterRecyclerView extends RecyclerView.Adapter<BookingAdapterRecyclerView.BookingLwHolder> {
-      ArrayList<TodayBooking> todaylist;
-      Context mContext;
 
 
+        @Override
+        public int getItemCount() {
+            return todaylist.size();
+        }
 
-      public BookingAdapterRecyclerView(ArrayList<TodayBooking> todaylist, Context context) {
-          this.todaylist = todaylist;
-          this.mContext = context;
-      }
-
-      @NonNull
-      @Override
-      public BookingAdapterRecyclerView.BookingLwHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-          LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-          View view = inflater.inflate(R.layout.admin_todaysbooking_status, parent, false);
-          return new BookingAdapterRecyclerView.BookingLwHolder(view);
-      }
-//      TodayBooking todaylistnew;
-      @Override
-      public void onBindViewHolder(@NonNull BookingAdapterRecyclerView.BookingLwHolder holder, int position) {
-
-          String name1 = todaylist.get(position).getCustomername();
-          String name2 = name1.replace("#NA", " ");
-          holder.name.setText(name2);
-          holder.tv_male.setText(todaylist.get(position).getCustomerAge() + "," + todaylist.get(position).getCustomerGender());
-          MyLogger.println("image>>>>>" + todaylist.get(position).getCustomerProfilepic());
-          Glide.with(mContext)
-                  .load(todaylist.get(position).getCustomerProfilepic())
-                  .error(Glide.with(holder.imgview).load(R.drawable.profile))
-                  .into(holder.imgview);
-          holder.start_endtime.setText(todaylist.get(position).getStartTime() + "-" + todaylist.get(position).getEndTime());
-          if (todaylist.get(position).getCallStatus().equalsIgnoreCase("Completed")) {
-              holder.btn_starte.setText("View");
-              holder.btn_starte.setTextColor(mContext.getResources().getColor(R.color.colorPrimary));
-              holder.btn_starte.setBackground(mContext.getResources().getDrawable(R.drawable.newui_btn_blue_outline));
-          } else {
-              holder.btn_starte.setText("start");
-              holder.btn_starte.setTextColor(mContext.getResources().getColor(R.color.deep_white));
-              holder.btn_starte.setBackground(mContext.getResources().getDrawable(R.drawable.background_start));
-          }
-          if (todaylist.get(position).getPlan_session_type().equalsIgnoreCase("group_session")) {
-              holder.tv_session.setText("Group");
-              holder.tv_session.setTextColor(mContext.getResources().getColor(R.color.group_color));
-          } else {
-              holder.tv_session.setText("Personal");
-              holder.tv_session.setTextColor(mContext.getResources().getColor(R.color.colorPrimary));
-          }
-          if (holder.btn_starte.getText().toString().equalsIgnoreCase("start")) {
-              holder.btn_starte.setOnClickListener(new View.OnClickListener() {
-                  @Override
-                  public void onClick(View view) {
-                      todaylistnew = todaylist.get(position);
-                   makeSessionRequest(todaylist.get(position).getItemBoxId(), todaylist.get(position).getBookingId(), todaylist.get(position).getStartTime());
-                  }
-              });
-          } else {
-              holder.btn_starte.setOnClickListener(new View.OnClickListener() {
-                  @Override
-                  public void onClick(View view) {
-                      todaylistnew = todaylist.get(position);
-                      SlotData slotData = new SlotData();
-                      slotData.user_name = name2;
-                      slotData.user_profilepic = todaylistnew.getCustomerProfilepic();
-                      slotData.user_gender = todaylistnew.getCustomerGender();
-                      slotData.user_age = todaylistnew.getCustomerAge();
-                      slotData.user_city = "NA";
-                      slotData.user_country = "NA";
-
-                      Intent intent = new Intent(mContext, UserDetailsActivity.class);
-                      intent.putExtra("data", slotData);
-                      mContext.startActivity(intent);
-                       makeSessionRequest(todaylist.get(position).getItemBoxId(), todaylist.get(position).getBookingId(), todaylist.get(position).getStartTime());
-                  }
-              });
-          }
-
-      }
+        class BookingLwHolder extends RecyclerView.ViewHolder {
+            TextView name, tv_male, tv_session, start_endtime, btn_starte;
+            CircularImageView imgview;
 
 
-      @Override
-      public int getItemCount() {
-          return todaylist.size();
-      }
-      class BookingLwHolder extends RecyclerView.ViewHolder {
-          TextView name, tv_male, tv_session, start_endtime, btn_starte;
-          CircularImageView imgview;
+            public BookingLwHolder(@NonNull View view) {
+                super(view);
+                name = (TextView) view.findViewById(R.id.tv_name);
+                tv_male = (TextView) view.findViewById(R.id.tv_male);
+                tv_session = (TextView) view.findViewById(R.id.tv_session);
+                imgview = (CircularImageView) view.findViewById(R.id.iv_profile_dummy);
+                start_endtime = (TextView) view.findViewById(R.id.start_endtime);
+                btn_starte = (TextView) view.findViewById(R.id.btn_starte);
+            }
+        }
 
+        private String getStartTime(String start) {
+            String strtime = "NA";
+//            String time = "3:30 PM";
+            SimpleDateFormat date12Format = new SimpleDateFormat("hh:mm");
+            SimpleDateFormat date24Format = new SimpleDateFormat("HH:mm");
+            try {
+                strtime = date12Format.format(date24Format.parse(start));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
-          public BookingLwHolder(@NonNull View view) {
-              super(view);
-              name = (TextView) view.findViewById(R.id.tv_name);
-              tv_male = (TextView) view.findViewById(R.id.tv_male);
-              tv_session = (TextView) view.findViewById(R.id.tv_session);
-              imgview = (CircularImageView) view.findViewById(R.id.iv_profile_dummy);
-              start_endtime = (TextView) view.findViewById(R.id.start_endtime);
-              btn_starte = (TextView) view.findViewById(R.id.btn_starte);
-          }
-      }
-  }
+            return strtime;
+        }
+
+        private String getEndTime(String end) {
+            String endtime = "NA";
+//            String time = "3:30 PM";
+            SimpleDateFormat date12Format = new SimpleDateFormat("hh:mm a");
+            SimpleDateFormat date24Format = new SimpleDateFormat("HH:mm");
+            try {
+                endtime = date12Format.format(date24Format.parse(end));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            return endtime;
+        }
+    }
 
     private void setListHeight(ListView listView) {
         ListAdapter mAdapter = listView.getAdapter();
@@ -1262,6 +1313,8 @@ TextView count;
         if (contacted) {
             confirmCallCompletedOrConfirmtoCall("Conversation Status");
         }
+        String strdate = new SimpleDateFormat("yyyy-MM-dd").format(date);
+        hithome(strdate);
     }
 
     boolean contacted;
@@ -1412,9 +1465,13 @@ TextView count;
 //        UpdateBookingStatusRequest request = new UpdateBookingStatusRequest(reason,this, call_status, bookSummary.BookingId);
 //        RestApiController restApiController = new RestApiController(this, this, RestApiController.UPDATECALLSTATUS);
 //        restApiController.makemebasedRequest(request, show);
-        progressdialog = startProgressDialog(mContext, "Loading.....");
-        progressdialog.show();
-        volleyClient.makeRequest(WebServicesUrl.CategariesBooking, getVideoStatus(call_status, reason).toString(), "VideoStatus");
+        if (Utils.isNetworkAvailable(mContext)) {
+            progressdialog = startProgressDialog(mContext, "Loading.....");
+            progressdialog.show();
+            volleyClient.makeRequest(WebServicesUrl.CategariesBooking, getVideoStatus(call_status, reason).toString(), "VideoStatus");
+        } else {
+            Toast.makeText(mContext, "No Internet connection!", Toast.LENGTH_LONG).show();
+        }
     }
 
     private JSONObject getVideoStatus(String callStatus, String call_fail_reason) {
@@ -1486,6 +1543,7 @@ TextView count;
         } catch (Exception e) {
         }
     }
+
     public void showDialog() {
         final Dialog dialog = new Dialog(mContext);
         dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);

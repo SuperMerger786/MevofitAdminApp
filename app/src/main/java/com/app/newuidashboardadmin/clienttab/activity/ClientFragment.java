@@ -26,12 +26,13 @@ import com.app.newuidashboardadmin.clienttab.sevices.GetUserListRequest;
 import com.app.newuidashboardadmin.plan.bean.request.GetSellerBookingSlotsRequest;
 import com.app.newuidashboardadmin.services.Response;
 import com.app.newuidashboardadmin.services.RestApiController;
+import com.app.newuidashboardadmin.view.Utils;
 import com.google.gson.Gson;
+
 import java.util.ArrayList;
 
 
-public class ClientFragment extends Fragment implements Response
-{
+public class ClientFragment extends Fragment implements Response {
     RecyclerView orderlist_recycler;
     Boolean loading = false;
     int TotalSize;
@@ -39,20 +40,20 @@ public class ClientFragment extends Fragment implements Response
     GetSellerBookingSlotsRequest req;
     ProgressBar progressBar;
     RelativeLayout noOrder;
-    int i ;
+    int i;
     int currentList;
-    public ArrayList<ClientList> ordersummaryList=new ArrayList<>();
+    public ArrayList<ClientList> ordersummaryList = new ArrayList<>();
     ClientAdapter listAdapter;
-    String requestType,parent_bookingid;
+    String requestType, parent_bookingid;
     SwipeRefreshLayout swipeToRefresh;
     TextView notask;
     Context context;
-    boolean isVisibleToUser,isCreated,isRequested;
+    boolean isVisibleToUser, isCreated, isRequested;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        this.context=context;
+        this.context = context;
     }
 
     @Override
@@ -60,26 +61,24 @@ public class ClientFragment extends Fragment implements Response
         super.onCreate(savedInstanceState);
         System.out.println("onCreate is getting called");
 
-        requestType=getArguments().getString("type");
-        parent_bookingid=getArguments().getString("parent_bookingid");
+        requestType = getArguments().getString("type");
+        parent_bookingid = getArguments().getString("parent_bookingid");
 
-        if(!isVisibleToUser)
-            isVisibleToUser=getArguments().getBoolean("isVisibleToUser",false);
-        isCreated=true;
+        if (!isVisibleToUser)
+            isVisibleToUser = getArguments().getBoolean("isVisibleToUser", false);
+        isCreated = true;
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.client_frag_layout,container,false);
+        View view = inflater.inflate(R.layout.client_frag_layout, container, false);
         initView(view);
         return view;
     }
 
 
-
-    private void initView(View view)
-    {
+    private void initView(View view) {
         swipeToRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipeToRefresh);
         swipeToRefresh.setColorSchemeColors(Color.parseColor("#c7c7c7"));
         swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -91,20 +90,20 @@ public class ClientFragment extends Fragment implements Response
         });
 
 
-        orderlist_recycler = (RecyclerView)view.findViewById(R.id.orderlist);
-        progressBar=(ProgressBar) view.findViewById(R.id.progress);
+        orderlist_recycler = (RecyclerView) view.findViewById(R.id.orderlist);
+        progressBar = (ProgressBar) view.findViewById(R.id.progress);
         progressBar.setVisibility(View.GONE);
 
         notask = (TextView) view.findViewById(R.id.notask);
         notask.setVisibility(View.GONE);
-        noOrder=(RelativeLayout)view.findViewById(R.id.notask_parent) ;
+        noOrder = (RelativeLayout) view.findViewById(R.id.notask_parent);
         noOrder.setVisibility(View.GONE);
 
         view.findViewById(R.id.add_user).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, AddUserActivity.class);
-                intent.putExtra("newUser",true);
+                Intent intent = new Intent(context, AddUserActivity.class);
+                intent.putExtra("newUser", true);
                 context.startActivity(intent);
             }
         });
@@ -112,7 +111,7 @@ public class ClientFragment extends Fragment implements Response
         view.findViewById(R.id.search_user).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, AddUserActivity.class);
+                Intent intent = new Intent(context, AddUserActivity.class);
                 context.startActivity(intent);
             }
         });
@@ -123,61 +122,61 @@ public class ClientFragment extends Fragment implements Response
     @Override
     public void onResume() {
         super.onResume();
-        if(isVisibleToUser)
+        if (isVisibleToUser)
             setRequest();
     }
 
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser)
-    {
+    public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        this.isVisibleToUser=isVisibleToUser;
-        if(isVisibleToUser && isCreated)
+        this.isVisibleToUser = isVisibleToUser;
+        if (isVisibleToUser && isCreated)
             setRequest();
     }
 
-    private void setRequest()
-    {
-        if(!isRequested) {
-            isRequested=true;
+    private void setRequest() {
+        if (!isRequested) {
+            isRequested = true;
             i = 1;
             TotalSize = 0;
             currentList = 0;
             ordersummaryList.clear();
             listAdapter.notifyDataSetChanged();
             controller = new RestApiController(getContext(), this, 5);
-            req=new GetSellerBookingSlotsRequest(requestType,context);
+            req = new GetSellerBookingSlotsRequest(requestType, context);
             req.setPaginationID(null);
             loading = true;
+            if (Utils.isNetworkAvailable(context)) {
+                controller.makemebasedRequest(req, true);
+            } else {
 
-            controller.makemebasedRequest(req, true);
+            }
+
             System.out.println("StandAlone.onResume");
         }
 
     }
-    private void setClientList()
-    {
+
+    private void setClientList() {
         listAdapter = new ClientAdapter(getContext());
 
         final LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         orderlist_recycler.setLayoutManager(manager);
         orderlist_recycler.setAdapter(listAdapter);
-        orderlist_recycler.addOnScrollListener(new RecyclerView.OnScrollListener()
-                                               {
+        orderlist_recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
                                                    @Override
                                                    public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                                                        super.onScrolled(recyclerView, dx, dy);
 
                                                        int latVisibleItem = manager.findLastCompletelyVisibleItemPosition();
 
-                                                       if (!loading && (TotalSize-1==latVisibleItem)&& currentList == 12)
-                                                       {
+                                                       if (!loading && (TotalSize - 1 == latVisibleItem) && currentList == 12) {
                                                            loading = true;
                                                            System.out.println("OrdersFragment.onScrolled ------1");
                                                            progressBar.setVisibility(View.VISIBLE);
                                                            req.setPaginationID(String.valueOf(i));
                                                            ++i;
-                                                           controller.makemebasedRequest(req,false);
+                                                           controller.makemebasedRequest(req, false);
 
                                                        }
                                                    }
@@ -187,25 +186,23 @@ public class ClientFragment extends Fragment implements Response
     }
 
     @Override
-    public void onResponseObtained(Object response, int responseType, boolean isCachedData)
-    {
+    public void onResponseObtained(Object response, int responseType, boolean isCachedData) {
         System.out.println("Onerror onResponseObtained");
         Gson gson = new Gson();
         BookingSummaryResponse response1 = gson.fromJson(response.toString(), BookingSummaryResponse.class);
         noOrder.setVisibility(View.GONE);
 
-        isRequested=false;
-        int previousSize=ordersummaryList.size();
+        isRequested = false;
+        int previousSize = ordersummaryList.size();
 
-        for (ClientList clientList : response1.bookedList)
-        {
+        for (ClientList clientList : response1.bookedList) {
             ordersummaryList.add(clientList);
 
         }
-        System.out.println("StandAlone.onscroll total="+TotalSize);
-        currentList=response1.bookedList.size();
-        TotalSize = TotalSize + currentList ;
-        response1.bookedList=ordersummaryList;
+        System.out.println("StandAlone.onscroll total=" + TotalSize);
+        currentList = response1.bookedList.size();
+        TotalSize = TotalSize + currentList;
+        response1.bookedList = ordersummaryList;
         listAdapter.setClientList(ordersummaryList);
         listAdapter.notifyItemRangeChanged(previousSize, currentList);
 
@@ -218,13 +215,10 @@ public class ClientFragment extends Fragment implements Response
     }
 
 
-
-
     @Override
-    public void onErrorObtained(String errormsg, int responseType)
-    {
-        System.out.println("Onerror obtained"+errormsg);
-        if(i==1) {
+    public void onErrorObtained(String errormsg, int responseType) {
+        System.out.println("Onerror obtained" + errormsg);
+        if (i == 1) {
             noOrder.setVisibility(View.VISIBLE);
             notask.setVisibility(View.VISIBLE);
             //  notask.setText(R.string.no_booking_task);
@@ -234,7 +228,7 @@ public class ClientFragment extends Fragment implements Response
             // listAdapter.setlist(new BookingSummaryResponse());
             listAdapter.notifyDataSetChanged();
             progressBar.setVisibility(View.GONE);
-            isRequested=false;
+            isRequested = false;
         }
 
         swipeToRefresh.setRefreshing(false);

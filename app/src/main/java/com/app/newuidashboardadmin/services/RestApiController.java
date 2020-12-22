@@ -72,7 +72,7 @@ public class RestApiController implements Response {
 
     @Override
     public void onErrorObtained(String errormsg, int responseType) {
-
+        stopDialog();
         this.response.onErrorObtained(errormsg, responseType);
     }
 
@@ -118,7 +118,7 @@ public class RestApiController implements Response {
             progressdialog=null;
 
         }
-        progressdialog = new SpotsDialog(mContext, "loading");
+        progressdialog = new SpotsDialog(mContext, "Loading");
         progressdialog.setCancelable(true);
         progressdialog.setCanceledOnTouchOutside(true);
         progressdialog.show();

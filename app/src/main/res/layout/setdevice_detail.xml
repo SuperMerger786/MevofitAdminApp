@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+        android:id="@+id/device_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text=""
+        android:textSize="@dimen/dp16"
+        android:padding="@dimen/dp10" />
+
+    <com.app.newuidashboardadmin.font.FiraSansRegularTextView
+        android:id="@+id/device_id_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="khvjcjgcjgcgjcj"
+        android:textSize="@dimen/dp14"
+        android:padding="@dimen/dp10"/>
+</LinearLayout>

@@ -30,7 +30,8 @@
     <color name="newui_htbp">#ff4554</color>
     <color name="login_siginup">#17acba</color>
     <color name="green">#689F39</color>
-
+    <color name="black_tras_30">#30000000</color>
+    <color name="mealplan_header_status">#30000000</color>
     <color name="newui_blue_color_s">#b393ff</color>
     <color name="newui_red_color_s">#ff6972</color>
     <color name="newui_yello_color_s">#ffa44c</color>
