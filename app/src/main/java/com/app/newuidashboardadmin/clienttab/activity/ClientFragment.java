@@ -147,7 +147,11 @@ public class ClientFragment extends Fragment implements Response {
             req.setPaginationID(null);
             loading = true;
             if (Utils.isNetworkAvailable(context)) {
-                controller.makemebasedRequest(req, true);
+                if (requestType.equalsIgnoreCase("GetPreviousBookings")) {
+                    controller.makemebasedRequest(req, false);
+                } else {
+                    controller.makemebasedRequest(req, true);
+                }
             } else {
 
             }

@@ -1,79 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/grey_light"
-                android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_light"
+    android:orientation="vertical">
 
 
+    <LinearLayout
+        android:id="@+id/rl_challengeHeaderLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_height"
+        android:background="#ffffff"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/rl_challengeHeaderLayout"
-            android:layout_width="match_parent"
-            android:background="#ffffff"
-            android:layout_height="@dimen/header_height"
-            android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1">
 
-            <RelativeLayout
-                android:layout_gravity="center"
-                android:layout_width="0dp"
+            <ImageView
+                android:id="@+id/frag_menu_id"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/dp10"
+                android:src="@drawable/newui_buddy" />
 
-                <ImageView
-                    android:id="@+id/frag_menu_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/dp10"
-                    android:src="@drawable/newui_buddy" />
+        </RelativeLayout>
 
-            </RelativeLayout>
+        <com.app.newuidashboardadmin.font.LatoBoldTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="Mevo App"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize_medium" />
 
-            <com.app.newuidashboardadmin.font.LatoBoldTextView
-                android:layout_width="0dp"
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:paddingRight="@dimen/dp15">
+
+            <ImageView
+                android:id="@+id/iv_pre"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Mevo App"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/textSize_medium" />
+                android:layout_centerInParent="true"
+                android:src="@drawable/newui_bell"
+                android:visibility="visible" />
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:paddingRight="@dimen/dp15"
-                android:layout_alignParentLeft="false"
+            <TextView
+                android:id="@+id/count"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true">
+                android:background="@drawable/white_circle"
+                android:backgroundTint="#F44336"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/sp12"
+                android:visibility="gone" />
+        </RelativeLayout>
 
-                <ImageView
-                    android:id="@+id/iv_pre"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/newui_bell"
-                    android:visibility="visible"
-                    android:layout_centerInParent="true" />
-
-                <TextView
-                    android:id="@+id/count"
-                    android:layout_width="20dp"
-                    android:gravity="center"
-                    android:textColor="#ffffff"
-                    android:layout_height="20dp"
-                    android:visibility="gone"
-                    android:textSize="@dimen/sp12"
-                    android:layout_alignParentRight="true"
-                    android:backgroundTint="#F44336"
-                    android:background="@drawable/white_circle" />
-            </RelativeLayout>
-
-        </LinearLayout>
+    </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -111,6 +110,7 @@
                         android:layout_height="wrap_content">
 
                         <com.app.newuidashboardadmin.font.LatoSemiBoldTextView
+                            android:id="@+id/header_txt"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp10"
@@ -121,7 +121,14 @@
                             android:textAllCaps="true"
                             android:textColor="@color/black"
                             android:textSize="@dimen/dp14" />
-
+                        <com.app.newuidashboardadmin.font.LatoMediumTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/header_txt"
+                            android:text="Lifetime"
+                            android:layout_marginLeft="@dimen/dp23"
+                            android:textColor="@color/font_color"
+                            android:textSize="@dimen/dp14"/>
                         <ImageView
                             android:id="@+id/set_calender"
                             android:layout_width="wrap_content"
@@ -322,11 +329,41 @@
                         android:layout_height="@dimen/dp1"
                         android:background="@color/grey_light" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/booking_list"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp250" />
+                        android:layout_height="wrap_content">
 
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/booking_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp250" />
+                        <LinearLayout
+                            android:id="@+id/nodata_booking"
+                            android:layout_width="match_parent"
+                            android:layout_height="230dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:visibility="gone"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/no_data_found" />
+
+                            <com.app.newuidashboardadmin.font.FiraSansMediumTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/chart_layout"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="10dp"
+                                android:text="@string/no_record_toast"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/Roboto_16sp" />
+
+
+                        </LinearLayout>
+                    </FrameLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -479,7 +516,7 @@
                                     android:layout_marginRight="15dp"
                                     android:layout_marginBottom="15dp"
                                     android:layout_toRightOf="@+id/label"
-                                    android:visibility="visible" />
+                                    android:visibility="gone" />
                             </RelativeLayout>
 
 
@@ -532,7 +569,8 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/banner_menu" />
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/yoga_girl" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -773,7 +811,7 @@
                         android:layout_marginTop="@dimen/dp5"
                         android:layout_marginRight="@dimen/dp8"
                         android:layout_marginBottom="@dimen/dp15"
-                        android:src="@drawable/menu_overflow"/>
+                        android:src="@drawable/menu_overflow" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -843,7 +881,7 @@
                         android:layout_marginTop="@dimen/dp5"
                         android:layout_marginRight="@dimen/dp8"
                         android:layout_marginBottom="@dimen/dp15"
-                        android:src="@drawable/menu_overflow"/>
+                        android:src="@drawable/menu_overflow" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"

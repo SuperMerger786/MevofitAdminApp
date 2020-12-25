@@ -50,6 +50,7 @@ import com.app.newuidashboardadmin.services.VolleyClient;
 import com.app.newuidashboardadmin.services.WebServicesUrl;
 import com.app.newuidashboardadmin.todaysbooking.BookingTokSIDRequest;
 import com.app.newuidashboardadmin.todaysbooking.BookingTokSIDResponse;
+import com.app.newuidashboardadmin.view.BookingAdapterRecyclerView;
 import com.app.newuidashboardadmin.view.SetDeviceDetail;
 import com.app.newuidashboardadmin.view.Utils;
 import com.bumptech.glide.Glide;
@@ -136,7 +137,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
     LinearLayout add_entry;
     AppPrefernce appPrefernce;
     TextView id_date, id_time, id_timetwo, id_minone, id_mintwo, id_hourone, id_hourtwo;
-    LinearLayout booking_id, rl_challengeHeaderLayout;
+    LinearLayout booking_id, rl_challengeHeaderLayout, nodata_booking;
     EditText ed_referencecode;
     TextView txt_share;//,txtcoundown;
     Date date;
@@ -167,6 +168,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         id_timetwo = (TextView) view.findViewById(R.id.id_timetwo);
         id_minone = (TextView) view.findViewById(R.id.id_minone);
         id_mintwo = (TextView) view.findViewById(R.id.id_mintwo);
+        nodata_booking = (LinearLayout) view.findViewById(R.id.nodata_booking);
         booking_id = (LinearLayout) view.findViewById(R.id.booking_id);
 
         rl_challengeHeaderLayout = (LinearLayout) view.findViewById(R.id.rl_challengeHeaderLayout);
@@ -294,9 +296,9 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
         if (adminDashboard.getData().getTodayBookings() != null && adminDashboard.getData().getTodayBookings().size() > 0) {
             booking_status.setVisibility(View.VISIBLE);
+            nodata_booking.setVisibility(View.GONE);
             ArrayList<TodayBooking> todaylist = (ArrayList<TodayBooking>) adminDashboard.getData().getTodayBookings();
             Collections.sort(todaylist, new Comparator<TodayBooking>() {
-
                 @Override
                 public int compare(TodayBooking lhs, TodayBooking rhs) {
                     try {
@@ -318,7 +320,14 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             book_count.setText("" + adminDashboard.getData().getTodayBookings().size());
             SetCounter(adminDashboard.getData().getTodayBookings());
         } else {
-            booking_status.setVisibility(View.GONE);
+            ArrayList<TodayBooking> todaylist = (ArrayList<TodayBooking>) adminDashboard.getData().getTodayBookings();
+            BookingAdapterRecyclerView bookingAdapterRecyclerView = new BookingAdapterRecyclerView(todaylist, mContext);
+            final LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+            booking_list.setLayoutManager(manager);
+            booking_list.setAdapter(bookingAdapterRecyclerView);
+            book_count.setText("0");
+            booking_status.setVisibility(View.VISIBLE);
+            nodata_booking.setVisibility(View.VISIBLE);
         }
 
 
@@ -332,11 +341,20 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
     }
 
     private void setBookingPerFormance(BookingPerformance bookingPerFormance) {
-        total_booking.setText(bookingPerFormance.getTotalBookings());
+        if (!bookingPerFormance.getTotalBookings().equalsIgnoreCase("NA")) {
+            total_booking.setText(bookingPerFormance.getTotalBookings());
+        } else {
+            total_booking.setText("0");
+        }
 //        Currency currency = Currency.getInstance(bookingPerFormance.getCurrencySymbol());
 //        String symbol = currency.getSymbol();
-        total_earn.setText(getCurrencySymbol(bookingPerFormance.getCurrencySymbol()) + " " + bookingPerFormance.getTotalEarnings());
+        if (!bookingPerFormance.getTotalEarnings().equalsIgnoreCase("NA")) {
+            total_earn.setText(getCurrencySymbol(bookingPerFormance.getCurrencySymbol()) + " " + bookingPerFormance.getTotalEarnings());
+        } else {
+            total_earn.setText("0");
+        }
         total_avrrate.setText("" + bookingPerFormance.getAverageRating());
+
     }
 
     public static String getCurrencySymbol(String currencySymbel) {
@@ -399,6 +417,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         } else if (response != null && reqTag.equalsIgnoreCase("VideoStatus")) {
 //            if (progressdialog != null && progressdialog.isShowing())
 //                progressdialog.dismiss();
+            hithome(strdate);
         } else {
 //            if (progressdialog != null && progressdialog.isShowing())
 //                progressdialog.dismiss();
@@ -748,11 +767,10 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
                         slotData.user_age = todaylistnew.getCustomerAge();
                         slotData.user_city = "NA";
                         slotData.user_country = "NA";
-
                         Intent intent = new Intent(mContext, UserDetailsActivity.class);
                         intent.putExtra("data", slotData);
                         mContext.startActivity(intent);
-                        makeSessionRequest(todaylist.get(position).getItemBoxId(), todaylist.get(position).getBookingId(), todaylist.get(position).getStartTime());
+//                        makeSessionRequest(todaylist.get(position).getItemBoxId(), todaylist.get(position).getBookingId(), todaylist.get(position).getStartTime());
                     }
                 });
             }
@@ -1000,10 +1018,10 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 //        xl.setDrawAxisLine(false);
         /* Set data on the chart */
         setFatData(mChart, str);
-        Legend l = mChart.getLegend();
+        /*Legend l = mChart.getLegend();
         l.setForm(Legend.LegendForm.LINE);
         l.setMaxSizePercent(4);
-        mChart.invalidate();
+        mChart.invalidate();*/
     }
 
     ArrayList<String> xVals;
@@ -1080,10 +1098,23 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
 
         MyLogger.println("<<<<< graphValues setting graph : " + graphValues.size() + " <<<details>>> " + graphValues.toString());
-        MyLogger.println("<<<< graphValues setting graph 1111 : " + xVals.size() + " <<<y.size>>> " + yVals.size() + " <<<totalEntries>>> " + totalEntries);
+        MyLogger.println("<<<< graphValues setting graph 1111 : " + xVals.get(0) + " <<<y.size>>> " + yVals.get(0) + " <<<totalEntries>>> " + totalEntries);
         if (totalEntries > 0) {
             chart.setVisibility(View.VISIBLE);
             ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
+            YAxis yAxis = chart.getAxisLeft();
+            if(fragmentTypeNew.equalsIgnoreCase("booking")) {
+                if (totalEntries == 1) {
+                    yAxis.setLabelCount(1);
+                } else if (totalEntries == 2) {
+                    yAxis.setLabelCount(2);
+                } else {
+                    yAxis.setLabelCount(5);
+                }
+            }else {
+                yAxis.setLabelCount(5);
+            }
+
             LineDataSet set1 = addlineToChart(getResources().getColor(R.color.Graph_tab_color), yVals);
             dataSets.add(set1);
             /*LineDataSet set2 = addlineToChart(getResources().getColor(R.color.graph_circle_color_orange), yVals1);
@@ -1100,7 +1131,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
     }
 
     public LineDataSet addlineToChart(int color, ArrayList<Entry> val) {
-        LineDataSet set2 = new LineDataSet(val, "");
+        LineDataSet set2 = new LineDataSet(val, "hw");
 
         set2.setCircleColorHole(getResources().getColor(android.R.color.white));
         set2.setFillColor(getResources().getColor(R.color.Graph_tab_color));
@@ -1306,14 +1337,14 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         mContext.startActivity(Intent.createChooser(intent, "ReferenceCode"));
 
     }
-
+    String strdate;
     @Override
     public void onResume() {
         super.onResume();
         if (contacted) {
             confirmCallCompletedOrConfirmtoCall("Conversation Status");
         }
-        String strdate = new SimpleDateFormat("yyyy-MM-dd").format(date);
+        strdate = new SimpleDateFormat("yyyy-MM-dd").format(date);
         hithome(strdate);
     }
 
@@ -1441,7 +1472,8 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
                 if (reasonString[0].equalsIgnoreCase(""))
                     Toast.makeText(mContext, "Please enter reason", Toast.LENGTH_LONG).show();
                 else {
-                    updateCallStatus("Failed", reasonString[0]);
+//                    updateCallStatus("Failed", reasonString[0]);
+                    updateCallStatus("Contacted", reasonString[0]);
                     dialog.dismiss();
                 }
 
@@ -1561,14 +1593,14 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         LinearLayout order_user = (LinearLayout) dialog.findViewById(R.id.order_user);
         LinearLayout expertuser = (LinearLayout) dialog.findViewById(R.id.expert_user);
         LinearLayout tracker_user = (LinearLayout) dialog.findViewById(R.id.tracker_user);
-        LinearLayout txt_timeline = (LinearLayout) dialog.findViewById(R.id.txt_timeline);
-        LinearLayout id_follow_ups = (LinearLayout) dialog.findViewById(R.id.id_follow_ups);
-        txt_timeline.setOnClickListener(new View.OnClickListener() {
+//        LinearLayout txt_timeline = (LinearLayout) dialog.findViewById(R.id.txt_timeline);
+//        LinearLayout id_follow_ups = (LinearLayout) dialog.findViewById(R.id.id_follow_ups);
+       /* txt_timeline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
-        });
+        });*/
         order_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1593,14 +1625,14 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
                 startActivity(currentIntent);
             }
         });
-        id_follow_ups.setOnClickListener(new View.OnClickListener() {
+        /*id_follow_ups.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, FavoriteActivity.class);
                 startActivity(intent);
                 dialog.dismiss();
             }
-        });
+        });*/
 
         dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
