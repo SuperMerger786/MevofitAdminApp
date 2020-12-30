@@ -67,6 +67,8 @@ public class ClientFragment extends Fragment implements Response {
         if (!isVisibleToUser)
             isVisibleToUser = getArguments().getBoolean("isVisibleToUser", false);
         isCreated = true;
+
+
     }
 
     @Nullable
@@ -74,6 +76,8 @@ public class ClientFragment extends Fragment implements Response {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.client_frag_layout, container, false);
         initView(view);
+        if (isVisibleToUser)
+            setRequest();
         return view;
     }
 
@@ -122,8 +126,7 @@ public class ClientFragment extends Fragment implements Response {
     @Override
     public void onResume() {
         super.onResume();
-        if (isVisibleToUser)
-            setRequest();
+
     }
 
     @Override

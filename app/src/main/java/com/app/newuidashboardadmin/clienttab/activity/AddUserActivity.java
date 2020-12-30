@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,43 +41,44 @@ import com.migital.digiproducthelper.MevoSellerDetailsActivity;
 import com.migital.digiproducthelper.util.DigiHelperPreference;
 
 import java.util.ArrayList;
+
 public class AddUserActivity extends AppCompatActivity implements Response, SelectedClient {
 
     LinearLayout existingUser;
     //private AuthorisedPreference authorisedPreference;
-    RelativeLayout newUser;
-    EditText searchText,edName,edPhone,edEmail;
+    RelativeLayout newUser, notask_parent;
+    EditText searchText, edName, edPhone, edEmail;
     ImageView searchIcon;
-    TextView confirmNewUser,txtTime;
+    TextView confirmNewUser, txtTime;
     RecyclerView userListRecycler;
     ClientAdapter listAdapter;
     String boxid;
-    ArrayList<ClientList> allUserList=new ArrayList<>();
+    ArrayList<ClientList> allUserList = new ArrayList<>();
     GetSellerBookingSlotsRequest request;
-    int page=1,currentList;
+    int page = 1, currentList;
     boolean loading;
     RestApiController controller;
     MegoUserSDK sdk;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
 
         //authorisedPreference = new AuthorisedPreference(this);
         //AuthUtility.setThemeColorInStatusBar(this);
-        if (Build.VERSION.SDK_INT >= 21)
-        {
+        if (Build.VERSION.SDK_INT >= 21) {
             getWindow().setStatusBarColor(AuthUtility.getDarkColor(Color.parseColor("#00A6bc")));
         }
-        boxid=getIntent().getStringExtra("boxid");
+        boxid = getIntent().getStringExtra("boxid");
         setUpViews();
 
     }
+
     int selectedposition;
-    public void AddNewUser(View v)
-    {
-        if(isnewUser) {
+
+    public void AddNewUser(View v) {
+        if (isnewUser) {
             if (edName.getText().toString().equalsIgnoreCase("")) {
                 edEmail.setError(null);
                 edPhone.setError(null);
@@ -98,14 +100,12 @@ public class AddUserActivity extends AppCompatActivity implements Response, Sele
                 apiController.makemebasedRequest(request, true);
 
             }
-        }
-        else
-        {
-            if(allUserList!=null && !allUserList.isEmpty()) {
+        } else {
+            if (allUserList != null && !allUserList.isEmpty()) {
                 AppPrefernce appPrefernce = new AppPrefernce(this);
                 AuthorisedPreference authorisedPreference = new AuthorisedPreference(this);
                 DigiHelperPreference digiHelperPreference = DigiHelperPreference.getInstance(this);
-                ClientList clientList=allUserList.get(selectedposition);
+                ClientList clientList = allUserList.get(selectedposition);
                 digiHelperPreference.setBoolean(DigiHelperPreference.ISADMIN, true);
                 digiHelperPreference.setString(DigiHelperPreference.TokenKey, clientList.user_tk);
                 digiHelperPreference.setString(DigiHelperPreference.MewardID, clientList.user_meward_id);
@@ -118,48 +118,47 @@ public class AddUserActivity extends AppCompatActivity implements Response, Sele
             }
         }
     }
+
     boolean isnewUser;
-    private void setUpViews()
-    {
-        newUser= (RelativeLayout) findViewById(R.id.new_user);
-        existingUser= (LinearLayout) findViewById(R.id.existing_user);
-        searchIcon= (ImageView) findViewById(R.id.search_icon);
-        confirmNewUser= (TextView) findViewById(R.id.confirm_new_user);
-        searchText= (EditText) findViewById(R.id.search_text);
-        edEmail= (EditText) findViewById(R.id.ed_email);
-        edName= (EditText) findViewById(R.id.ed_name);
-        edPhone= (EditText) findViewById(R.id.ed_phone);
-        txtTime= (TextView) findViewById(R.id.txt_timing);
-        userListRecycler=(RecyclerView)findViewById(R.id.user_list);
-        final LinearLayoutManager manager=new LinearLayoutManager(this);
+
+    private void setUpViews() {
+        newUser = (RelativeLayout) findViewById(R.id.new_user);
+        notask_parent = (RelativeLayout) findViewById(R.id.notask_parent);
+        existingUser = (LinearLayout) findViewById(R.id.existing_user);
+        searchIcon = (ImageView) findViewById(R.id.search_icon);
+        confirmNewUser = (TextView) findViewById(R.id.confirm_new_user);
+        searchText = (EditText) findViewById(R.id.search_text);
+        edEmail = (EditText) findViewById(R.id.ed_email);
+        edName = (EditText) findViewById(R.id.ed_name);
+        edPhone = (EditText) findViewById(R.id.ed_phone);
+        txtTime = (TextView) findViewById(R.id.txt_timing);
+        userListRecycler = (RecyclerView) findViewById(R.id.user_list);
+        final LinearLayoutManager manager = new LinearLayoutManager(this);
         userListRecycler.setLayoutManager(manager);
-        listAdapter=new ClientAdapter(this,this,true);
+        listAdapter = new ClientAdapter(this, this, true);
         listAdapter.setClientList(allUserList);
         userListRecycler.setAdapter(listAdapter);
         userListRecycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy)
-            {
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                int lastVisibleItem=manager.findLastCompletelyVisibleItemPosition();
-                if(!loading&&lastVisibleItem==allUserList.size()-1&&currentList==12)
-                {
-                    loading=true;
+                int lastVisibleItem = manager.findLastCompletelyVisibleItemPosition();
+                if (!loading && lastVisibleItem == allUserList.size() - 1 && currentList == 12) {
+                    loading = true;
                     request.setPaginationID(String.valueOf(page++));
-                    controller.makemebasedRequest(request,false);
+                    controller.makemebasedRequest(request, false);
                 }
 
             }
         });
-        isnewUser= getIntent().getBooleanExtra("newUser",false);
-        TextView toolTitle =findViewById(R.id.tool_title);
-        if(isnewUser) {
+        isnewUser = getIntent().getBooleanExtra("newUser", false);
+        TextView toolTitle = findViewById(R.id.tool_title);
+        if (isnewUser) {
 
             toolTitle.setText("Add New Client");
             newUser.setVisibility(View.VISIBLE);
             existingUser.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             toolTitle.setText("Choose Clients");
             newUser.setVisibility(View.GONE);
             existingUser.setVisibility(View.VISIBLE);
@@ -172,10 +171,8 @@ public class AddUserActivity extends AppCompatActivity implements Response, Sele
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count)
-            {
-                if(s.toString().equalsIgnoreCase(""))
-                {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().equalsIgnoreCase("")) {
                     setRequest("");
                 }
 
@@ -183,24 +180,20 @@ public class AddUserActivity extends AppCompatActivity implements Response, Sele
             }
 
             @Override
-            public void afterTextChanged(Editable s)
-            {
-
-
+            public void afterTextChanged(Editable s) {
 
 
             }
         });
         searchIcon.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 setRequest(searchText.getText().toString());
             }
         });
-        if(getIntent().getStringExtra("time")!=null)
+        if (getIntent().getStringExtra("time") != null)
             txtTime.setText(getIntent().getStringExtra("time"));
-        ImageView back= (ImageView) findViewById(R.id.back);
+        ImageView back = (ImageView) findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -208,16 +201,15 @@ public class AddUserActivity extends AppCompatActivity implements Response, Sele
             }
         });
 
-        GradientDrawable drawable= (GradientDrawable) confirmNewUser.getBackground();
+        GradientDrawable drawable = (GradientDrawable) confirmNewUser.getBackground();
         drawable.setColor(Color.parseColor(new AuthorisedPreference(this).getThemeColor()));
-        controller=new RestApiController(this,this,RestApiController.GETUSERS);
-        request=new GetSellerBookingSlotsRequest("GetBookedUsers",this);
+        controller = new RestApiController(this, this, RestApiController.GETUSERS);
+        request = new GetSellerBookingSlotsRequest("GetBookedUsers", this);
         setRequest("");
     }
 
-    private void setRequest(String s)
-    {
-        page = 1;
+    private void setRequest(String s) {
+        page = 0;
         request.setPaginationID(String.valueOf(page++));
         request.name = s;
         loading = true;
@@ -226,7 +218,7 @@ public class AddUserActivity extends AppCompatActivity implements Response, Sele
         RestApiController controller = new RestApiController(AddUserActivity.this, new Response() {
             @Override
             public void onResponseObtained(Object response, int responseType, boolean isCachedData) {
-                MyLogger.println("AdduserActivity "+response.toString());
+                MyLogger.println("AdduserActivity " + response.toString());
                 loading = false;
                 GetUserListResponse userList = new Gson().fromJson(response.toString(), GetUserListResponse.class);
                 allUserList.clear();
@@ -240,7 +232,7 @@ public class AddUserActivity extends AppCompatActivity implements Response, Sele
 
             @Override
             public void onErrorObtained(String errormsg, int responseType) {
-                MyLogger.println("AdduserActivity "+errormsg);
+                MyLogger.println("AdduserActivity " + errormsg);
 
                 loading = false;
                 currentList = 0;
@@ -256,28 +248,26 @@ public class AddUserActivity extends AppCompatActivity implements Response, Sele
     @Override
     public void onResponseObtained(Object response, int responseType, boolean isCachedData) {
 
-        Gson gson=new Gson();
-        if(responseType==RestApiController.GETUSERS)
-        {
-            loading=false;
-            GetUserListResponse userList=gson.fromJson(response.toString(),GetUserListResponse.class);
-            if(userList.data!=null&&!userList.data.isEmpty())
-            {
-                currentList=userList.data.size();
-                int lastSize=allUserList.size();
-                for(ClientList users:userList.data)
+        Gson gson = new Gson();
+        if (responseType == RestApiController.GETUSERS) {
+            loading = false;
+            GetUserListResponse userList = gson.fromJson(response.toString(), GetUserListResponse.class);
+            if (userList.data != null && !userList.data.isEmpty()) {
+                existingUser.setVisibility(View.VISIBLE);
+                confirmNewUser.setVisibility(View.VISIBLE);
+                notask_parent.setVisibility(View.GONE);
+                currentList = userList.data.size();
+                int lastSize = allUserList.size();
+                for (ClientList users : userList.data)
                     allUserList.add(users);
 
-                listAdapter.notifyItemRangeChanged(lastSize,currentList);
-            }
-            else
-                Toast.makeText(this,"No user is found", Toast.LENGTH_LONG).show();
-        }
-        else if(responseType==RestApiController.REGISTRATIONREQUEST)
-        {
-            ProfileSetUpResponse profileSetUpResponse=new Gson().fromJson(response.toString(),ProfileSetUpResponse.class);
+                listAdapter.notifyItemRangeChanged(lastSize, currentList);
+            } else
+                Toast.makeText(this, "No user is found", Toast.LENGTH_LONG).show();
+        } else if (responseType == RestApiController.REGISTRATIONREQUEST) {
+            ProfileSetUpResponse profileSetUpResponse = new Gson().fromJson(response.toString(), ProfileSetUpResponse.class);
 
-            if(profileSetUpResponse!=null){
+            if (profileSetUpResponse != null) {
                 AppPrefernce appPrefernce = new AppPrefernce(this);
                 AuthorisedPreference authorisedPreference = new AuthorisedPreference(this);
                 DigiHelperPreference digiHelperPreference = DigiHelperPreference.getInstance(this);
@@ -298,17 +288,22 @@ public class AddUserActivity extends AppCompatActivity implements Response, Sele
     }
 
     @Override
-    public void onErrorObtained(String errormsg, int responseType)
-    {
-        if(responseType==RestApiController.REGISTRATIONREQUEST)
-            Toast.makeText(this,errormsg, Toast.LENGTH_LONG).show();
-        else if(responseType==RestApiController.GETUSERS)
-            loading=false;
+    public void onErrorObtained(String errormsg, int responseType) {
+        if (responseType == RestApiController.REGISTRATIONREQUEST)
+            Toast.makeText(this, errormsg, Toast.LENGTH_LONG).show();
+        else if (responseType == RestApiController.GETUSERS) {
+            loading = false;
+            if (allUserList == null || allUserList.isEmpty()) {
+                existingUser.setVisibility(View.GONE);
+                confirmNewUser.setVisibility(View.GONE);
+                notask_parent.setVisibility(View.VISIBLE);
+            }
+        }
 
     }
 
     @Override
     public void selectedposition(int selectedposition) {
-        this.selectedposition=selectedposition;
+        this.selectedposition = selectedposition;
     }
 }
