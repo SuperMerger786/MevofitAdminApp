@@ -910,6 +910,9 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
     String bookingId = "NA";
 
     public void makeSessionRequest(String itemBoxId, String bookedboxId, String start_time) {
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+        String strdate = new SimpleDateFormat("yyyy-MM-dd").format(date);
         starttime = start_time;
         bookingId = bookedboxId;
         BookingTokSIDRequest request = new BookingTokSIDRequest(mContext, itemBoxId, bookedboxId, start_time);
@@ -924,6 +927,8 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
                 BookingTokSIDResponse sidResponse = new Gson().fromJson(response.toString(), BookingTokSIDResponse.class);
                 CallUtility.currentbookingid = todaylistnew.getBookingId();
+                CallUtility.start_time = starttime;
+                CallUtility.start_date = strdate;
                 MyLogger.println("check>>>>>makeSessionRequest>>0 " + response.toString() + " " + CallUtility.currentbookingid + " " + todaylistnew.getBookingId());
                 ContactSdk.PublisherVideoCall(mContext, "30",
                         todaylistnew.getCustomername(), appPrefernce.getProfilePic(), todaylistnew.getCustomerProfilepic(),
@@ -1111,7 +1116,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             chart.setVisibility(View.VISIBLE);
             ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
             YAxis yAxis = chart.getAxisLeft();
-            if(fragmentTypeNew.equalsIgnoreCase("booking")) {
+            if (fragmentTypeNew.equalsIgnoreCase("booking")) {
                 if (totalEntries == 1) {
                     yAxis.setLabelCount(1);
                 } else if (totalEntries == 2) {
@@ -1119,7 +1124,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
                 } else {
                     yAxis.setLabelCount(5);
                 }
-            }else {
+            } else {
                 yAxis.setLabelCount(5);
             }
 
@@ -1336,7 +1341,9 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         mContext.startActivity(Intent.createChooser(intent, "ReferenceCode"));
 
     }
+
     String strdate;
+
     @Override
     public void onResume() {
         super.onResume();
@@ -1471,8 +1478,8 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
                 if (reasonString[0].equalsIgnoreCase(""))
                     Toast.makeText(mContext, "Please enter reason", Toast.LENGTH_LONG).show();
                 else {
-//                    updateCallStatus("Failed", reasonString[0]);
-                    updateCallStatus("Contacted", reasonString[0]);
+                    updateCallStatus("Failed", reasonString[0]);
+//                    updateCallStatus("Contacted", reasonString[0]);
                     dialog.dismiss();
                 }
 

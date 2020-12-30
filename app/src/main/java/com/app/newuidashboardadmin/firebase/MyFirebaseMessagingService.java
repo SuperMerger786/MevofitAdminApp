@@ -20,6 +20,8 @@ import androidx.core.app.NotificationCompat;
 import com.app.newuidashboardadmin.AdminUI;
 import com.app.newuidashboardadmin.R;
 import com.app.newuidashboardadmin.Utility.AppPrefernce;
+import com.contact.activity.PublisherVideoActivity;
+import com.contact.util.ContactSdk;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.megogrid.megoauth.AuthorisedPreference;
@@ -43,12 +45,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
     String pickup_by;
     String booking_for;
     int notifictionid = 0;
+    int isNotificationCallType = 0;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
-
-
         JSONObject jsonObj = null;
         try {
             System.out.println("MyFirebaseMessagingService.onMessageReceived remoteMessage.getData() ==== " + remoteMessage);
@@ -60,6 +61,36 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
             type_status = jsonObj.getString("type_status");
             pickup_by = jsonObj.getString("pickup_by");
             booking_for = jsonObj.getString("booking_for");
+            isNotificationCallType = jsonObj.getInt("isNotificationCallType");
+
+
+
+          /*  {
+                "messenger_type_val": "one_to_one",
+                    "TokApiKey": "47018654",
+                    "isNotificationCallType": 1,
+                    "is_booking_configure": "true",
+                    "type_id": "BAF62PGEKU",
+                    "SellerEmail": "saurabh077@migital.com",
+                    "prod_media_type": "media",
+                    "pickup_by": "",
+                    "booking_for": "people",
+                    "notification_id": 12960,
+                    "type_status": "booked",
+                    "message": "Hi Admin\r\nClient Connected to Admin",
+                    "type": "booking",
+                    "storeid": "554",
+                    "prod_imageurl": "NA",
+                    "timeStamp": 1609149453,
+                    "TokBoxTokenID": "T1==cGFydG5lcl9pZD00NzAxODY1NCZzaWc9MGI3N2FhMmUzODE4NzllNTUzZjBlMWVjOTlmYmFiN2VjZTkxMzU0MDpzZXNzaW9uX2lkPTJfTVg0ME56QXhPRFkxTkg1LU1UWXdPVEUwT1RRd05qY3pOSDQwYTI5SVJIZFBUeXRtZFVkUVRFOUpNRkZFU25KSk1IZC1mZyZjcmVhdGVfdGltZT0xNjA5MTQ5NDA2JnJvbGU9cHVibGlzaGVyJm5vbmNlPTE2MDkxNDk0MDYuODczODcxMjU2OTE3MSZleHBpcmVfdGltZT0xNjA5NzU0MjA2JmNvbm5lY3Rpb25fZGF0YT1uYW1lJTNERWxlbyZpbml0aWFsX2xheW91dF9jbGFzc19saXN0PQ==",
+                    "TokBoxSID": "2_MX40NzAxODY1NH5-MTYwOTE0OTQwNjczNH40a29IRHdPTytmdUdQTE9JMFFESnJJMHd-fg",
+                    "SellerProfileImage": "http:\/\/shopping.migital.net\/webroot\/img\/developerimg\/choco_alphamerketplace_20190812123921_db\/mebase\/ProfileImage\/original_201222112435_5fe1d7732dbb6.jpg",
+                    "header": "Client Connected to Admin",
+                    "store_name": "Fitness",
+                    "is_send_seller_pic": "1"
+            }*/
+
+
             AppPrefernce prefernce = new AppPrefernce(this);
             try {
                 storeid = jsonObj.getString("storeid");
@@ -75,14 +106,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
             System.out.println("MyFirebaseMessagingService.onMessageReceived message message type === " + type);
             System.out.println("MyFirebaseMessagingService.onMessageReceived message message status_type === " + type_status);
 
-            if (jsonObj.has("total_unread_msgs")) {
+           /* if (jsonObj.has("total_unread_msgs")) {
                 id = 3;
-            } else {
-                System.out.println("MyFirebaseMessagingService else esle else else ");
+            } else {*/
+            System.out.println("MyFirebaseMessagingService else esle else else ");
 
-                if (type.equalsIgnoreCase("booking")) {
+//                if (type.equalsIgnoreCase("booking")) {
 
-                    if (type_status.equalsIgnoreCase("inprogress")) {
+                   /* if (type_status.equalsIgnoreCase("inprogress")) {
                         id = 4;
                         messageBody = jsonObj.getString("message");
                         System.out.println("MyFirebaseMessagingService.onMessageReceived inprogress  " + messageBody);
@@ -92,23 +123,38 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
                         messageBody = jsonObj.getString("message");
                         System.out.println("MyFirebaseMessagingService.onMessageReceived canceled  " + messageBody);
 
-                    } else if (booking_for.equalsIgnoreCase("chat")) {
-                        id = 8;
-                        messageBody = jsonObj.getString("message");
-                        header = jsonObj.getString("header");
-                        String bookingid = jsonObj.getString("type_id");
-                        prefernce.setString("start_chat", bookingid);
+                    } else if (booking_for.equalsIgnoreCase("chat")) {*/
+            id = 8;
+            messageBody = jsonObj.getString("message");
+            header = jsonObj.getString("header");
+//            String bookingid = jsonObj.getString("type_id");
+            if (isNotificationCallType == 1) {
+               /* Intent intent = new Intent(this, PublisherVideoActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("client_connected", true);
+                startActivity(intent);*/
+                System.out.println("MyFirebaseMessagingService.onMessageReceived message Calll>>>> === " + type);
+                ContactSdk.SubscriberConnected(this);
+            } else {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) {
+                    sendMyNotification();
+                } else {
+                    sendMyNotificationBelow(messageBody);
+                }
+            }
+                        /*prefernce.setString("start_chat", bookingid);
                         System.out.println("MyFirebaseMessagingService.onMessageReceived canceled  " + messageBody);
 
-                    }
-                    prefernce.setString("selectedTab", type);
+                    }*/
+            prefernce.setString("selectedTab", type);
 //                    else if(type_status.equalsIgnoreCase("timeout")){
 //                        id = 7;
 //                        messageBody = jsonObj.getString("message");
 //
 //                    }
 
-                } else if (type.equalsIgnoreCase("order")) {
+               /* } else if (type.equalsIgnoreCase("order")){
                     String app_type = prefernce.getString("app_instance_behaviour");
                     if (app_type != null
                             && app_type.equalsIgnoreCase("schdule_app")
@@ -126,7 +172,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
                         prefernce.setString("selectedTab", pickup_by);
                     }
 
-                }
+                }*/
 
              /*   if (messageBody.equalsIgnoreCase("Booking In-progress")) {
                     id = 4;
@@ -141,7 +187,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
                 }*/
 
 
-            }
+//            }
 
 //            sendMyNotification(messageBody);
             //sendSpeechNotificationText(messageBody);
@@ -150,11 +196,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
         } catch (Exception e) {
             System.out.println("MyFirebaseMessagingService.onMessageReceived " + e);
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) {
-            sendMyNotification();
-        } else {
-                sendMyNotificationBelow(messageBody);
-        }
+
 
     }
 
@@ -276,7 +318,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
 
         Intent intent = null;
 //        if (type.equalsIgnoreCase("order")) {
-            intent = new Intent(this, AdminUI.class);
+        intent = new Intent(this, AdminUI.class);
 //            intent.putExtra("title", "Track Order");
 //            intent.putExtra("order_id", type_id);
 //        } else {
@@ -326,8 +368,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(iidd, notificationBuilder.build());
     }
+
     String CHANNEL_ID = "my_channel_02";
     String GROUP_KEY_WORK_MONK = "other";
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void channelcreate(String CHANNEL_ID) {
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
