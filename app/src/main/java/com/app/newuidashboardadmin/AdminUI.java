@@ -20,6 +20,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.app.newuidashboardadmin.Utility.AppPrefernce;
 import com.app.newuidashboardadmin.clienttab.activity.ClientPagerFragment;
 import com.app.newuidashboardadmin.firebase.SetDeviceRequest;
 import com.app.newuidashboardadmin.plan.BookingListFragment;
@@ -36,6 +37,7 @@ public class AdminUI extends AppCompatActivity {
     TextView tab_text4, tab_text6, tab_text3, tab_text2, tab_text1;
     public ViewPager pager;
     DrawerLayout drawer;
+    AppPrefernce appPrefernce;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,7 @@ public class AdminUI extends AppCompatActivity {
         setContentView(R.layout.acivity_main_navigation);
 
         drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
+        appPrefernce = new AppPrefernce(AdminUI.this);
 //        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 //        drawer.setDrawerListener(toggle);
 //        toggle.syncState();
@@ -232,6 +235,8 @@ public class AdminUI extends AppCompatActivity {
             @Override
             public void onResponseObtained(Object response, int responseType, boolean isCachedData) {
                 System.out.println("MyFirebaseInstanceIDService.onResponseObtained resonse " + response.toString() + "====" + responseType + "====" + isCachedData);
+               appPrefernce.setDeviceID(deviceid);
+               appPrefernce.setDeviceIDSuccessDetail(response.toString());
                 isSetDeviceHit = true;
             }
 

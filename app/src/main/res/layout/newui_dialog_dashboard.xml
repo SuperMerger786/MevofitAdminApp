@@ -24,7 +24,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dp30"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -49,7 +48,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:paddingTop="@dimen/dp5"
-                        android:text="Orders"
+                        android:text="My Profile"
                         android:textColor="@color/black"
                         android:textSize="@dimen/dp12"
                         android:visibility="visible" />
@@ -78,7 +77,7 @@
                         android:gravity="center"
                         android:maxLines="2"
                         android:paddingTop="@dimen/dp5"
-                        android:text="Experts"
+                        android:text="My Account"
                         android:textColor="@color/black"
                         android:textSize="@dimen/dp12"
                         android:visibility="visible" />
@@ -106,16 +105,17 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:paddingTop="@dimen/dp5"
-                        android:text="Tracker"
+                        android:text="My Clients"
                         android:textColor="@color/black"
                         android:textSize="@dimen/dp12"
                         android:visibility="visible" />
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -189,7 +189,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:src="@drawable/newuimy_tracker" />
-                    <!--                    newuimy_rewards-->
+                    &lt;!&ndash;                    newuimy_rewards&ndash;&gt;
                     <com.app.newuidashboardadmin.font.LatoSemiBoldTextView
                         android:layout_width="@dimen/dp70"
                         android:layout_height="wrap_content"
@@ -200,7 +200,7 @@
                         android:textSize="@dimen/dp12"
                         android:visibility="visible" />
                 </LinearLayout>
-            </LinearLayout>
+            </LinearLayout>-->
         </LinearLayout>
 
         <ImageView

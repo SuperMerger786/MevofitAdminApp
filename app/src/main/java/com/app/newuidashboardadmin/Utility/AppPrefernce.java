@@ -119,4 +119,20 @@ public class AppPrefernce {
     public String getEPassword() {
         return sharedPreferences.getString("Password", "NA");
     }
+
+    public String getDeviceID() {
+        return sharedPreferences.getString("DeviceID", "NA");
+    }
+
+    public void setDeviceID(String developermode) {
+        sharedPreferences.edit().putString("DeviceID", developermode).commit();
+    }
+
+    public String getDeviceIDSuccessDetail() {
+        return sharedPreferences.getString("DeviceIDSuccessDetail", "NA");
+    }
+
+    public void setDeviceIDSuccessDetail(String developermode) {
+        sharedPreferences.edit().putString("DeviceIDSuccessDetail", developermode).commit();
+    }
 }

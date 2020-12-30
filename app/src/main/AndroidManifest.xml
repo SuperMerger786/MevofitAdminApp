@@ -38,7 +38,9 @@
         <activity
             android:name="com.app.newuidashboardadmin.plan.callback.InstanceListActivity"
             android:theme="@style/Theme.Design.NoActionBar" />
-
+        <activity
+            android:name="com.app.newuidashboardadmin.view.SetDeviceDetail"
+            android:theme="@style/Theme.AppCompat.Light" />
         <!--<activity
             android:name="com.contact.activity.PublisherVideoActivity"
             android:theme="@style/Theme.Design.NoActionBar" />-->

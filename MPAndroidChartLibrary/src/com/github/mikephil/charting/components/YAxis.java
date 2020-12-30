@@ -41,7 +41,7 @@ public class YAxis extends AxisBase {
     /**
      * the number of y-label entries the y-labels should have, default 6
      */
-    private int mLabelCount = 6;
+    private int mLabelCount = 0;
 
     /**
      * indicates if the top y-label entry is drawn or not
@@ -191,15 +191,15 @@ public class YAxis extends AxisBase {
      * @param force if enabled, the set label count will be forced, meaning that the exact specified count of labels will
      *              be drawn and evenly distributed alongside the axis - this might cause labels to have uneven values
      */
-    public void setLabelCount(int count, boolean force) {
+    public void setLabelCount(int count) {
 
-        if (count > 25)
+       /* if (count > 25)
             count = 25;
         if (count < 2)
-            count = 2;
+            count = 2;*/
 
         mLabelCount = count;
-        mForceLabels = force;
+//        mForceLabels = force;
     }
 
     /**

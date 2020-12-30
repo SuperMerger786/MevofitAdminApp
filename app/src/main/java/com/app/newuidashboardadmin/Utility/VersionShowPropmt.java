@@ -22,8 +22,13 @@ public class VersionShowPropmt {
         TextView text = (TextView) dialog.findViewById(R.id.vesrion);
 
 //        try {
-            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-            String version = pInfo.versionName;
+        PackageInfo pInfo = null;
+        try {
+            pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        String version = pInfo.versionName;
             System.out.println("VersionShowPropmt.showDialog version "+ version);
             text.setText("Current version is "+ version);
 //        } catch (PackageManager.NameNotFoundException e) {
