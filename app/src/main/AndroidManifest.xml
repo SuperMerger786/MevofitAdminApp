@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.app.newuidashboardadmin">
+    package="com.app.newuidashboardadmin">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".AppController"
@@ -17,7 +19,8 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".plan.UserDetailsActivity"></activity>
 
-        <meta-data android:name="com.google.android.gms.version"
+        <meta-data
+            android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <uses-library
             android:name="org.apache.http.legacy"
@@ -50,35 +53,49 @@
         <activity
             android:name="com.app.newuidashboardadmin.login.Admin"
             android:theme="@style/Theme.Design.NoActionBar" />
-        <activity android:name="com.app.newuidashboardadmin.clienttab.activity.AddUserActivity"
-            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar"/>
+        <activity
+            android:name="com.app.newuidashboardadmin.clienttab.activity.AddUserActivity"
+            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
 
-        <activity android:name="com.migital.digiproducthelper.FavoriteActivity"
-                  android:theme="@style/Theme.Design.NoActionBar"></activity>
-        <activity android:name="com.migital.digiproducthelper.processui.TrackerAppListActivity"
-                  android:theme="@style/Theme.Design.Light.NoActionBar"/>
-        <activity android:name="com.migital.digiproducthelper.extraui.NotificatinSetingactivity"
-                  android:theme="@style/Theme.Design.Light.NoActionBar"/>
-        <activity android:name="com.migital.digiproducthelper.ImageViewerActivity"
-                  android:theme="@style/Theme.Design.Light.NoActionBar"/>
-        <activity android:name="com.migital.digiproducthelper.SearchActivitySeller"
-                  android:theme="@style/Theme.Design.Light.NoActionBar"/>
-        <activity android:name="com.migital.digiproducthelper.SellerDetailsSlotActivity"
-                  android:theme="@style/Theme.Design.Light.NoActionBar"/>
-        <activity android:name="com.migital.digiproducthelper.MevoSellerDetailsActivity"
-                  android:theme="@style/Theme.Design.Light.NoActionBar"/>
-        <activity android:name="com.migital.digiproducthelper.SelleristActivity"
-                  android:theme="@style/Theme.Design.Light.NoActionBar"/>
-        <activity android:name="com.migital.digiproducthelper.MainActivity"
-                  android:theme="@style/Theme.Design.Light.NoActionBar"/>
-        <activity android:name="com.migital.digiproducthelper.BookingActivity"
-                  android:theme="@style/Theme.Design.Light.NoActionBar"/>
-        <activity android:name="com.migital.digiproducthelper.BookingHistoryDigital"
-                  android:theme="@style/Theme.Design.Light.NoActionBar"/>
-        <activity android:name="com.migital.digiproducthelper.ConfirmActivity"
-                  android:theme="@style/Theme.Design.Light.NoActionBar"/>
-        <activity android:name="com.migital.digiproducthelper.RescheduledActivity"
-                  android:theme="@style/Theme.Design.Light.NoActionBar"/>
+        <activity
+            android:name="com.migital.digiproducthelper.FavoriteActivity"
+            android:theme="@style/Theme.Design.NoActionBar"></activity>
+        <activity
+            android:name="com.migital.digiproducthelper.processui.TrackerAppListActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="com.migital.digiproducthelper.extraui.NotificatinSetingactivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="com.migital.digiproducthelper.ImageViewerActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="com.migital.digiproducthelper.SearchActivitySeller"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="com.migital.digiproducthelper.SellerDetailsSlotActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="com.migital.digiproducthelper.MevoSellerDetailsActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="com.migital.digiproducthelper.SelleristActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="com.migital.digiproducthelper.MainActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="com.migital.digiproducthelper.BookingActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="com.migital.digiproducthelper.BookingHistoryDigital"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="com.migital.digiproducthelper.ConfirmActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="com.migital.digiproducthelper.RescheduledActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
 
         <activity
             android:name="com.contact.activity.SubscriberVideoActivity"
@@ -89,11 +106,11 @@
             android:supportsPictureInPicture="true" />
         <activity
             android:name="com.contact.activity.PublisherVideoActivity"
-            android:resizeableActivity="true"
-            android:supportsPictureInPicture="true"
-            android:launchMode="singleTask"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
-            />
+            android:launchMode="singleTask"
+            android:resizeableActivity="true"
+            android:supportsPictureInPicture="true" />
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/fb_id" />
@@ -103,14 +120,25 @@
         <meta-data
             android:name="com.facebook.sdk.WebDialogTheme"
             android:resource="@android:style/Theme.Translucent.NoTitleBar" />
+
         <service android:name="com.app.newuidashboardadmin.firebase.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <activity
             android:name="com.migital.chattingmodule.ChatMainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.app.newuidashboardadmin.media.MediaActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+
+        <activity
+            android:name="com.app.newuidashboardadmin.media.PDFActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+
+
     </application>
 
 </manifest>

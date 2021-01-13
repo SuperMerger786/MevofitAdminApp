@@ -2,6 +2,7 @@ package com.app.newuidashboardadmin;
 
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +30,7 @@ import com.app.newuidashboardadmin.plan.InstanceListFragment;
 import com.app.newuidashboardadmin.planner.PlanWorkout;
 import com.app.newuidashboardadmin.services.Response;
 import com.app.newuidashboardadmin.services.RestApiController;
+import com.app.newuidashboardadmin.view.MyInterface;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 
@@ -150,6 +153,7 @@ public class AdminUI extends AppCompatActivity {
                 if (i == 0) {
                     icon_tab1.setSelected(true);
                     tab_text1.setTextColor(getResources().getColor(R.color.colorPrimary));
+//                    setListener((AdminDashBoardNewFragment) pagerAdapter.getItem(pager.getCurrentItem()));
                 } else if (i == 1) {
                     icon_tab2.setSelected(true);
                     tab_text2.setTextColor(getResources().getColor(R.color.colorPrimary));
@@ -178,6 +182,7 @@ public class AdminUI extends AppCompatActivity {
             }
         });
         pager.setCurrentItem(0);
+//        setListener((AdminDashBoardNewFragment) pagerAdapter.getItem(0));
         icon_tab1.setSelected(true);
         tab_text1.setTextColor(getResources().getColor(R.color.colorPrimary));
         MyLogger.println("MainWristActivity>>>>>>" + from + "  " + pager);
@@ -235,8 +240,8 @@ public class AdminUI extends AppCompatActivity {
             @Override
             public void onResponseObtained(Object response, int responseType, boolean isCachedData) {
                 System.out.println("MyFirebaseInstanceIDService.onResponseObtained resonse " + response.toString() + "====" + responseType + "====" + isCachedData);
-               appPrefernce.setDeviceID(deviceid);
-               appPrefernce.setDeviceIDSuccessDetail(response.toString());
+                appPrefernce.setDeviceID(deviceid);
+                appPrefernce.setDeviceIDSuccessDetail(response.toString());
                 isSetDeviceHit = true;
             }
 
@@ -288,5 +293,28 @@ public class AdminUI extends AppCompatActivity {
                     .show();
 //        BleApplication.getInstance().unbindServiCeconnection();
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+//        FirstFragment firstFragment = (FirstFragment) getSupportFragmentManager().getFragments().get(0);
+//        firstFragment.MyMethod();
+//        pager.getAdapter().
+        /*if (tabListFragment != null) {
+
+        }*/
+        if (data != null) {
+            listener.onActivityResultInt(requestCode, resultCode, data);
+            MyLogger.println("onActivityResult>>>>>>>>>>>" + requestCode + "====" + resultCode + "====" + data.getBooleanExtra("isFinished", false));
+
+        }
+
+    }
+
+    private MyInterface listener;
+
+    public void setListener(MyInterface listener) {
+        this.listener = listener;
     }
 }

@@ -10,6 +10,8 @@ import androidx.multidex.MultiDex;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.facebook.stetho.Stetho;
+import com.github.anrwatchdog.ANRWatchDog;
 
 //@ReportsCrashes(mailTo = "anilvns09@gmail.com", customReportContent = {
 //        ReportField.APP_VERSION_CODE, ReportField.APP_VERSION_NAME,
@@ -31,7 +33,8 @@ public class AppController extends Application {
         mInstance = this;
         MultiDex.install(this);
 //        FirebaseApp.initializeApp(this);
-
+        new ANRWatchDog().start();
+        Stetho.initializeWithDefaults(this);
 
     }
     public RequestQueue getRequestQueue() {
