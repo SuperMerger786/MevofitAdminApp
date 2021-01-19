@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.app.newuidashboardadmin.R;
 import com.app.newuidashboardadmin.plan.bean.PendingListData;
 import com.app.newuidashboardadmin.plan.bean.SectionData;
+import com.megogrid.megoauth.AuthorisedPreference;
 import com.migital.digiproducthelper.MevoSellerDetailsActivity;
 import com.migital.digiproducthelper.util.BookingSlotList;
 import com.migital.digiproducthelper.util.DigiConfiguration;
@@ -78,14 +79,31 @@ public class CompletedBookingAdapter extends RecyclerView.Adapter<CompletedBooki
         holder.name.setText(sectionData.user_name);
         holder.age_gender.setText(sectionData.user_gender + " , " + sectionData.user_age + " yrs.");
         holder.city_county.setText(sectionData.user_city + " | " + sectionData.user_country);
-        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat format2 = new SimpleDateFormat("dd MMM");
-        try {
-            Date date = format1.parse(sectionData.last_session_slot_date);
-            System.out.println(format2.format(date));
-            holder.last_session_time.setText(format2.format(date) + " | " + sectionData.last_session_start_time + " - " + sectionData.last_session_end_time);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (sectionData.last_session_slot_date.equalsIgnoreCase("NA")) {
+            holder.last_session_type.setText("NEW CLIENT");
+            holder.last_session_time.setText("");
+        } else {
+            holder.last_session_type.setText("LAST SESSION " + sectionData.last_plan_session_title.replace("Session", ""));
+            SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat format2 = new SimpleDateFormat("dd MMM");
+            try {
+                Date date = format1.parse(sectionData.last_session_slot_date);
+                System.out.println(format2.format(date));
+
+                SimpleDateFormat _24HourSDF = new SimpleDateFormat("HH:mm");
+                SimpleDateFormat _12HourSDF = new SimpleDateFormat("hh:mm a");
+                SimpleDateFormat _12HourSDFWA = new SimpleDateFormat("hh:mm");
+                Date starttime = _24HourSDF.parse(sectionData.last_session_start_time);
+                Date endtime = _24HourSDF.parse(sectionData.last_session_end_time);
+                System.out.println(_12HourSDF.format(sectionData.last_session_start_time));
+
+                holder.last_session_time.setText(format2.format(date) + "  |  " + _12HourSDFWA.format(starttime) + " - " + _12HourSDF.format(endtime));
+
+
+//            holder.last_session_time.setText(format2.format(date) + " | " + sectionData.last_session_start_time + " - " + sectionData.last_session_end_time);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -163,12 +181,12 @@ public class CompletedBookingAdapter extends RecyclerView.Adapter<CompletedBooki
                 pw.dismiss();
                 DigiHelperPreference digiHelperPreference =  DigiHelperPreference.getInstance(context);
                 digiHelperPreference.setBoolean(DigiHelperPreference.ISADMIN,true);
-                digiHelperPreference.setString(DigiHelperPreference.TokenKey,"VUHQ3ELWZ1585572379_d3ec1951-abcf-4354-9c90-5d776e1d1126_ShOZpXKHR_bpSa25QWk");
-                digiHelperPreference.setString(DigiHelperPreference.MewardID,"G8TFQ6MU01585570555");
+                digiHelperPreference.setString(DigiHelperPreference.TokenKey,sectionData.user_tk);
+                digiHelperPreference.setString(DigiHelperPreference.MewardID,sectionData.user_meward_id);
 
                 Intent intent = new Intent(context, MevoSellerDetailsActivity.class);
-                intent.putExtra("instance_id","0RSTJNUQS");
-                intent.putExtra("sellerid","740bb9c3-17ff-4ef8-8922-9de82a9a2471");
+                intent.putExtra("instance_id",sectionData.instance_bid);
+                intent.putExtra("sellerid", new AuthorisedPreference(context).getString(AuthorisedPreference.APP_SELLER_ID));
 //                    Bundle bundle = new Bundle();
 //                    bundle.putSerializable("datas", sellerDetailData);
 //                    intent.putExtras(bundle);

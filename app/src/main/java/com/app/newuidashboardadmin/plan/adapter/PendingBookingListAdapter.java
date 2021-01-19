@@ -22,6 +22,7 @@ import com.app.newuidashboardadmin.plan.callback.ButtonClickCallback;
 import com.bumptech.glide.Glide;
 import com.migital.digiproducthelper.MevoSellerDetailsActivity;
 import com.migital.digiproducthelper.util.DigiHelperPreference;
+import com.migital.digiproducthelper.util.Utility;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -65,24 +66,40 @@ public class PendingBookingListAdapter extends RecyclerView.Adapter<PendingBooki
             view = inflater.inflate(R.layout.pending_booking_history_item, parent, false);
 
         }
-        return new PendingBookingListViewHolder(view,type);
+        return new PendingBookingListViewHolder(view, type);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PendingBookingListViewHolder holder, int position) {
         if (type.equalsIgnoreCase("open")) {
-            holder.price.setText(slotDataArrayList.get(position).variant_discounted_price);
             holder.name.setText(slotDataArrayList.get(position).user_name);
             holder.age_gender.setText(slotDataArrayList.get(position).user_gender + " , " + slotDataArrayList.get(position).user_age + " yrs.");
             holder.city_county.setText(slotDataArrayList.get(position).user_city + " | " + slotDataArrayList.get(position).user_country);
-            SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-            SimpleDateFormat format2 = new SimpleDateFormat("dd MMM");
-            try {
-                Date date = format1.parse(slotDataArrayList.get(position).last_session_slot_date);
-                System.out.println(format2.format(date));
-                holder.last_session_time.setText(format2.format(date) + " | " + slotDataArrayList.get(position).last_session_start_time + " - " + slotDataArrayList.get(position).last_session_end_time);
-            } catch (Exception e) {
-                e.printStackTrace();
+            String currency = new Utility().getCurrencySymbol(slotDataArrayList.get(position).currency_symbol);
+            holder.sessiontype.setText(slotDataArrayList.get(position).shop_plan_session_title.toUpperCase());
+            holder.price.setText(currency + "" + slotDataArrayList.get(position).variant_discounted_price);
+            if (slotDataArrayList.get(position).last_session_slot_date.equalsIgnoreCase("NA")) {
+                holder.lastsession_type.setText("NEW CLIENT");
+                holder.last_session_time.setText("");
+            } else {
+                holder.lastsession_type.setText("LAST SESSION " + slotDataArrayList.get(position).last_plan_session_title.replace("Session", ""));
+                SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat format2 = new SimpleDateFormat("dd MMM");
+                try {
+                    Date date = format1.parse(slotDataArrayList.get(position).last_session_slot_date);
+                    System.out.println(format2.format(date));
+                    SimpleDateFormat _24HourSDF = new SimpleDateFormat("HH:mm");
+                    SimpleDateFormat _12HourSDF = new SimpleDateFormat("hh:mm a");
+                    SimpleDateFormat _12HourSDFWA = new SimpleDateFormat("hh:mm");
+                    Date starttime = _24HourSDF.parse(slotDataArrayList.get(position).last_session_start_time);
+                    Date endtime = _24HourSDF.parse(slotDataArrayList.get(position).last_session_end_time);
+                    System.out.println(_12HourSDF.format(slotDataArrayList.get(position).last_session_start_time));
+
+                    holder.last_session_time.setText(format2.format(date) + " | " + _12HourSDFWA.format(starttime) + " - " + _12HourSDF.format(endtime));
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             holder.menu.setOnClickListener(new View.OnClickListener() {
@@ -92,20 +109,43 @@ public class PendingBookingListAdapter extends RecyclerView.Adapter<PendingBooki
                 }
             });
         } else {
+            GradientDrawable gradientDrawable = (GradientDrawable) holder.acept_button.getBackground();
+            gradientDrawable.setColor(Color.parseColor("#306dd0"));
+            holder.sessiontype.setText(slotDataArrayList.get(position).shop_plan_session_title.toUpperCase());
             holder.name.setText(slotDataArrayList.get(position).user_name);
-            holder.lastsession_type.setText("LAST SESSION " + slotDataArrayList.get(position).last_plan_session_title.replace("Session", ""));
-            holder.price.setText(slotDataArrayList.get(position).variant_discounted_price);
+            if (slotDataArrayList.get(position).last_session_slot_date.equalsIgnoreCase("NA")) {
+                holder.lastsession_type.setText("NEW CLIENT");
+                holder.last_session_time.setText("");
+            } else {
+                holder.lastsession_type.setText("LAST SESSION " + slotDataArrayList.get(position).last_plan_session_title.replace("Session", ""));
+                SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat format2 = new SimpleDateFormat("dd MMM");
+                try {
+                    Date date = format1.parse(slotDataArrayList.get(position).last_session_slot_date);
+                    System.out.println(format2.format(date));
+
+                    SimpleDateFormat _24HourSDF = new SimpleDateFormat("HH:mm");
+                    SimpleDateFormat _12HourSDF = new SimpleDateFormat("hh:mm a");
+                    SimpleDateFormat _12HourSDFWA = new SimpleDateFormat("hh:mm");
+                    Date starttime = _24HourSDF.parse(slotDataArrayList.get(position).last_session_start_time);
+                    Date endtime = _24HourSDF.parse(slotDataArrayList.get(position).last_session_end_time);
+                    System.out.println(_12HourSDF.format(slotDataArrayList.get(position).last_session_start_time));
+
+                    holder.last_session_time.setText(format2.format(date) + " | " + _12HourSDFWA.format(starttime) + " - " + _12HourSDF.format(endtime));
+
+
+//                holder.last_session_time.setText(format2.format(date) + " | " + slotDataArrayList.get(position).last_session_start_time + " - " + slotDataArrayList.get(position).last_session_end_time);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+            String currency = new Utility().getCurrencySymbol(slotDataArrayList.get(position).currency_symbol);
+            holder.price.setText(currency + "" + slotDataArrayList.get(position).variant_discounted_price);
             holder.place_city.setText(slotDataArrayList.get(position).user_city + " | " + slotDataArrayList.get(position).user_country);
             holder.gender_age.setText(slotDataArrayList.get(position).user_gender + ", " + slotDataArrayList.get(position).user_age + " yrs.");
-            SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-            SimpleDateFormat format2 = new SimpleDateFormat("dd MMM");
-            try {
-                Date date = format1.parse(slotDataArrayList.get(position).last_session_slot_date);
-                System.out.println(format2.format(date));
-                holder.last_session_time.setText(format2.format(date) + " | " + slotDataArrayList.get(position).last_session_start_time + " - " + slotDataArrayList.get(position).last_session_end_time);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+
+
             holder.acept_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -164,7 +204,7 @@ public class PendingBookingListAdapter extends RecyclerView.Adapter<PendingBooki
 }
 
 class PendingBookingListViewHolder extends RecyclerView.ViewHolder {
-    TextView sessiontype, lastsession_type, name, gender_age, place_city, price, last_session_time, age_gender, city_county, last_session_type;
+    TextView sessiontype, lastsession_type, name, gender_age, place_city, price, last_session_time, age_gender, city_county;
     Button acept_button, cancel_button;
     ImageView menu;
 
@@ -172,12 +212,12 @@ class PendingBookingListViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         if (type.equalsIgnoreCase("open")) {
             menu = itemView.findViewById(R.id.menu);
-            price = itemView.findViewById(R.id.name);
+            price = itemView.findViewById(R.id.price);
             name = itemView.findViewById(R.id.name);
             age_gender = itemView.findViewById(R.id.age_gender);
             sessiontype = itemView.findViewById(R.id.sessiontype);
             city_county = itemView.findViewById(R.id.city_county);
-            last_session_type = itemView.findViewById(R.id.last_session_type);
+            lastsession_type = itemView.findViewById(R.id.last_session_type);
             last_session_time = itemView.findViewById(R.id.last_session_time);
         } else {
 

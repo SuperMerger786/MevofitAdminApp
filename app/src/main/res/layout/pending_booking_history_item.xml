@@ -138,7 +138,7 @@
                 android:layout_height="@dimen/dp40"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:text="CANCEL"
+                android:text="DECLINE"
                 android:textSize="@dimen/sp9"
                 android:clickable="false"
                 android:textColor="#E51928"

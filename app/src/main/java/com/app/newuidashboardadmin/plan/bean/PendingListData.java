@@ -53,4 +53,23 @@ public class PendingListData {
 
     @SerializedName("user_age")
     @Expose public String user_age;
+
+    @SerializedName("instance_bid")
+    @Expose public String instance_bid;
+
+    @SerializedName("category_bid")
+    @Expose public String category_bid;
+
+    @SerializedName("user_meward_id")
+    @Expose public String user_meward_id;
+
+    @SerializedName("shop_plan_session_title")
+    @Expose public String shop_plan_session_title = "";
+
+
+
+
+
+
+
 }

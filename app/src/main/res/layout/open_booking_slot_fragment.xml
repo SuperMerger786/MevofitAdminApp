@@ -128,7 +128,7 @@
                 <com.app.newuidashboardadmin.font.FiraSansRegularTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="NO SLOT CONFIGURATION"
+                    android:text="NO DATA FOUND"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:textSize="@dimen/sp15"
