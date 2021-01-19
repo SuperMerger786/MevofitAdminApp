@@ -46,6 +46,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
     String booking_for;
     int notifictionid = 0;
     int isNotificationCallType = 0;
+    int isClientConnected, isClientDisConnected, isOnHold, isCallResumed;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -62,8 +63,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
             pickup_by = jsonObj.getString("pickup_by");
             booking_for = jsonObj.getString("booking_for");
             isNotificationCallType = jsonObj.getInt("isNotificationCallType");
-
-
+            isClientConnected = jsonObj.getInt("isClientConnected");
+            isClientDisConnected = jsonObj.getInt("isClientDisConnected");
+            isOnHold = jsonObj.getInt("isOnHold");
+            isCallResumed= jsonObj.getInt("isCallResumed");
 
           /*  {
                 "messenger_type_val": "one_to_one",
@@ -128,7 +131,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
             messageBody = jsonObj.getString("message");
             header = jsonObj.getString("header");
 //            String bookingid = jsonObj.getString("type_id");
-            if (isNotificationCallType == 1) {
+            if (isOnHold == 1) {
+                ContactSdk.PutAdminCallOnHold(this);
+            } else if (isClientDisConnected == 1) {
+                ContactSdk.ClientDisconnectCall(this);
+            } else if (isCallResumed == 1) {
+                ContactSdk.ResumeAdminCallFromHold(this);
+            }else if (isNotificationCallType == 1) {
                /* Intent intent = new Intent(this, PublisherVideoActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

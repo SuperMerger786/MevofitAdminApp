@@ -38,6 +38,8 @@ import com.app.newuidashboardadmin.Utility.AppPrefernce;
 import com.app.newuidashboardadmin.Utility.VersionShowPropmt;
 import com.app.newuidashboardadmin.admingraph.GraphDatum;
 import com.app.newuidashboardadmin.admingraph.GraphValues;
+import com.app.newuidashboardadmin.login.Admin;
+import com.app.newuidashboardadmin.media.MediaActivity;
 import com.app.newuidashboardadmin.newadmin.BookedList;
 import com.app.newuidashboardadmin.newadmin.BookingPerformance;
 import com.app.newuidashboardadmin.newadmin.NewDashboardEntity;
@@ -51,6 +53,7 @@ import com.app.newuidashboardadmin.services.WebServicesUrl;
 import com.app.newuidashboardadmin.todaysbooking.BookingTokSIDRequest;
 import com.app.newuidashboardadmin.todaysbooking.BookingTokSIDResponse;
 import com.app.newuidashboardadmin.view.BookingAdapterRecyclerView;
+import com.app.newuidashboardadmin.view.MyInterface;
 import com.app.newuidashboardadmin.view.SetDeviceDetail;
 import com.app.newuidashboardadmin.view.Utils;
 import com.bumptech.glide.Glide;
@@ -90,6 +93,7 @@ import android.view.View.MeasureSpec;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -100,7 +104,7 @@ import org.json.JSONObject;
 import dmax.dialog.SpotsDialog;
 import newui_food.foodnewui.MyUpCommingClassAdminAdapter;
 
-public class AdminDashBoardNewFragment extends Fragment implements IResponseUpdater, DatePickerDialog.OnDateSetListener {
+public class AdminDashBoardNewFragment extends Fragment implements IResponseUpdater, DatePickerDialog.OnDateSetListener, MyInterface {
     //declaring objects
     RecyclerView recycerView_upcomming;
     Gson gson;
@@ -141,9 +145,16 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
     EditText ed_referencecode;
     TextView txt_share;//,txtcoundown;
     Date date;
+    View view;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.admin_home_new, container, false);
+        view = inflater.inflate(R.layout.admin_home_new, container, false);
+        ((AdminUI) mContext).setListener(this);
+        init(view);
+        return view;
+    }
+
+    private void init(View view) {
         recycerView_upcomming = (RecyclerView) view.findViewById(R.id.recycerView_upcomming);
         ln_upcomming_class = (FrameLayout) view.findViewById(R.id.ln_upcomming_class);
         booking_list = (RecyclerView) view.findViewById(R.id.booking_list);
@@ -238,8 +249,6 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             }
         });
         date = dateCalendar.getTime();
-
-        return view;
     }
 
     private boolean checkReferencetext(String Name, EditText NameEditText) {
@@ -265,8 +274,8 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
     private void hitGraphValues() {
         if (Utils.isNetworkAvailable(mContext)) {
-            progressdialog = startProgressDialog(mContext, "Loading.....");
-            progressdialog.show();
+//            progressdialog = startProgressDialog(mContext, "Loading.....");
+//            progressdialog.show();
             volleyClient.makeRequest(WebServicesUrl.CategariesBooking, getGraphValues().toString(), "GraphValues");
         } else {
             Toast.makeText(mContext, "No Internet connection!", Toast.LENGTH_LONG).show();
@@ -276,6 +285,9 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
     private void listenerSet(String response) {
 
 //        String response = loadJSONFromAsset();
+        if (gson == null) {
+            gson = new Gson();
+        }
         NewDashboardEntity adminDashboard = gson.fromJson(response, NewDashboardEntity.class);
 
         setBookingPerFormance(adminDashboard.getData().getBookingPerformance());
@@ -604,6 +616,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         hithome(strdate);
     }
 
+
     /*  class BookingTodaysItemAdapter extends BaseAdapter {
 
           ArrayList<TodayBooking> todaylist;
@@ -921,7 +934,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
                 CallUtility.currentbookingid = todaylistnew.getBookingId();
                 CallUtility.start_time = starttime;
                 CallUtility.start_date = strdate;
-                MyLogger.println("check>>>>>makeSessionRequest>>0 " + response.toString() + " " + CallUtility.currentbookingid + " " + todaylistnew.getBookingId());
+                MyLogger.println("check>>>>>makeSessionRequest>>0 " + response.toString() + " " + CallUtility.currentbookingid + " " + todaylistnew.getBookingId() + "====" + appPrefernce.getProfilePic());
                 ContactSdk.PublisherVideoCall(mContext, "30",
                         todaylistnew.getCustomername(), appPrefernce.getProfilePic(), todaylistnew.getCustomerProfilepic(),
                         sidResponse.TokBoxTokenID, sidResponse.TokBoxSID, sidResponse.TokApiKey, "11");
@@ -1103,15 +1116,15 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
 
         MyLogger.println("<<<<< graphValues setting graph : " + graphValues.size() + " <<<details>>> " + graphValues.toString());
-        MyLogger.println("<<<< graphValues setting graph 1111 : " + xVals.get(0) + " <<<y.size>>> " + yVals.get(0) + " <<<totalEntries>>> " + totalEntries);
+        MyLogger.println("<<<< graphValues setting graph 1111 : " + xVals.get(0) + " <<<y.size>>> " + (int) yVals.get(0).getVal() + " <<<totalEntries>>> " + totalEntries);
         if (totalEntries > 0) {
             chart.setVisibility(View.VISIBLE);
             ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
             YAxis yAxis = chart.getAxisLeft();
             if (fragmentTypeNew.equalsIgnoreCase("booking")) {
-                if (totalEntries == 1) {
+                if ((int) yVals.get(0).getVal() == 1) {
                     yAxis.setLabelCount(1);
-                } else if (totalEntries == 2) {
+                } else if ((int) yVals.get(0).getVal() == 2) {
                     yAxis.setLabelCount(2);
                 } else {
                     yAxis.setLabelCount(5);
@@ -1348,9 +1361,9 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
     @Override
     public void onResume() {
         super.onResume();
-        if (contacted) {
+        /*if (contacted) {
             confirmCallCompletedOrConfirmtoCall("Conversation Status");
-        }
+        }*/
         strdate = new SimpleDateFormat("yyyy-MM-dd").format(date);
         hithome(strdate);
     }
@@ -1358,7 +1371,6 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
     boolean contacted;
 
     public void confirmCallCompletedOrConfirmtoCall(String title) {
-
         contacted = false;
         final Dialog dialog = new Dialog(mContext, R.style.MaterialDialogSheet);
         dialog.setContentView(R.layout.dialog_open_restaurant);
@@ -1437,7 +1449,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             rdbtn.setButtonDrawable(R.drawable.radio_selector);
             rdbtn.setTextColor(Color.parseColor("#706e6f"));
 
-            rdbtn.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.sp12));
+            rdbtn.setTextSize(TypedValue.COMPLEX_UNIT_PX, mContext.getResources().getDimensionPixelSize(R.dimen.sp12));
             //  rdbtn.setTextSize(16);
 
             rdbtn.setId(i);
@@ -1507,6 +1519,9 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         if (Utils.isNetworkAvailable(mContext)) {
             progressdialog = startProgressDialog(mContext, "Loading.....");
             progressdialog.show();
+            if (volleyClient == null) {
+                volleyClient = new VolleyClient(mContext, this);
+            }
             volleyClient.makeRequest(WebServicesUrl.CategariesBooking, getVideoStatus(call_status, reason).toString(), "VideoStatus");
         } else {
             Toast.makeText(mContext, "No Internet connection!", Toast.LENGTH_LONG).show();
@@ -1613,13 +1628,14 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             public void onClick(View v) {
 //                Intent intentq = new Intent(getActivity(), OrderMarket.class);
 //                startActivity(intentq);
+                dialog.dismiss();
             }
         });
         expertuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, BookingHistoryDigital.class);
-                startActivity(intent);
+              /*  Intent intent = new Intent(mContext, MediaActivity.class);
+                startActivity(intent);*/
                 dialog.dismiss();
             }
         });
@@ -1628,8 +1644,9 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             public void onClick(View v) {
                 /*Intent currentIntent = new Intent(mContext.get(), FoodWorkoutUpcommingSesion.class);
                 startActivity(currentIntent);*/
-                Intent currentIntent = new Intent(mContext, TrackerAppListActivity.class);
-                startActivity(currentIntent);
+//                Intent currentIntent = new Intent(mContext, TrackerAppListActivity.class);
+//                startActivity(currentIntent);
+                dialog.dismiss();
             }
         });
         /*id_follow_ups.setOnClickListener(new View.OnClickListener() {
@@ -1648,5 +1665,25 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             }
         });
         dialog.show();
+    }
+
+    /*  @Override
+      public void myAction() {
+          MyLogger.println("onActivityResult>>>>>>>>>myAction>>====" + mContext + "====" + view);
+      }*/
+    @Override
+    public void onActivityResultInt(int requestCode, int resultCode, @Nullable Intent data) {
+       /* if (mContext == null) {
+            this.mContext = context;
+            init(view);
+        }*/
+        MyLogger.println("onActivityResult>>>>>>>>>frafg>>" + requestCode + "====" + resultCode + "====" + data.getBooleanExtra("isFinished", false) + "====" + mContext + "====" + view);
+        if (requestCode == 10 && data.getBooleanExtra("isFinished", false)) {
+            confirmCallCompletedOrConfirmtoCall("Conversation Status");
+        } else if (data.getBooleanExtra("user_unavailable", false)) {
+            Toast.makeText(mContext, "Network not available on Client Side", Toast.LENGTH_LONG).show();
+        }else if (data.getBooleanExtra("user_not_responding", false)) {
+            Toast.makeText(mContext, "Client is unable to take call", Toast.LENGTH_LONG).show();
+        }
     }
 }

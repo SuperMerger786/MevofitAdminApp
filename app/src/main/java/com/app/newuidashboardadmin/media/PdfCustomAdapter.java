@@ -1,0 +1,77 @@
+package com.app.newuidashboardadmin.media;
+
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.app.newuidashboardadmin.MyLogger;
+import com.app.newuidashboardadmin.R;
+
+import java.util.ArrayList;
+
+public class PdfCustomAdapter extends BaseAdapter {
+
+    Context c;
+    ArrayList<PDFDoc> pdfDocs;
+
+    public PdfCustomAdapter(Context c, ArrayList<PDFDoc> pdfDocs) {
+        this.c = c;
+        this.pdfDocs = pdfDocs;
+        MyLogger.println("heck>>>>>>>document1 "+pdfDocs.size());
+    }
+
+    @Override
+    public int getCount() {
+        return pdfDocs.size();
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return pdfDocs.get(i);
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return i;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        if(view==null)
+        {
+            //INFLATE CUSTOM LAYOUT
+            view= LayoutInflater.from(c).inflate(R.layout.model,viewGroup,false);
+        }
+
+        final PDFDoc pdfDoc= (PDFDoc) this.getItem(i);
+
+        TextView nameTxt= (TextView) view.findViewById(R.id.nameTxt);
+        ImageView img= (ImageView) view.findViewById(R.id.pdfImage);
+
+        //BIND DATA
+        nameTxt.setText(pdfDoc.getType());
+        img.setImageResource(R.drawable.pdf_icon);
+        MyLogger.println("heck>>>>>>>document ${downloadsFolder.listFiles().size}"+pdfDoc.getName());
+        //VIEW ITEM CLICK
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openPDFView(pdfDoc.getPath());
+            }
+        });
+        return view;
+    }
+
+    //OPEN PDF VIEW
+    private void openPDFView(String path)
+    {
+        Intent i=new Intent(c,PDFActivity.class);
+        i.putExtra("PATH",path);
+        c.startActivity(i);
+    }
+}
