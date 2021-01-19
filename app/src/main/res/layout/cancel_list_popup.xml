@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00000000">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/dp250"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#ffffff"
+            android:padding="@dimen/dp15">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_centerInParent="true"
+                    android:textColor="#676767"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/sp10"
+                    android:text="PLAN" />
+
+                <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:layout_centerInParent="true"
+                    android:textColor="#676767"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/sp10"
+                    android:text=" : " />
+
+                <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_centerInParent="true"
+                    android:textColor="#676767"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/sp10"
+                    android:text="Free Plan" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_centerInParent="true"
+                    android:textColor="#676767"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/sp10"
+                    android:text="SUMMARY" />
+
+                <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:layout_centerInParent="true"
+                    android:textColor="#676767"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/sp10"
+                    android:text=" : " />
+
+                <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_centerInParent="true"
+                    android:textColor="#676767"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/sp10"
+                    android:text="This session has been canclled by professional. " />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_centerInParent="true"
+                    android:textColor="#676767"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/sp10"
+                    android:text="Status" />
+
+                <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:layout_centerInParent="true"
+                    android:textColor="#676767"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/sp10"
+                    android:text=" : " />
+
+                <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_centerInParent="true"
+                    android:textColor="#676767"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/sp10"
+                    android:text="Free Plan" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/reshedule"
+                android:layout_width="@dimen/dp100"
+                android:layout_height="@dimen/dp25"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="Rescheduled"
+                android:textSize="@dimen/sp8"
+                android:background="@drawable/round_rectangle_blue" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

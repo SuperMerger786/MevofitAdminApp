@@ -4,8 +4,11 @@ import android.content.Context;
 
 import com.app.newuidashboardadmin.clienttab.sevices.GetUserListRequest;
 import com.app.newuidashboardadmin.firebase.SetDeviceRequest;
+import com.app.newuidashboardadmin.plan.bean.request.ChangeBookingStatusRequest;
+import com.app.newuidashboardadmin.plan.bean.request.CompletedBookingSlotsRequest;
 import com.app.newuidashboardadmin.plan.bean.request.GetSellerBookingSlotsRequest;
 import com.app.newuidashboardadmin.plan.bean.request.GetSellerInstancesRequest;
+import com.app.newuidashboardadmin.plan.bean.request.GetSellerPendingBookingSlotsRequest;
 import com.app.newuidashboardadmin.plan.bean.request.GetStandardPlan;
 import com.app.newuidashboardadmin.todaysbooking.BookingTokSIDRequest;
 import com.megogrid.megoauth.AuthorisedPreference;
@@ -86,6 +89,17 @@ public class RestApiController implements Response {
     }
 
     public void fetchBookingHisory(GetSellerBookingSlotsRequest request) {
+        client.Communicate(bookingUrl, request, responseType);
+    }
+    public void fetchCompletedBookingHisory(CompletedBookingSlotsRequest request) {
+        client.Communicate(bookingUrl, request, responseType);
+    }
+
+
+    public void fetchPendingBookingHisory(GetSellerPendingBookingSlotsRequest request) {
+        client.Communicate(bookingUrl, request, responseType);
+    }
+    public void UploadBookingStatus(ChangeBookingStatusRequest request) {
         client.Communicate(bookingUrl, request, responseType);
     }
 

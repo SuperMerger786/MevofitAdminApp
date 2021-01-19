@@ -38,21 +38,41 @@ public class BookingListFragment extends Fragment {
     private void setView() {
         List<Fragment> mFragmentList = new ArrayList<>();
         List<String> titleList = new ArrayList<>();
-        TodayBookingFragment fragmentone = new TodayBookingFragment();
-        fragmentone.type = "previous";
-        mFragmentList.add(fragmentone);
-        titleList.add("PREVIOUS");
+//        TodayBookingFragment fragmentone = new TodayBookingFragment();
+//        fragmentone.type = "previous";
+//        mFragmentList.add(fragmentone);
+//        titleList.add("PREVIOUS");
 
         TodayBookingFragment fragmenttwo = new TodayBookingFragment();
         fragmenttwo.type = "today";
         mFragmentList.add(fragmenttwo);
-        titleList.add("TODAY");
-
+        titleList.add("All");
 
         TodayBookingFragment fragmentthree = new TodayBookingFragment();
         fragmentthree.type = "upcoming";
         mFragmentList.add(fragmentthree);
-        titleList.add("UPCOMING");
+        titleList.add("Upcoming");
+
+        PendingBookingFragment fragmentfour = new PendingBookingFragment();
+        mFragmentList.add(fragmentfour);
+        titleList.add("Pending");
+
+        OpenBookingFragment fragmentfive = new OpenBookingFragment();
+        mFragmentList.add(fragmentfive);
+        titleList.add("Open");
+
+
+        TodayBookingFragment fragmentsix = new TodayBookingFragment();
+        mFragmentList.add(fragmentsix);
+        titleList.add("Waitlist");
+
+        CompletedBookingFragment fragmentseven = new CompletedBookingFragment();
+        mFragmentList.add(fragmentseven);
+        titleList.add("Completed");
+
+        CanceledBookingFragment fragmenteight= new CanceledBookingFragment();
+        mFragmentList.add(fragmenteight);
+        titleList.add("Cancelled");
 
         PlanViewPagerAdapterAdmin adapter = new PlanViewPagerAdapterAdmin(getActivity().getSupportFragmentManager(), mFragmentList, titleList) {
         };

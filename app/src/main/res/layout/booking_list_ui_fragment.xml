@@ -54,7 +54,7 @@
             app:tabGravity="fill"
             app:tabIndicatorColor="#316DD0"
             app:tabIndicatorHeight="3dp"
-            app:tabMode="fixed"
+            app:tabMode="scrollable"
             app:tabSelectedTextColor="#316DD0"
             app:tabTextColor="#5A5A5A" />
 

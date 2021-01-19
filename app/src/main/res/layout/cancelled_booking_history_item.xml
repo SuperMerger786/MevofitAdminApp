@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                   android:id="@+id/card"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginLeft="@dimen/dp10"
+                                   android:layout_marginRight="@dimen/dp10"
+                                   android:layout_marginTop="@dimen/dp5"
+                                   android:layout_marginBottom="@dimen/dp5"
+                                   app:cardBackgroundColor="#ffffff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/sp9">
+
+                <com.app.newuidashboardadmin.font.FiraSansBoldTextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Somanath lenka"
+                    android:textSize="@dimen/sp12"
+                    android:textColor="#2F3855" />
+
+                <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Female, 33 yrs"
+                    android:layout_marginTop="3dp"
+                    android:maxLines="1"
+                    android:id="@+id/age_gender"
+                    android:textSize="@dimen/sp9"
+                    android:textColor="#747B83" />
+
+                <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="GROUP SESSION"
+                    android:id="@+id/sessiontype"
+                    android:textSize="@dimen/sp9"
+                    android:textColor="#B16A00" />
+
+                <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="San jose, USA"
+                    android:textAllCaps="true"
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/city_county"
+                    android:textSize="@dimen/sp9"
+                    android:textColor="#316CD0" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="right|bottom"
+                android:orientation="vertical"
+                android:gravity="right"
+                android:layout_marginTop="@dimen/dp5"
+                android:layout_marginBottom="@dimen/dp5"
+                android:layout_marginRight="@dimen/dp10"
+                android:padding="@dimen/sp10">
+
+                <ImageView
+                    android:layout_width="@dimen/dp30"
+                    android:layout_height="@dimen/dp30"
+                    android:src="@drawable/menu"
+                    android:id="@+id/menu"
+                    android:padding="4dp" />
+
+                <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="LAST SESSION | PERSONAL"
+                    android:maxLines="1"
+                    android:gravity="right"
+                    android:layout_marginTop="7dp"
+                    android:id="@+id/last_session_type"
+                    android:textSize="@dimen/sp9"
+                    android:textColor="#44A3AD" />
+
+                <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_marginTop="5dp"
+                    android:text="28 jul|07:15 - 07:45 PM"
+                    android:id="@+id/last_session_time"
+                    android:textSize="@dimen/sp9"
+                    android:textColor="#747B83" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:layout_width="@dimen/dp150"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:clickable="false"
+                android:textColor="#ffffff"
+                android:background="@drawable/red_rectangle_border">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/dp10"
+                    android:paddingRight="@dimen/dp10">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="CANCELED"
+                        android:textSize="@dimen/dp10"
+                        android:textColor="#E51928" />
+
+                    <TextView
+                        android:layout_marginTop="@dimen/dp5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textSize="8dp"
+                        android:text="MANUAL | PROFETIONAL"
+                        android:textColor="#E51928" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

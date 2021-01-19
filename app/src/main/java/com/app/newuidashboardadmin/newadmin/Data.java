@@ -10,22 +10,18 @@ public class Data {
     @SerializedName("BookingPerformance")
     @Expose
     private BookingPerformance bookingPerformance;
-
     @SerializedName("UserNotification")
     @Expose
     public UserNotification userNotification;
-
     @SerializedName("TodayBookings")
     @Expose
     private List<TodayBooking> todayBookings = null;
     @SerializedName("UpcomingBookings")
     @Expose
     private UpcomingBookings upcomingBookings;
-
     public BookingPerformance getBookingPerformance() {
         return bookingPerformance;
     }
-
     public void setBookingPerformance(BookingPerformance bookingPerformance) {
         this.bookingPerformance = bookingPerformance;
     }

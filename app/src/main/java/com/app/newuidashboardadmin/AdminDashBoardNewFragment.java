@@ -200,14 +200,6 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 //                ((AdminUI)mContext).getmDrawerLayout().openDrawer(GravityCompat.START);
             }
         });
-        iv_pre.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                VersionShowPropmt versionShowPropmt = new VersionShowPropmt();
-                versionShowPropmt.showDialog(getContext());
-                return true;
-            }
-        });
         iv_pre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -719,15 +711,15 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
 
         @NonNull
         @Override
-        public BookingAdapterRecyclerView.BookingLwHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public BookingLwHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
             View view = inflater.inflate(R.layout.admin_todaysbooking_status, parent, false);
-            return new BookingAdapterRecyclerView.BookingLwHolder(view);
+            return new BookingLwHolder(view);
         }
 
         //      TodayBooking todaylistnew;
         @Override
-        public void onBindViewHolder(@NonNull BookingAdapterRecyclerView.BookingLwHolder holder, int position) {
+        public void onBindViewHolder(@NonNull BookingLwHolder holder, int position) {
 
             String name1 = todaylist.get(position).getCustomername();
             String name2 = name1.replace("#NA", " ");
@@ -1244,10 +1236,6 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
                 ) {
                     int hour = (int) (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600);
                     long milisecondtime = (getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis());
-                if ((getMilliFromDate(bookingList.get(i).getStartTime()) > System.currentTimeMillis()) && (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600) < 1) {
-                    if (!bookingList.get(i).getStartTime().equalsIgnoreCase("NA")) {
-                        int hour = (int) (((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) / 3600);
-                        long milisecondtime = (getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis());
 //                    String minute = "" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) / 60);
 //                    String seconds = "" + ((((getMilliFromDate(bookingList.get(i).getStartTime()) - System.currentTimeMillis()) / 1000) % 3600) % 60);
 //                    int[] minutearr = setIntArray(minute);
@@ -1257,43 +1245,57 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
                             long millis = millisUntilFinished;
                             //Convert milliseconds into hour,minute and seconds
                             String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis), TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)), TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
-                            String[] hmsvalue =hms.split(":");
+                            String[] hmsvalue = hms.split(":");
+                            int[] hourarr = setIntArray(hmsvalue[0]);
                             int[] minutearr = setIntArray(hmsvalue[1]);
                             int[] secondarr = setIntArray(hmsvalue[2]);
 //                            txtcoundown.setText(hmsvalue[1]+":"+hmsvalue[2]);//set text
 //                            txtcoundown.setText(hour+" "+secondarr[0]+":"+secondarr[1]+"====="+hms);
-                            if (hour == 0) {
-                                if (Integer.parseInt(hmsvalue[1]) >= 0) {
-                                    if (minutearr.length > 1) {
-                                        id_time.setText("" + minutearr[0]);
-                                        id_timetwo.setText("" + minutearr[1]);
-                                    } else {
-//                                        id_time.setText("0");
-//                                        id_timetwo.setText("" + minutearr[0]);
-                                        id_time.setText("" + minutearr[0]);
-                                        id_timetwo.setText("" + minutearr[1]);
-                                    }
-                                } else {
-                                    id_time.setText("0");
-                                    id_timetwo.setText("0");
-                                }
-                                if (secondarr.length > 1) {
-                                    id_minone.setText("" + secondarr[0]);
-                                    id_mintwo.setText("" + secondarr[1]);
+//                            if (hour == 0) {
 
-                                } else {
-                                    id_minone.setText("" + secondarr[0]);
-                                    id_mintwo.setText("" + secondarr[1]);
+                            if (hourarr.length > 1) {
+                                id_hourone.setText("" + hourarr[0]);
+                                id_hourtwo.setText("" + hourarr[1]);
+
+                            } else {
+                                id_hourone.setText("" + hourarr[0]);
+                                id_hourtwo.setText("" + hourarr[1]);
 //                                    id_minone.setText("0");
 //                                    id_mintwo.setText("" + secondarr[0]);
+                            }
+                            if (Integer.parseInt(hmsvalue[1]) >= 0) {
+                                if (minutearr.length > 1) {
+                                    id_time.setText("" + minutearr[0]);
+                                    id_timetwo.setText("" + minutearr[1]);
+                                } else {
+//                                        id_time.setText("0");
+//                                        id_timetwo.setText("" + minutearr[0]);
+                                    id_time.setText("" + minutearr[0]);
+                                    id_timetwo.setText("" + minutearr[1]);
                                 }
                             } else {
                                 id_time.setText("0");
                                 id_timetwo.setText("0");
+                            }
+                            if (secondarr.length > 1) {
+                                id_minone.setText("" + secondarr[0]);
+                                id_mintwo.setText("" + secondarr[1]);
+
+                            } else {
+                                id_minone.setText("" + secondarr[0]);
+                                id_mintwo.setText("" + secondarr[1]);
+//                                    id_minone.setText("0");
+//                                    id_mintwo.setText("" + secondarr[0]);
+                            }
+
+                            /*} else {
+                                id_time.setText("0");
+                                id_timetwo.setText("0");
                                 id_minone.setText("0");
                                 id_mintwo.setText("0");
-                            }
+                            }*/
                         }
+
                         public void onFinish() {
                             id_time.setText("0");
                             id_timetwo.setText("0");
@@ -1312,7 +1314,6 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         }
 
     }
-
     /*private void startTimer(int noOfMinutes) {
         CountDownTimer countDownTimer = new CountDownTimer(noOfMinutes, 1000) {
             public void onTick(long millisUntilFinished) {
