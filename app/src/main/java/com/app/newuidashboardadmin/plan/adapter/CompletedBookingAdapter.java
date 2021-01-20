@@ -71,7 +71,7 @@ public class CompletedBookingAdapter extends RecyclerView.Adapter<CompletedBooki
             holder.menu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onButtonShowCompletedUimenu(holder.menu,context);
+                    onButtonShowCompletedUimenu(holder.menu,context,sectionData);
                 }
             });
 
@@ -115,7 +115,7 @@ public class CompletedBookingAdapter extends RecyclerView.Adapter<CompletedBooki
             return 0;
         }
     }
-    public void onButtonShowCompletedUimenu(View view, Context context) {
+    public void onButtonShowCompletedUimenu(View view, Context context, PendingListData sectionData) {
 
         // inflate the layout of the popup window
         final LayoutInflater inflater = (LayoutInflater) context
@@ -136,12 +136,12 @@ public class CompletedBookingAdapter extends RecyclerView.Adapter<CompletedBooki
                 pw.dismiss();
                 DigiHelperPreference digiHelperPreference =  DigiHelperPreference.getInstance(context);
                 digiHelperPreference.setBoolean(DigiHelperPreference.ISADMIN,true);
-                digiHelperPreference.setString(DigiHelperPreference.TokenKey,"VUHQ3ELWZ1585572379_d3ec1951-abcf-4354-9c90-5d776e1d1126_ShOZpXKHR_bpSa25QWk");
-                digiHelperPreference.setString(DigiHelperPreference.MewardID,"G8TFQ6MU01585570555");
+                digiHelperPreference.setString(DigiHelperPreference.TokenKey,sectionData.user_tk);
+                digiHelperPreference.setString(DigiHelperPreference.MewardID,sectionData.user_meward_id);
 
                 Intent intent = new Intent(context, MevoSellerDetailsActivity.class);
-                intent.putExtra("instance_id","0RSTJNUQS");
-                intent.putExtra("sellerid","740bb9c3-17ff-4ef8-8922-9de82a9a2471");
+                intent.putExtra("instance_id",sectionData.instance_bid);
+                intent.putExtra("sellerid",new AuthorisedPreference(context).getString(AuthorisedPreference.APP_SELLER_ID));
 //                    Bundle bundle = new Bundle();
 //                    bundle.putSerializable("datas", sellerDetailData);
 //                    intent.putExtras(bundle);

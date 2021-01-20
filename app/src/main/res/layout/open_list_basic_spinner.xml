@@ -24,7 +24,17 @@
                 android:padding="10dp"
                 android:textColor="#676767"
                 android:textSize="@dimen/sp13"
-                android:text="Re-Book" />
+                android:text="Schedule" />
+
+            <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
+                android:id="@+id/request"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:padding="10dp"
+                android:textColor="#676767"
+                android:textSize="@dimen/sp13"
+                android:text="Request" />
 
             <com.app.newuidashboardadmin.font.FiraSemiBoldTextView
                 android:id="@+id/cancel"

@@ -14,6 +14,12 @@ public class CompletedBookingSlotsRequest {
     @SerializedName("filterSlotDate")
     @Expose public String filterSlotDate;
 
+    @SerializedName("filterDate")
+    @Expose public String filterDate;
+
+
+
+
     @SerializedName("booking_version")
     @Expose public String booking_version = "4";
 
@@ -49,11 +55,14 @@ public class CompletedBookingSlotsRequest {
 //        tokenkey ="Y5OVS2AC81602588317_d3ec1951-abcf-4354-9c90-5d776e1d1126_ShOZpXKHR_bpSa25QWk";
         this.seller_uid = authorisedPreference.getString(AuthorisedPreference.APP_SELLER_ID);
         if(type.equalsIgnoreCase("completed")){
+            this.filterSlotDate = filterSlotDate;
             this.action = "GetCompletedSlots";
         }else if(type.equalsIgnoreCase("canceled")) {
+            this.filterSlotDate = filterSlotDate;
             this.action = "GetCanceledSlots";
         }else if(type.equalsIgnoreCase("open")){
             this.action = "GetOpenSlots";
+            this.filterDate = filterSlotDate;
         }
     }
 
