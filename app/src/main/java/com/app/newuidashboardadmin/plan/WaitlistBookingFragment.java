@@ -15,20 +15,13 @@ import android.widget.Toast;
 import com.app.newuidashboardadmin.R;
 import com.app.newuidashboardadmin.plan.adapter.CompleteSectionListAdapter;
 import com.app.newuidashboardadmin.plan.adapter.DateSelectorAdapter;
-import com.app.newuidashboardadmin.plan.adapter.PendingBookingListAdapter;
 import com.app.newuidashboardadmin.plan.bean.CompletedBookingHistoryResponse;
-import com.app.newuidashboardadmin.plan.bean.PendingBookingHistoryResponse;
-import com.app.newuidashboardadmin.plan.bean.PendingListData;
-import com.app.newuidashboardadmin.plan.bean.request.ChangeBookingStatusRequest;
 import com.app.newuidashboardadmin.plan.bean.request.CompletedBookingSlotsRequest;
-import com.app.newuidashboardadmin.plan.callback.ButtonClickCallback;
 import com.app.newuidashboardadmin.plan.callback.DateChooseCallback;
-import com.app.newuidashboardadmin.push.EventHandlerAdmin;
 import com.app.newuidashboardadmin.services.Response;
 import com.app.newuidashboardadmin.services.RestApiController;
 import com.app.newuidashboardadmin.view.ShimmerLayoutAdmin;
 import com.google.gson.Gson;
-import com.megogrid.megoeventpersistence.MewardDbHandler;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -42,7 +35,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class OpenBookingFragment extends Fragment {
+public class WaitlistBookingFragment extends Fragment {
     ImageView left_arrow, right_arrow;
     Calendar currentdate;
     TextView monthname;
@@ -51,13 +44,12 @@ public class OpenBookingFragment extends Fragment {
     TextView datename, dateview;
     RelativeLayout nodata;
     ShimmerLayoutAdmin shimmer;
-    String datestring;
     String type = "today";//today.cupcoming,previous
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.open_booking_slot_fragment, container, false);
+        View view = inflater.inflate(R.layout.waitlist_booking_slot_fragment, container, false);
         currentdate = Calendar.getInstance();
         initView(view);
         System.out.println("TodayBookingFragment.onCreateView internet check " + Check());
@@ -129,7 +121,6 @@ public class OpenBookingFragment extends Fragment {
         } else {
             todayposition = 0;
         }
-
         DateSelectorAdapter dateSelectorAdapter = new DateSelectorAdapter(getContext(), todayposition, arrayList, new DateChooseCallback() {
             @Override
             public void OnDateSelect(Date date) {
@@ -139,7 +130,7 @@ public class OpenBookingFragment extends Fragment {
                 DateFormat format4 = new SimpleDateFormat("EEEE");
                 dateview.setText(format3.format(date));
                 datename.setText(format4.format(date));
-                 datestring = format2.format(date);
+                String datestring = format2.format(date);
                 fetchData(datestring);
             }
         });
@@ -162,31 +153,9 @@ public class OpenBookingFragment extends Fragment {
             @Override
             public void onResponseObtained(Object response, int responseType, boolean isCachedData) {
                 System.out.println("TodayBookingFragment.onResponseObtained response " + response.toString());
-                PendingBookingHistoryResponse bookingHistoryResponse = gson.fromJson(response.toString(), PendingBookingHistoryResponse.class);
-                if (bookingHistoryResponse != null && bookingHistoryResponse.pendingListData != null) {
-                    PendingBookingListAdapter sectionListAdapter = new PendingBookingListAdapter(bookingHistoryResponse.pendingListData, getContext(), new ButtonClickCallback() {
-                        @Override
-                        public void OnDateSelect(PendingListData pendingListData, boolean isCancel) {
-                            RestApiController restApiController = new RestApiController(getContext(), new Response() {
-                                @Override
-                                public void onResponseObtained(Object response, int responseType, boolean isCachedData) {
-                                    System.out.println("PendingBookingFragment.onResponseObtained Response "+ response);
-                                    if(isCancel){
-                                        EventHandlerAdmin.sendPush(EventHandlerAdmin.BOOKING_DECLINE, pendingListData.BookingId, EventHandlerAdmin.BOOKING_DECLINE_TITEL, getContext());
-                                    }
-                                    fetchData(datestring);
-                                  }
-
-                                @Override
-                                public void onErrorObtained(String errormsg, int responseType) {
-                                    System.out.println("PendingBookingFragment.onResponseObtained error "+ errormsg);
-                                }
-                            }, 545);
-
-                            ChangeBookingStatusRequest changeBookingStatusRequest = new ChangeBookingStatusRequest(getContext(), "canceled", pendingListData.BookingId);
-                            restApiController.UploadBookingStatus(changeBookingStatusRequest);
-                        }
-                    }, "open");
+                CompletedBookingHistoryResponse bookingHistoryResponse = gson.fromJson(response.toString(), CompletedBookingHistoryResponse.class);
+                if (bookingHistoryResponse != null && bookingHistoryResponse.sectionDataArrayList != null) {
+                    CompleteSectionListAdapter sectionListAdapter = new CompleteSectionListAdapter(bookingHistoryResponse.sectionDataArrayList, getContext(),"waitlist");
                     sectionlist.setVisibility(View.VISIBLE);
                     sectionlist.setAdapter(sectionListAdapter);
                     nodata.setVisibility(View.GONE);
@@ -210,7 +179,7 @@ public class OpenBookingFragment extends Fragment {
 
             }
         }, 65);
-        CompletedBookingSlotsRequest getSellerBookingSlotsRequest = new CompletedBookingSlotsRequest("open",getContext(), slotdate);
+        CompletedBookingSlotsRequest getSellerBookingSlotsRequest = new CompletedBookingSlotsRequest("waitlist",getContext(), slotdate);
         restApiController.fetchCompletedBookingHisory(getSellerBookingSlotsRequest);
 
     }
