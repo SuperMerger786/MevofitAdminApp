@@ -5704,6 +5704,6 @@ Note: Wear the band while you sleep and sync data to view the same</string>
     <string name="bluetooth_reset_desc">Kindly allow the app to manually reset your phone\'s bluetooth to maintain stable connection. The app will switch off and then switch on the bluetooth to improve connection</string>
     <string name="choose_file">Choose File</string>
 <!--    <string name="no_task">You don\'t have\nany user yet</string>-->
-
+    <string name="folder_path">MevoFit device</string>
     <string name="no_task">You don\'t have any user\nbooking for this schedule</string>
 </resources>

@@ -133,7 +133,9 @@
         <activity
             android:name="com.app.newuidashboardadmin.media.MediaActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
-
+        <activity
+            android:name="com.app.newuidashboardadmin.media.ShowMediaFile"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
             android:name="com.app.newuidashboardadmin.media.PDFActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar" />

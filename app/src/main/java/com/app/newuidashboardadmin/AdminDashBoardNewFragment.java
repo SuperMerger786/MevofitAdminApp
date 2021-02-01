@@ -343,12 +343,16 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         }
 
 
-        MyLogger.println("todays>>>>>booking>>2>" + adminDashboard.getData().getUpcomingBookings().getBookedList());
+        MyLogger.println("todays>>>>>booking>>2>" + adminDashboard.getData().getUpcomingBookings().getBookedList() + "====" + appPrefernce);
         if (adminDashboard.getData().getUpcomingBookings().getBookedList() != null) {
             ln_upcomming_class.setVisibility(View.VISIBLE);
             bookingSetUp((ArrayList<BookedList>) adminDashboard.getData().getUpcomingBookings().getBookedList());
         } else {
             ln_upcomming_class.setVisibility(View.GONE);
+        }
+
+        if (appPrefernce != null && appPrefernce.getProfilePic().equalsIgnoreCase("NA")) {
+            appPrefernce.setProfilePic(adminDashboard.getData().getSellerDataNoti().get_seller_pic);
         }
     }
 
@@ -712,6 +716,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
               return view;
           }
       }*/
+    String name2 = "";
     public class BookingAdapterRecyclerView extends RecyclerView.Adapter<BookingAdapterRecyclerView.BookingLwHolder> {
         ArrayList<TodayBooking> todaylist;
         Context mContext;
@@ -735,8 +740,14 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         public void onBindViewHolder(@NonNull BookingLwHolder holder, int position) {
 
             String name1 = todaylist.get(position).getCustomername();
-            String name2 = name1.replace("#NA", " ");
-            holder.name.setText(name2);
+          MyLogger.println("chek>>>>>>>values>>>>"+name1.equalsIgnoreCase(" ")+name1);
+            if (name1.equalsIgnoreCase(" ")) {
+                name2 = name1.replace("#NA", " ");
+                holder.name.setText("Guest");
+            } else {
+                name2 = name1.replace("#NA", " ");
+                holder.name.setText(name2);
+            }
             holder.tv_male.setText(todaylist.get(position).getCustomerAge() + "," + todaylist.get(position).getCustomerGender());
             MyLogger.println("image>>>>>" + todaylist.get(position).getCustomerProfilepic());
             Glide.with(mContext)
@@ -1184,7 +1195,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             jsonObj.put("mewardid", authorisedPreference.getMewardId());
             jsonObj.put("tokenkey", authorisedPreference.getTokenKey());
             jsonObj.put("user_type", "selleradmin");
-            jsonObj.put("year", "" + year);
+            jsonObj.put("year", "" + year+","+(year-1));
             jsonObj.put("instance_boxid", appPrefernce.getInstanceBoxid());
             jsonObj.put("seller_uid", authorisedPreference.getString("app_sellerrid"));
             jsonObj.put("isadmin", "1");
@@ -1634,8 +1645,8 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
         expertuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              /*  Intent intent = new Intent(mContext, MediaActivity.class);
-                startActivity(intent);*/
+                Intent intent = new Intent(mContext, MediaActivity.class);
+                startActivity(intent);
                 dialog.dismiss();
             }
         });
@@ -1682,7 +1693,7 @@ public class AdminDashBoardNewFragment extends Fragment implements IResponseUpda
             confirmCallCompletedOrConfirmtoCall("Conversation Status");
         } else if (data.getBooleanExtra("user_unavailable", false)) {
             Toast.makeText(mContext, "Network not available on Client Side", Toast.LENGTH_LONG).show();
-        }else if (data.getBooleanExtra("user_not_responding", false)) {
+        } else if (data.getBooleanExtra("user_not_responding", false)) {
             Toast.makeText(mContext, "Client is unable to take call", Toast.LENGTH_LONG).show();
         }
     }

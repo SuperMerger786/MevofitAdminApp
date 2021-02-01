@@ -33,6 +33,8 @@ import com.app.newuidashboardadmin.services.RestApiController;
 import com.app.newuidashboardadmin.view.MyInterface;
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import me.leolin.shortcutbadger.ShortcutBadger;
+
 
 public class AdminUI extends AppCompatActivity {
     ImageView icon_tab1, icon_tab2, icon_tab3, icon_tab4, icon_tab6;
@@ -115,6 +117,10 @@ public class AdminUI extends AppCompatActivity {
         MyLogger.println("check>>>>>>>>>>>>>FirebaseInstanceId>>1>" + FirebaseInstanceId.getInstance().getToken());
         sendRegistrationToServer(FirebaseInstanceId.getInstance().getToken());
 //        }
+        int badgeCount = 1;
+       boolean isBadgecount = ShortcutBadger.applyCount(AdminUI.this, badgeCount);
+        MyLogger.println("check>>>>>>>>>>>>>FirebaseInstanceId>>111111>" + isBadgecount);
+//        ShortcutBadger.with(getApplicationContext()).count(badgeCount);
     }
 
     private void initNavigationDrawer() {

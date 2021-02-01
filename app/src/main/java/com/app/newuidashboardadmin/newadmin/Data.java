@@ -6,18 +6,34 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Data {
+    @SerializedName("SellerData")
+    @Expose
+    private SellerDataNoti SellerDataNoti;
 
     @SerializedName("BookingPerformance")
     @Expose
     private BookingPerformance bookingPerformance;
+
     @SerializedName("UserNotification")
     @Expose
     public UserNotification userNotification;
     @SerializedName("TodayBookings")
     @Expose
     private List<TodayBooking> todayBookings = null;
+
+    public SellerDataNoti getSellerDataNoti() {
+        return SellerDataNoti;
+    }
+
+    public void setSellerDataNoti(SellerDataNoti sellerDataNoti) {
+        SellerDataNoti = sellerDataNoti;
+    }
+
     @SerializedName("UpcomingBookings")
     @Expose
+
+
+
     private UpcomingBookings upcomingBookings;
     public BookingPerformance getBookingPerformance() {
         return bookingPerformance;

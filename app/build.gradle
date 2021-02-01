@@ -161,6 +161,7 @@ dependencies {
     implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.0.2'
     implementation 'com.github.anrwatchdog:anrwatchdog:1.4.0'
     implementation 'com.facebook.stetho:stetho:1.4.1'
+    implementation "me.leolin:ShortcutBadger:1.1.22@aar"
 }
 repositories {
     mavenCentral()

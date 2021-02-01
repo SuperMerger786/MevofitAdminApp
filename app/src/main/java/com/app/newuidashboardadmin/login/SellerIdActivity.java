@@ -661,7 +661,7 @@ public class SellerIdActivity /*extends AppCompatActivity implements IAuthorized
                 case EMAIL_LOGIN:
 
                     MyLogger.println("LogInpage.onRespon>>>>>makeSessionRequest>>0>>>>>> " + profileDetailsResponse.profilepic);
-                    prefernce.setProfilePic(profileDetailsResponse.profilepic);
+//                    prefernce.setProfilePic(profileDetailsResponse.profilepic);
                     prefernce.setString("logIn", "LoggedIn");
                     prefernce.setString("userName", email);
                     prefernce.setString("password", password);
