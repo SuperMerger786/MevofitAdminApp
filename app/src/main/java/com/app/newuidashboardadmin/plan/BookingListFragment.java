@@ -62,7 +62,7 @@ public class BookingListFragment extends Fragment {
         titleList.add("Open");
 
 
-        TodayBookingFragment fragmentsix = new TodayBookingFragment();
+        WaitlistBookingFragment fragmentsix = new WaitlistBookingFragment();
         mFragmentList.add(fragmentsix);
         titleList.add("Waitlist");
 

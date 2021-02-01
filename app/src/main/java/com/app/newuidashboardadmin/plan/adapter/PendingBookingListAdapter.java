@@ -19,6 +19,7 @@ import com.app.newuidashboardadmin.plan.UserDetailsActivity;
 import com.app.newuidashboardadmin.plan.bean.PendingListData;
 import com.app.newuidashboardadmin.plan.bean.SlotData;
 import com.app.newuidashboardadmin.plan.callback.ButtonClickCallback;
+import com.app.newuidashboardadmin.push.EventHandlerAdmin;
 import com.bumptech.glide.Glide;
 import com.migital.digiproducthelper.MevoSellerDetailsActivity;
 import com.migital.digiproducthelper.util.DigiHelperPreference;
@@ -105,7 +106,7 @@ public class PendingBookingListAdapter extends RecyclerView.Adapter<PendingBooki
             holder.menu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onButtonShowOpenUimenu(holder.menu, context);
+                    onButtonShowOpenUimenu(holder.menu, context,slotDataArrayList.get(position));
                 }
             });
         } else {
@@ -169,7 +170,7 @@ public class PendingBookingListAdapter extends RecyclerView.Adapter<PendingBooki
         return slotDataArrayList.size();
     }
 
-    public void onButtonShowOpenUimenu(View view, Context context) {
+    public void onButtonShowOpenUimenu(View view, Context context, PendingListData pendingListData) {
 
         // inflate the layout of the popup window
         final LayoutInflater inflater = (LayoutInflater) context
@@ -184,6 +185,14 @@ public class PendingBookingListAdapter extends RecyclerView.Adapter<PendingBooki
         pw.showAsDropDown(view);
         TextView reshedule = layout.findViewById(com.migital.digiproducthelper.R.id.reshedule);
         TextView cancel = layout.findViewById(com.migital.digiproducthelper.R.id.cancel);
+        TextView request = layout.findViewById(R.id.request);
+        request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventHandlerAdmin.sendPush(EventHandlerAdmin.REQUEST_PUSH, pendingListData.BookingId, EventHandlerAdmin.REQUEST_PUSH_TITEL, context);
+                pw.dismiss();
+            }
+        });
         reshedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -195,8 +204,10 @@ public class PendingBookingListAdapter extends RecyclerView.Adapter<PendingBooki
             @Override
             public void onClick(View view) {
                 pw.dismiss();
+                buttonClickCallback.OnDateSelect(pendingListData, true);
             }
         });
+
 
 
     }

@@ -52,6 +52,9 @@ public class CompletedBookingAdapter extends RecyclerView.Adapter<CompletedBooki
         } else if (type.equalsIgnoreCase("cancelled")) {
             view = inflater.inflate(R.layout.cancelled_booking_history_item, parent, false);
 
+        }else if(type.equalsIgnoreCase("waitlist")){
+            view = inflater.inflate(R.layout.waitlist_booking_history_item, parent, false);
+
         }
 
         return new CompletedBookingViewHolder(view, type);
@@ -60,49 +63,55 @@ public class CompletedBookingAdapter extends RecyclerView.Adapter<CompletedBooki
     @Override
     public void onBindViewHolder(@NonNull CompletedBookingViewHolder holder, int position) {
         PendingListData sectionData = arrayList.get(position);
-       if(type.equalsIgnoreCase("cancelled")){
-            holder.menu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onButtonShowCanceledUimenu(holder.menu,context,sectionData);
-                }
-            });
-        }else if(type.equalsIgnoreCase("completed")){
-            holder.menu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onButtonShowCompletedUimenu(holder.menu,context,sectionData);
-                }
-            });
 
-        }
-        holder.name.setText(sectionData.user_name);
-        holder.age_gender.setText(sectionData.user_gender + " , " + sectionData.user_age + " yrs.");
-        holder.city_county.setText(sectionData.user_city + " | " + sectionData.user_country);
-        if (sectionData.last_session_slot_date.equalsIgnoreCase("NA")) {
-            holder.last_session_type.setText("NEW CLIENT");
-            holder.last_session_time.setText("");
-        } else {
-            holder.last_session_type.setText("LAST SESSION " + sectionData.last_plan_session_title.replace("Session", ""));
-            SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-            SimpleDateFormat format2 = new SimpleDateFormat("dd MMM");
-            try {
-                Date date = format1.parse(sectionData.last_session_slot_date);
-                System.out.println(format2.format(date));
+        if(type.equalsIgnoreCase("waitlist")){
 
-                SimpleDateFormat _24HourSDF = new SimpleDateFormat("HH:mm");
-                SimpleDateFormat _12HourSDF = new SimpleDateFormat("hh:mm a");
-                SimpleDateFormat _12HourSDFWA = new SimpleDateFormat("hh:mm");
-                Date starttime = _24HourSDF.parse(sectionData.last_session_start_time);
-                Date endtime = _24HourSDF.parse(sectionData.last_session_end_time);
-                System.out.println(_12HourSDF.format(sectionData.last_session_start_time));
+        }else {
 
-                holder.last_session_time.setText(format2.format(date) + "  |  " + _12HourSDFWA.format(starttime) + " - " + _12HourSDF.format(endtime));
+            if (type.equalsIgnoreCase("cancelled")) {
+                holder.menu.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onButtonShowCanceledUimenu(holder.menu, context, sectionData);
+                    }
+                });
+            } else if (type.equalsIgnoreCase("completed")) {
+                holder.menu.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onButtonShowCompletedUimenu(holder.menu, context, sectionData);
+                    }
+                });
+
+            }
+            holder.name.setText(sectionData.user_name);
+            holder.age_gender.setText(sectionData.user_gender + " , " + sectionData.user_age + " yrs.");
+            holder.city_county.setText(sectionData.user_city + " | " + sectionData.user_country);
+            if (sectionData.last_session_slot_date.equalsIgnoreCase("NA")) {
+                holder.last_session_type.setText("NEW CLIENT");
+                holder.last_session_time.setText("");
+            } else {
+                holder.last_session_type.setText("LAST SESSION " + sectionData.last_plan_session_title.replace("Session", ""));
+                SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat format2 = new SimpleDateFormat("dd MMM");
+                try {
+                    Date date = format1.parse(sectionData.last_session_slot_date);
+                    System.out.println(format2.format(date));
+
+                    SimpleDateFormat _24HourSDF = new SimpleDateFormat("HH:mm");
+                    SimpleDateFormat _12HourSDF = new SimpleDateFormat("hh:mm a");
+                    SimpleDateFormat _12HourSDFWA = new SimpleDateFormat("hh:mm");
+                    Date starttime = _24HourSDF.parse(sectionData.last_session_start_time);
+                    Date endtime = _24HourSDF.parse(sectionData.last_session_end_time);
+                    System.out.println(_12HourSDF.format(sectionData.last_session_start_time));
+
+                    holder.last_session_time.setText(format2.format(date) + "  |  " + _12HourSDFWA.format(starttime) + " - " + _12HourSDF.format(endtime));
 
 
 //            holder.last_session_time.setText(format2.format(date) + " | " + sectionData.last_session_start_time + " - " + sectionData.last_session_end_time);
-            } catch (Exception e) {
-                e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

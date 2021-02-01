@@ -7,12 +7,17 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.speech.tts.TextToSpeech;
+import android.widget.RemoteViews;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
@@ -26,10 +31,16 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.megogrid.megoauth.AuthorisedPreference;
 import com.megogrid.megowallet.slave.activity.OrderSummary;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 
@@ -44,6 +55,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
     String storeid;
     String pickup_by;
     String booking_for;
+    String SellerProfileImage;
     int notifictionid = 0;
     int isNotificationCallType = 0;
     int isClientConnected, isClientDisConnected, isOnHold, isCallResumed;
@@ -67,7 +79,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
             isClientDisConnected = jsonObj.getInt("isClientDisConnected");
             isOnHold = jsonObj.getInt("isOnHold");
             isCallResumed= jsonObj.getInt("isCallResumed");
-
+            SellerProfileImage = jsonObj.getString("SellerProfileImage");
           /*  {
                 "messenger_type_val": "one_to_one",
                     "TokApiKey": "47018654",
@@ -274,6 +286,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
         Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+        RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.expandable_layout);
+//        contentView.setImageViewResource(R.id.image, R.mipmap.ic_launcher);
         Notification.Builder notificationBuilder = new Notification.Builder(this)
 //                .setContentTitle(getResources().getString(R.string.app_name))
                 .setContentTitle(header)
@@ -285,17 +300,29 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.app_icon))
                 .setLights(Color.RED, 3000, 3000);
-//        if (isgroup) {
-//            Notification.InboxStyle inboxStyle = new Notification.InboxStyle();
-//            inboxStyle.setBigContentTitle("You have " + value + " new Message");
-//            inboxStyle.addLine(headerText + ": " + messageBody);
-//            notificationBuilder.setStyle(inboxStyle);
-//        } else {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("hh.mm aa");
+            String formattedDate = dateFormat.format(new Date()).toString();
+            contentView.setTextViewText(R.id.time,formattedDate);
+            contentView.setTextViewText(R.id.header,header);
+            contentView.setTextViewText(R.id.subtitel,messageBody);
+
+            try {
+                Bitmap image = BitmapFactory.decodeStream(new URL(SellerProfileImage).openConnection().getInputStream());
+                setBitmap(contentView,R.id.seller_image,image);
+            } catch(IOException e) {
+                System.out.println(e);
+            }
+
+            notificationBuilder.setCustomBigContentView(contentView);
+        }else {
         Notification.BigTextStyle bigText = new Notification.BigTextStyle();
         bigText.bigText(messageBody);
-//        bigText.setSummaryText(" Power By: Marketplace");
         notificationBuilder.setStyle(bigText);
-//        }
+        }
+
+
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         notificationBuilder.setSound(alarmSound);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -313,12 +340,16 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService //imple
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(iidd, notificationBuilder.build());
     }
-
+    private void setBitmap(RemoteViews views, int resId, Bitmap bitmap){
+        Bitmap proxy = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(proxy);
+        c.drawBitmap(bitmap, new Matrix(), null);
+        views.setImageViewBitmap(resId, proxy);
+    }
 
     @SuppressLint("WrongConstant")
     private void sendMyNotificationBelow(String body) {
 
-        // The id of the channel.
         int SUMMARY_ID = 0;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

@@ -19,6 +19,8 @@ public class EventHandlerAdmin {
     public static final String BOOKING_CONFIRMED = "QIFI4FCG9";
     public static final String BOOKING_CONFIRMED_TITEL = "Booking Confirmed";
 
+    public static final String REQUEST_PUSH = "KRKXPSA1R";
+    public static final String REQUEST_PUSH_TITEL = "Request Push";
 
 
 
